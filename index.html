@@ -1,0 +1,1421 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="auto">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Put It Down — Practical Alternatives to Your Phone</title>
+<meta name="description" content="No affiliate links. No sponsored content. Just honest guidance on the best single-purpose devices that help you reclaim your attention.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ─── Tokens ─────────────────────────────────────── */
+:root {
+  --bg:          #F5F0E8;
+  --bg-card:     #EDE8DF;
+  --bg-tag:      #E3DECE;
+  --fg:          #1C1C1A;
+  --fg-mid:      #5C5850;
+  --fg-light:    #8A8478;
+  --accent:      #4A6741;
+  --accent-dim:  #D6E3D0;
+  --accent-deep: #3A5432;
+  --link:        #3A5432;
+  --rule:        #D8D0C4;
+  --warn-bg:     #F0EAE0;
+  --warn-border: #C8A882;
+  --note-bg:     #EBE6DC;
+  --serif: 'Instrument Serif', Georgia, serif;
+  --sans:  'Inter', 'Helvetica Neue', Arial, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg:          #1A1A17;
+    --bg-card:     #232320;
+    --bg-tag:      #2E2E2A;
+    --fg:          #EDE8DF;
+    --fg-mid:      #A8A39A;
+    --fg-light:    #6E6A62;
+    --accent:      #6A9660;
+    --accent-dim:  #2A3E28;
+    --accent-deep: #8AB880;
+    --link:        #8AB880;
+    --rule:        #2E2E2A;
+    --warn-bg:     #2A2318;
+    --warn-border: #7A6040;
+    --note-bg:     #272420;
+  }
+}
+:root[data-theme="dark"] {
+  --bg:          #1A1A17;
+  --bg-card:     #232320;
+  --bg-tag:      #2E2E2A;
+  --fg:          #EDE8DF;
+  --fg-mid:      #A8A39A;
+  --fg-light:    #6E6A62;
+  --accent:      #6A9660;
+  --accent-dim:  #2A3E28;
+  --accent-deep: #8AB880;
+  --link:        #8AB880;
+  --rule:        #2E2E2A;
+  --warn-bg:     #2A2318;
+  --warn-border: #7A6040;
+  --note-bg:     #272420;
+}
+
+/* ─── Reset & Base ───────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+a { color: var(--link); text-decoration: underline; text-underline-offset: 2px; }
+a:hover { color: var(--accent-deep); }
+img { max-width: 100%; height: auto; display: block; }
+h1,h2,h3,h4 { font-family: var(--serif); font-weight: 400; line-height: 1.2; }
+
+/* ─── Layout ─────────────────────────────────────── */
+.wrap { max-width: 1100px; margin: 0 auto; padding: 0 16px; }
+
+/* ─── Header ─────────────────────────────────────── */
+header {
+  border-bottom: 1px solid var(--rule);
+  padding: 20px 0 18px;
+  position: sticky; top: 0; z-index: 100;
+  background: var(--bg);
+}
+.header-inner {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+}
+.logo { font-family: var(--serif); font-size: 1.5rem; color: var(--fg); text-decoration: none; }
+.logo span { color: var(--accent); }
+.header-actions { display: flex; align-items: center; gap: 8px; }
+.btn-ghost {
+  background: none; border: 1px solid var(--rule);
+  color: var(--fg-mid); font-family: var(--sans); font-size: 0.8rem;
+  padding: 5px 10px; border-radius: 6px; cursor: pointer; transition: all .15s;
+}
+.btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+.btn-ghost.active { background: var(--accent-dim); border-color: var(--accent); color: var(--accent-deep); }
+
+/* ─── Hero ───────────────────────────────────────── */
+.hero {
+  text-align: center;
+  padding: 64px 16px 48px;
+  border-bottom: 1px solid var(--rule);
+}
+.hero h1 { font-size: clamp(2rem, 5vw, 3.2rem); margin-bottom: 16px; }
+.hero h1 em { font-style: italic; color: var(--accent); }
+.hero p { font-size: 1.1rem; color: var(--fg-mid); max-width: 540px; margin: 0 auto 28px; }
+.hero-cta { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+.btn-primary {
+  background: var(--accent); color: #fff; font-family: var(--sans); font-size: 0.95rem;
+  font-weight: 500; padding: 11px 22px; border-radius: 8px; border: none; cursor: pointer;
+  text-decoration: none; display: inline-block; transition: background .15s;
+}
+.btn-primary:hover { background: var(--accent-deep); color: #fff; }
+.btn-secondary {
+  background: var(--bg-card); color: var(--fg); font-family: var(--sans); font-size: 0.95rem;
+  font-weight: 500; padding: 11px 22px; border-radius: 8px; border: 1px solid var(--rule);
+  cursor: pointer; text-decoration: none; display: inline-block; transition: background .15s;
+}
+.btn-secondary:hover { background: var(--bg-tag); }
+
+/* ─── Manifesto ──────────────────────────────────── */
+.manifesto {
+  background: var(--note-bg);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 8px 8px 0;
+  padding: 16px 20px;
+  margin: 32px 0;
+  font-size: 0.92rem;
+  color: var(--fg-mid);
+}
+
+/* ─── Quick-Start ────────────────────────────────── */
+.quickstart { padding: 40px 0 0; }
+.quickstart h2 { font-size: 1.5rem; margin-bottom: 6px; }
+.quickstart .sub { color: var(--fg-mid); margin-bottom: 24px; font-size: 0.95rem; }
+.qs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  margin-bottom: 40px;
+}
+.qs-card {
+  background: var(--bg-card); border: 1px solid var(--rule); border-radius: 12px;
+  padding: 20px; cursor: pointer; transition: box-shadow .15s, transform .1s;
+  text-decoration: none; color: inherit;
+  display: flex; flex-direction: column; gap: 8px;
+}
+.qs-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,.08); transform: translateY(-2px); color: inherit; }
+.qs-icon { font-size: 1.6rem; }
+.qs-card h3 { font-family: var(--sans); font-size: 1rem; font-weight: 600; }
+.qs-card p { font-size: 0.85rem; color: var(--fg-mid); }
+
+/* ─── Wizard ─────────────────────────────────────── */
+.wizard-section { padding: 40px 0; border-top: 1px solid var(--rule); }
+.wizard-section h2 { font-size: 1.5rem; margin-bottom: 6px; }
+.wizard-section .sub { color: var(--fg-mid); margin-bottom: 24px; font-size: 0.95rem; }
+#wizard { max-width: 640px; }
+.wiz-step { display: none; }
+.wiz-step.active { display: block; }
+.wiz-q { font-size: 1.05rem; font-weight: 500; margin-bottom: 14px; }
+.wiz-opts { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 8px; }
+.wiz-opt {
+  background: var(--bg-card); border: 1.5px solid var(--rule);
+  color: var(--fg); font-family: var(--sans); font-size: 0.9rem;
+  padding: 8px 14px; border-radius: 8px; cursor: pointer; transition: all .12s;
+}
+.wiz-opt:hover, .wiz-opt.sel { background: var(--accent-dim); border-color: var(--accent); color: var(--accent-deep); }
+.wiz-hint { font-size: 0.8rem; color: var(--fg-light); margin-bottom: 16px; }
+.wiz-progress { display: flex; gap: 6px; margin-bottom: 20px; }
+.wiz-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--rule); transition: background .2s;
+}
+.wiz-dot.done { background: var(--accent); }
+#wiz-results { display: none; }
+#wiz-results h3 { font-size: 1.1rem; margin-bottom: 16px; }
+.wiz-result-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px;
+}
+.wiz-reset {
+  margin-top: 16px; background: none; border: 1px solid var(--rule);
+  color: var(--fg-mid); font-family: var(--sans); font-size: 0.85rem;
+  padding: 6px 14px; border-radius: 6px; cursor: pointer;
+}
+.wiz-reset:hover { border-color: var(--accent); color: var(--accent); }
+
+/* ─── Filter Bar ─────────────────────────────────── */
+.filter-bar {
+  padding: 32px 0 0;
+  border-top: 1px solid var(--rule);
+}
+.filter-bar h2 { font-size: 1.5rem; margin-bottom: 6px; }
+.filter-bar .sub { color: var(--fg-mid); margin-bottom: 20px; font-size: 0.95rem; }
+.filter-row {
+  display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 32px; align-items: center;
+}
+.filter-pill {
+  background: var(--bg-card); border: 1.5px solid var(--rule);
+  color: var(--fg-mid); font-family: var(--sans); font-size: 0.82rem; font-weight: 500;
+  padding: 6px 12px; border-radius: 20px; cursor: pointer; transition: all .12s;
+  white-space: nowrap;
+}
+.filter-pill:hover { border-color: var(--accent); color: var(--accent); }
+.filter-pill.active { background: var(--accent-dim); border-color: var(--accent); color: var(--accent-deep); }
+.price-toggle { display: flex; align-items: center; gap: 8px; margin-left: auto; font-size: 0.82rem; color: var(--fg-mid); }
+.price-toggle button {
+  background: none; border: 1.5px solid var(--rule);
+  font-family: var(--sans); font-size: 0.78rem; font-weight: 600;
+  padding: 4px 10px; border-radius: 4px; cursor: pointer; color: var(--fg-mid);
+  transition: all .1s;
+}
+.price-toggle button.active { background: var(--bg-tag); border-color: var(--accent); color: var(--accent-deep); }
+
+/* ─── Sections & Cards ───────────────────────────── */
+.cat-section { margin-bottom: 48px; }
+.cat-section h2 { font-size: 1.4rem; margin-bottom: 4px; border-bottom: 1px solid var(--rule); padding-bottom: 10px; margin-bottom: 20px; }
+.cat-section .cat-desc { color: var(--fg-mid); font-size: 0.9rem; margin-top: -14px; margin-bottom: 18px; }
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+}
+.card {
+  background: var(--bg-card); border: 1px solid var(--rule); border-radius: 12px;
+  overflow: hidden; display: flex; flex-direction: column;
+  transition: box-shadow .15s;
+}
+.card:hover { box-shadow: 0 4px 20px rgba(0,0,0,.1); }
+.card-img {
+  width: 100%; height: 180px; object-fit: contain;
+  background: var(--note-bg); padding: 12px;
+}
+.card-img-placeholder {
+  width: 100%; height: 180px; background: var(--note-bg);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 2.5rem;
+}
+.card-body { padding: 16px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+.card-title { font-family: var(--sans); font-size: 1rem; font-weight: 600; }
+.card-badges { display: flex; flex-wrap: wrap; gap: 5px; }
+.badge {
+  font-size: 0.72rem; font-weight: 600; padding: 2px 7px;
+  border-radius: 4px; letter-spacing: .02em;
+}
+.badge-new  { background: var(--accent-dim); color: var(--accent-deep); }
+.badge-uk   { background: #E8F0FB; color: #3050A0; }
+.badge-best { background: #F5ECD0; color: #7A5A10; }
+.badge-budget { background: var(--bg-tag); color: var(--fg-mid); }
+.card-desc { font-size: 0.85rem; color: var(--fg-mid); flex: 1; }
+.card-footer {
+  display: flex; justify-content: space-between; align-items: flex-end;
+  margin-top: 8px; gap: 8px; flex-wrap: wrap;
+}
+.card-price { font-size: 0.95rem; font-weight: 600; color: var(--accent-deep); }
+.card-price .price-us { display: none; }
+.card-link {
+  font-size: 0.82rem; font-weight: 500; color: var(--link);
+  text-decoration: none; border: 1px solid var(--accent-dim);
+  padding: 4px 10px; border-radius: 6px; transition: background .12s;
+}
+.card-link:hover { background: var(--accent-dim); color: var(--accent-deep); }
+.card-caveat {
+  font-size: 0.78rem; color: var(--fg-light); font-style: italic;
+  padding: 0 16px 12px; border-top: 1px solid var(--rule); margin-top: 4px;
+  padding-top: 8px;
+}
+
+/* ─── About / Manifesto section ──────────────────── */
+.about-section {
+  border-top: 1px solid var(--rule);
+  padding: 48px 0;
+  max-width: 680px;
+}
+.about-section h2 { font-size: 1.5rem; margin-bottom: 16px; }
+.about-section p { color: var(--fg-mid); margin-bottom: 12px; line-height: 1.7; }
+
+/* ─── Newsletter ─────────────────────────────────── */
+.newsletter {
+  background: var(--note-bg); border-radius: 12px;
+  padding: 32px; margin: 0 0 48px;
+  border: 1px solid var(--rule);
+  max-width: 520px;
+}
+.newsletter h3 { font-size: 1.2rem; margin-bottom: 8px; }
+.newsletter p { font-size: 0.9rem; color: var(--fg-mid); margin-bottom: 16px; }
+.nl-form { display: flex; gap: 8px; flex-wrap: wrap; }
+.nl-input {
+  flex: 1; min-width: 180px;
+  background: var(--bg); border: 1.5px solid var(--rule);
+  color: var(--fg); font-family: var(--sans); font-size: 0.9rem;
+  padding: 9px 12px; border-radius: 8px;
+  outline: none; transition: border-color .15s;
+}
+.nl-input:focus { border-color: var(--accent); }
+
+/* ─── Share row ──────────────────────────────────── */
+.share-row {
+  display: flex; gap: 10px; align-items: center; flex-wrap: wrap;
+  margin: 24px 0; font-size: 0.85rem; color: var(--fg-mid);
+}
+.share-btn {
+  background: var(--bg-card); border: 1px solid var(--rule);
+  color: var(--fg-mid); font-family: var(--sans); font-size: 0.82rem;
+  padding: 6px 12px; border-radius: 6px; cursor: pointer;
+  text-decoration: none; transition: all .12s;
+}
+.share-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+/* ─── Footer ─────────────────────────────────────── */
+footer {
+  border-top: 1px solid var(--rule);
+  padding: 32px 0;
+  font-size: 0.82rem;
+  color: var(--fg-light);
+}
+.footer-inner { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; flex-wrap: wrap; }
+footer a { color: var(--fg-light); }
+footer a:hover { color: var(--accent); }
+
+/* ─── Utility ────────────────────────────────────── */
+.hidden { display: none !important; }
+.sr-only { position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0); }
+
+/* ─── Responsive ─────────────────────────────────── */
+@media(max-width:600px) {
+  .hero { padding: 40px 16px 32px; }
+  .cards { grid-template-columns: 1fr; }
+  .price-toggle { margin-left: 0; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap header-inner">
+    <a href="#" class="logo">Put It <span>Down</span></a>
+    <div class="header-actions">
+      <button class="btn-ghost" id="darkToggle" onclick="toggleDark()" title="Toggle dark mode">🌙</button>
+      <a href="#finder" class="btn-ghost">Find mine →</a>
+    </div>
+  </div>
+</header>
+
+<main>
+<div class="wrap">
+
+<!-- ── Hero ── -->
+<section class="hero">
+  <h1>Your phone is a slot machine.<br><em>These aren't.</em></h1>
+  <p>Single-purpose devices that do one thing well — without pulling you back into the feed. No affiliate links. No sponsored picks. Just honest guidance.</p>
+  <div class="hero-cta">
+    <a href="#finder" class="btn-primary">Find your alternative</a>
+    <a href="#all" class="btn-secondary">Browse everything</a>
+  </div>
+</section>
+
+<!-- ── Quick-Start ── -->
+<section class="quickstart" id="quickstart">
+  <h2>Most common escapes</h2>
+  <p class="sub">The three things people reach for their phones to do — and the best single-purpose alternatives.</p>
+  <div class="qs-grid">
+    <a href="#sleep" class="qs-card">
+      <div class="qs-icon">🌙</div>
+      <h3>Better sleep</h3>
+      <p>Phone charging outside the bedroom. Gentle wake-up light instead of a notification alarm.</p>
+    </a>
+    <a href="#reading" class="qs-card">
+      <div class="qs-icon">📖</div>
+      <h3>Deep reading</h3>
+      <p>E-ink screens without notifications. Your book, nothing else.</p>
+    </a>
+    <a href="#music" class="qs-card">
+      <div class="qs-icon">🎵</div>
+      <h3>Music anywhere</h3>
+      <p>Portable players that hold your library offline — no data, no distractions.</p>
+    </a>
+  </div>
+</section>
+
+<!-- ── Wizard ── -->
+<section class="wizard-section" id="finder">
+  <h2>Find yours in 3 questions</h2>
+  <p class="sub">Answer quickly — we'll show you the right category.</p>
+  <div id="wizard">
+    <div class="wiz-progress">
+      <div class="wiz-dot" id="dot0"></div>
+      <div class="wiz-dot" id="dot1"></div>
+      <div class="wiz-dot" id="dot2"></div>
+    </div>
+
+    <div class="wiz-step active" id="wiz0">
+      <p class="wiz-q">What do you reach for your phone for most?</p>
+      <div class="wiz-opts">
+        <button class="wiz-opt" onclick="pickWiz(0,'music')">🎵 Music / podcasts</button>
+        <button class="wiz-opt" onclick="pickWiz(0,'reading')">📖 Reading</button>
+        <button class="wiz-opt" onclick="pickWiz(0,'sleep')">🌙 Bedtime / alarm</button>
+        <button class="wiz-opt" onclick="pickWiz(0,'camera')">📷 Camera</button>
+        <button class="wiz-opt" onclick="pickWiz(0,'kids')">🧒 Kids' entertainment</button>
+        <button class="wiz-opt" onclick="pickWiz(0,'fitness')">🏃 Fitness tracking</button>
+        <button class="wiz-opt" onclick="pickWiz(0,'news')">📰 News / reading long-form</button>
+        <button class="wiz-opt" onclick="pickWiz(0,'writing')">✏️ Notes / journalling</button>
+        <button class="wiz-opt" onclick="pickWiz(0,'nav')">🗺️ Navigation</button>
+      </div>
+      <p class="wiz-hint">Tap to advance automatically</p>
+    </div>
+
+    <div class="wiz-step" id="wiz1">
+      <p class="wiz-q">What's your budget?</p>
+      <div class="wiz-opts">
+        <button class="wiz-opt" onclick="pickWiz(1,'low')">Under £50</button>
+        <button class="wiz-opt" onclick="pickWiz(1,'mid')">£50–150</button>
+        <button class="wiz-opt" onclick="pickWiz(1,'high')">£150+</button>
+      </div>
+    </div>
+
+    <div class="wiz-step" id="wiz2">
+      <p class="wiz-q">Do you want it to work offline / without a subscription?</p>
+      <div class="wiz-opts">
+        <button class="wiz-opt" onclick="pickWiz(2,'standalone')">Yes — standalone only</button>
+        <button class="wiz-opt" onclick="pickWiz(2,'either')">Either is fine</button>
+        <button class="wiz-opt" onclick="pickWiz(2,'connected')">Subscription / streaming ok</button>
+      </div>
+    </div>
+
+    <div id="wiz-results">
+      <h3 id="wiz-heading">Our picks for you</h3>
+      <div class="wiz-result-grid" id="wiz-result-grid"></div>
+      <button class="wiz-reset" onclick="resetWiz()">← Start over</button>
+    </div>
+  </div>
+</section>
+
+<!-- ── Filter Bar ── -->
+<section class="filter-bar" id="all">
+  <h2>All alternatives</h2>
+  <p class="sub">Filter by what you're replacing, or browse everything.</p>
+  <div class="filter-row">
+    <button class="filter-pill active" onclick="filterCat('all',this)">All</button>
+    <button class="filter-pill" onclick="filterCat('sleep',this)">🌙 Sleep</button>
+    <button class="filter-pill" onclick="filterCat('reading',this)">📖 Reading</button>
+    <button class="filter-pill" onclick="filterCat('music',this)">🎵 Music</button>
+    <button class="filter-pill" onclick="filterCat('headphones',this)">🎧 Headphones</button>
+    <button class="filter-pill" onclick="filterCat('writing',this)">✏️ Writing</button>
+    <button class="filter-pill" onclick="filterCat('camera',this)">📷 Camera</button>
+    <button class="filter-pill" onclick="filterCat('fitness',this)">🏃 Fitness</button>
+    <button class="filter-pill" onclick="filterCat('kids',this)">🧒 Kids</button>
+    <button class="filter-pill" onclick="filterCat('news',this)">📰 News</button>
+    <button class="filter-pill" onclick="filterCat('hobbies',this)">🎲 Hobbies</button>
+    <button class="filter-pill" onclick="filterCat('phone',this)">📞 Dumb phones</button>
+    <button class="filter-pill" onclick="filterCat('speaker',this)">🔊 Smart speakers</button>
+    <button class="filter-pill" onclick="filterCat('planner',this)">📋 Planners</button>
+    <div class="price-toggle">
+      <span>Prices:</span>
+      <button class="active" id="pBtn-gbp" onclick="setCurrency('gbp')">£ GBP</button>
+      <button id="pBtn-usd" onclick="setCurrency('usd')">$ USD</button>
+    </div>
+  </div>
+
+<!-- ════════════════════════════════════════════
+     SLEEP
+═════════════════════════════════════════════ -->
+<div class="cat-section" id="sleep" data-cat="sleep">
+  <h2>🌙 Sleep &amp; Wake</h2>
+  <p class="cat-desc">Get the phone out of your bedroom. A wake-up light is gentler than any alarm app.</p>
+  <div class="cards">
+
+    <div class="card" data-cat="sleep" data-budget="high" data-mode="standalone">
+      <img class="card-img" src="https://www.philips.co.uk/c-dam/b2c/category-pages/personal-care/wake-up-light/HF3650_01.jpg" alt="Philips SmartSleep Wake-up Light HF3650" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="card-img-placeholder" style="display:none">🌅</div>
+      <div class="card-body">
+        <div class="card-badges"><span class="badge badge-best">Best overall</span></div>
+        <p class="card-title">Philips SmartSleep Wake-up Light HF3650</p>
+        <p class="card-desc">Sunrise simulation starts 30 minutes before alarm. Natural sounds. FM radio. Genuinely makes waking easier — backed by Philips' own sleep research.</p>
+        <div class="card-footer">
+          <p class="card-price">
+            <span class="price-gbp">£89</span>
+            <span class="price-us">$99</span>
+          </p>
+          <a class="card-link" href="https://www.philips.co.uk/c-p/HF3650_01/smartsleep-wake-up-light" target="_blank" rel="noopener">View →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" data-cat="sleep" data-budget="mid" data-mode="standalone">
+      <div class="card-img-placeholder">🌄</div>
+      <div class="card-body">
+        <div class="card-badges"><span class="badge badge-budget">Budget pick</span></div>
+        <p class="card-title">Lumie Bodyclock Rise 100</p>
+        <p class="card-desc">Entry-level sunrise alarm. Simple, no app required, no Bluetooth. Just light — the oldest and most proven sleep cue there is.</p>
+        <div class="card-footer">
+          <p class="card-price"><span class="price-gbp">£59</span><span class="price-us">$68</span></p>
+          <a class="card-link" href="https://www.lumie.com/products/bodyclock-rise-100" target="_blank" rel="noopener">View →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" data-cat="sleep" data-budget="low" data-mode="standalone">
+      <div class="card-img-placeholder">⏰</div>
+      <div class="card-body">
+        <div class="card-badges"><span class="badge badge-budget">Under £30</span></div>
+        <p class="card-title">Braun BC21 Travel Alarm</p>
+        <p class="card-desc">Simple, well-made analogue alarm. No light, no fuss. If you just need to stop charging your phone in the bedroom, this does it for £20.</p>
+        <div class="card-footer">
+          <p class="card-price"><span class="price-gbp">£22</span><span class="price-us">$26</span></p>
+          <a class="card-link" href="https://www.amazon.co.uk/s?k=Braun+travel+alarm+clock" target="_blank" rel="noopener">View →</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     READING
+═════════════════════════════════════════════ -->
+<div class="cat-section" id="reading" data-cat="reading">
+  <h2>📖 Reading</h2>
+  <p class="cat-desc">E-ink screens with weeks of battery life. No notifications. No browser. Just the book.</p>
+  <div class="cards">
+
+    <div class="card" data-cat="reading" data-budget="mid" data-mode="connected">
+      <img class="card-img" src="https://m.media-amazon.com/images/I/71xJI+LnWAL._AC_SX679_.jpg" alt="Kindle Paperwhite 2024" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="card-img-placeholder" style="display:none">📖</div>
+      <div class="card-body">
+        <div class="card-badges"><span class="badge badge-new">2024</span><span class="badge badge-best">Best overall</span></div>
+        <p class="card-title">Kindle Paperwhite (2024)</p>
+        <p class="card-desc">The best e-reader for most people. 7" screen, USB-C, warm light, weeks of battery. Amazon's content library is unbeatable. Slight caveat: you're in Amazon's ecosystem.</p>
+        <div class="card-footer">
+          <p class="card-price"><span class="price-gbp">£149</span><span class="price-us">$139</span></p>
+          <a class="card-link" href="https://www.amazon.co.uk/dp/B0CF44VCM5" target="_blank" rel="noopener">View →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" data-cat="reading" data-budget="mid" data-mode="connected">
+      <img class="card-img" src="https://cdn.shopify.com/s/files/1/0162/9548/0452/files/Kobo-Clara-Colour-lifestyle-01.jpg" alt="Kobo Clara Colour" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="card-img-placeholder" style="display:none">🎨</div>
+      <div class="card-body">
+        <div class="card-badges"><span class="badge badge-new">2024</span></div>
+        <p class="card-title">Kobo Clara Colour</p>
+        <p class="card-desc">Colour e-ink display makes comics, illustrated books, and magazines genuinely good. No ads. Supports ePub so you can get books from your library for free.</p>
+        <div class="card-footer">
+          <p class="card-price"><span class="price-gbp">£149</span><span class="price-us">$149</span></p>
+          <a class="card-link" href="https://uk.kobobooks.com/products/kobo-clara-colour" target="_blank" rel="noopener">View →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" data-cat="reading" data-budget="high" data-mode="either">
+      <img class="card-img" src="https://cdn.shopify.com/s/files/1/0162/9548/0452/files/Kobo-Elipsa-2E-product-image.jpg" alt="Kobo Elipsa 2E" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="card-img-placeholder" style="display:none">📝</div>
+      <div class="card-body">
+        <div class="card-badges"><span class="badge badge-new">2023</span></div>
+        <p class="card-title">Kobo Elipsa 2E</p>
+        <p class="card-desc">10.3" e-ink screen with stylus for annotating PDFs and ebooks. Perfect for students and professionals who read long documents. Comes with Kobo Stylus 2.</p>
+        <div class="card-footer">
+          <p class="card-price"><span class="price-gbp">£349</span><span class="price-us">$399</span></p>
+          <a class="card-link" href="https://uk.kobobooks.com/products/kobo-elipsa-2e" target="_blank" rel="noopener">View →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" data-cat="reading" data-budget="high" data-mode="either">
+      <img class="card-img" src="https://onyxboox.com/images/Note-Air4-C.jpg" alt="Boox Note Air4 C" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="card-img-placeholder" style="display:none">📱</div>
+      <div class="card-body">
+        <div class="card-badges"><span class="badge badge-new">2024</span></div>
+        <p class="card-title">Boox Note Air4 C</p>
+        <p class="card-desc">10.3" colour e-ink Android tablet. More flexible than a Kindle — install any app — but that's also the risk. Best for determined adults who want colour annotations.</p>
+        <div class="card-footer">
+          <p class="card-price"><span class="price-gbp">£479</span><span class="price-us">$549</span></p>
+          <a class="card-link" href="https://shop.boox.com/products/noteair4c" target="_blank" rel="noopener">View →</a>
+        </div>
+      </div>
+      <div class="card-caveat">⚠️ Runs Android — you can install distracting apps. Use with intention.</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     MUSIC
+═════════════════════════════════════════════ -->
+<div class="cat-section" id="music" data-cat="music">
+  <h2>🎵 Music &amp; Audio Players</h2>
+  <p class="cat-desc">Offline libraries, no notifications, real battery life. Your music without the internet.</p>
+  <div class="cards">
+
+    <div class="card" data-cat="music" data-budget="mid" data-mode="standalone">
+      <img class="card-img" src="https://m.media-amazon.com/images/I/51P8DdCNsVL._AC_SX679_.jpg" alt="Sony NW-A306 Walkman" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="card-img-placeholder" style="display:none">🎶</div>
+      <div class="card-body">
+        <div class="card-badges"><span class="badge badge-best">Best overall</span></div>
+        <p class="card-title">Sony NW-A306 Walkman</p>
+        <p class="card-desc">Android-based but has no SIM. Holds 32GB + microSD. Supports Spotify, Tidal, and local files. Brilliant DAC. Doesn't open a door to Instagram.</p>
+        <div class="card-footer">
+          <p class="card-price"><span class="price-gbp">£299</span><span class="price-us">$329</span></p>
+          <a class="card-link" href="https://www.sony.co.uk/en/articles/nw-a306-high-resolution-music-player" target="_blank" rel="noopener">View →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" data-cat="music" data-budget="mid" data-mode="standalone">
+      <img class="card-img" src="https://www.apple.com/v/ipod-touch/b/images/overview/hero_ipt__b9fj9uqnp1ey_large.jpg" alt="iPod-era style — Shanling M0 Pro" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="card-img-placeholder" style="display:none">🎵</div>
+      <div class="card-body">
+        <p class="card-title">Shanling M0 Pro</p>
+        <p class="card-desc">Tiny, pocketable DAP with touchscreen. Plays local files and supports Tidal/Qobuz. 600mW output drives most headphones. No social apps possible.</p>
+        <div class="card-footer">
+          <p class="card-price"><span class="price-gbp">£79</span><span class="price-us">$89</span></p>
+          <a class="card-link" href="https://en.shanling.com/product/397" target="_blank" rel="noopener">View →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" data-cat="music" data-budget="low" data-mode="standalone">
+      <div class="card-img-placeholder">🎧</div>
+      <div class="card-body">
+        <div class="card-badges"><span class="badge badge-budget">Budget pick</span></div>
+        <p class="card-title">SanDisk Clip Sport Plus</p>
+        <p class="card-desc">Clips to your shirt. 16GB built-in + microSD. 20-hour battery. Built-in FM radio. Designed for running. £35 and completely distraction-free.</p>
+        <div class="card-footer">
+          <p class="card-price"><span class="price-gbp">£35</span><span class="price-us">$40</span></p>
+          <a class="card-link" href="https://www.amazon.co.uk/s?k=sandisk+clip+sport+plus" target="_blank" rel="noopener">View →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" data-cat="music" data-budget="mid" data-mode="standalone">
+      <div class="card-img-placeholder">🎙️</div>
+      <div class="card-body">
+        <p class="card-title">Mighty Vibe (Spotify offline)</p>
+        <p class="card-desc">The size of a credit card. Syncs Spotify playlists offline. No screen, no notifications. Clip it on and go. Needs a Spotify Premium account.</p>
+        <div class="card-footer">
+          <p class="card-price"><span class="price-gbp">£79</span><span class="price-us">$89</span></p>
+          <a class="card-link" href="https://www.mightyaudio.com" target="_blank" rel="noopener">View →</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     HEADPHONES
+═════════════════════════════════════════════ -->
+<div class="cat-section" id="headphones" data-cat="headphones">
+  <h2>🎧 Headphones &amp; Earphones</h2>
+  <p class="cat-desc">Good headphones make listening intentional. These don't need your phone — pair with a DAP or just a dumb source.</p>
+  <div class="cards">
+
+    <div class="card" data-cat="headphones" data-budget="mid" data-mode="standalone">
+      <img class="card-img" src="https://www.sony.co.uk/image/5d02da5df552836db8a9aaaa4f729c11?fmt=pjpeg&bgcolor=FFFFFF&bgc=FFFFFF&wid=2515&hei=1320" alt="Sony WH-1000XM5" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="card-img-placeholder" style="display:none">🎧</div>
+      <div class="card-body">
+        <div class="card-badges"><span class="badge badge-best">Best ANC</span></div>
+        <p class="card-title">Sony WH-1000XM5</p>
+        <p class="card-desc">Best-in-class noise cancellation creates a private listening space. 30-hour battery. Works via Bluetooth or wired. Use with a DAP — no phone needed once paired.</p>
+        <div class="card-footer">
+          <p class="card-price"><span class="price-gbp">£279</span><span class="price-us">$349</span></p>
+          <a class="card-link" href="https://www.sony.co.uk/en/headphones/products/wh-1000xm5" target="_blank" rel="noopener">View →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" data-cat="headphones" data-budget="mid" data-mode="standalone">
+      <div class="card-img-placeholder">🎵</div>
+      <div class="card-body">
+        <div class="card-badges"><span class="badge badge-uk">UK favourite</span></div>
+        <p class="card-title">Bose QuietComfort 45</p>
+        <p class="card-desc">Slightly warmer sound than Sony. More comfortable for long sessions. 24-hour battery. Pairs perfectly with a standalone music player.</p>
+        <div class="card-footer">
+          <p class="card-price"><span class="price-gbp">£249</span><span class="price-us">$279</span></p>
+          <a class="card-link" href="https://www.bose.co.uk/en_gb/products/headphones/over_ear_headphones/quietcomfort-headphones-45.html" target="_blank" rel="noopener">View →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" data-cat="headphones" data-budget="low" data-mode="standalone">
+      <div class="card-img-placeholder">🎶</div>
+      <div class="card-body">
+        <div class="card-badges"><span class="badge badge-budget">Under £50</span></div>
+        <p class="card-title">Koss KPH30i</p>
+        <p class="card-desc">Lightweight on-ear, wired only. No app, no firmware, no ANC. Just excellent sound for under £30. A cult classic among audiophiles who understand that simple is better.</p>
+        <div class="card-footer">
+          <p class="card-price"><span class="price-gbp">£29</span><span class="price-us">$32</span></p>
+          <a class="card-link" href="https://www.koss.com/products/kph30i" target="_blank" rel="noopener">View →</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     WRITING
+═════════════════════════════════════════════ -->
+<div class="cat-section" id="writing" data-cat="writing">
+  <h2>✏️ Writing &amp; Notes</h2>
+  <p class="cat-desc">Capture thoughts without opening a browser. E-ink note-takers and distraction-free keyboards.</p>
+  <div class="cards">
+
+    <div class="card" data-cat="writing" data-budget="high" data-mode="standalone">
+      <img class="card-img" src="https://freewrite.com/cdn/shop/files/freewrite-smart-typewriter-lifestyle.jpg" alt="Freewrite Smart Typewriter" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="card-img-placeholder" style="display:none">⌨️</div>
+      <div class="card-body">
+        <div class="card-badges"><span class="badge badge-best">Writers' pick</span></div>
+        <p class="card-title">Freewrite Smart Typewriter</p>
+        <p class="card-desc">Mechanical keyboard + e-ink screen. No editing mode, no browser. Just write. Syncs to Google Docs or Dropbox when you get home. For people serious about drafting.</p>
+        <div class="card-footer">
+          <p class="card-price"><span class="price-gbp">£429</span><span class="price-us">$549</span></p>
+          <a class="card-link" href="https://freewrite.com/products/freewrite-smart-typewriter" target="_blank" rel="noopener">View →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" data-cat="writing" data-budget="mid" data-mode="standalone">
+      <img class="card-img" src="https://freewrite.com/cdn/shop/products/traveler-hero.jpg" alt="Freewrite Traveler" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="card-img-placeholder" style="display:none">🗒️</div>
+      <div class="card-body">
+        <p class="card-title">Freewrite Traveler</p>
+        <p class="card-desc">Foldable, lighter version of the Smart Typewriter. Same philosophy — write only. Better for travel and coffee shops. Roughly half the weight.</p>
+        <div class="card-footer">
+          <p class="card-price"><span class="price-gbp">£299</span><span class="price-us">$349</span></p>
+          <a class="card-link" href="https://freewrite.com/products/traveler" target="_blank" rel="noopener">View →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" data-cat="writing" data-budget="mid" data-mode="either">
+      <img class="card-img" src="https://remarkable.com/store/media/catalog/product/r/m/rm110_product_1_1_.jpg" alt="reMarkable 2" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="card-img-placeholder" style="display:none">📝</div>
+      <div class="card-body">
+        <div class="card-badges"><span class="badge badge-new">2024 software</span></div>
+        <p class="card-title">reMarkable 2</p>
+        <p class="card-desc">Paper-like e-ink writing tablet. Brilliant for annotating PDFs, sketching, journalling. No distracting apps. The closest digital thing to paper.</p>
+        <div class="card-footer">
+          <p class="card-price"><span class="price-gbp">£279</span><span class="price-us">$299</span></p>
+          <a class="card-link" href="https://remarkable.com/store/remarkable-2" target="_blank" rel="noopener">View →</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     CAMERA
+═════════════════════════════════════════════ -->
+<div class="cat-section" id="camera" data-cat="camera">
+  <h2>📷 Cameras</h2>
+  <p class="cat-desc">Real cameras make photography intentional again. No post-shooting scroll, no filters, no feed.</p>
+  <div class="cards">
+
+    <div class="card" data-cat="camera" data-budget="high" data-mode="standalone">
+      <img class="card-img" src="https://www.fujifilm.com/uk/en/consumer/cameras/x/x100vi/spec/img/x100vi_bk_1.png" alt="Fujifilm X100VI" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="card-img-placeholder" style="display:none">📷</div>
+      <div class="card-body">
+        <div class="card-badges"><span class="badge badge-new">2024</span><span class="badge badge-best">The one</span></div>
+        <p class="card-title">Fujifilm X100VI</p>
+        <p class="card-desc">The camera people carry instead of their phone. Fixed 35mm lens, film simulations, built-in ND filter. Takes a picture and that's it — no notifications waiting.</p>
+        <div class="card-footer">
+          <p class="card-price"><span class="price-gbp">£1,699</span><span class="price-us">$1,599</span></p>
+          <a class="card-link" href="https://www.fujifilm.com/uk/en/consumer/cameras/x/x100vi" target="_blank" rel="noopener">View →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" data-cat="camera" data-budget="mid" data-mode="standalone">
+      <img class="card-img" src="https://www.ricoh-imaging.co.uk/content/dam/ricoh/products/cameras/gr-series/gr-iiix/images/gr-iiix-black.jpg" alt="Ricoh GR IIIx" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="card-img-placeholder" style="display:none">📸</div>
+      <div class="card-body">
+        <p class="card-title">Ricoh GR IIIx</p>
+        <p class="card-desc">Pocketable street camera with APS-C sensor and 40mm equivalent lens. Beloved by street photographers. Deliberately minimal — quick capture, then put it away.</p>
+        <div class="card-footer">
+          <p class="card-price"><span class="price-gbp">£899</span><span class="price-us">$999</span></p>
+          <a class="card-link" href="https://www.ricoh-imaging.co.uk/product/gr-iiix" target="_blank" rel="noopener">View →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" data-cat="camera" data-budget="mid" data-mode="standalone">
+      <img class="card-img" src="https://instax.com/mini_12/en/img/products/mint.jpg" alt="Fujifilm Instax Mini 12" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="card-img-placeholder" style="display:none">🖼️</div>
+      <div class="card-body">
+        <div class="card-badges"><span class="badge badge-budget">Family pick</span></div>
+        <p class="card-title">Fujifilm Instax Mini 12</p>
+        <p class="card-desc">Prints a physical photo instantly. Kids love it. Parents love that it's not a screen. Creates real memories you can hold — and stick on the fridge.</p>
+        <div class="card-footer">
+          <p class="card-price"><span class="price-gbp">£89</span><span class="price-us">$99</span></p>
+          <a class="card-link" href="https://instax.com/mini_12/en/" target="_blank" rel="noopener">View →</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     FITNESS
+═════════════════════════════════════════════ -->
+<div class="cat-section" id="fitness" data-cat="fitness">
+  <h2>🏃 Fitness Trackers &amp; GPS Watches</h2>
+  <p class="cat-desc">Track your health without carrying a supercomputer. These do sport, not notifications.</p>
+  <div class="cards">
+
+    <div class="card" data-cat="fitness" data-budget="high" data-mode="standalone">
+      <img class="card-img" src="https://static.garmincdn.com/en/products/010-02064-00/g/cf-lg-58c68ee9-f5ca-4d1e-a21d-b57ca7ab0e56.jpg" alt="Garmin Fenix 7S" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="card-img-placeholder" style="display:none">⌚</div>
+      <div class="card-body">
+        <div class="card-badges"><span class="badge badge-best">Serious athletes</span></div>
+        <p class="card-title">Garmin Fenix 7S</p>
+        <p class="card-desc">Serious GPS sports watch. Weeks of battery in smartwatch mode. Detailed training metrics. No social apps, no feeds. Pairs to your phone for data sync only.</p>
+        <div class="card-footer">
+          <p class="card-price"><span class="price-gbp">£549</span><span class="price-us">$599</span></p>
+          <a class="card-link" href="https://www.garmin.com/en-GB/p/735611" target="_blank" rel="noopener">View →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" data-cat="fitness" data-budget="mid" data-mode="standalone">
+      <img class="card-img" src="https://static.garmincdn.com/en/products/010-02562-00/g/cf-lg.jpg" alt="Garmin Vivosmart 5" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="card-img-placeholder" style="display:none">💪</div>
+      <div class="card-body">
+        <p class="card-title">Garmin Vivosmart 5</p>
+        <p class="card-desc">Slim fitness band. Tracks steps, sleep, heart rate, stress. Minimal notification pass-through. 7-day battery. Good for people who want health data, not a mini phone.</p>
+        <div class="card-footer">
+          <p class="card-price"><span class="price-gbp">£99</span><span class="price-us">$109</span></p>
+          <a class="card-link" href="https://www.garmin.com/en-GB/p/707770" target="_blank" rel="noopener">View →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" data-cat="fitness" data-budget="high" data-mode="standalone">
+      <img class="card-img" src="https://www.withings.com/media/catalog/product/s/c/scanwatch2_black_hero_02.png" alt="Withings ScanWatch 2" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="card-img-placeholder" style="display:none">🕐</div>
+      <div class="card-body">
+        <div class="card-badges"><span class="badge badge-new">2023</span><span class="badge badge-uk">UK pick</span></div>
+        <p class="card-title">Withings ScanWatch 2</p>
+        <p class="card-desc">Looks like a proper watch. Tracks ECG, SpO2, sleep, activity. 30-day battery. Discreet and thoughtful — you'll forget you're wearing a health tracker.</p>
+        <div class="card-footer">
+          <p class="card-price"><span class="price-gbp">£299</span><span class="price-us">$349</span></p>
+          <a class="card-link" href="https://www.withings.com/uk/en/scanwatch-2" target="_blank" rel="noopener">View →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" data-cat="fitness" data-budget="high" data-mode="standalone">
+      <img class="card-img" src="https://static.garmincdn.com/en/products/010-02901-20/g/cf-lg.jpg" alt="Garmin inReach Mini 2" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="card-img-placeholder" style="display:none">🛰️</div>
+      <div class="card-body">
+        <p class="card-title">Garmin inReach Mini 2</p>
+        <p class="card-desc">Satellite communicator for the outdoors. Two-way messaging anywhere on earth — no mobile signal needed. The ultimate "leave your phone behind" device for hikers.</p>
+        <div class="card-footer">
+          <p class="card-price"><span class="price-gbp">£329</span><span class="price-us">$399</span></p>
+          <a class="card-link" href="https://www.garmin.com/en-GB/p/592606" target="_blank" rel="noopener">View →</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     KIDS
+═════════════════════════════════════════════ -->
+<div class="cat-section" id="kids" data-cat="kids">
+  <h2>🧒 Kids &amp; Family</h2>
+  <p class="cat-desc">Audio content and creativity tools that give children independence without handing them a smartphone.</p>
+  <div class="cards">
+
+    <div class="card" data-cat="kids" data-budget="mid" data-mode="standalone">
+      <img class="card-img" src="https://www.yotoplay.com/cdn/shop/files/yoto-player-3rd-gen.jpg" alt="Yoto Player 3rd Gen" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="card-img-placeholder" style="display:none">🧸</div>
+      <div class="card-body">
+        <div class="card-badges"><span class="badge badge-new">2023</span><span class="badge badge-best">Best for kids</span><span class="badge badge-uk">Made in UK</span></div>
+        <p class="card-title">Yoto Player (3rd Gen)</p>
+        <p class="card-desc">Screenless audio player for children. Insert a card, play a story. Kids control their own listening. Brilliant content library including BBC podcasts and Audible. No screen whatsoever.</p>
+        <div class="card-footer">
+          <p class="card-price"><span class="price-gbp">£99</span><span class="price-us">$109</span></p>
+          <a class="card-link" href="https://www.yotoplay.com/products/yoto-player-third-gen" target="_blank" rel="noopener">View →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" data-cat="kids" data-budget="mid" data-mode="standalone">
+      <img class="card-img" src="https://www.yotoplay.com/cdn/shop/files/yoto-mini.jpg" alt="Yoto Mini" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="card-img-placeholder" style="display:none">🎒</div>
+      <div class="card-body">
+        <p class="card-title">Yoto Mini</p>
+        <p class="card-desc">Portable, pocket-sized Yoto. Same card system, same content — but clips to a backpack. Perfect for car journeys and holidays where a phone would usually come out.</p>
+        <div class="card-footer">
+          <p class="card-price"><span class="price-gbp">£59</span><span class="price-us">$69</span></p>
+          <a class="card-link" href="https://www.yotoplay.com/products/yoto-mini" target="_blank" rel="noopener">View →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" data-cat="kids" data-budget="mid" data-mode="standalone">
+      <img class="card-img" src="https://www.amazon.co.uk/images/I/71bTIFj0xEL._AC_SX679_.jpg" alt="Tonie Box" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="card-img-placeholder" style="display:none">🎭</div>
+      <div class="card-body">
+        <p class="card-title">Toniebox</p>
+        <p class="card-desc">Place a Tonie figure on top to play its story. Designed for toddlers — no buttons, no screen, no complexity. Extremely durable. Great starter for ages 2–7.</p>
+        <div class="card-footer">
+          <p class="card-price"><span class="price-gbp">£79</span><span class="price-us">$89</span></p>
+          <a class="card-link" href="https://www.tonies.com/en-gb/" target="_blank" rel="noopener">View →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" data-cat="kids" data-budget="mid" data-mode="standalone">
+      <div class="card-img-placeholder">🎨</div>
+      <div class="card-body">
+        <p class="card-title">Fujifilm Instax Mini 12 (Kids)</p>
+        <p class="card-desc">Give a child their own camera. Prints instantly. Creates real memories. No scrolling through albums, no cloud, no sharing — just the physical print in their hands.</p>
+        <div class="card-footer">
+          <p class="card-price"><span class="price-gbp">£89</span><span class="price-us">$99</span></p>
+          <a class="card-link" href="https://instax.com/mini_12/en/" target="_blank" rel="noopener">View →</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     NEWS
+═════════════════════════════════════════════ -->
+<div class="cat-section" id="news" data-cat="news">
+  <h2>📰 Intentional Reading &amp; News</h2>
+  <p class="cat-desc">Long-form reading without the feed. Save and read on your terms.</p>
+  <div class="cards">
+
+    <div class="card" data-cat="news" data-budget="low" data-mode="connected">
+      <div class="card-img-placeholder">📰</div>
+      <div class="card-body">
+        <div class="card-badges"><span class="badge badge-best">Save for later</span></div>
+        <p class="card-title">Instapaper (to Kindle)</p>
+        <p class="card-desc">Save any article to Instapaper and deliver a weekly digest to your Kindle. Read long-form properly, on e-ink, without the surrounding noise of the web.</p>
+        <div class="card-footer">
+          <p class="card-price"><span class="price-gbp">Free / £3/mo</span><span class="price-us">Free / $3/mo</span></p>
+          <a class="card-link" href="https://www.instapaper.com" target="_blank" rel="noopener">View →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" data-cat="news" data-budget="low" data-mode="connected">
+      <div class="card-img-placeholder">📡</div>
+      <div class="card-body">
+        <p class="card-title">RSS Reader (NetNewsWire / Reeder)</p>
+        <p class="card-desc">Subscribe to the sources you choose. No algorithm, no rage-bait, no infinite scroll. Read at a time you choose, then close it. The original social media detox.</p>
+        <div class="card-footer">
+          <p class="card-price"><span class="price-gbp">Free</span><span class="price-us">Free</span></p>
+          <a class="card-link" href="https://netnewswire.com" target="_blank" rel="noopener">View →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" data-cat="news" data-budget="low" data-mode="standalone">
+      <div class="card-img-placeholder">📖</div>
+      <div class="card-body">
+        <div class="card-badges"><span class="badge badge-uk">UK paper</span></div>
+        <p class="card-title">A physical newspaper or magazine</p>
+        <p class="card-desc">The original intentional news. You read it once, put it down, and it's done. No notifications, no algorithm, no infinite scroll. Consider a weekly rather than daily — less anxiety, more depth.</p>
+        <div class="card-footer">
+          <p class="card-price"><span class="price-gbp">£2–5/week</span><span class="price-us">$3–6/week</span></p>
+          <a class="card-link" href="https://www.theguardian.com" target="_blank" rel="noopener">Find one →</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     HOBBIES
+═════════════════════════════════════════════ -->
+<div class="cat-section" id="hobbies" data-cat="hobbies">
+  <h2>🎲 Offline Hobbies &amp; Games</h2>
+  <p class="cat-desc">The fastest cure for phone boredom is a hobby that demands real focus. These are a good start.</p>
+  <div class="cards">
+
+    <div class="card" data-cat="hobbies" data-budget="mid" data-mode="standalone">
+      <div class="card-img-placeholder">🧩</div>
+      <div class="card-body">
+        <div class="card-badges"><span class="badge badge-best">Family favourite</span></div>
+        <p class="card-title">Jigsaw puzzles (500–1000 pieces)</p>
+        <p class="card-desc">Deeply absorbing. Tactile and social — something you can do alone or together. Studies show puzzle-solving reduces anxiety and improves focus. A puzzle on the table is a phone in the drawer.</p>
+        <div class="card-footer">
+          <p class="card-price"><span class="price-gbp">£12–25</span><span class="price-us">$14–30</span></p>
+          <a class="card-link" href="https://www.ravensburger.co.uk/en-GB" target="_blank" rel="noopener">Ravensburger →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" data-cat="hobbies" data-budget="mid" data-mode="standalone">
+      <div class="card-img-placeholder">🃏</div>
+      <div class="card-body">
+        <p class="card-title">Settlers of Catan / Ticket to Ride</p>
+        <p class="card-desc">Modern board games that last 60–90 minutes. Strategic, social, completely phone-free. Phones-on-the-table rules are easier to enforce when there's something competing for attention.</p>
+        <div class="card-footer">
+          <p class="card-price"><span class="price-gbp">£30–45</span><span class="price-us">$35–50</span></p>
+          <a class="card-link" href="https://www.catan.com" target="_blank" rel="noopener">Catan →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" data-cat="hobbies" data-budget="mid" data-mode="standalone">
+      <div class="card-img-placeholder">🧶</div>
+      <div class="card-body">
+        <p class="card-title">Knitting or crochet</p>
+        <p class="card-desc">Occupies the hands — which is what phones do. Research shows crafts reduce stress hormones. Beginner kits are cheap. The meditative rhythm makes it hard to also look at a screen.</p>
+        <div class="card-footer">
+          <p class="card-price"><span class="price-gbp">£15–30 starter kit</span><span class="price-us">$18–35</span></p>
+          <a class="card-link" href="https://www.lovecrafts.com" target="_blank" rel="noopener">LoveCrafts →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" data-cat="hobbies" data-budget="low" data-mode="standalone">
+      <div class="card-img-placeholder">♟️</div>
+      <div class="card-body">
+        <p class="card-title">A chess set (physical)</p>
+        <p class="card-desc">The game is infinite. A physical set means you play with a person in front of you, not an algorithm behind a screen. Leave it on the coffee table — it invites people to sit and think.</p>
+        <div class="card-footer">
+          <p class="card-price"><span class="price-gbp">£20–80</span><span class="price-us">$25–90</span></p>
+          <a class="card-link" href="https://www.amazon.co.uk/s?k=chess+set" target="_blank" rel="noopener">View →</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     DUMB / MINIMAL PHONES
+═════════════════════════════════════════════ -->
+<div class="cat-section" id="phone" data-cat="phone">
+  <h2>📞 Minimal &amp; Dumb Phones</h2>
+  <p class="cat-desc">For when the real answer is to replace the smartphone itself, not just add more devices.</p>
+  <div class="cards">
+
+    <div class="card" data-cat="phone" data-budget="high" data-mode="standalone">
+      <img class="card-img" src="https://www.punkt.ch/wp-content/uploads/2022/11/punkt-mp02-4g-phone-black.jpg" alt="Punkt MP02" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="card-img-placeholder" style="display:none">📱</div>
+      <div class="card-body">
+        <div class="card-badges"><span class="badge badge-best">Premium pick</span></div>
+        <p class="card-title">Punkt MP02</p>
+        <p class="card-desc">4G calling and encrypted SMS via Signal. That's it. Beautifully made in Switzerland. No apps, no browser, no camera. The thinking person's dumb phone. A statement as much as a tool.</p>
+        <div class="card-footer">
+          <p class="card-price"><span class="price-gbp">£299</span><span class="price-us">$349</span></p>
+          <a class="card-link" href="https://www.punkt.ch/en/products/mp02-4g-mobile-phone/" target="_blank" rel="noopener">View →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" data-cat="phone" data-budget="low" data-mode="standalone">
+      <div class="card-img-placeholder">📟</div>
+      <div class="card-body">
+        <div class="card-badges"><span class="badge badge-budget">Budget</span></div>
+        <p class="card-title">Nokia 3310 (2017)</p>
+        <p class="card-desc">Calls, texts, FM radio, 22-hour talk time. £40. A classic reborn. No apps, no camera, no browser. For digital detox weeks or as a backup. Also: extremely satisfying to hold.</p>
+        <div class="card-footer">
+          <p class="card-price"><span class="price-gbp">£40</span><span class="price-us">$50</span></p>
+          <a class="card-link" href="https://www.nokia.com/phones/en_gb/nokia-3310" target="_blank" rel="noopener">View →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" data-cat="phone" data-budget="high" data-mode="standalone">
+      <div class="card-img-placeholder">🔵</div>
+      <div class="card-body">
+        <div class="card-badges"><span class="badge badge-new">2024</span></div>
+        <p class="card-title">Mudita Pure 2</p>
+        <p class="card-desc">E-ink display, calls, texts, basic calendar. Designed by designers who believed phones should do less. Minimal, calm, beautiful. Ships from Poland.</p>
+        <div class="card-footer">
+          <p class="card-price"><span class="price-gbp">£449</span><span class="price-us">$499</span></p>
+          <a class="card-link" href="https://mudita.com/products/phones/mudita-pure/" target="_blank" rel="noopener">View →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" data-cat="phone" data-budget="high" data-mode="either">
+      <div class="card-img-placeholder">📗</div>
+      <div class="card-body">
+        <p class="card-title">Light Phone III</p>
+        <p class="card-desc">Phone, music, maps, podcast, notes. Nothing else. Slim e-ink screen. Made by people who genuinely believe less is more. Still needs a monthly plan — but radically calmer than a smartphone.</p>
+        <div class="card-footer">
+          <p class="card-price"><span class="price-gbp">~£299</span><span class="price-us">$299</span></p>
+          <a class="card-link" href="https://www.thelightphone.com" target="_blank" rel="noopener">View →</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     SMART SPEAKERS
+═════════════════════════════════════════════ -->
+<div class="cat-section" id="speaker" data-cat="speaker">
+  <h2>🔊 Smart Speakers</h2>
+  <p class="cat-desc">Voice-controlled music and podcasts — no picking up the phone, no screen, no rabbit holes.</p>
+  <div class="cards">
+
+    <div class="card" data-cat="speaker" data-budget="mid" data-mode="connected">
+      <img class="card-img" src="https://images-eu.ssl-images-amazon.com/images/I/61wKbFDFZFL._AC_SX679_.jpg" alt="Amazon Echo (4th gen)" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="card-img-placeholder" style="display:none">🔊</div>
+      <div class="card-body">
+        <div class="card-badges"><span class="badge badge-budget">Most affordable</span></div>
+        <p class="card-title">Amazon Echo (4th gen)</p>
+        <p class="card-desc">Voice-first. Ask for music, news, or the time without touching a phone. The Alexa habit genuinely reduces phone pickups. Works with Spotify, Apple Music, Amazon Music.</p>
+        <div class="card-footer">
+          <p class="card-price"><span class="price-gbp">£89</span><span class="price-us">$99</span></p>
+          <a class="card-link" href="https://www.amazon.co.uk/dp/B07XJ8C8F7" target="_blank" rel="noopener">View →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" data-cat="speaker" data-budget="high" data-mode="connected">
+      <div class="card-img-placeholder">🍎</div>
+      <div class="card-body">
+        <p class="card-title">Apple HomePod (2nd gen)</p>
+        <p class="card-desc">Best sound quality in the category. Siri for control. Deep Apple Music integration. If you're already in the Apple ecosystem, this replaces a lot of casual phone pickups.</p>
+        <div class="card-footer">
+          <p class="card-price"><span class="price-gbp">£299</span><span class="price-us">$299</span></p>
+          <a class="card-link" href="https://www.apple.com/uk/homepod/" target="_blank" rel="noopener">View →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" data-cat="speaker" data-budget="mid" data-mode="connected">
+      <div class="card-img-placeholder">🎵</div>
+      <div class="card-body">
+        <p class="card-title">Sonos Era 100</p>
+        <p class="card-desc">Premium room-filling sound. App or voice control. Multi-room capable. The idea: a great speaker in every room means there's never a reason to stream from your phone speaker.</p>
+        <div class="card-footer">
+          <p class="card-price"><span class="price-gbp">£249</span><span class="price-us">$249</span></p>
+          <a class="card-link" href="https://www.sonos.com/en-gb/shop/era-100" target="_blank" rel="noopener">View →</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     PLANNERS / NOTEBOOKS
+═════════════════════════════════════════════ -->
+<div class="cat-section" id="planner" data-cat="planner">
+  <h2>📋 Paper Planners &amp; Notebooks</h2>
+  <p class="cat-desc">Analogue planning creates distance from the screen. What you write by hand, you remember.</p>
+  <div class="cards">
+
+    <div class="card" data-cat="planner" data-budget="mid" data-mode="standalone">
+      <div class="card-img-placeholder">📓</div>
+      <div class="card-body">
+        <div class="card-badges"><span class="badge badge-best">Gold standard</span></div>
+        <p class="card-title">Leuchtturm1917 A5 (dot grid)</p>
+        <p class="card-desc">The notebook journalists, designers, and engineers swear by. Dot grid is flexible — works for bullet journaling, drawing, notes. Numbered pages, index at the front. Buy one pen you love, then stop opening your phone for notes.</p>
+        <div class="card-footer">
+          <p class="card-price"><span class="price-gbp">£19</span><span class="price-us">$22</span></p>
+          <a class="card-link" href="https://www.leuchtturm1917.com/en-gb/notebooks/medium-a5-dot-grid.html" target="_blank" rel="noopener">View →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" data-cat="planner" data-budget="mid" data-mode="standalone">
+      <div class="card-img-placeholder">📅</div>
+      <div class="card-body">
+        <div class="card-badges"><span class="badge badge-uk">Designed in UK</span></div>
+        <p class="card-title">Panda Planner Pro</p>
+        <p class="card-desc">Structured daily/weekly pages with gratitude and reflection prompts. Research-backed layout based on positive psychology. Effective replacement for checking phone first thing.</p>
+        <div class="card-footer">
+          <p class="card-price"><span class="price-gbp">£25</span><span class="price-us">$29</span></p>
+          <a class="card-link" href="https://pandaplanner.com" target="_blank" rel="noopener">View →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" data-cat="planner" data-budget="mid" data-mode="standalone">
+      <div class="card-img-placeholder">🖊️</div>
+      <div class="card-body">
+        <p class="card-title">Hobonichi Techo (A6)</p>
+        <p class="card-desc">Japanese planner cult favourite. Thin, light, uses exceptional Tomoe River paper. Daily pages with hourly blocks. Beloved for how it makes you slow down and plan thoughtfully.</p>
+        <div class="card-footer">
+          <p class="card-price"><span class="price-gbp">£29</span><span class="price-us">$34</span></p>
+          <a class="card-link" href="https://www.1101.com/store/techo/en/planner/" target="_blank" rel="noopener">View →</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     WEARABLES / MINIMALIST TECH
+═════════════════════════════════════════════ -->
+<div class="cat-section" data-cat="wearables">
+  <h2>⌚ Wearables &amp; Light Tech</h2>
+  <p class="cat-desc">Devices that sit on your wrist so you don't need to reach for your pocket.</p>
+  <div class="cards">
+
+    <div class="card" data-cat="wearables" data-budget="high" data-mode="either">
+      <div class="card-img-placeholder">⌚</div>
+      <div class="card-body">
+        <div class="card-badges"><span class="badge badge-best">Best overall</span></div>
+        <p class="card-title">Garmin Vívoactive 5</p>
+        <p class="card-desc">Smartwatch that prioritises fitness over feeds. GPS, 11-day battery, 30+ sports. Can receive notification previews but doesn't encourage engagement. Garmin's app ecosystem is sports, not social.</p>
+        <div class="card-footer">
+          <p class="card-price"><span class="price-gbp">£249</span><span class="price-us">$269</span></p>
+          <a class="card-link" href="https://www.garmin.com/en-GB/p/1025217" target="_blank" rel="noopener">View →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" data-cat="wearables" data-budget="mid" data-mode="standalone">
+      <div class="card-img-placeholder">🕰️</div>
+      <div class="card-body">
+        <p class="card-title">Casio F-91W</p>
+        <p class="card-desc">The anti-smartwatch. Digital display, stopwatch, alarm, 7-year battery. Tells the time without giving you a reason to look at it for 20 minutes. An icon for £12.</p>
+        <div class="card-footer">
+          <p class="card-price"><span class="price-gbp">£12</span><span class="price-us">$14</span></p>
+          <a class="card-link" href="https://www.amazon.co.uk/s?k=casio+f-91w" target="_blank" rel="noopener">View →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" data-cat="wearables" data-budget="high" data-mode="either">
+      <div class="card-img-placeholder">💍</div>
+      <div class="card-body">
+        <div class="card-badges"><span class="badge badge-new">2024</span></div>
+        <p class="card-title">Oura Ring (Gen 4)</p>
+        <p class="card-desc">Health tracking without anything on your wrist or in your hand. Tracks sleep, HRV, body temp. Check the app once a day intentionally — rather than all day casually like a watch.</p>
+        <div class="card-footer">
+          <p class="card-price"><span class="price-gbp">£349</span><span class="price-us">$349</span></p>
+          <a class="card-link" href="https://ouraring.com" target="_blank" rel="noopener">View →</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</section><!-- end filter-bar -->
+
+<!-- ── Share ── -->
+<div class="share-row">
+  <span>Found this useful?</span>
+  <a class="share-btn" href="https://twitter.com/intent/tweet?text=Put+It+Down+%E2%80%94+practical+alternatives+to+your+phone%3A+https%3A%2F%2Fputitdown26.github.io%2Fputitdown" target="_blank" rel="noopener">Share on X</a>
+  <button class="share-btn" onclick="copyLink()">Copy link</button>
+</div>
+
+<!-- ── About ── -->
+<div class="about-section" id="about">
+  <h2>About Put It Down</h2>
+  <p>This site exists because the problem isn't phones. It's that phones are designed to replace everything else — and most "digital wellness" content just points you to another app.</p>
+  <p>We believe the best solution is often a single-purpose device that does one thing well, without pulling you back into the feed. Every product here was chosen for that reason alone.</p>
+  <p>No affiliate links. No sponsored products. No commission. Just honest guidance from people who've tried to put their phones down — and found that real objects help.</p>
+
+  <div class="manifesto">
+    <strong>Our rule:</strong> Every product listed here must do one thing well, without opening a door to distraction. The moment it can check social media, it comes off the list.
+  </div>
+
+  <!-- Newsletter -->
+  <div class="newsletter">
+    <h3>New products, tested and honest</h3>
+    <p>Occasional emails when we find something genuinely worth knowing about. No noise.</p>
+    <form class="nl-form" action="https://buttondown.email/api/emails/embed-subscribe/putitdown" method="post" target="_blank">
+      <input class="nl-input" type="email" name="email" placeholder="your@email.com" required>
+      <button type="submit" class="btn-primary">Subscribe</button>
+    </form>
+  </div>
+</div>
+
+</div><!-- end .wrap -->
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <div>
+      <strong>Put It Down</strong> — practical alternatives to your phone<br>
+      No affiliate links · No sponsored content · Updated 2025–26
+    </div>
+    <div style="text-align:right">
+      <a href="#about">About</a> ·
+      <a href="mailto:hello@putitdown.com">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ─── Dark mode ───────────────────────────────────
+function toggleDark() {
+  const html = document.documentElement;
+  const current = html.getAttribute('data-theme');
+  if (current === 'dark') {
+    html.setAttribute('data-theme', 'light');
+    document.getElementById('darkToggle').textContent = '☀️';
+  } else {
+    html.setAttribute('data-theme', 'dark');
+    document.getElementById('darkToggle').textContent = '🌙';
+  }
+}
+
+// ─── Currency toggle ─────────────────────────────
+function setCurrency(c) {
+  document.querySelectorAll('.price-gbp').forEach(el => el.style.display = c === 'gbp' ? '' : 'none');
+  document.querySelectorAll('.price-us').forEach(el => el.style.display = c === 'usd' ? '' : 'none');
+  document.getElementById('pBtn-gbp').classList.toggle('active', c === 'gbp');
+  document.getElementById('pBtn-usd').classList.toggle('active', c === 'usd');
+}
+
+// ─── Wizard ──────────────────────────────────────
+const wizState = {};
+function pickWiz(step, val) {
+  wizState[step] = val;
+  document.querySelectorAll('#wiz' + step + ' .wiz-opt').forEach(b => b.classList.remove('sel'));
+  event.target.classList.add('sel');
+  document.getElementById('dot' + step).classList.add('done');
+  setTimeout(() => {
+    document.getElementById('wiz' + step).classList.remove('active');
+    if (step < 2) {
+      document.getElementById('wiz' + (step + 1)).classList.add('active');
+    } else {
+      showWizResults();
+    }
+  }, 220);
+}
+
+function showWizResults() {
+  document.getElementById('wizard').querySelectorAll('.wiz-step').forEach(s => s.classList.remove('active'));
+  const results = document.getElementById('wiz-results');
+  const grid = document.getElementById('wiz-result-grid');
+  const cat = wizState[0];
+  const budget = wizState[1]; // low mid high
+  const mode = wizState[2];   // standalone either connected
+
+  // gather matching cards
+  const allCards = Array.from(document.querySelectorAll('.card'));
+  let matches = allCards.filter(card => {
+    const cardCat = card.dataset.cat;
+    const cardBudget = card.dataset.budget;
+    const cardMode = card.dataset.mode;
+    const catMatch = !cat || cardCat === cat || (cat === 'music' && cardCat === 'headphones') || (cat === 'nav' && cardCat === 'fitness') || (cat === 'news' && cardCat === 'news');
+    const budgetMatch = !budget || budget === 'high' ||
+      (budget === 'mid' && (cardBudget === 'low' || cardBudget === 'mid')) ||
+      (budget === 'low' && cardBudget === 'low');
+    const modeMatch = !mode || mode === 'either' || cardMode === mode || cardMode === 'either';
+    return catMatch && budgetMatch && modeMatch;
+  }).slice(0, 4);
+
+  if (matches.length === 0) {
+    matches = allCards.filter(c => c.dataset.cat === cat).slice(0, 3);
+  }
+
+  grid.innerHTML = '';
+  matches.forEach(card => {
+    const clone = card.cloneNode(true);
+    clone.style.cssText = '';
+    grid.appendChild(clone);
+  });
+
+  const headings = {
+    sleep: 'Great choices for sleep & wake',
+    reading: 'Our e-reader picks for you',
+    music: 'Music players matched to you',
+    camera: 'Camera picks for you',
+    kids: 'Kids audio picks',
+    fitness: 'Fitness tracker picks',
+    news: 'Intentional reading picks',
+    writing: 'Writing tool picks',
+    nav: 'GPS & navigation picks',
+    headphones: 'Headphone picks'
+  };
+  document.getElementById('wiz-heading').textContent = headings[cat] || 'Our picks for you';
+  results.style.display = 'block';
+}
+
+function resetWiz() {
+  Object.keys(wizState).forEach(k => delete wizState[k]);
+  document.querySelectorAll('.wiz-step').forEach(s => s.classList.remove('active'));
+  document.getElementById('wiz0').classList.add('active');
+  document.querySelectorAll('.wiz-dot').forEach(d => d.classList.remove('done'));
+  document.querySelectorAll('.wiz-opt').forEach(b => b.classList.remove('sel'));
+  document.getElementById('wiz-results').style.display = 'none';
+}
+
+// ─── Category filter ─────────────────────────────
+function filterCat(cat, btn) {
+  document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.cat-section').forEach(sec => {
+    if (cat === 'all') {
+      sec.classList.remove('hidden');
+    } else {
+      sec.classList.toggle('hidden', sec.dataset.cat !== cat);
+    }
+  });
+}
+
+// ─── Share ───────────────────────────────────────
+function copyLink() {
+  navigator.clipboard.writeText(window.location.href).then(() => {
+    const btn = event.target;
+    btn.textContent = 'Copied!';
+    setTimeout(() => btn.textContent = 'Copy link', 2000);
+  });
+}
+</script>
+</body>
+</html>
