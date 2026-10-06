@@ -251,6 +251,8 @@ header {
   background: #EDE8DF; padding: 16px;
   box-shadow: inset 0 -1px 0 rgba(60,40,20,0.08);
   mix-blend-mode: multiply;
+  /* background is always parchment #EDE8DF — multiply blend works
+     by making white transparent; must stay light regardless of theme */
 }
 .card-img-placeholder {
   width: 100%; height: 200px; background: #EDE8DF;
@@ -422,7 +424,6 @@ footer a:hover { color: var(--accent); }
         <button class="wiz-opt" onclick="pickWiz(0,'fitness')">🏃 Fitness tracking</button>
         <button class="wiz-opt" onclick="pickWiz(0,'news')">📰 News / reading long-form</button>
         <button class="wiz-opt" onclick="pickWiz(0,'writing')">✏️ Notes / journalling</button>
-        <button class="wiz-opt" onclick="pickWiz(0,'nav')">🗺️ Navigation</button>
       </div>
       <p class="wiz-hint">Tap to advance automatically</p>
     </div>
@@ -468,7 +469,6 @@ footer a:hover { color: var(--accent); }
     <button class="filter-pill" onclick="filterCat('fitness',this)">🏃 Fitness</button>
     <button class="filter-pill" onclick="filterCat('kids',this)">🧒 Kids</button>
     <button class="filter-pill" onclick="filterCat('news',this)">📰 News</button>
-    <button class="filter-pill" onclick="filterCat('hobbies',this)">🎲 Hobbies</button>
     <button class="filter-pill" onclick="filterCat('phone',this)">📞 Dumb phones</button>
     <button class="filter-pill" onclick="filterCat('speaker',this)">🔊 Smart speakers</button>
     <button class="filter-pill" onclick="filterCat('planner',this)">📋 Planners</button>
@@ -529,7 +529,7 @@ footer a:hover { color: var(--accent); }
         <p class="card-desc">Simple, well-made analogue alarm. No light, no fuss. If you just need to stop charging your phone in the bedroom, this does it for £20.</p>
         <div class="card-footer">
           <p class="card-price"><span class="price-gbp">£22</span><span class="price-us">$26</span></p>
-          <a class="card-link" href="https://www.amazon.co.uk/s?k=Braun+travel+alarm+clock" target="_blank" rel="noopener">View →</a>
+          <a class="card-link" href="https://www.amazon.co.uk/dp/B000FMPRXI" target="_blank" rel="noopener">View →</a>
         </div>
       </div>
     </div>
@@ -649,7 +649,7 @@ footer a:hover { color: var(--accent); }
         <p class="card-desc">Clips to your shirt. 16GB built-in + microSD. 20-hour battery. Built-in FM radio. Designed for running. £35 and completely distraction-free.</p>
         <div class="card-footer">
           <p class="card-price"><span class="price-gbp">£35</span><span class="price-us">$40</span></p>
-          <a class="card-link" href="https://www.amazon.co.uk/s?k=sandisk+clip+sport+plus" target="_blank" rel="noopener">View →</a>
+          <a class="card-link" href="https://www.amazon.co.uk/dp/B07412FXJK" target="_blank" rel="noopener">View →</a>
         </div>
       </div>
     </div>
@@ -888,6 +888,45 @@ footer a:hover { color: var(--accent); }
       </div>
     </div>
 
+    <div class="card" data-cat="fitness" data-budget="high" data-mode="either">
+      <div class="card-img-placeholder">⌚</div>
+      <div class="card-body">
+        <div class="card-badges"><span class="badge badge-new">2024</span></div>
+        <p class="card-title">Garmin Vívoactive 5</p>
+        <p class="card-desc">Smartwatch that prioritises fitness over feeds. GPS, 11-day battery, 30+ sports. Can receive notification previews but doesn't encourage engagement. Garmin's app ecosystem is sports, not social.</p>
+        <div class="card-footer">
+          <p class="card-price"><span class="price-gbp">£249</span><span class="price-us">$269</span></p>
+          <a class="card-link" href="https://www.garmin.com/en-GB/p/1025217" target="_blank" rel="noopener">View →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" data-cat="fitness" data-budget="low" data-mode="standalone">
+      <img class="card-img" src="https://m.media-amazon.com/images/I/61j9gAryDhL._AC_SX679_.jpg" alt="Casio F-91W" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="card-img-placeholder" style="display:none">🕰️</div>
+      <div class="card-body">
+        <p class="card-title">Casio F-91W</p>
+        <p class="card-desc">The anti-smartwatch. Digital display, stopwatch, alarm, 7-year battery. Tells the time without giving you a reason to look at it for 20 minutes. An icon for £12.</p>
+        <div class="card-footer">
+          <p class="card-price"><span class="price-gbp">£12</span><span class="price-us">$14</span></p>
+          <a class="card-link" href="https://www.amazon.co.uk/dp/B000GAWSDG" target="_blank" rel="noopener">View →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" data-cat="fitness" data-budget="high" data-mode="either">
+      <div class="card-img-placeholder">💍</div>
+      <div class="card-body">
+        <div class="card-badges"><span class="badge badge-new">2024</span></div>
+        <p class="card-title">Oura Ring (Gen 4)</p>
+        <p class="card-desc">Health tracking without anything on your wrist or in your hand. Tracks sleep, HRV, body temp. Check the app once a day intentionally — rather than all day casually like a watch.</p>
+        <div class="card-footer">
+          <p class="card-price"><span class="price-gbp">£349</span><span class="price-us">$349</span></p>
+          <a class="card-link" href="https://ouraring.com" target="_blank" rel="noopener">View →</a>
+        </div>
+      </div>
+    </div>
+
   </div>
 </div>
 
@@ -1003,65 +1042,6 @@ footer a:hover { color: var(--accent); }
   </div>
 </div>
 
-<!-- ════════════════════════════════════════════
-     HOBBIES
-═════════════════════════════════════════════ -->
-<div class="cat-section" id="hobbies" data-cat="hobbies">
-  <h2>🎲 Offline Hobbies &amp; Games</h2>
-  <p class="cat-desc">The fastest cure for phone boredom is a hobby that demands real focus. These are a good start.</p>
-  <div class="cards">
-
-    <div class="card" data-cat="hobbies" data-budget="mid" data-mode="standalone">
-      <div class="card-img-placeholder">🧩</div>
-      <div class="card-body">
-        <div class="card-badges"><span class="badge badge-best">Family favourite</span></div>
-        <p class="card-title">Jigsaw puzzles (500–1000 pieces)</p>
-        <p class="card-desc">Deeply absorbing. Tactile and social — something you can do alone or together. Studies show puzzle-solving reduces anxiety and improves focus. A puzzle on the table is a phone in the drawer.</p>
-        <div class="card-footer">
-          <p class="card-price"><span class="price-gbp">£12–25</span><span class="price-us">$14–30</span></p>
-          <a class="card-link" href="https://www.ravensburger.co.uk/en-GB" target="_blank" rel="noopener">Ravensburger →</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="card" data-cat="hobbies" data-budget="mid" data-mode="standalone">
-      <div class="card-img-placeholder">🃏</div>
-      <div class="card-body">
-        <p class="card-title">Settlers of Catan / Ticket to Ride</p>
-        <p class="card-desc">Modern board games that last 60–90 minutes. Strategic, social, completely phone-free. Phones-on-the-table rules are easier to enforce when there's something competing for attention.</p>
-        <div class="card-footer">
-          <p class="card-price"><span class="price-gbp">£30–45</span><span class="price-us">$35–50</span></p>
-          <a class="card-link" href="https://www.catan.com" target="_blank" rel="noopener">Catan →</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="card" data-cat="hobbies" data-budget="mid" data-mode="standalone">
-      <div class="card-img-placeholder">🧶</div>
-      <div class="card-body">
-        <p class="card-title">Knitting or crochet</p>
-        <p class="card-desc">Occupies the hands — which is what phones do. Research shows crafts reduce stress hormones. Beginner kits are cheap. The meditative rhythm makes it hard to also look at a screen.</p>
-        <div class="card-footer">
-          <p class="card-price"><span class="price-gbp">£15–30 starter kit</span><span class="price-us">$18–35</span></p>
-          <a class="card-link" href="https://www.lovecrafts.com" target="_blank" rel="noopener">LoveCrafts →</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="card" data-cat="hobbies" data-budget="low" data-mode="standalone">
-      <div class="card-img-placeholder">♟️</div>
-      <div class="card-body">
-        <p class="card-title">A chess set (physical)</p>
-        <p class="card-desc">The game is infinite. A physical set means you play with a person in front of you, not an algorithm behind a screen. Leave it on the coffee table — it invites people to sit and think.</p>
-        <div class="card-footer">
-          <p class="card-price"><span class="price-gbp">£20–80</span><span class="price-us">$25–90</span></p>
-          <a class="card-link" href="https://www.amazon.co.uk/s?k=chess+set" target="_blank" rel="noopener">View →</a>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</div>
 
 <!-- ════════════════════════════════════════════
      DUMB / MINIMAL PHONES
@@ -1226,55 +1206,6 @@ footer a:hover { color: var(--accent); }
   </div>
 </div>
 
-<!-- ════════════════════════════════════════════
-     WEARABLES / MINIMALIST TECH
-═════════════════════════════════════════════ -->
-<div class="cat-section" data-cat="wearables">
-  <h2>⌚ Wearables &amp; Light Tech</h2>
-  <p class="cat-desc">Devices that sit on your wrist so you don't need to reach for your pocket.</p>
-  <div class="cards">
-
-    <div class="card" data-cat="wearables" data-budget="high" data-mode="either">
-      <div class="card-img-placeholder">⌚</div>
-      <div class="card-body">
-        <div class="card-badges"><span class="badge badge-best">Best overall</span></div>
-        <p class="card-title">Garmin Vívoactive 5</p>
-        <p class="card-desc">Smartwatch that prioritises fitness over feeds. GPS, 11-day battery, 30+ sports. Can receive notification previews but doesn't encourage engagement. Garmin's app ecosystem is sports, not social.</p>
-        <div class="card-footer">
-          <p class="card-price"><span class="price-gbp">£249</span><span class="price-us">$269</span></p>
-          <a class="card-link" href="https://www.garmin.com/en-GB/p/1025217" target="_blank" rel="noopener">View →</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="card" data-cat="wearables" data-budget="mid" data-mode="standalone">
-      <img class="card-img" src="https://m.media-amazon.com/images/I/61j9gAryDhL._AC_SX679_.jpg" alt="Casio F-91W watch" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none">🕰️</div>
-      <div class="card-body">
-        <p class="card-title">Casio F-91W</p>
-        <p class="card-desc">The anti-smartwatch. Digital display, stopwatch, alarm, 7-year battery. Tells the time without giving you a reason to look at it for 20 minutes. An icon for £12.</p>
-        <div class="card-footer">
-          <p class="card-price"><span class="price-gbp">£12</span><span class="price-us">$14</span></p>
-          <a class="card-link" href="https://www.amazon.co.uk/s?k=casio+f-91w" target="_blank" rel="noopener">View →</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="card" data-cat="wearables" data-budget="high" data-mode="either">
-      <div class="card-img-placeholder">💍</div>
-      <div class="card-body">
-        <div class="card-badges"><span class="badge badge-new">2024</span></div>
-        <p class="card-title">Oura Ring (Gen 4)</p>
-        <p class="card-desc">Health tracking without anything on your wrist or in your hand. Tracks sleep, HRV, body temp. Check the app once a day intentionally — rather than all day casually like a watch.</p>
-        <div class="card-footer">
-          <p class="card-price"><span class="price-gbp">£349</span><span class="price-us">$349</span></p>
-          <a class="card-link" href="https://ouraring.com" target="_blank" rel="noopener">View →</a>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</div>
 
 <!-- ════════════════════════════════════════════
      HI-FI STREAMERS
@@ -1493,7 +1424,6 @@ function showWizResults() {
     fitness: 'Fitness tracker picks',
     news: 'Intentional reading picks',
     writing: 'Writing tool picks',
-    nav: 'GPS & navigation picks',
     headphones: 'Headphone picks'
   };
   document.getElementById('wiz-heading').textContent = headings[cat] || 'Our picks for you';
