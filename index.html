@@ -7,60 +7,60 @@
 <meta name="description" content="No affiliate links. No sponsored content. Just honest guidance on the best single-purpose devices that help you reclaim your attention.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 /* ─── Tokens ─────────────────────────────────────── */
 :root {
   --bg:          #F5F0E8;
   --bg-card:     #EDE8DF;
   --bg-tag:      #E3DECE;
-  --fg:          #1C1C1A;
-  --fg-mid:      #5C5850;
-  --fg-light:    #8A8478;
-  --accent:      #4A6741;
-  --accent-dim:  #D6E3D0;
-  --accent-deep: #3A5432;
-  --link:        #3A5432;
+  --fg:          #2A2420;
+  --fg-mid:      #7A6B61;
+  --fg-light:    #A8978D;
+  --accent:      #3D6B52;
+  --accent-dim:  #D0E3D8;
+  --accent-deep: #2D5040;
+  --link:        #2D5040;
   --rule:        #D8D0C4;
   --warn-bg:     #F0EAE0;
   --warn-border: #C8A882;
   --note-bg:     #EBE6DC;
-  --serif: 'Instrument Serif', Georgia, serif;
-  --sans:  'Inter', 'Helvetica Neue', Arial, sans-serif;
+  --serif: 'DM Serif Display', Georgia, serif;
+  --sans:  'Source Sans 3', 'Helvetica Neue', Arial, sans-serif;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg:          #1A1A17;
-    --bg-card:     #232320;
-    --bg-tag:      #2E2E2A;
+    --bg:          #1C1814;
+    --bg-card:     #252018;
+    --bg-tag:      #302820;
     --fg:          #EDE8DF;
-    --fg-mid:      #A8A39A;
-    --fg-light:    #6E6A62;
-    --accent:      #6A9660;
-    --accent-dim:  #2A3E28;
-    --accent-deep: #8AB880;
-    --link:        #8AB880;
-    --rule:        #2E2E2A;
-    --warn-bg:     #2A2318;
-    --warn-border: #7A6040;
-    --note-bg:     #272420;
+    --fg-mid:      #A89890;
+    --fg-light:    #6E6258;
+    --accent:      #5D9474;
+    --accent-dim:  #1E3828;
+    --accent-deep: #7DB898;
+    --link:        #7DB898;
+    --rule:        #302820;
+    --warn-bg:     #2A2014;
+    --warn-border: #7A5830;
+    --note-bg:     #28221A;
   }
 }
 :root[data-theme="dark"] {
-  --bg:          #1A1A17;
-  --bg-card:     #232320;
-  --bg-tag:      #2E2E2A;
+  --bg:          #1C1814;
+  --bg-card:     #252018;
+  --bg-tag:      #302820;
   --fg:          #EDE8DF;
-  --fg-mid:      #A8A39A;
-  --fg-light:    #6E6A62;
-  --accent:      #6A9660;
-  --accent-dim:  #2A3E28;
-  --accent-deep: #8AB880;
-  --link:        #8AB880;
-  --rule:        #2E2E2A;
-  --warn-bg:     #2A2318;
-  --warn-border: #7A6040;
-  --note-bg:     #272420;
+  --fg-mid:      #A89890;
+  --fg-light:    #6E6258;
+  --accent:      #5D9474;
+  --accent-dim:  #1E3828;
+  --accent-deep: #7DB898;
+  --link:        #7DB898;
+  --rule:        #302820;
+  --warn-bg:     #2A2014;
+  --warn-border: #7A5830;
+  --note-bg:     #28221A;
 }
 
 /* ─── Reset & Base ───────────────────────────────── */
@@ -71,13 +71,14 @@ body {
   color: var(--fg);
   font-family: var(--sans);
   font-size: 16px;
-  line-height: 1.6;
+  line-height: 1.65;
   min-height: 100vh;
 }
 a { color: var(--link); text-decoration: underline; text-underline-offset: 2px; }
 a:hover { color: var(--accent-deep); }
 img { max-width: 100%; height: auto; display: block; }
-h1,h2,h3,h4 { font-family: var(--serif); font-weight: 400; line-height: 1.2; }
+h1,h2,h3,h4 { font-family: var(--serif); font-weight: 400; line-height: 1.25; letter-spacing: 0.01em; }
+body { -webkit-font-smoothing: antialiased; }
 
 /* ─── Layout ─────────────────────────────────────── */
 .wrap { max-width: 1100px; margin: 0 auto; padding: 0 16px; }
@@ -92,8 +93,11 @@ header {
 .header-inner {
   display: flex; align-items: center; justify-content: space-between; gap: 12px;
 }
-.logo { font-family: var(--serif); font-size: 1.5rem; color: var(--fg); text-decoration: none; }
-.logo span { color: var(--accent); }
+.logo {
+  font-family: var(--serif); font-size: 1.5rem; color: var(--fg);
+  text-decoration: none; letter-spacing: 0.02em;
+}
+.logo em { font-style: italic; color: var(--accent); }
 .header-actions { display: flex; align-items: center; gap: 8px; }
 .btn-ghost {
   background: none; border: 1px solid var(--rule);
@@ -221,8 +225,16 @@ header {
 
 /* ─── Sections & Cards ───────────────────────────── */
 .cat-section { margin-bottom: 48px; }
-.cat-section h2 { font-size: 1.4rem; margin-bottom: 4px; border-bottom: 1px solid var(--rule); padding-bottom: 10px; margin-bottom: 20px; }
-.cat-section .cat-desc { color: var(--fg-mid); font-size: 0.9rem; margin-top: -14px; margin-bottom: 18px; }
+.cat-section h2 {
+  font-size: 1.4rem; margin-bottom: 4px;
+  border-bottom: 1px solid var(--rule); padding-bottom: 10px; margin-bottom: 20px;
+}
+.cat-section .cat-label {
+  font-family: var(--sans); font-size: 0.72rem; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase; color: var(--fg-mid);
+  margin-bottom: 4px; display: block;
+}
+.cat-section .cat-desc { color: var(--fg-mid); font-size: 0.9rem; margin-top: -14px; margin-bottom: 18px; line-height: 1.65; }
 .cards {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -235,16 +247,19 @@ header {
 }
 .card:hover { box-shadow: 0 4px 20px rgba(0,0,0,.1); }
 .card-img {
-  width: 100%; height: 180px; object-fit: contain;
-  background: var(--note-bg); padding: 12px;
+  width: 100%; height: 200px; object-fit: contain;
+  background: #EDE8DF; padding: 16px;
+  box-shadow: inset 0 -1px 0 rgba(60,40,20,0.08);
+  mix-blend-mode: multiply;
 }
 .card-img-placeholder {
-  width: 100%; height: 180px; background: var(--note-bg);
+  width: 100%; height: 200px; background: #EDE8DF;
   display: flex; align-items: center; justify-content: center;
-  font-size: 2.5rem;
+  font-size: 2.8rem;
+  box-shadow: inset 0 -1px 0 rgba(60,40,20,0.08);
 }
 .card-body { padding: 16px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
-.card-title { font-family: var(--sans); font-size: 1rem; font-weight: 600; }
+.card-title { font-family: var(--serif); font-size: 1.05rem; font-weight: 400; line-height: 1.3; }
 .card-badges { display: flex; flex-wrap: wrap; gap: 5px; }
 .badge {
   font-size: 0.72rem; font-weight: 600; padding: 2px 7px;
@@ -254,7 +269,7 @@ header {
 .badge-uk   { background: #E8F0FB; color: #3050A0; }
 .badge-best { background: #F5ECD0; color: #7A5A10; }
 .badge-budget { background: var(--bg-tag); color: var(--fg-mid); }
-.card-desc { font-size: 0.85rem; color: var(--fg-mid); flex: 1; }
+.card-desc { font-size: 0.875rem; color: var(--fg-mid); flex: 1; line-height: 1.6; }
 .card-footer {
   display: flex; justify-content: space-between; align-items: flex-end;
   margin-top: 8px; gap: 8px; flex-wrap: wrap;
@@ -280,7 +295,7 @@ header {
   max-width: 680px;
 }
 .about-section h2 { font-size: 1.5rem; margin-bottom: 16px; }
-.about-section p { color: var(--fg-mid); margin-bottom: 12px; line-height: 1.7; }
+.about-section p { color: var(--fg-mid); margin-bottom: 14px; line-height: 1.75; font-size: 0.975rem; }
 
 /* ─── Newsletter ─────────────────────────────────── */
 .newsletter {
@@ -341,7 +356,7 @@ footer a:hover { color: var(--accent); }
 
 <header>
   <div class="wrap header-inner">
-    <a href="#" class="logo">Put It <span>Down</span></a>
+    <a href="#" class="logo">Put It <em>Down</em></a>
     <div class="header-actions">
       <button class="btn-ghost" id="darkToggle" onclick="toggleDark()" title="Toggle dark mode">🌙</button>
       <a href="#finder" class="btn-ghost">Find mine →</a>
@@ -457,6 +472,8 @@ footer a:hover { color: var(--accent); }
     <button class="filter-pill" onclick="filterCat('phone',this)">📞 Dumb phones</button>
     <button class="filter-pill" onclick="filterCat('speaker',this)">🔊 Smart speakers</button>
     <button class="filter-pill" onclick="filterCat('planner',this)">📋 Planners</button>
+    <button class="filter-pill" onclick="filterCat('hifi',this)">🎷 Hi-Fi</button>
+    <button class="filter-pill" onclick="filterCat('homephone',this)">☎️ Home phones</button>
     <div class="price-toggle">
       <span>Prices:</span>
       <button class="active" id="pBtn-gbp" onclick="setCurrency('gbp')">£ GBP</button>
@@ -543,7 +560,7 @@ footer a:hover { color: var(--accent); }
     </div>
 
     <div class="card" data-cat="reading" data-budget="mid" data-mode="connected">
-      <img class="card-img" src="https://m.media-amazon.com/images/I/61zxFfSJYdL._AC_SX679_.jpg" alt="Kobo Clara Colour" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <img class="card-img" src="https://m.media-amazon.com/images/I/61ShjNlaI1L._AC_SX679_.jpg" alt="Kobo Clara Colour" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
       <div class="card-img-placeholder" style="display:none">🎨</div>
       <div class="card-body">
         <div class="card-badges"><span class="badge badge-new">2024</span></div>
@@ -557,7 +574,7 @@ footer a:hover { color: var(--accent); }
     </div>
 
     <div class="card" data-cat="reading" data-budget="high" data-mode="either">
-      <img class="card-img" src="https://m.media-amazon.com/images/I/51h8B3PKHBL._AC_SX679_.jpg" alt="Kobo Elipsa 2E" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <img class="card-img" src="https://m.media-amazon.com/images/I/81J43G1zqJL._AC_SX679_.jpg" alt="Kobo Elipsa 2E" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
       <div class="card-img-placeholder" style="display:none">📝</div>
       <div class="card-body">
         <div class="card-badges"><span class="badge badge-new">2023</span></div>
@@ -571,7 +588,7 @@ footer a:hover { color: var(--accent); }
     </div>
 
     <div class="card" data-cat="reading" data-budget="high" data-mode="either">
-      <img class="card-img" src="https://m.media-amazon.com/images/I/61lhLaX3kpL._AC_SX679_.jpg" alt="Boox Note Air4 C" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <img class="card-img" src="https://m.media-amazon.com/images/I/61uKy2XVVHL._AC_SX679_.jpg" alt="Boox Note Air4 C" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
       <div class="card-img-placeholder" style="display:none">📱</div>
       <div class="card-body">
         <div class="card-badges"><span class="badge badge-new">2024</span></div>
@@ -611,7 +628,7 @@ footer a:hover { color: var(--accent); }
     </div>
 
     <div class="card" data-cat="music" data-budget="mid" data-mode="standalone">
-      <img class="card-img" src="https://m.media-amazon.com/images/I/61nfJnxw5BL._AC_SX679_.jpg" alt="Shanling M0 Pro" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <img class="card-img" src="https://m.media-amazon.com/images/I/61R7yCiib0L._AC_SX679_.jpg" alt="Shanling M0 Pro" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
       <div class="card-img-placeholder" style="display:none">🎵</div>
       <div class="card-body">
         <p class="card-title">Shanling M0 Pro</p>
@@ -728,7 +745,7 @@ footer a:hover { color: var(--accent); }
     </div>
 
     <div class="card" data-cat="writing" data-budget="mid" data-mode="standalone">
-      <img class="card-img" src="https://m.media-amazon.com/images/I/51EcBR7BPLL._AC_SX679_.jpg" alt="Freewrite Traveler" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <img class="card-img" src="https://m.media-amazon.com/images/I/61HlD77Gd3L._AC_SX679_.jpg" alt="Freewrite Traveler" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
       <div class="card-img-placeholder" style="display:none">🗒️</div>
       <div class="card-body">
         <p class="card-title">Freewrite Traveler</p>
@@ -741,7 +758,7 @@ footer a:hover { color: var(--accent); }
     </div>
 
     <div class="card" data-cat="writing" data-budget="mid" data-mode="either">
-      <img class="card-img" src="https://m.media-amazon.com/images/I/51Y7xRB1iVL._AC_SX679_.jpg" alt="reMarkable 2" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <img class="card-img" src="https://m.media-amazon.com/images/I/611ojBbpOhL._AC_SX679_.jpg" alt="reMarkable 2" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
       <div class="card-img-placeholder" style="display:none">📝</div>
       <div class="card-body">
         <div class="card-badges"><span class="badge badge-new">2024 software</span></div>
@@ -780,7 +797,7 @@ footer a:hover { color: var(--accent); }
     </div>
 
     <div class="card" data-cat="camera" data-budget="mid" data-mode="standalone">
-      <img class="card-img" src="https://m.media-amazon.com/images/I/51PFqnkbZQL._AC_SX679_.jpg" alt="Ricoh GR IIIx" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <img class="card-img" src="https://m.media-amazon.com/images/I/81sJc3nJtdL._AC_SX679_.jpg" alt="Ricoh GR IIIx" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
       <div class="card-img-placeholder" style="display:none">📸</div>
       <div class="card-body">
         <p class="card-title">Ricoh GR IIIx</p>
@@ -832,7 +849,7 @@ footer a:hover { color: var(--accent); }
     </div>
 
     <div class="card" data-cat="fitness" data-budget="mid" data-mode="standalone">
-      <img class="card-img" src="https://m.media-amazon.com/images/I/61dZXzGxiKL._AC_SX679_.jpg" alt="Garmin Vivosmart 5" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <img class="card-img" src="https://m.media-amazon.com/images/I/71-iVjaYJIL._AC_SX679_.jpg" alt="Garmin Vivosmart 5" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
       <div class="card-img-placeholder" style="display:none">💪</div>
       <div class="card-body">
         <p class="card-title">Garmin Vivosmart 5</p>
@@ -845,7 +862,7 @@ footer a:hover { color: var(--accent); }
     </div>
 
     <div class="card" data-cat="fitness" data-budget="high" data-mode="standalone">
-      <img class="card-img" src="https://m.media-amazon.com/images/I/51LhVQJjRYL._AC_SX679_.jpg" alt="Withings ScanWatch 2" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <img class="card-img" src="https://m.media-amazon.com/images/I/71yCwj2MPcL._AC_SX679_.jpg" alt="Withings ScanWatch 2" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
       <div class="card-img-placeholder" style="display:none">🕐</div>
       <div class="card-body">
         <div class="card-badges"><span class="badge badge-new">2023</span><span class="badge badge-uk">UK pick</span></div>
@@ -859,7 +876,7 @@ footer a:hover { color: var(--accent); }
     </div>
 
     <div class="card" data-cat="fitness" data-budget="high" data-mode="standalone">
-      <img class="card-img" src="https://m.media-amazon.com/images/I/41ByJBqRPnL._AC_SX679_.jpg" alt="Garmin inReach Mini 2" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <img class="card-img" src="https://m.media-amazon.com/images/I/619e3077wWL._AC_SX679_.jpg" alt="Garmin inReach Mini 2" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
       <div class="card-img-placeholder" style="display:none">🛰️</div>
       <div class="card-body">
         <p class="card-title">Garmin inReach Mini 2</p>
@@ -897,7 +914,7 @@ footer a:hover { color: var(--accent); }
     </div>
 
     <div class="card" data-cat="kids" data-budget="mid" data-mode="standalone">
-      <img class="card-img" src="https://m.media-amazon.com/images/I/617fv1XEQTL._AC_SX679_.jpg" alt="Yoto Mini" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <img class="card-img" src="https://m.media-amazon.com/images/I/61oKXuf3HML._AC_SX679_.jpg" alt="Yoto Mini" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
       <div class="card-img-placeholder" style="display:none">🎒</div>
       <div class="card-body">
         <p class="card-title">Yoto Mini</p>
@@ -910,7 +927,7 @@ footer a:hover { color: var(--accent); }
     </div>
 
     <div class="card" data-cat="kids" data-budget="mid" data-mode="standalone">
-      <img class="card-img" src="https://m.media-amazon.com/images/I/71GJ9GkxPsL._AC_SX679_.jpg" alt="Toniebox" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <img class="card-img" src="https://m.media-amazon.com/images/I/81cSkQZkQQL._AC_SX679_.jpg" alt="Toniebox" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
       <div class="card-img-placeholder" style="display:none">🎭</div>
       <div class="card-body">
         <p class="card-title">Toniebox</p>
@@ -1055,7 +1072,7 @@ footer a:hover { color: var(--accent); }
   <div class="cards">
 
     <div class="card" data-cat="phone" data-budget="high" data-mode="standalone">
-      <img class="card-img" src="https://m.media-amazon.com/images/I/41kvCCjqSfL._AC_SX679_.jpg" alt="Punkt MP02" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <img class="card-img" src="https://m.media-amazon.com/images/I/511iltsIFbL._AC_SX679_.jpg" alt="Punkt MP02" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
       <div class="card-img-placeholder" style="display:none">📱</div>
       <div class="card-body">
         <div class="card-badges"><span class="badge badge-best">Premium pick</span></div>
@@ -1252,6 +1269,95 @@ footer a:hover { color: var(--accent); }
         <div class="card-footer">
           <p class="card-price"><span class="price-gbp">£349</span><span class="price-us">$349</span></p>
           <a class="card-link" href="https://ouraring.com" target="_blank" rel="noopener">View →</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     HI-FI STREAMERS
+═════════════════════════════════════════════ -->
+<div class="cat-section" id="hifi" data-cat="hifi">
+  <h2>🎷 Hi-Fi Streamers</h2>
+  <p class="cat-desc">A proper hi-fi system that runs Spotify, Tidal, or Qobuz from the network — no phone required. Put it on a shelf and it just plays music.</p>
+  <div class="cards">
+
+    <div class="card" data-cat="hifi" data-budget="mid" data-mode="connected">
+      <img class="card-img" src="https://m.media-amazon.com/images/I/51XE3OXY46L._AC_SX679_.jpg" alt="WiiM Pro Plus streamer" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="card-img-placeholder" style="display:none">🎷</div>
+      <div class="card-body">
+        <div class="card-badges"><span class="badge badge-best">Best value</span></div>
+        <p class="card-title">WiiM Pro Plus</p>
+        <p class="card-desc">The audiophile community's favourite budget streamer. Streams Spotify, Tidal, Qobuz, Apple Music, and internet radio. Has its own excellent DAC. Connects to any amplifier or active speakers. Set it up once; control it from the WiiM app or physical buttons. No social apps, no games, no feeds.</p>
+        <div class="card-footer">
+          <p class="card-price"><span class="price-gbp">£149</span><span class="price-us">$149</span></p>
+          <a class="card-link" href="https://www.wiimhome.com/wiim-pro-plus" target="_blank" rel="noopener">View →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" data-cat="hifi" data-budget="high" data-mode="connected">
+      <div class="card-img-placeholder">🎵</div>
+      <div class="card-body">
+        <div class="card-badges"><span class="badge badge-best">Audiophile pick</span></div>
+        <p class="card-title">Bluesound Node (2024)</p>
+        <p class="card-desc">The streamer serious hi-fi people actually buy. Excellent built-in DAC, BluOS ecosystem, MQA decoding, and rock-solid app control. Streams every major service. A permanent fixture that makes music the thing — not the phone.</p>
+        <div class="card-footer">
+          <p class="card-price"><span class="price-gbp">£599</span><span class="price-us">$599</span></p>
+          <a class="card-link" href="https://www.bluesound.com/products/node/" target="_blank" rel="noopener">View →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" data-cat="hifi" data-budget="high" data-mode="connected">
+      <div class="card-img-placeholder">🎶</div>
+      <div class="card-body">
+        <p class="card-title">Cambridge Audio CXN100</p>
+        <p class="card-desc">British engineering. Streams Spotify, Tidal, Qobuz, and internet radio via StreamMagic. Has AirPlay 2 and Chromecast built in. Balanced XLR outputs. Made to last. Pair it with a Cambridge amp and you have a serious system that never once asks you to scroll.</p>
+        <div class="card-footer">
+          <p class="card-price"><span class="price-gbp">£699</span><span class="price-us">$799</span></p>
+          <a class="card-link" href="https://www.cambridgeaudio.com/en/products/hi-fi/cx-series/cxn100" target="_blank" rel="noopener">View →</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     HOME PHONES
+═════════════════════════════════════════════ -->
+<div class="cat-section" id="homephone" data-cat="homephone">
+  <h2>☎️ Home Phones</h2>
+  <p class="cat-desc">A dedicated device for calls — stationary, always charged, all your contacts synced. The way phones were before they became everything else.</p>
+  <div class="cards">
+
+    <div class="card" data-cat="homephone" data-budget="mid" data-mode="connected">
+      <img class="card-img" src="https://m.media-amazon.com/images/I/51Go8f6FQVL._AC_SX679_.jpg" alt="Gigaset Premium C575A DECT phone" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="card-img-placeholder" style="display:none">☎️</div>
+      <div class="card-body">
+        <div class="card-badges"><span class="badge badge-best">Best overall</span></div>
+        <p class="card-title">Gigaset Premium C575A</p>
+        <p class="card-desc">A genuinely modern DECT home phone with a large colour display, Bluetooth pairing so it rings when your mobile does, and contact sync from your phone — set it up once, then leave your mobile in another room. German-made, robust, comes with an answering machine built in.</p>
+        <div class="card-footer">
+          <p class="card-price"><span class="price-gbp">£89</span><span class="price-us">$99</span></p>
+          <a class="card-link" href="https://www.amazon.co.uk/dp/B09JWYJ34T" target="_blank" rel="noopener">View →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" data-cat="homephone" data-budget="low" data-mode="connected">
+      <img class="card-img" src="https://m.media-amazon.com/images/I/41DENxhvtkL._AC_SX679_.jpg" alt="Panasonic KX-TGK222 cordless phone" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="card-img-placeholder" style="display:none">📞</div>
+      <div class="card-body">
+        <div class="card-badges"><span class="badge badge-budget">Budget pick</span></div>
+        <p class="card-title">Panasonic KX-TGK222</p>
+        <p class="card-desc">Reliable, easy-to-use DECT phone with large keypad and nuisance call blocking. Links to your mobile via Bluetooth — so calls come to the handset and your phone can stay in another room. Comes with two handsets. Simple to set up.</p>
+        <div class="card-footer">
+          <p class="card-price"><span class="price-gbp">£49</span><span class="price-us">$59</span></p>
+          <a class="card-link" href="https://www.amazon.co.uk/dp/B077N9C5VX" target="_blank" rel="noopener">View →</a>
         </div>
       </div>
     </div>
