@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="auto">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,40 +28,9 @@
   --serif: 'DM Serif Display', Georgia, serif;
   --sans:  'Source Sans 3', 'Helvetica Neue', Arial, sans-serif;
 }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg:          #1C1814;
-    --bg-card:     #252018;
-    --bg-tag:      #302820;
-    --fg:          #EDE8DF;
-    --fg-mid:      #A89890;
-    --fg-light:    #6E6258;
-    --accent:      #5D9474;
-    --accent-dim:  #1E3828;
-    --accent-deep: #7DB898;
-    --link:        #7DB898;
-    --rule:        #302820;
-    --warn-bg:     #2A2014;
-    --warn-border: #7A5830;
-    --note-bg:     #28221A;
-  }
+
 }
-:root[data-theme="dark"] {
-  --bg:          #1C1814;
-  --bg-card:     #252018;
-  --bg-tag:      #302820;
-  --fg:          #EDE8DF;
-  --fg-mid:      #A89890;
-  --fg-light:    #6E6258;
-  --accent:      #5D9474;
-  --accent-dim:  #1E3828;
-  --accent-deep: #7DB898;
-  --link:        #7DB898;
-  --rule:        #302820;
-  --warn-bg:     #2A2014;
-  --warn-border: #7A5830;
-  --note-bg:     #28221A;
-}
+
 
 /* ─── Reset & Base ───────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -123,6 +92,7 @@ header {
   text-decoration: none; display: inline-block; transition: background .15s;
 }
 .btn-primary:hover { background: var(--accent-deep); color: #fff; }
+.btn-header-cta { font-size: 0.85rem; padding: 8px 16px; }
 .btn-secondary {
   background: var(--bg-card); color: var(--fg); font-family: var(--sans); font-size: 0.95rem;
   font-weight: 500; padding: 11px 22px; border-radius: 8px; border: 1px solid var(--rule);
@@ -248,14 +218,11 @@ header {
 .card:hover { box-shadow: 0 4px 20px rgba(0,0,0,.1); }
 .card-img {
   width: 100%; height: 200px; object-fit: contain;
-  background: #EDE8DF; padding: 16px;
+  background: #fff; padding: 16px;
   box-shadow: inset 0 -1px 0 rgba(60,40,20,0.08);
-  mix-blend-mode: multiply;
-  /* background is always parchment #EDE8DF — multiply blend works
-     by making white transparent; must stay light regardless of theme */
 }
 .card-img-placeholder {
-  width: 100%; height: 200px; background: #EDE8DF;
+  width: 100%; height: 200px; background: #f5f5f5;
   display: flex; align-items: center; justify-content: center;
   font-size: 2.8rem;
   box-shadow: inset 0 -1px 0 rgba(60,40,20,0.08);
@@ -360,8 +327,7 @@ footer a:hover { color: var(--accent); }
   <div class="wrap header-inner">
     <a href="#" class="logo">Put It <em>Down</em></a>
     <div class="header-actions">
-      <button class="btn-ghost" id="darkToggle" onclick="toggleDark()" title="Toggle dark mode">🌙</button>
-      <a href="#finder" class="btn-ghost">Find mine →</a>
+      <a href="#finder" class="btn-primary btn-header-cta">Find your alternative →</a>
     </div>
   </div>
 </header>
@@ -471,7 +437,6 @@ footer a:hover { color: var(--accent); }
     <button class="filter-pill" onclick="filterCat('news',this)">📰 News</button>
     <button class="filter-pill" onclick="filterCat('phone',this)">📞 Dumb phones</button>
     <button class="filter-pill" onclick="filterCat('speaker',this)">🔊 Smart speakers</button>
-    <button class="filter-pill" onclick="filterCat('planner',this)">📋 Planners</button>
     <button class="filter-pill" onclick="filterCat('hifi',this)">🎷 Hi-Fi</button>
     <button class="filter-pill" onclick="filterCat('homephone',this)">☎️ Home phones</button>
     <div class="price-toggle">
@@ -1167,27 +1132,6 @@ footer a:hover { color: var(--accent); }
   </div>
 </div>
 
-<!-- ════════════════════════════════════════════
-     PLANNERS / NOTEBOOKS
-═════════════════════════════════════════════ -->
-<div class="cat-section" id="planner" data-cat="planner">
-  <h2>📋 Paper Planners &amp; Notebooks</h2>
-  <p class="cat-desc">Analogue planning creates distance from the screen. What you write by hand, you remember.</p>
-  <div class="cards">
-
-    <div class="card" data-cat="planner" data-budget="mid" data-mode="standalone">
-      <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/517Oz-MQuZL._AC_SL1500_.jpg" alt="Leuchtturm1917 A5 notebook" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none">📓</div>
-      <div class="card-body">
-        <div class="card-badges"><span class="badge badge-best">Gold standard</span></div>
-        <p class="card-title">Leuchtturm1917 A5 (dot grid)</p>
-        <p class="card-desc">The notebook journalists, designers, and engineers swear by. Dot grid is flexible — works for bullet journaling, drawing, notes. Numbered pages, index at the front. Buy one pen you love, then stop opening your phone for notes.</p>
-        <div class="card-footer">
-          <p class="card-price"><span class="price-gbp">£19</span><span class="price-us">$22</span></p>
-          <a class="card-link" href="https://www.leuchtturm1917.com/en-gb/notebooks/medium-a5-dot-grid.html" target="_blank" rel="noopener">View →</a>
-        </div>
-      </div>
-    </div>
 
     <div class="card" data-cat="planner" data-budget="mid" data-mode="standalone">
       <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/71Z5vl2kyfL._AC_SL1500_.jpg" alt="Panda Planner Pro" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
@@ -1359,19 +1303,6 @@ footer a:hover { color: var(--accent); }
 </footer>
 
 <script>
-// ─── Dark mode ───────────────────────────────────
-function toggleDark() {
-  const html = document.documentElement;
-  const current = html.getAttribute('data-theme');
-  if (current === 'dark') {
-    html.setAttribute('data-theme', 'light');
-    document.getElementById('darkToggle').textContent = '☀️';
-  } else {
-    html.setAttribute('data-theme', 'dark');
-    document.getElementById('darkToggle').textContent = '🌙';
-  }
-}
-
 // ─── Currency toggle ─────────────────────────────
 function setCurrency(c) {
   document.querySelectorAll('.price-gbp').forEach(el => el.style.display = c === 'gbp' ? '' : 'none');
