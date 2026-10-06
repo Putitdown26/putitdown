@@ -29,9 +29,6 @@
   --sans:  'Source Sans 3', 'Helvetica Neue', Arial, sans-serif;
 }
 
-}
-
-
 /* ─── Reset & Base ───────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
@@ -319,6 +316,70 @@ footer a:hover { color: var(--accent); }
   .cards { grid-template-columns: 1fr; }
   .price-toggle { margin-left: 0; }
 }
+
+/* ─── Two-level category nav ─────────────────────── */
+.cat-nav { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 8px; }
+.cat-nav-group {
+  position: relative;
+}
+.cat-pill {
+  background: var(--bg-card); border: 1.5px solid var(--rule);
+  color: var(--fg-mid); font-family: var(--sans); font-size: 0.82rem; font-weight: 500;
+  padding: 6px 12px; border-radius: 20px; cursor: pointer; transition: all .12s;
+  white-space: nowrap; display: flex; align-items: center; gap: 4px;
+}
+.cat-pill:hover { border-color: var(--accent); color: var(--accent); }
+.cat-pill.active { background: var(--accent-dim); border-color: var(--accent); color: var(--accent-deep); }
+.cat-pill .arrow { font-size: 0.6rem; transition: transform .2s; display: inline-block; }
+.cat-pill.open .arrow { transform: rotate(180deg); }
+.sub-pills {
+  display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 16px 0;
+  padding: 10px 12px; background: var(--note-bg);
+  border: 1px solid var(--rule); border-radius: 10px;
+  display: none;
+}
+.sub-pills.open { display: flex; }
+.sub-pill {
+  background: var(--bg-card); border: 1.5px solid var(--rule);
+  color: var(--fg-mid); font-family: var(--sans); font-size: 0.78rem; font-weight: 500;
+  padding: 4px 10px; border-radius: 16px; cursor: pointer; transition: all .12s;
+}
+.sub-pill:hover { border-color: var(--accent); color: var(--accent); }
+.sub-pill.active { background: var(--accent-dim); border-color: var(--accent); color: var(--accent-deep); }
+
+/* ─── Expandable card detail ─────────────────────── */
+.card-more-btn {
+  background: none; border: none; border-top: 1px solid var(--rule);
+  width: 100%; text-align: center; padding: 7px;
+  color: var(--fg-light); font-family: var(--sans); font-size: 0.75rem;
+  cursor: pointer; transition: color .12s, background .12s;
+  margin-top: auto;
+}
+.card-more-btn:hover { color: var(--accent); background: var(--accent-dim); }
+.card-detail {
+  display: none; padding: 0 16px 14px;
+  border-top: 1px solid var(--rule);
+  background: var(--bg-card);
+}
+.card-detail.open { display: block; }
+.card-detail-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px;
+}
+.card-detail-item h4 {
+  font-family: var(--sans); font-size: 0.7rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.08em;
+  color: var(--fg-light); margin-bottom: 4px;
+}
+.card-detail-item p {
+  font-size: 0.8rem; color: var(--fg-mid); line-height: 1.55;
+}
+.card-detail-item.full { grid-column: 1 / -1; }
+.card-detail-caveat {
+  font-size: 0.78rem; color: var(--fg-light); font-style: italic;
+  background: var(--warn-bg); border-left: 2px solid var(--warn-border);
+  padding: 6px 10px; border-radius: 0 4px 4px 0; margin-top: 8px;
+  grid-column: 1 / -1;
+}
 </style>
 </head>
 <body>
@@ -424,27 +485,48 @@ footer a:hover { color: var(--accent); }
 <section class="filter-bar" id="all">
   <h2>All alternatives</h2>
   <p class="sub">Filter by what you're replacing, or browse everything.</p>
-  <div class="filter-row">
-    <button class="filter-pill active" onclick="filterCat('all',this)">All</button>
-    <button class="filter-pill" onclick="filterCat('sleep',this)">🌙 Sleep</button>
-    <button class="filter-pill" onclick="filterCat('reading',this)">📖 Reading</button>
-    <button class="filter-pill" onclick="filterCat('music',this)">🎵 Music</button>
-    <button class="filter-pill" onclick="filterCat('headphones',this)">🎧 Headphones</button>
-    <button class="filter-pill" onclick="filterCat('writing',this)">✏️ Writing</button>
-    <button class="filter-pill" onclick="filterCat('camera',this)">📷 Camera</button>
-    <button class="filter-pill" onclick="filterCat('fitness',this)">🏃 Fitness</button>
-    <button class="filter-pill" onclick="filterCat('kids',this)">🧒 Kids</button>
-    <button class="filter-pill" onclick="filterCat('news',this)">📰 News</button>
-    <button class="filter-pill" onclick="filterCat('phone',this)">📞 Dumb phones</button>
-    <button class="filter-pill" onclick="filterCat('speaker',this)">🔊 Smart speakers</button>
-    <button class="filter-pill" onclick="filterCat('hifi',this)">🎷 Hi-Fi</button>
-    <button class="filter-pill" onclick="filterCat('homephone',this)">☎️ Home phones</button>
+  <div class="cat-nav" id="catNav">
+    <button class="cat-pill active" onclick="filterTop('all',this)">All</button>
+
+    <button class="cat-pill" onclick="filterTop('sleep',this)">🌙 Sleep</button>
+    <button class="cat-pill" onclick="filterTop('reading',this)">📖 Reading</button>
+
+    <div class="cat-nav-group">
+      <button class="cat-pill" id="pill-music" onclick="toggleGroup('music',this)">🎵 Music <span class="arrow">▾</span></button>
+    </div>
+
+    <button class="cat-pill" onclick="filterTop('writing',this)">✏️ Writing</button>
+    <button class="cat-pill" onclick="filterTop('camera',this)">📷 Camera</button>
+    <button class="cat-pill" onclick="filterTop('fitness',this)">🏃 Fitness</button>
+    <button class="cat-pill" onclick="filterTop('kids',this)">🧒 Kids</button>
+    <button class="cat-pill" onclick="filterTop('news',this)">📰 News</button>
+
+    <div class="cat-nav-group">
+      <button class="cat-pill" id="pill-phone" onclick="toggleGroup('phone',this)">📞 Phones <span class="arrow">▾</span></button>
+    </div>
+
     <div class="price-toggle">
       <span>Prices:</span>
       <button class="active" id="pBtn-gbp" onclick="setCurrency('gbp')">£ GBP</button>
       <button id="pBtn-usd" onclick="setCurrency('usd')">$ USD</button>
     </div>
   </div>
+
+  <!-- Music sub-pills -->
+  <div class="sub-pills" id="sub-music">
+    <button class="sub-pill" onclick="filterSub('music',this)">🎵 Portable players</button>
+    <button class="sub-pill" onclick="filterSub('headphones',this)">🎧 Headphones</button>
+    <button class="sub-pill" onclick="filterSub('hifi',this)">🎷 Home hi-fi</button>
+    <button class="sub-pill" onclick="filterSub('speaker',this)">🔊 Smart speakers</button>
+  </div>
+
+  <!-- Phones sub-pills -->
+  <div class="sub-pills" id="sub-phone">
+    <button class="sub-pill" onclick="filterSub('phone',this)">📵 Minimal / dumb phones</button>
+    <button class="sub-pill" onclick="filterSub('homephone',this)">☎️ Home phones</button>
+  </div>
+
+
 
 <!-- ════════════════════════════════════════════
      SLEEP
@@ -468,7 +550,26 @@ footer a:hover { color: var(--accent); }
           </p>
           <a class="card-link" href="https://www.philips.co.uk/c-p/HF3650_01/smartsleep-wake-up-light" target="_blank" rel="noopener">View →</a>
         </div>
+      
+    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
+    <div class="card-detail">
+      <div class="card-detail-grid">
+        <div class="card-detail-item">
+          <h4>Does</h4>
+          <p>Simulates sunrise over 30 minutes. FM radio. Natural sound alarm. Tap-to-snooze.</p>
+        </div>
+        <div class="card-detail-item">
+          <h4>Doesn't do</h4>
+          <p>No app needed. No Bluetooth. No subscription.</p>
+        </div>
+        <div class="card-detail-item full">
+          <h4>Who it's for</h4>
+          <p>Anyone who wakes up groggy or dread their phone alarm.</p>
+        </div>
+      <p class="card-detail-caveat">⚠️ Requires a mains socket by the bed. Larger than a typical alarm clock.</p>
       </div>
+    </div>
+    </div>
     </div>
 
     <div class="card" data-cat="sleep" data-budget="mid" data-mode="standalone">
@@ -482,7 +583,26 @@ footer a:hover { color: var(--accent); }
           <p class="card-price"><span class="price-gbp">£59</span><span class="price-us">$68</span></p>
           <a class="card-link" href="https://www.lumie.com/products/bodyclock-rise-100" target="_blank" rel="noopener">View →</a>
         </div>
+      
+    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
+    <div class="card-detail">
+      <div class="card-detail-grid">
+        <div class="card-detail-item">
+          <h4>Does</h4>
+          <p>Gentle sunrise simulation. Simple two-button control. Single alarm.</p>
+        </div>
+        <div class="card-detail-item">
+          <h4>Doesn't do</h4>
+          <p>No radio. No sounds. No app. No Bluetooth.</p>
+        </div>
+        <div class="card-detail-item full">
+          <h4>Who it's for</h4>
+          <p>Minimalists who just want a phone-free morning ritual.</p>
+        </div>
+      <p class="card-detail-caveat">⚠️ No backup battery — power cut means no alarm.</p>
       </div>
+    </div>
+    </div>
     </div>
 
     <div class="card" data-cat="sleep" data-budget="low" data-mode="standalone">
@@ -496,7 +616,155 @@ footer a:hover { color: var(--accent); }
           <p class="card-price"><span class="price-gbp">£22</span><span class="price-us">$26</span></p>
           <a class="card-link" href="https://www.amazon.co.uk/dp/B000FMPRXI" target="_blank" rel="noopener">View →</a>
         </div>
+      
+    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
+    <div class="card-detail">
+      <div class="card-detail-grid">
+        <div class="card-detail-item">
+          <h4>Does</h4>
+          <p>Ticks quietly. Loud alarm. Travel-sized. AA battery.</p>
+        </div>
+        <div class="card-detail-item">
+          <h4>Doesn't do</h4>
+          <p>No light. No radio. Purely analogue.</p>
+        </div>
+        <div class="card-detail-item full">
+          <h4>Who it's for</h4>
+          <p>Anyone who just wants a cheap, reliable clock not on their phone.</p>
+        </div>
       </div>
+    </div>
+    </div>
+    </div>
+
+    <div class="card" data-cat="sleep" data-budget="high" data-mode="standalone">
+      <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/61MkVDnTCbL._AC_SL1500_.jpg" alt="Lumie Bodyclock Luxe 750DAB" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="card-img-placeholder" style="display:none">🌅</div>
+      <div class="card-body">
+        <div class="card-badges"><span class="badge badge-new">2024</span></div>
+        <p class="card-title">Lumie Bodyclock Luxe 750DAB</p>
+        <p class="card-desc">Lumie's flagship: DAB radio, 20 gradual sunset/sunrise intensities, and a library of natural sounds. Overkill for most people, but exceptional if the basic model hasn't worked for you.</p>
+        <div class="card-footer">
+          <p class="card-price"><span class="price-gbp">£189</span><span class="price-us">$219</span></p>
+          <a class="card-link" href="https://www.lumie.com/products/bodyclock-luxe-750dab" target="_blank" rel="noopener">View →</a>
+        </div>
+      
+    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
+    <div class="card-detail">
+      <div class="card-detail-grid">
+        <div class="card-detail-item">
+          <h4>Does</h4>
+          <p>DAB radio. 20-step sunrise/sunset. Nature sounds library. Sunset sleep mode.</p>
+        </div>
+        <div class="card-detail-item">
+          <h4>Doesn't do</h4>
+          <p>No app required. No Wi-Fi. No subscription.</p>
+        </div>
+        <div class="card-detail-item full">
+          <h4>Who it's for</h4>
+          <p>Those who've tried basic wake lights and want the full version.</p>
+        </div>
+      <p class="card-detail-caveat">⚠️ Expensive. DAB reception depends on your area.</p>
+      </div>
+    </div>
+    </div>
+    </div>
+
+    <div class="card" data-cat="sleep" data-budget="mid" data-mode="standalone">
+      <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/51vKFl3xQVL._AC_SL1500_.jpg" alt="Yogasleep Dohm Classic white noise machine" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="card-img-placeholder" style="display:none">🌊</div>
+      <div class="card-body">
+        <p class="card-title">Yogasleep Dohm Classic</p>
+        <p class="card-desc">The original mechanical white noise machine — a real fan inside a plastic housing, not a digital recording. Two-speed control, plug-in. Used by sleep clinics. Nothing digital, nothing that updates, nothing with Wi-Fi.</p>
+        <div class="card-footer">
+          <p class="card-price"><span class="price-gbp">£59</span><span class="price-us">$49</span></p>
+          <a class="card-link" href="https://www.amazon.co.uk/s?k=yogasleep+dohm+classic" target="_blank" rel="noopener">View →</a>
+        </div>
+      
+    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
+    <div class="card-detail">
+      <div class="card-detail-grid">
+        <div class="card-detail-item">
+          <h4>Does</h4>
+          <p>Real mechanical fan white noise. Two speeds. Plug-in.</p>
+        </div>
+        <div class="card-detail-item">
+          <h4>Doesn't do</h4>
+          <p>No digital components. No app. No Wi-Fi. No recordings.</p>
+        </div>
+        <div class="card-detail-item full">
+          <h4>Who it's for</h4>
+          <p>Light sleepers, shift workers, parents settling babies.</p>
+        </div>
+      <p class="card-detail-caveat">⚠️ Only works plugged in — not for travel without an adapter.</p>
+      </div>
+    </div>
+    </div>
+    </div>
+
+    <div class="card" data-cat="sleep" data-budget="mid" data-mode="standalone">
+      <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/61l4G+ZQh5L._AC_SL1500_.jpg" alt="Acctim Aura LED alarm clock" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="card-img-placeholder" style="display:none">🕰️</div>
+      <div class="card-body">
+        <div class="card-badges"><span class="badge badge-uk">UK brand</span></div>
+        <p class="card-title">Acctim Aura LED Alarm Clock</p>
+        <p class="card-desc">Simple digital alarm with a large, readable display and a gently dimming night mode. Under £30 from a British brand. No app, no Bluetooth — just reliable timekeeping at the bedside.</p>
+        <div class="card-footer">
+          <p class="card-price"><span class="price-gbp">£28</span><span class="price-us">$33</span></p>
+          <a class="card-link" href="https://www.amazon.co.uk/s?k=acctim+aura+alarm+clock" target="_blank" rel="noopener">View →</a>
+        </div>
+      
+    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
+    <div class="card-detail">
+      <div class="card-detail-grid">
+        <div class="card-detail-item">
+          <h4>Does</h4>
+          <p>Large clear display. Gradual dim mode. Two alarms. Battery backup.</p>
+        </div>
+        <div class="card-detail-item">
+          <h4>Doesn't do</h4>
+          <p>No app. No Bluetooth. Simple buttons only.</p>
+        </div>
+        <div class="card-detail-item full">
+          <h4>Who it's for</h4>
+          <p>Anyone who wants an affordable, reliable bedside clock.</p>
+        </div>
+      </div>
+    </div>
+    </div>
+    </div>
+
+    <div class="card" data-cat="sleep" data-budget="high" data-mode="standalone">
+      <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/61t3VkumrLL._AC_SL1500_.jpg" alt="Beurer TL 30 SAD lamp" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="card-img-placeholder" style="display:none">💡</div>
+      <div class="card-body">
+        <div class="card-badges"><span class="badge badge-new">2023</span></div>
+        <p class="card-title">Beurer TL 30 SAD Lamp</p>
+        <p class="card-desc">10,000 lux SAD therapy lamp for winter mornings. 30 minutes of morning light exposure is well-evidenced for mood and sleep regulation. Compact, medical-grade, no app required.</p>
+        <div class="card-footer">
+          <p class="card-price"><span class="price-gbp">£49</span><span class="price-us">$55</span></p>
+          <a class="card-link" href="https://www.amazon.co.uk/dp/B074V53FTX" target="_blank" rel="noopener">View →</a>
+        </div>
+      
+    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
+    <div class="card-detail">
+      <div class="card-detail-grid">
+        <div class="card-detail-item">
+          <h4>Does</h4>
+          <p>10,000 lux light therapy. Timer function. Medical-grade UV-free.</p>
+        </div>
+        <div class="card-detail-item">
+          <h4>Doesn't do</h4>
+          <p>No app. No subscription. Plug-in only.</p>
+        </div>
+        <div class="card-detail-item full">
+          <h4>Who it's for</h4>
+          <p>People affected by winter low mood or irregular sleep cycles.</p>
+        </div>
+      <p class="card-detail-caveat">⚠️ Not a substitute for medical advice. Use in the morning only.</p>
+      </div>
+    </div>
+    </div>
     </div>
 
   </div>
@@ -521,7 +789,26 @@ footer a:hover { color: var(--accent); }
           <p class="card-price"><span class="price-gbp">£149</span><span class="price-us">$139</span></p>
           <a class="card-link" href="https://www.amazon.co.uk/dp/B0CF44VCM5" target="_blank" rel="noopener">View →</a>
         </div>
+      
+    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
+    <div class="card-detail">
+      <div class="card-detail-grid">
+        <div class="card-detail-item">
+          <h4>Does</h4>
+          <p>E-ink screen with adjustable warm light. Waterproof. 12-week battery. Wi-Fi for book downloads.</p>
+        </div>
+        <div class="card-detail-item">
+          <h4>Doesn't do</h4>
+          <p>No social media. No notifications. No video.</p>
+        </div>
+        <div class="card-detail-item full">
+          <h4>Who it's for</h4>
+          <p>Anyone wanting to read more and scroll less. The default recommendation.</p>
+        </div>
+      <p class="card-detail-caveat">⚠️ You'll need a Kindle account. Wi-Fi only for purchases — can be disabled after.</p>
       </div>
+    </div>
+    </div>
     </div>
 
     <div class="card" data-cat="reading" data-budget="mid" data-mode="connected">
@@ -535,7 +822,26 @@ footer a:hover { color: var(--accent); }
           <p class="card-price"><span class="price-gbp">£149</span><span class="price-us">$149</span></p>
           <a class="card-link" href="https://uk.kobobooks.com/products/kobo-clara-colour" target="_blank" rel="noopener">View →</a>
         </div>
+      
+    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
+    <div class="card-detail">
+      <div class="card-detail-grid">
+        <div class="card-detail-item">
+          <h4>Does</h4>
+          <p>Colour e-ink. Komoot integration. Supports EPUB and library books. ComfortLight.</p>
+        </div>
+        <div class="card-detail-item">
+          <h4>Doesn't do</h4>
+          <p>No Amazon lock-in. No ads. Open format support.</p>
+        </div>
+        <div class="card-detail-item full">
+          <h4>Who it's for</h4>
+          <p>Readers who want colour illustrations, or who borrow from public libraries.</p>
+        </div>
+      <p class="card-detail-caveat">⚠️ Colour e-ink is still not quite paper-quality. Battery life shorter than B&W.</p>
       </div>
+    </div>
+    </div>
     </div>
 
     <div class="card" data-cat="reading" data-budget="high" data-mode="either">
@@ -549,7 +855,26 @@ footer a:hover { color: var(--accent); }
           <p class="card-price"><span class="price-gbp">£349</span><span class="price-us">$399</span></p>
           <a class="card-link" href="https://uk.kobobooks.com/products/kobo-elipsa-2e" target="_blank" rel="noopener">View →</a>
         </div>
+      
+    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
+    <div class="card-detail">
+      <div class="card-detail-grid">
+        <div class="card-detail-item">
+          <h4>Does</h4>
+          <p>Large 10.3" screen. Stylus for note-taking. PDF annotation. Kobo ecosystem.</p>
+        </div>
+        <div class="card-detail-item">
+          <h4>Doesn't do</h4>
+          <p>No Amazon. No lock-in. Supports EPUB and PDF natively.</p>
+        </div>
+        <div class="card-detail-item full">
+          <h4>Who it's for</h4>
+          <p>Students, researchers, PDF-heavy readers, note-takers.</p>
+        </div>
+      <p class="card-detail-caveat">⚠️ Expensive. Heavy for single-handed reading.</p>
       </div>
+    </div>
+    </div>
     </div>
 
     <div class="card" data-cat="reading" data-budget="high" data-mode="either">
@@ -563,8 +888,159 @@ footer a:hover { color: var(--accent); }
           <p class="card-price"><span class="price-gbp">£479</span><span class="price-us">$549</span></p>
           <a class="card-link" href="https://shop.boox.com/products/noteair4c" target="_blank" rel="noopener">View →</a>
         </div>
+      
+    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
+    <div class="card-detail">
+      <div class="card-detail-grid">
+        <div class="card-detail-item">
+          <h4>Does</h4>
+          <p>Colour e-ink. Android OS for apps. Stylus. 10.3" screen. Full PDF workflow.</p>
+        </div>
+        <div class="card-detail-item">
+          <h4>Doesn't do</h4>
+          <p>No mandatory subscription. Can run third-party apps.</p>
+        </div>
+        <div class="card-detail-item full">
+          <h4>Who it's for</h4>
+          <p>Power users who want e-ink + apps + handwriting in one device.</p>
+        </div>
+      <p class="card-detail-caveat">⚠️ Android on e-ink is sluggish. Security updates not guaranteed long-term.</p>
       </div>
+    </div>
+    </div>
       <div class="card-caveat">⚠️ Runs Android — you can install distracting apps. Use with intention.</div>
+    </div>
+
+    <div class="card" data-cat="reading" data-budget="high" data-mode="either">
+      <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/71Jf7sIeROL._AC_SL1500_.jpg" alt="Kindle Scribe e-reader with stylus" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="card-img-placeholder" style="display:none">📝</div>
+      <div class="card-body">
+        <div class="card-badges"><span class="badge badge-new">2024</span></div>
+        <p class="card-title">Kindle Scribe (2024)</p>
+        <p class="card-desc">Amazon's largest e-reader: 10.2" screen with stylus for writing notes in the margins of books and documents. The reading experience is excellent; the writing integration has improved significantly in recent updates.</p>
+        <div class="card-footer">
+          <p class="card-price"><span class="price-gbp">£299</span><span class="price-us">$339</span></p>
+          <a class="card-link" href="https://www.amazon.co.uk/dp/B09BKX9LRH" target="_blank" rel="noopener">View →</a>
+        </div>
+      
+    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
+    <div class="card-detail">
+      <div class="card-detail-grid">
+        <div class="card-detail-item">
+          <h4>Does</h4>
+          <p>E-ink reading + stylus note-taking. Basic word processor. Send to Kindle from PC.</p>
+        </div>
+        <div class="card-detail-item">
+          <h4>Doesn't do</h4>
+          <p>Locked to Kindle ecosystem. No EPUB support.</p>
+        </div>
+        <div class="card-detail-item full">
+          <h4>Who it's for</h4>
+          <p>Kindle users who want handwriting without a separate notebook app.</p>
+        </div>
+      <p class="card-detail-caveat">⚠️ Expensive for what it does. Note features are basic vs. reMarkable or Kobo Elipsa.</p>
+      </div>
+    </div>
+    </div>
+    </div>
+
+    <div class="card" data-cat="reading" data-budget="high" data-mode="either">
+      <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/61kxDO1mFzL._AC_SL1500_.jpg" alt="Kobo Sage e-reader" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="card-img-placeholder" style="display:none">📚</div>
+      <div class="card-body">
+        <div class="card-badges"><span class="badge badge-new">2024</span></div>
+        <p class="card-title">Kobo Sage</p>
+        <p class="card-desc">8" Kobo with stylus support. Sits between the Clara Colour and Elipsa in size. Supports ePub from libraries, Pocket integration, and Kobo Plus subscription. A strong standalone device with no ecosystem lock-in.</p>
+        <div class="card-footer">
+          <p class="card-price"><span class="price-gbp">£229</span><span class="price-us">$249</span></p>
+          <a class="card-link" href="https://uk.kobobooks.com/products/kobo-sage" target="_blank" rel="noopener">View →</a>
+        </div>
+      
+    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
+    <div class="card-detail">
+      <div class="card-detail-grid">
+        <div class="card-detail-item">
+          <h4>Does</h4>
+          <p>8" screen. Stylus support. Komoot. Audiobook support via Bluetooth.</p>
+        </div>
+        <div class="card-detail-item">
+          <h4>Doesn't do</h4>
+          <p>No Amazon. Supports EPUB, PDF, CBZ. Library loans.</p>
+        </div>
+        <div class="card-detail-item full">
+          <h4>Who it's for</h4>
+          <p>Readers who want a larger screen with stylus capability.</p>
+        </div>
+      <p class="card-detail-caveat">⚠️ Stylus costs extra. Slightly awkward one-handed.</p>
+      </div>
+    </div>
+    </div>
+    </div>
+
+    <div class="card" data-cat="reading" data-budget="high" data-mode="connected">
+      <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/71i7t7JWRCL._AC_SL1500_.jpg" alt="Daylight Computer DC-1" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="card-img-placeholder" style="display:none">🔆</div>
+      <div class="card-body">
+        <div class="card-badges"><span class="badge badge-new">2024</span></div>
+        <p class="card-title">Daylight Computer DC-1</p>
+        <p class="card-desc">A tablet built entirely around calm computing: a LivePaper display runs at 60fps with no eye strain, no notifications by design, no social apps in the app store. Positioned as the anti-iPad. US-shipping currently; UK availability in 2025–26.</p>
+        <div class="card-footer">
+          <p class="card-price"><span class="price-gbp">~£600</span><span class="price-us">$729</span></p>
+          <a class="card-link" href="https://daylightcomputer.com" target="_blank" rel="noopener">View →</a>
+        </div>
+      
+    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
+    <div class="card-detail">
+      <div class="card-detail-grid">
+        <div class="card-detail-item">
+          <h4>Does</h4>
+          <p>Reflective colour LCD. Works outdoors in sunlight. No blue light. Slow scroll speed.</p>
+        </div>
+        <div class="card-detail-item">
+          <h4>Doesn't do</h4>
+          <p>No backlit glow. No notifications. Runs Android apps but intentionally slow.</p>
+        </div>
+        <div class="card-detail-item full">
+          <h4>Who it's for</h4>
+          <p>Heavy readers bothered by eye strain or blue light at night.</p>
+        </div>
+      <p class="card-detail-caveat">⚠️ Very expensive for the specs. App compatibility limited. Not a general tablet.</p>
+      </div>
+    </div>
+    </div>
+      <div class="card-caveat">⚠️ US shipping currently; import costs apply for UK buyers.</div>
+    </div>
+
+    <div class="card" data-cat="reading" data-budget="mid" data-mode="connected">
+      <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/71aD3aIcWNL._AC_SL1500_.jpg" alt="Audiobooks on e-reader" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="card-img-placeholder" style="display:none">🎧</div>
+      <div class="card-body">
+        <p class="card-title">Audible / Libro.fm on a standalone player</p>
+        <p class="card-desc">Download audiobooks via Audible or the independent Libro.fm to a DAP or the SanDisk Clip. Listen to books without a phone. Libro.fm supports independent bookshops. The key: set it up once, then leave the phone behind.</p>
+        <div class="card-footer">
+          <p class="card-price"><span class="price-gbp">£7–9/mo</span><span class="price-us">$9–15/mo</span></p>
+          <a class="card-link" href="https://libro.fm" target="_blank" rel="noopener">View →</a>
+        </div>
+      
+    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
+    <div class="card-detail">
+      <div class="card-detail-grid">
+        <div class="card-detail-item">
+          <h4>Does</h4>
+          <p>Audiobooks on a dedicated DAP. No phone needed once synced.</p>
+        </div>
+        <div class="card-detail-item">
+          <h4>Doesn't do</h4>
+          <p>Requires initial phone setup to sync. Not entirely standalone.</p>
+        </div>
+        <div class="card-detail-item full">
+          <h4>Who it's for</h4>
+          <p>Commuters and walkers who prefer listening to reading.</p>
+        </div>
+      <p class="card-detail-caveat">⚠️ Audiobook subscriptions add monthly cost.</p>
+      </div>
+    </div>
+    </div>
     </div>
 
   </div>
@@ -589,7 +1065,26 @@ footer a:hover { color: var(--accent); }
           <p class="card-price"><span class="price-gbp">£299</span><span class="price-us">$329</span></p>
           <a class="card-link" href="https://www.sony.co.uk/en/articles/nw-a306-high-resolution-music-player" target="_blank" rel="noopener">View →</a>
         </div>
+      
+    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
+    <div class="card-detail">
+      <div class="card-detail-grid">
+        <div class="card-detail-item">
+          <h4>Does</h4>
+          <p>Hi-res audio playback. Wi-Fi for music downloads. Built-in streaming offline (Spotify, Tidal). Bluetooth. 36hr battery.</p>
+        </div>
+        <div class="card-detail-item">
+          <h4>Doesn't do</h4>
+          <p>No social media. No calls. No notifications. Not a phone.</p>
+        </div>
+        <div class="card-detail-item full">
+          <h4>Who it's for</h4>
+          <p>Music lovers who want a step up from phone audio without going audiophile.</p>
+        </div>
+      <p class="card-detail-caveat">⚠️ Needs phone app to initially sync Spotify playlists. After that: fully standalone.</p>
       </div>
+    </div>
+    </div>
     </div>
 
     <div class="card" data-cat="music" data-budget="mid" data-mode="standalone">
@@ -602,7 +1097,26 @@ footer a:hover { color: var(--accent); }
           <p class="card-price"><span class="price-gbp">£79</span><span class="price-us">$89</span></p>
           <a class="card-link" href="https://en.shanling.com/product/397" target="_blank" rel="noopener">View →</a>
         </div>
+      
+    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
+    <div class="card-detail">
+      <div class="card-detail-grid">
+        <div class="card-detail-item">
+          <h4>Does</h4>
+          <p>Hi-res DAP. Bluetooth transmitter mode (pair your headphones). 15hr battery. Streaming apps.</p>
+        </div>
+        <div class="card-detail-item">
+          <h4>Doesn't do</h4>
+          <p>Tiny — clip to clothes or bag. No screen distractions.</p>
+        </div>
+        <div class="card-detail-item full">
+          <h4>Who it's for</h4>
+          <p>Those who want great sound in a tiny pocket device.</p>
+        </div>
+      <p class="card-detail-caveat">⚠️ Very small screen means awkward browsing long playlists.</p>
       </div>
+    </div>
+    </div>
     </div>
 
     <div class="card" data-cat="music" data-budget="low" data-mode="standalone">
@@ -616,7 +1130,26 @@ footer a:hover { color: var(--accent); }
           <p class="card-price"><span class="price-gbp">£35</span><span class="price-us">$40</span></p>
           <a class="card-link" href="https://www.amazon.co.uk/dp/B07412FXJK" target="_blank" rel="noopener">View →</a>
         </div>
+      
+    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
+    <div class="card-detail">
+      <div class="card-detail-grid">
+        <div class="card-detail-item">
+          <h4>Does</h4>
+          <p>Plays MP3/AAC/FLAC from SD card. FM radio. Clip. 20hr battery.</p>
+        </div>
+        <div class="card-detail-item">
+          <h4>Doesn't do</h4>
+          <p>No streaming. No Wi-Fi. No app. Files only.</p>
+        </div>
+        <div class="card-detail-item full">
+          <h4>Who it's for</h4>
+          <p>The simplest possible music player. Gym, running, kids.</p>
+        </div>
+      <p class="card-detail-caveat">⚠️ Must manage a music library yourself (MP3 files). No streaming.</p>
       </div>
+    </div>
+    </div>
     </div>
 
     <div class="card" data-cat="music" data-budget="mid" data-mode="standalone">
@@ -629,7 +1162,123 @@ footer a:hover { color: var(--accent); }
           <p class="card-price"><span class="price-gbp">£79</span><span class="price-us">$89</span></p>
           <a class="card-link" href="https://www.amazon.co.uk/dp/B0FHBYQJ31" target="_blank" rel="noopener">View →</a>
         </div>
+      
+    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
+    <div class="card-detail">
+      <div class="card-detail-grid">
+        <div class="card-detail-item">
+          <h4>Does</h4>
+          <p>Syncs Spotify playlists via Wi-Fi. Plays completely offline — no phone, no Wi-Fi during playback. Clip.</p>
+        </div>
+        <div class="card-detail-item">
+          <h4>Doesn't do</h4>
+          <p>Only works with Spotify Premium. No Apple Music or Tidal.</p>
+        </div>
+        <div class="card-detail-item full">
+          <h4>Who it's for</h4>
+          <p>Spotify subscribers who want phone-free gym or running sessions.</p>
+        </div>
+      <p class="card-detail-caveat">⚠️ Requires Spotify Premium. Sync needs Wi-Fi and the Mighty app on your phone (once).</p>
       </div>
+    </div>
+    </div>
+    </div>
+
+    <div class="card" data-cat="music" data-budget="high" data-mode="standalone">
+      <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/71X4r6mOl5L._AC_SL1500_.jpg" alt="FiiO M11S hi-res music player" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="card-img-placeholder" style="display:none">🎵</div>
+      <div class="card-body">
+        <div class="card-badges"><span class="badge badge-new">2024</span></div>
+        <p class="card-title">FiiO M11S</p>
+        <p class="card-desc">Mid-range Android DAP with dual ES9038Q2M chips and balanced output. 32GB built-in, microSD expandable. Supports Spotify, Tidal, and local FLAC. Sounds significantly better than any phone's headphone stage. No SIM slot, no social apps.</p>
+        <div class="card-footer">
+          <p class="card-price"><span class="price-gbp">£349</span><span class="price-us">$399</span></p>
+          <a class="card-link" href="https://www.amazon.co.uk/s?k=fiio+m11s" target="_blank" rel="noopener">View →</a>
+        </div>
+      
+    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
+    <div class="card-detail">
+      <div class="card-detail-grid">
+        <div class="card-detail-item">
+          <h4>Does</h4>
+          <p>Full hi-res DAP. Android. Streaming apps. MQA decoding. Bluetooth 5.0.</p>
+        </div>
+        <div class="card-detail-item">
+          <h4>Doesn't do</h4>
+          <p>No phone features. No distracting apps beyond music.</p>
+        </div>
+        <div class="card-detail-item full">
+          <h4>Who it's for</h4>
+          <p>Audiophiles who want the best portable sound short of a £1,000+ DAP.</p>
+        </div>
+      <p class="card-detail-caveat">⚠️ Android on DAPs can be slow. Battery life shorter under streaming.</p>
+      </div>
+    </div>
+    </div>
+    </div>
+
+    <div class="card" data-cat="music" data-budget="high" data-mode="standalone">
+      <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/71HmP+WCUQL._AC_SL1500_.jpg" alt="Astell&Kern AK Jr II DAP" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="card-img-placeholder" style="display:none">🎶</div>
+      <div class="card-body">
+        <div class="card-badges"><span class="badge badge-best">Audiophile pick</span></div>
+        <p class="card-title">Astell&amp;Kern AK Jr II</p>
+        <p class="card-desc">Entry-level Astell&amp;Kern with a proper DAC, 64GB storage, and balanced headphone output. The South Korean brand's build quality is exceptional. A DAP you'll keep for a decade.</p>
+        <div class="card-footer">
+          <p class="card-price"><span class="price-gbp">£499</span><span class="price-us">$549</span></p>
+          <a class="card-link" href="https://www.astellnkern.com" target="_blank" rel="noopener">View →</a>
+        </div>
+      </div>
+    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
+    <div class="card-detail">
+      <div class="card-detail-grid">
+        <div class="card-detail-item">
+          <h4>Does</h4>
+          <p>Premium hi-res DAP. Balanced output. Pure music focus. Long battery.</p>
+        </div>
+        <div class="card-detail-item">
+          <h4>Doesn't do</h4>
+          <p>No streaming apps. SD card only. Intentionally limited.</p>
+        </div>
+        <div class="card-detail-item full">
+          <h4>Who it's for</h4>
+          <p>Audiophiles who want sound quality without any distractions.</p>
+        </div>
+      <p class="card-detail-caveat">⚠️ No streaming. Expensive. Niche market.</p>
+      </div>
+    </div>
+    </div>
+
+    <div class="card" data-cat="music" data-budget="mid" data-mode="standalone">
+      <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/61A47BWSRLL._AC_SL1500_.jpg" alt="FiiO M6 hi-res music player" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="card-img-placeholder" style="display:none">🎵</div>
+      <div class="card-body">
+        <p class="card-title">FiiO M6</p>
+        <p class="card-desc">Small, light, affordable DAP from the leading Chinese audio brand. Supports most streaming services offline. 1.5" AMOLED screen. 13-hour battery. A genuine step up from using a phone, at an accessible price.</p>
+        <div class="card-footer">
+          <p class="card-price"><span class="price-gbp">£109</span><span class="price-us">$119</span></p>
+          <a class="card-link" href="https://www.amazon.co.uk/s?k=fiio+m6" target="_blank" rel="noopener">View →</a>
+        </div>
+      
+    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
+    <div class="card-detail">
+      <div class="card-detail-grid">
+        <div class="card-detail-item">
+          <h4>Does</h4>
+          <p>Budget hi-res DAP. Bluetooth. 13hr battery. Android Lite.</p>
+        </div>
+        <div class="card-detail-item">
+          <h4>Doesn't do</h4>
+          <p>Small and affordable entry into hi-res audio.</p>
+        </div>
+        <div class="card-detail-item full">
+          <h4>Who it's for</h4>
+          <p>Budget audiophiles or anyone stepping up from a phone for music.</p>
+        </div>
+      <p class="card-detail-caveat">⚠️ Older Android version. Streaming app support varies.</p>
+      </div>
+    </div>
+    </div>
     </div>
 
   </div>
@@ -654,7 +1303,26 @@ footer a:hover { color: var(--accent); }
           <p class="card-price"><span class="price-gbp">£279</span><span class="price-us">$349</span></p>
           <a class="card-link" href="https://www.sony.co.uk/en/headphones/products/wh-1000xm5" target="_blank" rel="noopener">View →</a>
         </div>
+      
+    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
+    <div class="card-detail">
+      <div class="card-detail-grid">
+        <div class="card-detail-item">
+          <h4>Does</h4>
+          <p>Best-in-class noise cancellation. 30hr battery. Folds flat. USB-C.</p>
+        </div>
+        <div class="card-detail-item">
+          <h4>Doesn't do</h4>
+          <p>No subscription needed. Works wired with any player.</p>
+        </div>
+        <div class="card-detail-item full">
+          <h4>Who it's for</h4>
+          <p>Commuters, office workers, anyone who wants to cut out the world.</p>
+        </div>
+      <p class="card-detail-caveat">⚠️ Requires initial Sony app setup for ANC customisation (optional). Premium price.</p>
       </div>
+    </div>
+    </div>
     </div>
 
     <div class="card" data-cat="headphones" data-budget="mid" data-mode="standalone">
@@ -668,7 +1336,26 @@ footer a:hover { color: var(--accent); }
           <p class="card-price"><span class="price-gbp">£249</span><span class="price-us">$279</span></p>
           <a class="card-link" href="https://www.bose.co.uk/en_gb/products/headphones/over_ear_headphones/quietcomfort-headphones-45.html" target="_blank" rel="noopener">View →</a>
         </div>
+      
+    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
+    <div class="card-detail">
+      <div class="card-detail-grid">
+        <div class="card-detail-item">
+          <h4>Does</h4>
+          <p>Excellent ANC. Comfortable for all-day wear. USB-C. 24hr battery.</p>
+        </div>
+        <div class="card-detail-item">
+          <h4>Doesn't do</h4>
+          <p>No mandatory app. Works straight out of the box.</p>
+        </div>
+        <div class="card-detail-item full">
+          <h4>Who it's for</h4>
+          <p>Those who find Sony's sound too "digital" — Bose is warmer.</p>
+        </div>
+      <p class="card-detail-caveat">⚠️ Slightly bulkier than XM5. Older model now — check for XM5 pricing.</p>
       </div>
+    </div>
+    </div>
     </div>
 
     <div class="card" data-cat="headphones" data-budget="low" data-mode="standalone">
@@ -682,7 +1369,124 @@ footer a:hover { color: var(--accent); }
           <p class="card-price"><span class="price-gbp">£29</span><span class="price-us">$32</span></p>
           <a class="card-link" href="https://www.koss.com/products/kph30i" target="_blank" rel="noopener">View →</a>
         </div>
+      
+    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
+    <div class="card-detail">
+      <div class="card-detail-grid">
+        <div class="card-detail-item">
+          <h4>Does</h4>
+          <p>On-ear open-back. Light. Driven by anything — phone, DAP, amp. Replaceable cable.</p>
+        </div>
+        <div class="card-detail-item">
+          <h4>Doesn't do</h4>
+          <p>No ANC. No Bluetooth. Wired only.</p>
+        </div>
+        <div class="card-detail-item full">
+          <h4>Who it's for</h4>
+          <p>Budget buyers who want excellent sound without wireless complexity.</p>
+        </div>
+      <p class="card-detail-caveat">⚠️ Open-back means sound leaks — not for public transport. No ANC.</p>
       </div>
+    </div>
+    </div>
+    </div>
+
+    <div class="card" data-cat="headphones" data-budget="mid" data-mode="standalone">
+      <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/71t1GFqIlQL._AC_SL1500_.jpg" alt="Sennheiser HD 560S headphones" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="card-img-placeholder" style="display:none">🎧</div>
+      <div class="card-body">
+        <div class="card-badges"><span class="badge badge-best">Best wired over-ear</span></div>
+        <p class="card-title">Sennheiser HD 560S</p>
+        <p class="card-desc">Open-back wired headphones. No batteries, no Bluetooth, no app, no firmware updates — ever. Exceptional soundstage and detail. Pairs superbly with a DAP or desktop DAC. Designed to disappear and let the music exist.</p>
+        <div class="card-footer">
+          <p class="card-price"><span class="price-gbp">£149</span><span class="price-us">$169</span></p>
+          <a class="card-link" href="https://www.amazon.co.uk/s?k=sennheiser+hd+560s" target="_blank" rel="noopener">View →</a>
+        </div>
+      
+    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
+    <div class="card-detail">
+      <div class="card-detail-grid">
+        <div class="card-detail-item">
+          <h4>Does</h4>
+          <p>Open-back. Neutral, accurate sound. Good for hi-fi listening. Easy to drive.</p>
+        </div>
+        <div class="card-detail-item">
+          <h4>Doesn't do</h4>
+          <p>No Bluetooth. No ANC. Home/desk use only.</p>
+        </div>
+        <div class="card-detail-item full">
+          <h4>Who it's for</h4>
+          <p>Home listeners who want accurate audio for music or film.</p>
+        </div>
+      <p class="card-detail-caveat">⚠️ Open-back — not for commuting. No noise isolation.</p>
+      </div>
+    </div>
+    </div>
+    </div>
+
+    <div class="card" data-cat="headphones" data-budget="mid" data-mode="standalone">
+      <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/61hPNg4SUNL._AC_SL1500_.jpg" alt="Beyerdynamic DT 770 Pro headphones" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="card-img-placeholder" style="display:none">🎵</div>
+      <div class="card-body">
+        <p class="card-title">Beyerdynamic DT 770 Pro (80 Ohm)</p>
+        <p class="card-desc">Closed-back, wired, German-made, no app, no Bluetooth. The 80-ohm version drives well from portable DAPs. A studio standard since 1985 — improved over the years but fundamentally unchanged because they got it right.</p>
+        <div class="card-footer">
+          <p class="card-price"><span class="price-gbp">£129</span><span class="price-us">$149</span></p>
+          <a class="card-link" href="https://www.amazon.co.uk/s?k=beyerdynamic+dt+770+pro+80+ohm" target="_blank" rel="noopener">View →</a>
+        </div>
+      
+    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
+    <div class="card-detail">
+      <div class="card-detail-grid">
+        <div class="card-detail-item">
+          <h4>Does</h4>
+          <p>Closed-back. Excellent isolation. Detailed sound. Replaceable parts.</p>
+        </div>
+        <div class="card-detail-item">
+          <h4>Doesn't do</h4>
+          <p>No Bluetooth. Wired only. Needs a decent headphone amp for best results.</p>
+        </div>
+        <div class="card-detail-item full">
+          <h4>Who it's for</h4>
+          <p>Studio-style listening at home. Those who want to block the world out.</p>
+        </div>
+      <p class="card-detail-caveat">⚠️ 80 ohm version needs more amplification than the 32 ohm model.</p>
+      </div>
+    </div>
+    </div>
+    </div>
+
+    <div class="card" data-cat="headphones" data-budget="mid" data-mode="standalone">
+      <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/61LUeETiXJL._AC_SL1500_.jpg" alt="Moondrop Aria 2 IEM earphones" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="card-img-placeholder" style="display:none">🎶</div>
+      <div class="card-body">
+        <div class="card-badges"><span class="badge badge-new">2023</span></div>
+        <p class="card-title">Moondrop Aria 2 (IEM)</p>
+        <p class="card-desc">In-ear monitors designed for DAPs, not phones. Single dynamic driver, flat frequency response, 3.5mm wired. No ANC, no Bluetooth, no app. Pair with any DAP for a genuinely high-quality portable system under £100 combined.</p>
+        <div class="card-footer">
+          <p class="card-price"><span class="price-gbp">£59</span><span class="price-us">$69</span></p>
+          <a class="card-link" href="https://www.amazon.co.uk/s?k=moondrop+aria+2" target="_blank" rel="noopener">View →</a>
+        </div>
+      
+    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
+    <div class="card-detail">
+      <div class="card-detail-grid">
+        <div class="card-detail-item">
+          <h4>Does</h4>
+          <p>In-ear monitor. Warm, musical sound. Detachable cable. Affordable audiophile tier.</p>
+        </div>
+        <div class="card-detail-item">
+          <h4>Doesn't do</h4>
+          <p>No Bluetooth. No ANC. Must be used with a DAP or phone headphone jack.</p>
+        </div>
+        <div class="card-detail-item full">
+          <h4>Who it's for</h4>
+          <p>Anyone who wants hi-res IEM quality without spending £200+.</p>
+        </div>
+      <p class="card-detail-caveat">⚠️ No wireless option. Requires 3.5mm — may need a dongle for newer phones.</p>
+      </div>
+    </div>
+    </div>
     </div>
 
   </div>
@@ -707,7 +1511,26 @@ footer a:hover { color: var(--accent); }
           <p class="card-price"><span class="price-gbp">£429</span><span class="price-us">$549</span></p>
           <a class="card-link" href="https://freewrite.com/products/freewrite-smart-typewriter" target="_blank" rel="noopener">View →</a>
         </div>
+      
+    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
+    <div class="card-detail">
+      <div class="card-detail-grid">
+        <div class="card-detail-item">
+          <h4>Does</h4>
+          <p>E-ink screen. Mechanical keyboard. Wi-Fi sync to Dropbox/Google Drive. Full charge lasts weeks.</p>
+        </div>
+        <div class="card-detail-item">
+          <h4>Doesn't do</h4>
+          <p>No browser. No email. No social media. Cannot be used for anything except writing.</p>
+        </div>
+        <div class="card-detail-item full">
+          <h4>Who it's for</h4>
+          <p>Writers who need a distraction-free first draft machine.</p>
+        </div>
+      <p class="card-detail-caveat">⚠️ Expensive. Cannot edit or rearrange text beyond basic cursor. Sync requires Wi-Fi.</p>
       </div>
+    </div>
+    </div>
     </div>
 
     <div class="card" data-cat="writing" data-budget="mid" data-mode="standalone">
@@ -720,7 +1543,26 @@ footer a:hover { color: var(--accent); }
           <p class="card-price"><span class="price-gbp">£299</span><span class="price-us">$349</span></p>
           <a class="card-link" href="https://freewrite.com/products/traveler" target="_blank" rel="noopener">View →</a>
         </div>
+      
+    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
+    <div class="card-detail">
+      <div class="card-detail-grid">
+        <div class="card-detail-item">
+          <h4>Does</h4>
+          <p>Foldable. E-ink. Lighter than the Smart Typewriter. Same distraction-free syncing.</p>
+        </div>
+        <div class="card-detail-item">
+          <h4>Doesn't do</h4>
+          <p>No editing beyond cursor. No browser. No social.</p>
+        </div>
+        <div class="card-detail-item full">
+          <h4>Who it's for</h4>
+          <p>Writers who travel and want a portable first-draft device.</p>
+        </div>
+      <p class="card-detail-caveat">⚠️ Keyboard feel divides opinion — try before buying if possible.</p>
       </div>
+    </div>
+    </div>
     </div>
 
     <div class="card" data-cat="writing" data-budget="mid" data-mode="either">
@@ -734,7 +1576,127 @@ footer a:hover { color: var(--accent); }
           <p class="card-price"><span class="price-gbp">£279</span><span class="price-us">$299</span></p>
           <a class="card-link" href="https://remarkable.com/store/remarkable-2" target="_blank" rel="noopener">View →</a>
         </div>
+      
+    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
+    <div class="card-detail">
+      <div class="card-detail-grid">
+        <div class="card-detail-item">
+          <h4>Does</h4>
+          <p>Paper-like writing. PDF annotation. Handwriting-to-text. Sync to cloud.</p>
+        </div>
+        <div class="card-detail-item">
+          <h4>Doesn't do</h4>
+          <p>No web browser. No social media. No notifications.</p>
+        </div>
+        <div class="card-detail-item full">
+          <h4>Who it's for</h4>
+          <p>Note-takers, PDF annotators, sketchers who want a paper feel.</p>
+        </div>
+      <p class="card-detail-caveat">⚠️ Subscription (Connect) needed for cloud sync and some features. Expensive.</p>
       </div>
+    </div>
+    </div>
+    </div>
+
+    <div class="card" data-cat="writing" data-budget="mid" data-mode="standalone">
+      <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/71NhgEqGi0L._AC_SL1500_.jpg" alt="King Jim Pomera DM250 word processor" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="card-img-placeholder" style="display:none">⌨️</div>
+      <div class="card-body">
+        <div class="card-badges"><span class="badge badge-best">Budget writers' pick</span></div>
+        <p class="card-title">King Jim Pomera DM250</p>
+        <p class="card-desc">Japanese foldable keyboard with an e-ink display. Word processor only: no browser, no distraction, no cloud. Battery lasts weeks. The DM250 adds light and ATOK IME for Japanese input. A writer's tool that takes itself seriously.</p>
+        <div class="card-footer">
+          <p class="card-price"><span class="price-gbp">~£250</span><span class="price-us">$279</span></p>
+          <a class="card-link" href="https://www.kingjim.co.jp/pomera/dm250/" target="_blank" rel="noopener">View →</a>
+        </div>
+      
+    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
+    <div class="card-detail">
+      <div class="card-detail-grid">
+        <div class="card-detail-item">
+          <h4>Does</h4>
+          <p>Foldable keyboard. E-ink display. Stores 1,000 text files. USB sync.</p>
+        </div>
+        <div class="card-detail-item">
+          <h4>Doesn't do</h4>
+          <p>No Wi-Fi. No cloud. No apps. Files only.</p>
+        </div>
+        <div class="card-detail-item full">
+          <h4>Who it's for</h4>
+          <p>Writers who want total offline focus with a great keyboard.</p>
+        </div>
+      <p class="card-detail-caveat">⚠️ Japanese brand — import only in UK. No real-time sync.</p>
+      </div>
+    </div>
+    </div>
+      <div class="card-caveat">⚠️ Japan import; available via proxy services or Amazon Japan.</div>
+    </div>
+
+    <div class="card" data-cat="writing" data-budget="low" data-mode="standalone">
+      <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/61IY9VKQXML._AC_SL1500_.jpg" alt="AlphaSmart Neo 2 word processor" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="card-img-placeholder" style="display:none">🖮</div>
+      <div class="card-body">
+        <div class="card-badges"><span class="badge badge-budget">Cult classic</span></div>
+        <p class="card-title">AlphaSmart Neo 2</p>
+        <p class="card-desc">Made in the early 2000s for US schools: a keyboard with a 4-line display that stores up to 8 files, runs on 3 AA batteries for 700 hours, and plugs into a computer as a USB keyboard. Still sold secondhand for £30–60. Beloved by distraction-haters.</p>
+        <div class="card-footer">
+          <p class="card-price"><span class="price-gbp">£30–60</span><span class="price-us">$30–80</span></p>
+          <a class="card-link" href="https://www.ebay.co.uk/sch/i.html?_nkw=alphasmart+neo+2" target="_blank" rel="noopener">Find secondhand →</a>
+        </div>
+      
+    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
+    <div class="card-detail">
+      <div class="card-detail-grid">
+        <div class="card-detail-item">
+          <h4>Does</h4>
+          <p>Runs on AA batteries for 700 hours. Types directly into any computer when plugged in via USB. Fast.</p>
+        </div>
+        <div class="card-detail-item">
+          <h4>Doesn't do</h4>
+          <p>No internet. No apps. No backlight. Purely mechanical.</p>
+        </div>
+        <div class="card-detail-item full">
+          <h4>Who it's for</h4>
+          <p>Writers who want a retro, distraction-free tool with almost no running costs.</p>
+        </div>
+      <p class="card-detail-caveat">⚠️ Discontinued — buy used. No modern sync. Basic LCD screen.</p>
+      </div>
+    </div>
+    </div>
+      <div class="card-caveat">⚠️ Secondhand only — no new stock. Check eBay UK.</div>
+    </div>
+
+    <div class="card" data-cat="writing" data-budget="mid" data-mode="standalone">
+      <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/71XkMEj5q4L._AC_SL1500_.jpg" alt="Freewrite Alpha distraction-free writer" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="card-img-placeholder" style="display:none">📖</div>
+      <div class="card-body">
+        <div class="card-badges"><span class="badge badge-new">2024</span></div>
+        <p class="card-title">Freewrite Alpha</p>
+        <p class="card-desc">Freewrite's most affordable device: a compact keyboard with a small e-ink display, designed for drafting only. No cursor keys, no editing mode by design. Syncs to Freewrite's cloud when connected to Wi-Fi. Cheaper entry point for the Freewrite philosophy.</p>
+        <div class="card-footer">
+          <p class="card-price"><span class="price-gbp">£179</span><span class="price-us">$199</span></p>
+          <a class="card-link" href="https://freewrite.com/products/alpha" target="_blank" rel="noopener">View →</a>
+        </div>
+      
+    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
+    <div class="card-detail">
+      <div class="card-detail-grid">
+        <div class="card-detail-item">
+          <h4>Does</h4>
+          <p>Budget Freewrite. Simple keyboard. E-ink. Wi-Fi sync. Lighter.</p>
+        </div>
+        <div class="card-detail-item">
+          <h4>Doesn't do</h4>
+          <p>No editing. No browser. No apps.</p>
+        </div>
+        <div class="card-detail-item full">
+          <h4>Who it's for</h4>
+          <p>Writers on a budget who want distraction-free typing.</p>
+        </div>
+      <p class="card-detail-caveat">⚠️ Less polished than the Smart Typewriter. Sync via Wi-Fi only.</p>
+      </div>
+    </div>
+    </div>
     </div>
 
   </div>
@@ -759,7 +1721,26 @@ footer a:hover { color: var(--accent); }
           <p class="card-price"><span class="price-gbp">£1,699</span><span class="price-us">$1,599</span></p>
           <a class="card-link" href="https://www.fujifilm.com/uk/en/consumer/cameras/x/x100vi" target="_blank" rel="noopener">View →</a>
         </div>
+      
+    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
+    <div class="card-detail">
+      <div class="card-detail-grid">
+        <div class="card-detail-item">
+          <h4>Does</h4>
+          <p>APS-C sensor. Built-in ND filter. Optical/electronic viewfinder. In-body stabilisation. Street photography icon.</p>
+        </div>
+        <div class="card-detail-item">
+          <h4>Doesn't do</h4>
+          <p>No social media. No notifications. Single-purpose.</p>
+        </div>
+        <div class="card-detail-item full">
+          <h4>Who it's for</h4>
+          <p>Enthusiast photographers who want a pocketable do-everything camera.</p>
+        </div>
+      <p class="card-detail-caveat">⚠️ Frequently sold out — check for availability. Not cheap.</p>
       </div>
+    </div>
+    </div>
     </div>
 
     <div class="card" data-cat="camera" data-budget="mid" data-mode="standalone">
@@ -772,7 +1753,26 @@ footer a:hover { color: var(--accent); }
           <p class="card-price"><span class="price-gbp">£899</span><span class="price-us">$999</span></p>
           <a class="card-link" href="https://www.ricoh-imaging.co.uk/product/gr-iiix" target="_blank" rel="noopener">View →</a>
         </div>
+      
+    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
+    <div class="card-detail">
+      <div class="card-detail-grid">
+        <div class="card-detail-item">
+          <h4>Does</h4>
+          <p>Pocketable. 40mm equivalent. APS-C sensor. Snap focus mode.</p>
+        </div>
+        <div class="card-detail-item">
+          <h4>Doesn't do</h4>
+          <p>No zoom. No viewfinder. No weather sealing.</p>
+        </div>
+        <div class="card-detail-item full">
+          <h4>Who it's for</h4>
+          <p>Street photographers who want an inconspicuous pocketable APS-C.</p>
+        </div>
+      <p class="card-detail-caveat">⚠️ No image stabilisation. Easy to miss focus in low light without snap mode.</p>
       </div>
+    </div>
+    </div>
     </div>
 
     <div class="card" data-cat="camera" data-budget="mid" data-mode="standalone">
@@ -786,7 +1786,124 @@ footer a:hover { color: var(--accent); }
           <p class="card-price"><span class="price-gbp">£89</span><span class="price-us">$99</span></p>
           <a class="card-link" href="https://instax.com/mini_12/en/" target="_blank" rel="noopener">View →</a>
         </div>
+      
+    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
+    <div class="card-detail">
+      <div class="card-detail-grid">
+        <div class="card-detail-item">
+          <h4>Does</h4>
+          <p>Point-and-shoot instant film. Selfie mirror. Auto exposure. No phone needed.</p>
+        </div>
+        <div class="card-detail-item">
+          <h4>Doesn't do</h4>
+          <p>No digital — prints physical photos only. No editing.</p>
+        </div>
+        <div class="card-detail-item full">
+          <h4>Who it's for</h4>
+          <p>Kids, parties, anyone who wants tangible memories.</p>
+        </div>
+      <p class="card-detail-caveat">⚠️ Film costs money per shot (~£1 per photo). Can't undo a bad exposure.</p>
       </div>
+    </div>
+    </div>
+    </div>
+
+    <div class="card" data-cat="camera" data-budget="low" data-mode="standalone">
+      <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/71mXJqFdpYL._AC_SL1500_.jpg" alt="Kodak M35 35mm film camera" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="card-img-placeholder" style="display:none">📷</div>
+      <div class="card-body">
+        <div class="card-badges"><span class="badge badge-budget">Under £30</span></div>
+        <p class="card-title">Kodak M35 35mm Film Camera</p>
+        <p class="card-desc">A simple reusable film camera with a built-in flash and fixed focus. 35mm ISO 200 film. No settings to think about — point and shoot. Develops at any Boots or independent lab. The physical process of waiting for prints creates its own distance from instant sharing.</p>
+        <div class="card-footer">
+          <p class="card-price"><span class="price-gbp">£25</span><span class="price-us">$29</span></p>
+          <a class="card-link" href="https://www.amazon.co.uk/s?k=kodak+m35+film+camera" target="_blank" rel="noopener">View →</a>
+        </div>
+      
+    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
+    <div class="card-detail">
+      <div class="card-detail-grid">
+        <div class="card-detail-item">
+          <h4>Does</h4>
+          <p>Fixed-focus 35mm. Flash included. Uses standard 35mm film. Simple.</p>
+        </div>
+        <div class="card-detail-item">
+          <h4>Doesn't do</h4>
+          <p>No screen. No battery except for flash. Purely analogue.</p>
+        </div>
+        <div class="card-detail-item full">
+          <h4>Who it's for</h4>
+          <p>Anyone who wants to slow down and shoot on film cheaply.</p>
+        </div>
+      <p class="card-detail-caveat">⚠️ Must develop film — costs time and money. Fixed focus means not sharp up-close.</p>
+      </div>
+    </div>
+    </div>
+    </div>
+
+    <div class="card" data-cat="camera" data-budget="low" data-mode="standalone">
+      <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/71a1Xt5HniL._AC_SL1500_.jpg" alt="Kodak Ektar H35 half-frame camera" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="card-img-placeholder" style="display:none">🎞️</div>
+      <div class="card-body">
+        <p class="card-title">Kodak Ektar H35 Half-Frame</p>
+        <p class="card-desc">Shoots half-frame on 35mm film — 72 exposures per roll. Slows you down, makes you choose. The results are deliberately imperfect. A good entry to film photography without the cost of developing a 24-exposure roll every two outings.</p>
+        <div class="card-footer">
+          <p class="card-price"><span class="price-gbp">£40</span><span class="price-us">$45</span></p>
+          <a class="card-link" href="https://www.amazon.co.uk/s?k=kodak+ektar+h35" target="_blank" rel="noopener">View →</a>
+        </div>
+      
+    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
+    <div class="card-detail">
+      <div class="card-detail-grid">
+        <div class="card-detail-item">
+          <h4>Does</h4>
+          <p>2 photos per frame = 72 shots from a 36-exposure roll. Metal body. Sharp 22mm lens.</p>
+        </div>
+        <div class="card-detail-item">
+          <h4>Doesn't do</h4>
+          <p>No screen. No digital. Film only.</p>
+        </div>
+        <div class="card-detail-item full">
+          <h4>Who it's for</h4>
+          <p>Budget film shooters. Anyone who wants to stretch film further.</p>
+        </div>
+      <p class="card-detail-caveat">⚠️ Half-frame means smaller negatives — grain is more visible.</p>
+      </div>
+    </div>
+    </div>
+    </div>
+
+    <div class="card" data-cat="camera" data-budget="mid" data-mode="standalone">
+      <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/81JHv0l8P+L._AC_SL1500_.jpg" alt="Ricoh GR IIIx Urban Edition camera" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="card-img-placeholder" style="display:none">📸</div>
+      <div class="card-body">
+        <div class="card-badges"><span class="badge badge-new">2024</span></div>
+        <p class="card-title">Ricoh GR IIIx Urban Edition</p>
+        <p class="card-desc">A hardware-identical variant of the GR IIIx with matte black finish. Same excellent 40mm-equivalent APS-C sensor. Mentioned separately because it's often in stock when the standard edition isn't, and the aesthetic suits the philosophy.</p>
+        <div class="card-footer">
+          <p class="card-price"><span class="price-gbp">£949</span><span class="price-us">$1,049</span></p>
+          <a class="card-link" href="https://www.amazon.co.uk/s?k=ricoh+gr+iiix+urban" target="_blank" rel="noopener">View →</a>
+        </div>
+      
+    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
+    <div class="card-detail">
+      <div class="card-detail-grid">
+        <div class="card-detail-item">
+          <h4>Does</h4>
+          <p>Same internals as GR IIIx. Limited edition finish. APS-C. Pocketable.</p>
+        </div>
+        <div class="card-detail-item">
+          <h4>Doesn't do</h4>
+          <p>Limited edition — availability varies.</p>
+        </div>
+        <div class="card-detail-item full">
+          <h4>Who it's for</h4>
+          <p>GR IIIx fans who want the distinctive colourway.</p>
+        </div>
+      <p class="card-detail-caveat">⚠️ Same caveats as GR IIIx. Premium price for cosmetic difference.</p>
+      </div>
+    </div>
+    </div>
     </div>
 
   </div>
@@ -811,7 +1928,26 @@ footer a:hover { color: var(--accent); }
           <p class="card-price"><span class="price-gbp">£549</span><span class="price-us">$599</span></p>
           <a class="card-link" href="https://www.garmin.com/en-GB/p/735611" target="_blank" rel="noopener">View →</a>
         </div>
+      
+    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
+    <div class="card-detail">
+      <div class="card-detail-grid">
+        <div class="card-detail-item">
+          <h4>Does</h4>
+          <p>GPS. Offline maps. Heart rate. Up to 11-day battery. Rugged. Solar option.</p>
+        </div>
+        <div class="card-detail-item">
+          <h4>Doesn't do</h4>
+          <p>No social media. Notifications only if paired (can be silenced). Full function standalone.</p>
+        </div>
+        <div class="card-detail-item full">
+          <h4>Who it's for</h4>
+          <p>Hikers, trail runners, adventure users who want maps and sensors without a phone.</p>
+        </div>
+      <p class="card-detail-caveat">⚠️ Expensive. Bulky for everyday wear. Some features need phone pairing initially.</p>
       </div>
+    </div>
+    </div>
     </div>
 
     <div class="card" data-cat="fitness" data-budget="mid" data-mode="standalone">
@@ -824,7 +1960,26 @@ footer a:hover { color: var(--accent); }
           <p class="card-price"><span class="price-gbp">£99</span><span class="price-us">$109</span></p>
           <a class="card-link" href="https://www.garmin.com/en-GB/p/707770" target="_blank" rel="noopener">View →</a>
         </div>
+      
+    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
+    <div class="card-detail">
+      <div class="card-detail-grid">
+        <div class="card-detail-item">
+          <h4>Does</h4>
+          <p>Slim fitness tracker. Heart rate. Sleep. Stress. Notifications (mutable).</p>
+        </div>
+        <div class="card-detail-item">
+          <h4>Doesn't do</h4>
+          <p>Notifications can be fully disabled. Steps and health without the phone.</p>
+        </div>
+        <div class="card-detail-item full">
+          <h4>Who it's for</h4>
+          <p>Those who want health data without a smartwatch.</p>
+        </div>
+      <p class="card-detail-caveat">⚠️ Needs Garmin Connect app to set up. Notifications enabled by default.</p>
       </div>
+    </div>
+    </div>
     </div>
 
     <div class="card" data-cat="fitness" data-budget="high" data-mode="standalone">
@@ -838,7 +1993,26 @@ footer a:hover { color: var(--accent); }
           <p class="card-price"><span class="price-gbp">£299</span><span class="price-us">$349</span></p>
           <a class="card-link" href="https://www.withings.com/uk/en/scanwatch-2" target="_blank" rel="noopener">View →</a>
         </div>
+      
+    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
+    <div class="card-detail">
+      <div class="card-detail-grid">
+        <div class="card-detail-item">
+          <h4>Does</h4>
+          <p>ECG. SpO2. 30-day battery. Traditional analogue face. Medical-grade sensors.</p>
+        </div>
+        <div class="card-detail-item">
+          <h4>Doesn't do</h4>
+          <p>Looks like a normal watch. Medical-grade heart monitoring.</p>
+        </div>
+        <div class="card-detail-item full">
+          <h4>Who it's for</h4>
+          <p>Health-conscious users who want monitoring in a traditional watch form.</p>
+        </div>
+      <p class="card-detail-caveat">⚠️ Needs Withings app to unlock full health features. Premium price.</p>
       </div>
+    </div>
+    </div>
     </div>
 
     <div class="card" data-cat="fitness" data-budget="high" data-mode="standalone">
@@ -851,7 +2025,26 @@ footer a:hover { color: var(--accent); }
           <p class="card-price"><span class="price-gbp">£329</span><span class="price-us">$399</span></p>
           <a class="card-link" href="https://www.garmin.com/en-GB/p/592606" target="_blank" rel="noopener">View →</a>
         </div>
+      
+    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
+    <div class="card-detail">
+      <div class="card-detail-grid">
+        <div class="card-detail-item">
+          <h4>Does</h4>
+          <p>Two-way satellite messaging. SOS. GPS tracking — no phone signal needed.</p>
+        </div>
+        <div class="card-detail-item">
+          <h4>Doesn't do</h4>
+          <p>Not a fitness tracker. Satellite subscription required.</p>
+        </div>
+        <div class="card-detail-item full">
+          <h4>Who it's for</h4>
+          <p>Hikers, solo adventurers, anyone going off-grid who needs emergency comms.</p>
+        </div>
+      <p class="card-detail-caveat">⚠️ Monthly satellite subscription (from ~£13/month). Bulky for everyday carry.</p>
       </div>
+    </div>
+    </div>
     </div>
 
     <div class="card" data-cat="fitness" data-budget="high" data-mode="either">
@@ -865,7 +2058,26 @@ footer a:hover { color: var(--accent); }
           <p class="card-price"><span class="price-gbp">£249</span><span class="price-us">$269</span></p>
           <a class="card-link" href="https://www.garmin.com/en-GB/p/1025217" target="_blank" rel="noopener">View →</a>
         </div>
+      
+    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
+    <div class="card-detail">
+      <div class="card-detail-grid">
+        <div class="card-detail-item">
+          <h4>Does</h4>
+          <p>GPS smartwatch. Animated workouts. Health snapshot. 11-day battery.</p>
+        </div>
+        <div class="card-detail-item">
+          <h4>Doesn't do</h4>
+          <p>Can be used with notifications fully off.</p>
+        </div>
+        <div class="card-detail-item full">
+          <h4>Who it's for</h4>
+          <p>Active users who want GPS and health tracking without a full smartwatch.</p>
+        </div>
+      <p class="card-detail-caveat">⚠️ Smaller screen. Lower-resolution vs. Apple Watch. Needs Garmin Connect once to set up.</p>
       </div>
+    </div>
+    </div>
     </div>
 
     <div class="card" data-cat="fitness" data-budget="low" data-mode="standalone">
@@ -878,7 +2090,25 @@ footer a:hover { color: var(--accent); }
           <p class="card-price"><span class="price-gbp">£12</span><span class="price-us">$14</span></p>
           <a class="card-link" href="https://www.amazon.co.uk/dp/B000GAWSDG" target="_blank" rel="noopener">View →</a>
         </div>
+      
+    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
+    <div class="card-detail">
+      <div class="card-detail-grid">
+        <div class="card-detail-item">
+          <h4>Does</h4>
+          <p>Watches the time. Sets an alarm. Has a stopwatch. 7-year battery.</p>
+        </div>
+        <div class="card-detail-item">
+          <h4>Doesn't do</h4>
+          <p>No apps. No sensors. No charging. No notifications.</p>
+        </div>
+        <div class="card-detail-item full">
+          <h4>Who it's for</h4>
+          <p>Anyone who wants a watch that's just a watch.</p>
+        </div>
       </div>
+    </div>
+    </div>
     </div>
 
     <div class="card" data-cat="fitness" data-budget="high" data-mode="either">
@@ -892,7 +2122,124 @@ footer a:hover { color: var(--accent); }
           <p class="card-price"><span class="price-gbp">£349</span><span class="price-us">$349</span></p>
           <a class="card-link" href="https://ouraring.com" target="_blank" rel="noopener">View →</a>
         </div>
+      
+    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
+    <div class="card-detail">
+      <div class="card-detail-grid">
+        <div class="card-detail-item">
+          <h4>Does</h4>
+          <p>Sleep staging. HRV. Temperature. Readiness score. Worn as a ring.</p>
+        </div>
+        <div class="card-detail-item">
+          <h4>Doesn't do</h4>
+          <p>No screen. Subtle. No notifications. Data on the app only.</p>
+        </div>
+        <div class="card-detail-item full">
+          <h4>Who it's for</h4>
+          <p>People who want health tracking without any wrist presence.</p>
+        </div>
+      <p class="card-detail-caveat">⚠️ Monthly subscription after first year (~£5.99/month). Ring sizing important — try sizing kit first.</p>
       </div>
+    </div>
+    </div>
+    </div>
+
+    <div class="card" data-cat="fitness" data-budget="high" data-mode="standalone">
+      <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/71wlhM5SXDL._AC_SL1500_.jpg" alt="Polar Pacer Pro GPS watch" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="card-img-placeholder" style="display:none">⌚</div>
+      <div class="card-body">
+        <div class="card-badges"><span class="badge badge-new">2024</span></div>
+        <p class="card-title">Polar Pacer Pro</p>
+        <p class="card-desc">Serious running and triathlon watch from Finland's original GPS watch maker. Excellent training load and recovery analytics, barometric altimeter, and 35-hour GPS battery. Minimal notification interface — Polar's ecosystem is sport, not apps.</p>
+        <div class="card-footer">
+          <p class="card-price"><span class="price-gbp">£299</span><span class="price-us">$329</span></p>
+          <a class="card-link" href="https://www.polar.com/en/products/sport-watches/pacer-pro" target="_blank" rel="noopener">View →</a>
+        </div>
+      
+    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
+    <div class="card-detail">
+      <div class="card-detail-grid">
+        <div class="card-detail-item">
+          <h4>Does</h4>
+          <p>GPS running watch. Training load. 35hr battery in GPS mode. Recovery advice.</p>
+        </div>
+        <div class="card-detail-item">
+          <h4>Doesn't do</h4>
+          <p>No social. Notifications can be disabled.</p>
+        </div>
+        <div class="card-detail-item full">
+          <h4>Who it's for</h4>
+          <p>Runners who want serious training analytics without distractions.</p>
+        </div>
+      <p class="card-detail-caveat">⚠️ Polar ecosystem is smaller than Garmin. Less third-party app support.</p>
+      </div>
+    </div>
+    </div>
+    </div>
+
+    <div class="card" data-cat="fitness" data-budget="high" data-mode="standalone">
+      <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/71h7TYFFJKL._AC_SL1500_.jpg" alt="Suunto Race S GPS watch" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="card-img-placeholder" style="display:none">🏔️</div>
+      <div class="card-body">
+        <div class="card-badges"><span class="badge badge-best">Outdoor pick</span></div>
+        <p class="card-title">Suunto Race S</p>
+        <p class="card-desc">Finnish GPS watch designed for trail running and mountaineering. AMOLED display, 26-day battery in watch mode, 40-hour GPS. No social apps, no app store — Suunto's software is sports data only. Excellent for anyone who wants to leave the phone behind outdoors.</p>
+        <div class="card-footer">
+          <p class="card-price"><span class="price-gbp">£399</span><span class="price-us">$449</span></p>
+          <a class="card-link" href="https://www.suunto.com/en-gb/Products/sports-watches/suunto-race-s/" target="_blank" rel="noopener">View →</a>
+        </div>
+      
+    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
+    <div class="card-detail">
+      <div class="card-detail-grid">
+        <div class="card-detail-item">
+          <h4>Does</h4>
+          <p>GPS. AMOLED screen. Offline maps. 40hr GPS battery. Lightweight.</p>
+        </div>
+        <div class="card-detail-item">
+          <h4>Doesn't do</h4>
+          <p>Notifications off by default. Focused on training.</p>
+        </div>
+        <div class="card-detail-item full">
+          <h4>Who it's for</h4>
+          <p>Runners and triathletes who want maps and training data.</p>
+        </div>
+      <p class="card-detail-caveat">⚠️ Expensive. Ecosystem smaller than Garmin. App is improving but behind Garmin Connect.</p>
+      </div>
+    </div>
+    </div>
+    </div>
+
+    <div class="card" data-cat="fitness" data-budget="mid" data-mode="standalone">
+      <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/71TBbFMt46L._AC_SL1500_.jpg" alt="Casio G-Shock GW-M5610 watch" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="card-img-placeholder" style="display:none">🕰️</div>
+      <div class="card-body">
+        <p class="card-title">Casio G-Shock GW-M5610</p>
+        <p class="card-desc">Atomic time-sync via radio signal, solar powered, 200m water resistance. The functional end of sports watches: no GPS, no apps, just precise time, a stopwatch, and a watch that survives anything. An honest upgrade from the F-91W if you're hard on watches.</p>
+        <div class="card-footer">
+          <p class="card-price"><span class="price-gbp">£99</span><span class="price-us">$109</span></p>
+          <a class="card-link" href="https://www.amazon.co.uk/s?k=casio+g-shock+gw-m5610" target="_blank" rel="noopener">View →</a>
+        </div>
+      
+    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
+    <div class="card-detail">
+      <div class="card-detail-grid">
+        <div class="card-detail-item">
+          <h4>Does</h4>
+          <p>Atomic timekeeping (radio sync). Solar powered. Shock-resistant. 10-year battery.</p>
+        </div>
+        <div class="card-detail-item">
+          <h4>Doesn't do</h4>
+          <p>No apps. No notifications. No charging.</p>
+        </div>
+        <div class="card-detail-item full">
+          <h4>Who it's for</h4>
+          <p>Anyone who wants an indestructible, always-accurate watch.</p>
+        </div>
+      <p class="card-detail-caveat">⚠️ No GPS — time syncs via radio signal (strongest in Japan/Europe/US). May not sync indoors.</p>
+      </div>
+    </div>
+    </div>
     </div>
 
   </div>
@@ -917,7 +2264,26 @@ footer a:hover { color: var(--accent); }
           <p class="card-price"><span class="price-gbp">£99</span><span class="price-us">$109</span></p>
           <a class="card-link" href="https://www.yotoplay.com/products/yoto-player-third-gen" target="_blank" rel="noopener">View →</a>
         </div>
+      
+    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
+    <div class="card-detail">
+      <div class="card-detail-grid">
+        <div class="card-detail-item">
+          <h4>Does</h4>
+          <p>Card-based audio player for children. Yoto radio. Night light. Parental clock face.</p>
+        </div>
+        <div class="card-detail-item">
+          <h4>Doesn't do</h4>
+          <p>No screen (no video). No Wi-Fi browsing. No apps.</p>
+        </div>
+        <div class="card-detail-item full">
+          <h4>Who it's for</h4>
+          <p>Children aged 3–12 who want audio content independently.</p>
+        </div>
+      <p class="card-detail-caveat">⚠️ Content is Yoto-card only — ongoing cost for new stories/songs.</p>
       </div>
+    </div>
+    </div>
     </div>
 
     <div class="card" data-cat="kids" data-budget="mid" data-mode="standalone">
@@ -930,7 +2296,26 @@ footer a:hover { color: var(--accent); }
           <p class="card-price"><span class="price-gbp">£59</span><span class="price-us">$69</span></p>
           <a class="card-link" href="https://www.yotoplay.com/products/yoto-mini" target="_blank" rel="noopener">View →</a>
         </div>
+      
+    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
+    <div class="card-detail">
+      <div class="card-detail-grid">
+        <div class="card-detail-item">
+          <h4>Does</h4>
+          <p>Same as Yoto Player but smaller and cheaper. No radio. No night light.</p>
+        </div>
+        <div class="card-detail-item">
+          <h4>Doesn't do</h4>
+          <p>Stripped-back — cards only.</p>
+        </div>
+        <div class="card-detail-item full">
+          <h4>Who it's for</h4>
+          <p>Younger children or travel use where the full player is too bulky.</p>
+        </div>
+      <p class="card-detail-caveat">⚠️ Less features than the full player. Still requires Yoto cards.</p>
       </div>
+    </div>
+    </div>
     </div>
 
     <div class="card" data-cat="kids" data-budget="mid" data-mode="standalone">
@@ -943,7 +2328,26 @@ footer a:hover { color: var(--accent); }
           <p class="card-price"><span class="price-gbp">£79</span><span class="price-us">$89</span></p>
           <a class="card-link" href="https://www.tonies.com/en-gb/" target="_blank" rel="noopener">View →</a>
         </div>
+      
+    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
+    <div class="card-detail">
+      <div class="card-detail-grid">
+        <div class="card-detail-item">
+          <h4>Does</h4>
+          <p>Soft, squeezable box. Figurines trigger stories/music. No buttons. No screen.</p>
+        </div>
+        <div class="card-detail-item">
+          <h4>Doesn't do</h4>
+          <p>No display. No internet browsing. No apps.</p>
+        </div>
+        <div class="card-detail-item full">
+          <h4>Who it's for</h4>
+          <p>Toddlers aged 2–6 — intuitive enough for very young children.</p>
+        </div>
+      <p class="card-detail-caveat">⚠️ Tonie figurines cost ~£15–20 each. Content locked to the Tonie ecosystem.</p>
       </div>
+    </div>
+    </div>
     </div>
 
     <div class="card" data-cat="kids" data-budget="mid" data-mode="standalone">
@@ -956,7 +2360,124 @@ footer a:hover { color: var(--accent); }
           <p class="card-price"><span class="price-gbp">£89</span><span class="price-us">$99</span></p>
           <a class="card-link" href="https://instax.com/mini_12/en/" target="_blank" rel="noopener">View →</a>
         </div>
+      
+    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
+    <div class="card-detail">
+      <div class="card-detail-grid">
+        <div class="card-detail-item">
+          <h4>Does</h4>
+          <p>Physical photos instantly. Simple controls. Selfie mirror. Kids love the immediacy.</p>
+        </div>
+        <div class="card-detail-item">
+          <h4>Doesn't do</h4>
+          <p>No screen. No editing. No sharing to social.</p>
+        </div>
+        <div class="card-detail-item full">
+          <h4>Who it's for</h4>
+          <p>Children aged 6+ who want a camera that's theirs.</p>
+        </div>
+      <p class="card-detail-caveat">⚠️ Film costs ~£1 per shot. Teach children to be selective with shots.</p>
       </div>
+    </div>
+    </div>
+    </div>
+
+    <div class="card" data-cat="kids" data-budget="low" data-mode="standalone">
+      <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/71X+mNaLHuL._AC_SL1500_.jpg" alt="Tonie character figures" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="card-img-placeholder" style="display:none">🎭</div>
+      <div class="card-body">
+        <div class="card-badges"><span class="badge badge-budget">Content add-on</span></div>
+        <p class="card-title">Tonie Figures (content packs)</p>
+        <p class="card-desc">The Tonies content library covers Roald Dahl, The Gruffalo, Peppa Pig, David Walliams, and hundreds more. Each figure is a self-contained audio experience — no subscriptions, no algorithm recommending the next one. Buy one, play one.</p>
+        <div class="card-footer">
+          <p class="card-price"><span class="price-gbp">£14–17 each</span><span class="price-us">$15–19 each</span></p>
+          <a class="card-link" href="https://www.tonies.com/en-gb/tonies/" target="_blank" rel="noopener">View →</a>
+        </div>
+      
+    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
+    <div class="card-detail">
+      <div class="card-detail-grid">
+        <div class="card-detail-item">
+          <h4>Does</h4>
+          <p>Physical figurines that play audio on the Toniebox. Stories, music, learning.</p>
+        </div>
+        <div class="card-detail-item">
+          <h4>Doesn't do</h4>
+          <p>Works only with Toniebox. No screen.</p>
+        </div>
+        <div class="card-detail-item full">
+          <h4>Who it's for</h4>
+          <p>Extending a Toniebox library for children.</p>
+        </div>
+      <p class="card-detail-caveat">⚠️ Each figure is a one-time purchase (~£15–20) for one album/story.</p>
+      </div>
+    </div>
+    </div>
+    </div>
+
+    <div class="card" data-cat="kids" data-budget="low" data-mode="standalone">
+      <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/61hCCO7IJUL._AC_SL1500_.jpg" alt="Yoto story cards" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="card-img-placeholder" style="display:none">📚</div>
+      <div class="card-body">
+        <div class="card-badges"><span class="badge badge-new">2024</span></div>
+        <p class="card-title">Yoto Cards (Story &amp; Educational)</p>
+        <p class="card-desc">Individual Yoto cards for the Yoto Player — covering audiobooks, children's radio, podcasts, and educational content. No monthly subscription needed for single-card content. The cards themselves make good gifts: physical, giftable audio.</p>
+        <div class="card-footer">
+          <p class="card-price"><span class="price-gbp">£5–12 each</span><span class="price-us">$6–14 each</span></p>
+          <a class="card-link" href="https://www.yotoplay.com/collections/cards" target="_blank" rel="noopener">View →</a>
+        </div>
+      </div>
+    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
+    <div class="card-detail">
+      <div class="card-detail-grid">
+        <div class="card-detail-item">
+          <h4>Does</h4>
+          <p>Physical cards that play audio on Yoto Player. Wide range of licensed content.</p>
+        </div>
+        <div class="card-detail-item">
+          <h4>Doesn't do</h4>
+          <p>Works only with Yoto Player. No video.</p>
+        </div>
+        <div class="card-detail-item full">
+          <h4>Who it's for</h4>
+          <p>Extending a Yoto library for children.</p>
+        </div>
+      <p class="card-detail-caveat">⚠️ Sold individually (~£7–15). Content is fixed once purchased.</p>
+      </div>
+    </div>
+    </div>
+
+    <div class="card" data-cat="kids" data-budget="low" data-mode="standalone">
+      <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/71VjMtQi0EL._AC_SL1500_.jpg" alt="VTech KidiBuzz G3 kids tablet" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="card-img-placeholder" style="display:none">📱</div>
+      <div class="card-body">
+        <div class="card-badges"><span class="badge badge-uk">UK available</span></div>
+        <p class="card-title">VTech KidiBuzz G3</p>
+        <p class="card-desc">A child-safe "smartphone" with no social media, no browser, and content filtered to age-appropriate apps. Intended as a transitional device for children who want a phone but aren't ready for one. Works over Wi-Fi only — no SIM, no mobile data.</p>
+        <div class="card-footer">
+          <p class="card-price"><span class="price-gbp">£79</span><span class="price-us">$89</span></p>
+          <a class="card-link" href="https://www.amazon.co.uk/s?k=vtech+kidibuzz+g3" target="_blank" rel="noopener">View →</a>
+        </div>
+      
+    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
+    <div class="card-detail">
+      <div class="card-detail-grid">
+        <div class="card-detail-item">
+          <h4>Does</h4>
+          <p>Child-safe Wi-Fi tablet with supervised internet. Games, camera, messaging.</p>
+        </div>
+        <div class="card-detail-item">
+          <h4>Doesn't do</h4>
+          <p>Parental controls. No access to open internet without parent approval.</p>
+        </div>
+        <div class="card-detail-item full">
+          <h4>Who it's for</h4>
+          <p>Children aged 6–12 who want a tablet with guardrails.</p>
+        </div>
+      <p class="card-detail-caveat">⚠️ Still a screen device — doesn't remove screen time, just limits adult content.</p>
+      </div>
+    </div>
+    </div>
     </div>
 
   </div>
@@ -981,7 +2502,26 @@ footer a:hover { color: var(--accent); }
           <p class="card-price"><span class="price-gbp">Free / £3/mo</span><span class="price-us">Free / $3/mo</span></p>
           <a class="card-link" href="https://www.instapaper.com" target="_blank" rel="noopener">View →</a>
         </div>
+      
+    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
+    <div class="card-detail">
+      <div class="card-detail-grid">
+        <div class="card-detail-item">
+          <h4>Does</h4>
+          <p>Save articles from any website. Read on Kindle, ad-free, distraction-free.</p>
+        </div>
+        <div class="card-detail-item">
+          <h4>Doesn't do</h4>
+          <p>No notifications. No social. No browsing — just saved articles.</p>
+        </div>
+        <div class="card-detail-item full">
+          <h4>Who it's for</h4>
+          <p>Heavy web readers who want long-form without the tab spiral.</p>
+        </div>
+      <p class="card-detail-caveat">⚠️ Instapaper Premium for Kindle delivery costs ~£2.99/month. Kindle required.</p>
       </div>
+    </div>
+    </div>
     </div>
 
     <div class="card" data-cat="news" data-budget="low" data-mode="connected">
@@ -994,7 +2534,26 @@ footer a:hover { color: var(--accent); }
           <p class="card-price"><span class="price-gbp">Free</span><span class="price-us">Free</span></p>
           <a class="card-link" href="https://netnewswire.com" target="_blank" rel="noopener">View →</a>
         </div>
+      
+    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
+    <div class="card-detail">
+      <div class="card-detail-grid">
+        <div class="card-detail-item">
+          <h4>Does</h4>
+          <p>Subscribe to site feeds. Read chronologically. No algorithm.</p>
+        </div>
+        <div class="card-detail-item">
+          <h4>Doesn't do</h4>
+          <p>No engagement metrics. No "trending". No advertising beyond feed content.</p>
+        </div>
+        <div class="card-detail-item full">
+          <h4>Who it's for</h4>
+          <p>News readers who want control over what they read, without social media.</p>
+        </div>
+      <p class="card-detail-caveat">⚠️ Requires curation — you manage your own subscriptions. Less passive than social feeds.</p>
       </div>
+    </div>
+    </div>
     </div>
 
     <div class="card" data-cat="news" data-budget="low" data-mode="standalone">
@@ -1008,7 +2567,26 @@ footer a:hover { color: var(--accent); }
           <p class="card-price"><span class="price-gbp">£2–5/week</span><span class="price-us">$3–6/week</span></p>
           <a class="card-link" href="https://www.theguardian.com" target="_blank" rel="noopener">Find one →</a>
         </div>
+      
+    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
+    <div class="card-detail">
+      <div class="card-detail-grid">
+        <div class="card-detail-item">
+          <h4>Does</h4>
+          <p>Read offline. Holds attention differently. Tangible, finite, no notifications.</p>
+        </div>
+        <div class="card-detail-item">
+          <h4>Doesn't do</h4>
+          <p>No scrolling. No infinite feed. No blue light.</p>
+        </div>
+        <div class="card-detail-item full">
+          <h4>Who it's for</h4>
+          <p>Anyone who wants a media diet reset. Works for any age.</p>
+        </div>
+      <p class="card-detail-caveat">⚠️ Content is dated by print time. Subscription costs vary.</p>
       </div>
+    </div>
+    </div>
     </div>
 
   </div>
@@ -1034,7 +2612,26 @@ footer a:hover { color: var(--accent); }
           <p class="card-price"><span class="price-gbp">£299</span><span class="price-us">$349</span></p>
           <a class="card-link" href="https://www.punkt.ch/en/products/mp02-4g-mobile-phone/" target="_blank" rel="noopener">View →</a>
         </div>
+      
+    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
+    <div class="card-detail">
+      <div class="card-detail-grid">
+        <div class="card-detail-item">
+          <h4>Does</h4>
+          <p>4G calls and texts only. Signal Messenger support. Clean OS.</p>
+        </div>
+        <div class="card-detail-item">
+          <h4>Doesn't do</h4>
+          <p>No social media apps. No browser. No camera.</p>
+        </div>
+        <div class="card-detail-item full">
+          <h4>Who it's for</h4>
+          <p>Digital minimalists who need a phone but want no smartphone features.</p>
+        </div>
+      <p class="card-detail-caveat">⚠️ Signal setup requires a smartphone initially. Premium price for minimal features.</p>
       </div>
+    </div>
+    </div>
     </div>
 
     <div class="card" data-cat="phone" data-budget="low" data-mode="standalone">
@@ -1048,7 +2645,26 @@ footer a:hover { color: var(--accent); }
           <p class="card-price"><span class="price-gbp">£40</span><span class="price-us">$50</span></p>
           <a class="card-link" href="https://www.nokia.com/phones/en_gb/nokia-3310" target="_blank" rel="noopener">View →</a>
         </div>
+      
+    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
+    <div class="card-detail">
+      <div class="card-detail-grid">
+        <div class="card-detail-item">
+          <h4>Does</h4>
+          <p>Calls and texts. 22-day standby battery. Snake. Tiny.</p>
+        </div>
+        <div class="card-detail-item">
+          <h4>Doesn't do</h4>
+          <p>No apps. No internet. No camera.</p>
+        </div>
+        <div class="card-detail-item full">
+          <h4>Who it's for</h4>
+          <p>Secondary phone, kids' first phone, or anyone detoxing from smartphones.</p>
+        </div>
+      <p class="card-detail-caveat">⚠️ 2G only in some markets — check 2G coverage before buying.</p>
       </div>
+    </div>
+    </div>
     </div>
 
     <div class="card" data-cat="phone" data-budget="high" data-mode="standalone">
@@ -1062,7 +2678,26 @@ footer a:hover { color: var(--accent); }
           <p class="card-price"><span class="price-gbp">~£399</span><span class="price-us">$449</span></p>
           <a class="card-link" href="https://www.amazon.co.uk/dp/B0FBX4SNRG" target="_blank" rel="noopener">View →</a>
         </div>
+      
+    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
+    <div class="card-detail">
+      <div class="card-detail-grid">
+        <div class="card-detail-item">
+          <h4>Does</h4>
+          <p>E-ink screen. 4G calls and texts. Long battery. Minimal design. Hotspot.</p>
+        </div>
+        <div class="card-detail-item">
+          <h4>Doesn't do</h4>
+          <p>No apps. No social. E-ink reduces screen time compulsion.</p>
+        </div>
+        <div class="card-detail-item full">
+          <h4>Who it's for</h4>
+          <p>Those wanting the look and feel of a minimal phone with modern connectivity.</p>
+        </div>
+      <p class="card-detail-caveat">⚠️ New device from small Polish company — long-term support uncertain.</p>
       </div>
+    </div>
+    </div>
     </div>
 
     <div class="card" data-cat="phone" data-budget="high" data-mode="either">
@@ -1075,7 +2710,26 @@ footer a:hover { color: var(--accent); }
           <p class="card-price"><span class="price-gbp">~£299</span><span class="price-us">$299</span></p>
           <a class="card-link" href="https://www.thelightphone.com" target="_blank" rel="noopener">View →</a>
         </div>
+      
+    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
+    <div class="card-detail">
+      <div class="card-detail-grid">
+        <div class="card-detail-item">
+          <h4>Does</h4>
+          <p>4G. E-ink screen. Calls, texts, maps, music, calendar. Nothing else.</p>
+        </div>
+        <div class="card-detail-item">
+          <h4>Doesn't do</h4>
+          <p>No social media. No browser. No notifications beyond calls/texts.</p>
+        </div>
+        <div class="card-detail-item full">
+          <h4>Who it's for</h4>
+          <p>Smartphone users who want to go minimal without losing essential functions.</p>
+        </div>
+      <p class="card-detail-caveat">⚠️ US-focused initially. UK/EU availability limited. Premium price.</p>
       </div>
+    </div>
+    </div>
     </div>
 
   </div>
@@ -1100,7 +2754,26 @@ footer a:hover { color: var(--accent); }
           <p class="card-price"><span class="price-gbp">£89</span><span class="price-us">$99</span></p>
           <a class="card-link" href="https://www.amazon.co.uk/dp/B07XJ8C8F7" target="_blank" rel="noopener">View →</a>
         </div>
+      
+    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
+    <div class="card-detail">
+      <div class="card-detail-grid">
+        <div class="card-detail-item">
+          <h4>Does</h4>
+          <p>Alexa voice assistant. Music, timers, smart home control, calls. Always-on microphone.</p>
+        </div>
+        <div class="card-detail-item">
+          <h4>Doesn't do</h4>
+          <p>No screen. Voice only. Stays in the room.</p>
+        </div>
+        <div class="card-detail-item full">
+          <h4>Who it's for</h4>
+          <p>Those who want smart home control and music without picking up their phone.</p>
+        </div>
+      <p class="card-detail-caveat">⚠️ Always-on microphone. Amazon account required. Some features require subscriptions.</p>
       </div>
+    </div>
+    </div>
     </div>
 
     <div class="card" data-cat="speaker" data-budget="high" data-mode="connected">
@@ -1113,7 +2786,26 @@ footer a:hover { color: var(--accent); }
           <p class="card-price"><span class="price-gbp">£299</span><span class="price-us">$299</span></p>
           <a class="card-link" href="https://www.apple.com/uk/homepod/" target="_blank" rel="noopener">View →</a>
         </div>
+      
+    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
+    <div class="card-detail">
+      <div class="card-detail-grid">
+        <div class="card-detail-item">
+          <h4>Does</h4>
+          <p>Exceptional sound. Siri. Apple ecosystem integration. Thread smart home hub.</p>
+        </div>
+        <div class="card-detail-item">
+          <h4>Doesn't do</h4>
+          <p>Best-in-class audio for a smart speaker. No screen.</p>
+        </div>
+        <div class="card-detail-item full">
+          <h4>Who it's for</h4>
+          <p>Apple users who want voice control and great audio in one device.</p>
+        </div>
+      <p class="card-detail-caveat">⚠️ Apple ecosystem only — less useful without iPhone/Apple Music. Expensive for a speaker.</p>
       </div>
+    </div>
+    </div>
     </div>
 
     <div class="card" data-cat="speaker" data-budget="mid" data-mode="connected">
@@ -1126,42 +2818,130 @@ footer a:hover { color: var(--accent); }
           <p class="card-price"><span class="price-gbp">£249</span><span class="price-us">$249</span></p>
           <a class="card-link" href="https://www.sonos.com/en-gb/shop/era-100" target="_blank" rel="noopener">View →</a>
         </div>
+      
+    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
+    <div class="card-detail">
+      <div class="card-detail-grid">
+        <div class="card-detail-item">
+          <h4>Does</h4>
+          <p>Multi-room audio. Wi-Fi and Bluetooth. Trueplay room tuning. Voice assistant optional.</p>
+        </div>
+        <div class="card-detail-item">
+          <h4>Doesn't do</h4>
+          <p>No screen. Works without phone once set up. Multi-room capability.</p>
+        </div>
+        <div class="card-detail-item full">
+          <h4>Who it's for</h4>
+          <p>Music lovers who want hi-fi quality wireless audio that works independently.</p>
+        </div>
+      <p class="card-detail-caveat">⚠️ Needs Sonos app to set up. Sonos has a history of discontinuing older devices.</p>
       </div>
+    </div>
+    </div>
+    </div>
+
+    <div class="card" data-cat="speaker" data-budget="high" data-mode="connected">
+      <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/61p0UKkfgZL._AC_SL1500_.jpg" alt="Ruark Audio R1 Mk4 radio" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="card-img-placeholder" style="display:none">📻</div>
+      <div class="card-body">
+        <div class="card-badges"><span class="badge badge-uk">British made</span><span class="badge badge-best">Beautifully made</span></div>
+        <p class="card-title">Ruark Audio R1 (Mk4)</p>
+        <p class="card-desc">A Bluetooth and DAB+ radio in a walnut veneer cabinet. No voice assistant, no app ecosystem, no firmware gremlins. Tune it, press play. British-designed audio furniture that makes listening to the radio feel intentional again.</p>
+        <div class="card-footer">
+          <p class="card-price"><span class="price-gbp">£279</span><span class="price-us">$319</span></p>
+          <a class="card-link" href="https://www.ruarkaudio.com/products/r1-mk4-compact-music-system" target="_blank" rel="noopener">View →</a>
+        </div>
+      
+    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
+    <div class="card-detail">
+      <div class="card-detail-grid">
+        <div class="card-detail-item">
+          <h4>Does</h4>
+          <p>DAB/FM radio. Bluetooth. Alarm. Warm wooden design. Mains powered.</p>
+        </div>
+        <div class="card-detail-item">
+          <h4>Doesn't do</h4>
+          <p>No subscription. No account. Just turns on and plays.</p>
+        </div>
+        <div class="card-detail-item full">
+          <h4>Who it's for</h4>
+          <p>Anyone wanting a proper kitchen or living room radio.</p>
+        </div>
+      <p class="card-detail-caveat">⚠️ Bluetooth-only for non-radio sources — no Wi-Fi streaming.</p>
+      </div>
+    </div>
+    </div>
+    </div>
+
+    <div class="card" data-cat="speaker" data-budget="high" data-mode="connected">
+      <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/51PxfSS4fZL._AC_SL1500_.jpg" alt="Naim Mu-so Qb 2nd gen speaker" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="card-img-placeholder" style="display:none">🔊</div>
+      <div class="card-body">
+        <div class="card-badges"><span class="badge badge-best">Audiophile pick</span></div>
+        <p class="card-title">Naim Mu-so Qb 2nd Gen</p>
+        <p class="card-desc">Naim's compact all-in-one wireless speaker. Streams Spotify, Tidal, Qobuz, internet radio, and AirPlay. Controlled via physical dial or app. The kind of speaker you stop noticing after a week because it just plays music reliably, indefinitely.</p>
+        <div class="card-footer">
+          <p class="card-price"><span class="price-gbp">£799</span><span class="price-us">$899</span></p>
+          <a class="card-link" href="https://www.naimaudio.com/product/mu-so-qb-2nd-generation" target="_blank" rel="noopener">View →</a>
+        </div>
+      
+    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
+    <div class="card-detail">
+      <div class="card-detail-grid">
+        <div class="card-detail-item">
+          <h4>Does</h4>
+          <p>Hi-fi grade speaker. AirPlay 2. Chromecast. Spotify Connect. Qobuz. No Alexa mic.</p>
+        </div>
+        <div class="card-detail-item">
+          <h4>Doesn't do</h4>
+          <p>No always-on microphone. Audiophile streaming without surveillance.</p>
+        </div>
+        <div class="card-detail-item full">
+          <h4>Who it's for</h4>
+          <p>Hi-fi listeners who want streaming quality without Alexa or Google.</p>
+        </div>
+      <p class="card-detail-caveat">⚠️ Expensive. App required for setup. Not a smart home controller.</p>
+      </div>
+    </div>
+    </div>
+    </div>
+
+    <div class="card" data-cat="speaker" data-budget="mid" data-mode="standalone">
+      <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/71eXBqH8o5L._AC_SL1500_.jpg" alt="JBL Charge 5 Wi-Fi speaker" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="card-img-placeholder" style="display:none">🎒</div>
+      <div class="card-body">
+        <div class="card-badges"><span class="badge badge-new">2024</span></div>
+        <p class="card-title">JBL Charge 5 Wi-Fi</p>
+        <p class="card-desc">Portable Bluetooth speaker that also does Wi-Fi streaming — so it works with your DAP's Bluetooth or independently from your home network. 20-hour battery. IP67 waterproof. No screen, no voice assistant unless you add one. Just music, outdoors or indoors.</p>
+        <div class="card-footer">
+          <p class="card-price"><span class="price-gbp">£179</span><span class="price-us">$199</span></p>
+          <a class="card-link" href="https://www.amazon.co.uk/s?k=jbl+charge+5+wifi" target="_blank" rel="noopener">View →</a>
+        </div>
+      
+    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
+    <div class="card-detail">
+      <div class="card-detail-grid">
+        <div class="card-detail-item">
+          <h4>Does</h4>
+          <p>Portable. Wi-Fi streaming. Bluetooth. Waterproof. 20hr battery. USB-C charge.</p>
+        </div>
+        <div class="card-detail-item">
+          <h4>Doesn't do</h4>
+          <p>No subscription. No assistant. Just audio.</p>
+        </div>
+        <div class="card-detail-item full">
+          <h4>Who it's for</h4>
+          <p>Those wanting a portable, waterproof speaker that doesn't need a phone nearby.</p>
+        </div>
+      <p class="card-detail-caveat">⚠️ Wi-Fi streaming setup requires the JBL Portable app once.</p>
+      </div>
+    </div>
+    </div>
     </div>
 
   </div>
 </div>
 
-
-    <div class="card" data-cat="planner" data-budget="mid" data-mode="standalone">
-      <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/71Z5vl2kyfL._AC_SL1500_.jpg" alt="Panda Planner Pro" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none">📅</div>
-      <div class="card-body">
-        <div class="card-badges"><span class="badge badge-uk">Designed in UK</span></div>
-        <p class="card-title">Panda Planner Pro</p>
-        <p class="card-desc">Structured daily/weekly pages with gratitude and reflection prompts. Research-backed layout based on positive psychology. Effective replacement for checking phone first thing.</p>
-        <div class="card-footer">
-          <p class="card-price"><span class="price-gbp">£25</span><span class="price-us">$29</span></p>
-          <a class="card-link" href="https://pandaplanner.com" target="_blank" rel="noopener">View →</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="card" data-cat="planner" data-budget="mid" data-mode="standalone">
-      <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/51VSiK1DPBL._AC_SL1500_.jpg" alt="Hobonichi Techo A6 planner" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none">🖊️</div>
-      <div class="card-body">
-        <p class="card-title">Hobonichi Techo (A6)</p>
-        <p class="card-desc">Japanese planner cult favourite. Thin, light, uses exceptional Tomoe River paper. Daily pages with hourly blocks. Beloved for how it makes you slow down and plan thoughtfully.</p>
-        <div class="card-footer">
-          <p class="card-price"><span class="price-gbp">£29</span><span class="price-us">$34</span></p>
-          <a class="card-link" href="https://www.1101.com/store/techo/en/planner/" target="_blank" rel="noopener">View →</a>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</div>
 
 
 <!-- ════════════════════════════════════════════
@@ -1183,7 +2963,26 @@ footer a:hover { color: var(--accent); }
           <p class="card-price"><span class="price-gbp">£149</span><span class="price-us">$149</span></p>
           <a class="card-link" href="https://www.wiimhome.com/wiim-pro-plus" target="_blank" rel="noopener">View →</a>
         </div>
+      
+    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
+    <div class="card-detail">
+      <div class="card-detail-grid">
+        <div class="card-detail-item">
+          <h4>Does</h4>
+          <p>Hi-res network streamer. AirPlay 2. Chromecast. Spotify Connect. Optical/coaxial out. Built-in DAC.</p>
+        </div>
+        <div class="card-detail-item">
+          <h4>Doesn't do</h4>
+          <p>No screen. Controlled by app or voice. No subscription.</p>
+        </div>
+        <div class="card-detail-item full">
+          <h4>Who it's for</h4>
+          <p>Anyone with a hi-fi amp who wants wireless streaming without a full streamer cost.</p>
+        </div>
+      <p class="card-detail-caveat">⚠️ Needs WiiM app to configure initially. No display — blind operation after setup.</p>
       </div>
+    </div>
+    </div>
     </div>
 
     <div class="card" data-cat="hifi" data-budget="high" data-mode="connected">
@@ -1197,7 +2996,26 @@ footer a:hover { color: var(--accent); }
           <p class="card-price"><span class="price-gbp">£599</span><span class="price-us">$599</span></p>
           <a class="card-link" href="https://www.bluesound.com/products/node/" target="_blank" rel="noopener">View →</a>
         </div>
+      
+    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
+    <div class="card-detail">
+      <div class="card-detail-grid">
+        <div class="card-detail-item">
+          <h4>Does</h4>
+          <p>Network streamer. BluOS platform. MQA decoding. AirPlay 2. Spotify Connect. High-res audio.</p>
+        </div>
+        <div class="card-detail-item">
+          <h4>Doesn't do</h4>
+          <p>No screen needed. Works with existing amp and speakers.</p>
+        </div>
+        <div class="card-detail-item full">
+          <h4>Who it's for</h4>
+          <p>Audiophiles who want a mature, well-supported streaming platform.</p>
+        </div>
+      <p class="card-detail-caveat">⚠️ Premium price. BluOS subscription not required but some features cost extra.</p>
       </div>
+    </div>
+    </div>
     </div>
 
     <div class="card" data-cat="hifi" data-budget="high" data-mode="connected">
@@ -1210,7 +3028,125 @@ footer a:hover { color: var(--accent); }
           <p class="card-price"><span class="price-gbp">£699</span><span class="price-us">$799</span></p>
           <a class="card-link" href="https://www.cambridgeaudio.com/en/products/hi-fi/cx-series/cxn100" target="_blank" rel="noopener">View →</a>
         </div>
+      
+    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
+    <div class="card-detail">
+      <div class="card-detail-grid">
+        <div class="card-detail-item">
+          <h4>Does</h4>
+          <p>Network streamer. StreamMagic platform. Hi-res. AirPlay 2. Chromecast. Balanced output.</p>
+        </div>
+        <div class="card-detail-item">
+          <h4>Doesn't do</h4>
+          <p>No subscription for basic use. Works with existing amp.</p>
+        </div>
+        <div class="card-detail-item full">
+          <h4>Who it's for</h4>
+          <p>Audiophiles who want Cambridge's legendary engineering in a streamer.</p>
+        </div>
+      <p class="card-detail-caveat">⚠️ Expensive. Balanced output requires balanced amp input to benefit.</p>
       </div>
+    </div>
+    </div>
+    </div>
+
+    <div class="card" data-cat="hifi" data-budget="low" data-mode="connected">
+      <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/51GChPK9EtL._AC_SL1500_.jpg" alt="WiiM Mini network streamer" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="card-img-placeholder" style="display:none">🎵</div>
+      <div class="card-body">
+        <div class="card-badges"><span class="badge badge-budget">Budget streamer</span></div>
+        <p class="card-title">WiiM Mini</p>
+        <p class="card-desc">The entry-level WiiM: streams Spotify, Tidal, Apple Music, and internet radio via its own DAC or your existing receiver's optical/coax input. £79 is genuinely remarkable for what it does. If you already have a receiver or active speakers, this is the fastest way to get streaming without a phone in the chain.</p>
+        <div class="card-footer">
+          <p class="card-price"><span class="price-gbp">£79</span><span class="price-us">$79</span></p>
+          <a class="card-link" href="https://www.wiimhome.com/wiim-mini" target="_blank" rel="noopener">View →</a>
+        </div>
+      
+    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
+    <div class="card-detail">
+      <div class="card-detail-grid">
+        <div class="card-detail-item">
+          <h4>Does</h4>
+          <p>Budget network streamer. AirPlay 2. Chromecast. Optical/coaxial out.</p>
+        </div>
+        <div class="card-detail-item">
+          <h4>Doesn't do</h4>
+          <p>Very affordable entry into network streaming.</p>
+        </div>
+        <div class="card-detail-item full">
+          <h4>Who it's for</h4>
+          <p>Anyone with a stereo amp who wants to add wireless streaming cheaply.</p>
+        </div>
+      <p class="card-detail-caveat">⚠️ No DAC — needs external DAC or amp with digital input for best results.</p>
+      </div>
+    </div>
+    </div>
+    </div>
+
+    <div class="card" data-cat="hifi" data-budget="mid" data-mode="connected">
+      <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/51hj2tJ5UwL._AC_SL1500_.jpg" alt="iFi Zen Stream network streamer" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="card-img-placeholder" style="display:none">🎷</div>
+      <div class="card-body">
+        <div class="card-badges"><span class="badge badge-new">2024</span></div>
+        <p class="card-title">iFi Zen Stream</p>
+        <p class="card-desc">Network transport designed to feed an external DAC with bit-perfect audio. Roon Ready, UPnP/DLNA, Spotify Connect, Tidal Connect. Audiophile-grade: no DSP, no compression, just clean digital output to whatever DAC you own. The no-phone streaming solution for serious systems.</p>
+        <div class="card-footer">
+          <p class="card-price"><span class="price-gbp">£249</span><span class="price-us">$279</span></p>
+          <a class="card-link" href="https://www.amazon.co.uk/s?k=ifi+zen+stream" target="_blank" rel="noopener">View →</a>
+        </div>
+      
+    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
+    <div class="card-detail">
+      <div class="card-detail-grid">
+        <div class="card-detail-item">
+          <h4>Does</h4>
+          <p>Roon Ready. Network streamer. Full audiophile stack support. USB out.</p>
+        </div>
+        <div class="card-detail-item">
+          <h4>Doesn't do</h4>
+          <p>No subscription needed for basic use. Roon needs a Roon Core.</p>
+        </div>
+        <div class="card-detail-item full">
+          <h4>Who it's for</h4>
+          <p>Audiophiles in a Roon or high-end streaming ecosystem.</p>
+        </div>
+      <p class="card-detail-caveat">⚠️ Setup can be technical. Roon subscription is expensive (~£12/month).</p>
+      </div>
+    </div>
+    </div>
+    </div>
+
+    <div class="card" data-cat="hifi" data-budget="high" data-mode="connected">
+      <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/41I6XhYJHAL._AC_SL1500_.jpg" alt="Linn Sneaky DSM streamer amplifier" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="card-img-placeholder" style="display:none">🎶</div>
+      <div class="card-body">
+        <div class="card-badges"><span class="badge badge-uk">UK made</span></div>
+        <p class="card-title">Linn Sneaky DSM</p>
+        <p class="card-desc">Linn's entry-level network music player and amplifier in one box. Built in Scotland, designed to last decades. Streams Tidal, Qobuz, Spotify, and internet radio. Roon Ready. The Scottish school of engineering believes in making things once and making them right.</p>
+        <div class="card-footer">
+          <p class="card-price"><span class="price-gbp">£1,395</span><span class="price-us">$1,699</span></p>
+          <a class="card-link" href="https://www.linn.co.uk/hifi/network-music-players/sneaky-dsm" target="_blank" rel="noopener">View →</a>
+        </div>
+      
+    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
+    <div class="card-detail">
+      <div class="card-detail-grid">
+        <div class="card-detail-item">
+          <h4>Does</h4>
+          <p>Integrated network streamer + amp. Exakt technology. Linn ecosystem.</p>
+        </div>
+        <div class="card-detail-item">
+          <h4>Doesn't do</h4>
+          <p>One box replaces streamer + amp. Linn's renowned sound quality.</p>
+        </div>
+        <div class="card-detail-item full">
+          <h4>Who it's for</h4>
+          <p>Audiophiles who want a single high-end box for speakers and streaming.</p>
+        </div>
+      <p class="card-detail-caveat">⚠️ Very expensive. Linn ecosystem can lock you in. Needs passive speakers.</p>
+      </div>
+    </div>
+    </div>
     </div>
 
   </div>
@@ -1235,7 +3171,26 @@ footer a:hover { color: var(--accent); }
           <p class="card-price"><span class="price-gbp">£89</span><span class="price-us">$99</span></p>
           <a class="card-link" href="https://www.amazon.co.uk/dp/B09JWYJ34T" target="_blank" rel="noopener">View →</a>
         </div>
+      
+    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
+    <div class="card-detail">
+      <div class="card-detail-grid">
+        <div class="card-detail-item">
+          <h4>Does</h4>
+          <p>DECT cordless. Rings when your mobile does (via Bluetooth link). Answer machine. HD voice.</p>
+        </div>
+        <div class="card-detail-item">
+          <h4>Doesn't do</h4>
+          <p>No internet browsing. No apps. Stays in the home.</p>
+        </div>
+        <div class="card-detail-item full">
+          <h4>Who it's for</h4>
+          <p>Anyone who wants calls in any room without carrying their phone.</p>
+        </div>
+      <p class="card-detail-caveat">⚠️ Bluetooth link to mobile requires one-time setup with your phone.</p>
       </div>
+    </div>
+    </div>
     </div>
 
     <div class="card" data-cat="homephone" data-budget="low" data-mode="connected">
@@ -1249,7 +3204,121 @@ footer a:hover { color: var(--accent); }
           <p class="card-price"><span class="price-gbp">£49</span><span class="price-us">$59</span></p>
           <a class="card-link" href="https://www.amazon.co.uk/dp/B077N9C5VX" target="_blank" rel="noopener">View →</a>
         </div>
+      
+    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
+    <div class="card-detail">
+      <div class="card-detail-grid">
+        <div class="card-detail-item">
+          <h4>Does</h4>
+          <p>DECT cordless. Nuisance call blocker. Large buttons. Clear display.</p>
+        </div>
+        <div class="card-detail-item">
+          <h4>Doesn't do</h4>
+          <p>No internet. No app required. Plug and play.</p>
+        </div>
+        <div class="card-detail-item full">
+          <h4>Who it's for</h4>
+          <p>Home users who want a reliable cordless with spam call blocking.</p>
+        </div>
       </div>
+    </div>
+    </div>
+    </div>
+
+    <div class="card" data-cat="homephone" data-budget="mid" data-mode="connected">
+      <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/61X4JRLF3QL._AC_SL1500_.jpg" alt="BT 4600 Advanced cordless phone" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="card-img-placeholder" style="display:none">☎️</div>
+      <div class="card-body">
+        <div class="card-badges"><span class="badge badge-uk">UK brand</span></div>
+        <p class="card-title">BT 4600 Advanced Cordless Phone</p>
+        <p class="card-desc">BT's own nuisance call blocking phone — blocks 100% of nuisance calls before they ring, using their call guardian system. Pairs with your mobile via Bluetooth so your phone stays put. Sold as single or twin pack. Often on offer at Currys or BT directly.</p>
+        <div class="card-footer">
+          <p class="card-price"><span class="price-gbp">£59</span><span class="price-us">$69</span></p>
+          <a class="card-link" href="https://www.amazon.co.uk/s?k=bt+4600+advanced+cordless+phone" target="_blank" rel="noopener">View →</a>
+        </div>
+      
+    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
+    <div class="card-detail">
+      <div class="card-detail-grid">
+        <div class="card-detail-item">
+          <h4>Does</h4>
+          <p>DECT. Smart call blocker. Answering machine. UK brand. Plug and play.</p>
+        </div>
+        <div class="card-detail-item">
+          <h4>Doesn't do</h4>
+          <p>No internet. No account. Blocks nuisance calls automatically.</p>
+        </div>
+        <div class="card-detail-item full">
+          <h4>Who it's for</h4>
+          <p>UK home users who want protection from spam calls without a smartphone.</p>
+        </div>
+      </div>
+    </div>
+    </div>
+    </div>
+
+    <div class="card" data-cat="homephone" data-budget="mid" data-mode="connected">
+      <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/61UlXtbR9FL._AC_SL1500_.jpg" alt="Gigaset CL660A HX cordless phone" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="card-img-placeholder" style="display:none">📲</div>
+      <div class="card-body">
+        <div class="card-badges"><span class="badge badge-new">2024</span></div>
+        <p class="card-title">Gigaset CL660A HX</p>
+        <p class="card-desc">A more affordable Gigaset than the C575A. Large display, ECO DECT (reduces radiation when idle), answering machine, and contact sync from your phone. German-made reliability at a lower price. Does everything a home phone should do, nothing a phone shouldn't.</p>
+        <div class="card-footer">
+          <p class="card-price"><span class="price-gbp">£59</span><span class="price-us">$69</span></p>
+          <a class="card-link" href="https://www.amazon.co.uk/s?k=gigaset+cl660a" target="_blank" rel="noopener">View →</a>
+        </div>
+      
+    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
+    <div class="card-detail">
+      <div class="card-detail-grid">
+        <div class="card-detail-item">
+          <h4>Does</h4>
+          <p>Premium DECT. HD voice. Colour display. Compatible with other Gigaset handsets.</p>
+        </div>
+        <div class="card-detail-item">
+          <h4>Doesn't do</h4>
+          <p>No internet. No apps. Just clear calls.</p>
+        </div>
+        <div class="card-detail-item full">
+          <h4>Who it's for</h4>
+          <p>Those who want a premium-feel handset for a home phone system.</p>
+        </div>
+      </div>
+    </div>
+    </div>
+    </div>
+
+    <div class="card" data-cat="homephone" data-budget="low" data-mode="connected">
+      <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/71cBVZv2y9L._AC_SL1500_.jpg" alt="BT 3580 Big Button phone" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="card-img-placeholder" style="display:none">📞</div>
+      <div class="card-body">
+        <div class="card-badges"><span class="badge badge-budget">Simplest option</span></div>
+        <p class="card-title">BT 3580 Big Button Phone</p>
+        <p class="card-desc">Designed for clarity and simplicity: large buttons, loud ringer, hearing aid compatible. Not a smart phone — doesn't pretend to be. If you want a phone in the house for people who find smartphones confusing, this is the honest answer.</p>
+        <div class="card-footer">
+          <p class="card-price"><span class="price-gbp">£25</span><span class="price-us">$29</span></p>
+          <a class="card-link" href="https://www.amazon.co.uk/s?k=bt+3580+big+button+phone" target="_blank" rel="noopener">View →</a>
+        </div>
+      
+    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
+    <div class="card-detail">
+      <div class="card-detail-grid">
+        <div class="card-detail-item">
+          <h4>Does</h4>
+          <p>Large buttons. Loud ringer. Hearing aid compatible. Easy to use.</p>
+        </div>
+        <div class="card-detail-item">
+          <h4>Doesn't do</h4>
+          <p>No apps. No internet. Simple call and answer.</p>
+        </div>
+        <div class="card-detail-item full">
+          <h4>Who it's for</h4>
+          <p>Older users, those with visual or hearing difficulties.</p>
+        </div>
+      </div>
+    </div>
+    </div>
     </div>
 
   </div>
@@ -1311,6 +3380,85 @@ function setCurrency(c) {
   document.getElementById('pBtn-usd').classList.toggle('active', c === 'usd');
 }
 
+// ─── Expandable card detail ───────────────────────
+function toggleDetail(btn) {
+  const card = btn.closest('.card');
+  const detail = card.querySelector('.card-detail');
+  if (!detail) return;
+  const open = detail.classList.toggle('open');
+  btn.textContent = open ? 'Less ↑' : 'More ↓';
+}
+
+// ─── Two-level category nav ───────────────────────
+const MUSIC_CATS = ['music','headphones','hifi','speaker'];
+const PHONE_CATS = ['phone','homephone'];
+let activeGroup = null; // 'music' | 'phone' | null
+
+function closeAllGroups() {
+  ['music','phone'].forEach(g => {
+    const sub = document.getElementById('sub-' + g);
+    const pill = document.getElementById('pill-' + g);
+    if (sub) { sub.classList.remove('open'); }
+    if (pill) { pill.classList.remove('open', 'active'); }
+    // clear sub-pill actives
+    if (sub) sub.querySelectorAll('.sub-pill').forEach(p => p.classList.remove('active'));
+  });
+  activeGroup = null;
+}
+
+function filterTop(cat, btn) {
+  closeAllGroups();
+  // mark pill
+  document.querySelectorAll('.cat-pill').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  // show/hide sections
+  const allCats = ['sleep','reading','music','headphones','hifi','speaker','writing','camera','fitness','kids','news','phone','homephone'];
+  document.querySelectorAll('.cat-section').forEach(sec => {
+    if (cat === 'all') {
+      sec.classList.remove('hidden');
+    } else {
+      sec.classList.toggle('hidden', sec.dataset.cat !== cat);
+    }
+  });
+}
+
+function toggleGroup(group, btn) {
+  const sub = document.getElementById('sub-' + group);
+  const wasOpen = sub.classList.contains('open');
+
+  // close any open group first
+  closeAllGroups();
+  document.querySelectorAll('.cat-pill').forEach(p => p.classList.remove('active'));
+
+  if (!wasOpen) {
+    // open this group
+    sub.classList.add('open');
+    btn.classList.add('open', 'active');
+    activeGroup = group;
+    // show all sections in this group
+    const cats = group === 'music' ? MUSIC_CATS : PHONE_CATS;
+    document.querySelectorAll('.cat-section').forEach(sec => {
+      sec.classList.toggle('hidden', !cats.includes(sec.dataset.cat));
+    });
+  }
+  // if was open, we already closed it — show all
+  if (wasOpen) {
+    document.querySelectorAll('.cat-section').forEach(sec => sec.classList.remove('hidden'));
+    document.querySelector('.cat-pill').classList.add('active'); // All button
+  }
+}
+
+function filterSub(cat, btn) {
+  // mark sub-pill active
+  const sub = btn.closest('.sub-pills');
+  sub.querySelectorAll('.sub-pill').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  // show only this cat
+  document.querySelectorAll('.cat-section').forEach(sec => {
+    sec.classList.toggle('hidden', sec.dataset.cat !== cat);
+  });
+}
+
 // ─── Wizard ──────────────────────────────────────
 const wizState = {};
 function pickWiz(step, val) {
@@ -1333,16 +3481,15 @@ function showWizResults() {
   const results = document.getElementById('wiz-results');
   const grid = document.getElementById('wiz-result-grid');
   const cat = wizState[0];
-  const budget = wizState[1]; // low mid high
-  const mode = wizState[2];   // standalone either connected
+  const budget = wizState[1];
+  const mode = wizState[2];
 
-  // gather matching cards
   const allCards = Array.from(document.querySelectorAll('.card'));
   let matches = allCards.filter(card => {
     const cardCat = card.dataset.cat;
     const cardBudget = card.dataset.budget;
     const cardMode = card.dataset.mode;
-    const catMatch = !cat || cardCat === cat || (cat === 'music' && cardCat === 'headphones') || (cat === 'nav' && cardCat === 'fitness') || (cat === 'news' && cardCat === 'news');
+    const catMatch = !cat || cardCat === cat || (cat === 'music' && ['music','headphones'].includes(cardCat));
     const budgetMatch = !budget || budget === 'high' ||
       (budget === 'mid' && (cardBudget === 'low' || cardBudget === 'mid')) ||
       (budget === 'low' && cardBudget === 'low');
@@ -1385,18 +3532,8 @@ function resetWiz() {
   document.getElementById('wiz-results').style.display = 'none';
 }
 
-// ─── Category filter ─────────────────────────────
-function filterCat(cat, btn) {
-  document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
-  btn.classList.add('active');
-  document.querySelectorAll('.cat-section').forEach(sec => {
-    if (cat === 'all') {
-      sec.classList.remove('hidden');
-    } else {
-      sec.classList.toggle('hidden', sec.dataset.cat !== cat);
-    }
-  });
-}
+// ─── Legacy compat ───────────────────────────────
+function filterCat(cat, btn) { filterTop(cat, btn); }
 
 // ─── Share ───────────────────────────────────────
 function copyLink() {
