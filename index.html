@@ -564,7 +564,6 @@ footer a:hover { color: var(--accent); }
         <button class="wiz-opt" onclick="wizPick('category','camera',this)">Camera</button>
         <button class="wiz-opt" onclick="wizPick('category','fitness',this)">Fitness &amp; health</button>
         <button class="wiz-opt" onclick="wizPick('category','writing',this)">Notes &amp; writing</button>
-        <button class="wiz-opt" onclick="wizPick('category','news',this)">News &amp; long reads</button>
         <button class="wiz-opt" onclick="wizPick('category','kids',this)">Kids' entertainment</button>
         <button class="wiz-opt" onclick="wizPick('category','phone',this)">Replace the phone itself</button>
       </div>
@@ -587,15 +586,6 @@ footer a:hover { color: var(--accent); }
         <button class="wiz-opt" onclick="wizPick('streaming','yes',this)">Yes — I want to keep using it</button>
         <button class="wiz-opt" onclick="wizPick('streaming','no',this)">No — I have my own music files</button>
         <button class="wiz-opt" onclick="wizPick('streaming','either',this)">Either works for me</button>
-      </div>
-    </div>
-
-    <!-- Step P1: phone replacement type -->
-    <div class="wiz-step" id="wiz-sp1">
-      <p class="wiz-q">What kind of replacement?</p>
-      <div class="wiz-opts">
-        <button class="wiz-opt" onclick="wizPick('phoneType','minimal',this)">A minimal or dumb phone</button>
-        <button class="wiz-opt" onclick="wizPick('phoneType','home',this)">A home landline</button>
       </div>
     </div>
 
@@ -639,11 +629,8 @@ footer a:hover { color: var(--accent); }
     <button class="cat-pill" onclick="filterTop('camera',this)">Camera</button>
     <button class="cat-pill" onclick="filterTop('fitness',this)">Fitness</button>
     <button class="cat-pill" onclick="filterTop('kids',this)">Kids</button>
-    <button class="cat-pill" onclick="filterTop('news',this)">News</button>
 
-    <div class="cat-nav-group">
-      <button class="cat-pill" id="pill-phone" onclick="toggleGroup('phone',this)">Phones <span class="arrow">▾</span></button>
-    </div>
+    <button class="cat-pill" onclick="filterTop('phone',this)">Phones</button>
 
     <div class="price-toggle">
       <span>Prices:</span>
@@ -655,16 +642,10 @@ footer a:hover { color: var(--accent); }
   <!-- Music sub-pills -->
   <div class="sub-pills" id="sub-music">
     <button class="sub-pill" onclick="filterSub('music',this)">Portable players</button>
-    <button class="sub-pill" onclick="filterSub('headphones',this)">Headphones</button>
     <button class="sub-pill" onclick="filterSub('hifi',this)">Home hi-fi</button>
     <button class="sub-pill" onclick="filterSub('speaker',this)">Smart speakers</button>
   </div>
 
-  <!-- Phones sub-pills -->
-  <div class="sub-pills" id="sub-phone">
-    <button class="sub-pill" onclick="filterSub('phone',this)">Minimal / dumb phones</button>
-    <button class="sub-pill" onclick="filterSub('homephone',this)">Home phones</button>
-  </div>
 
 
 
@@ -819,106 +800,7 @@ footer a:hover { color: var(--accent); }
     </div>
     </div>
 
-    <div class="card" data-cat="sleep" data-budget="mid" data-mode="standalone">
-      <img class="card-img" loading="eager" src="https://yogasleep.com/cdn/shop/files/DohmClassicWhite_ISO_2028_001.jpg?v=1729193887" alt="Yogasleep Dohm Classic white noise machine" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none"></div>
-      <div class="card-body">
-        <p class="card-title">Yogasleep Dohm Classic</p>
-        <p class="card-desc">The original mechanical white noise machine — a real fan inside a plastic housing, not a digital recording. Two-speed control, plug-in. Used by sleep clinics. Nothing digital, nothing that updates, nothing with Wi-Fi.</p>
-        <div class="card-footer">
-          <p class="card-price"><span class="price-gbp">£59</span><span class="price-us">$49</span></p>
-          <a class="card-link" href="https://www.amazon.co.uk/s?k=yogasleep+dohm+classic" target="_blank" rel="noopener">View →</a>
-        </div>
-      
-    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
-    <div class="card-detail">
-      <div class="card-detail-grid">
-        <div class="card-detail-item">
-          <h4>Does</h4>
-          <p>Real mechanical fan white noise. Two speeds. Plug-in.</p>
-        </div>
-        <div class="card-detail-item">
-          <h4>Doesn't do</h4>
-          <p>No digital components. No app. No Wi-Fi. No recordings.</p>
-        </div>
-        <div class="card-detail-item full">
-          <h4>Who it's for</h4>
-          <p>Light sleepers, shift workers, parents settling babies.</p>
-        </div>
-      <p class="card-detail-caveat">Note: Only works plugged in — not for travel without an adapter.</p>
-      
-      <div class="yt-wrap"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/cTR-w1qVFgE" title="Yogasleep Dohm Classic review" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-    </div>
-    </div>
-    </div>
-    </div>
 
-    <div class="card" data-cat="sleep" data-budget="mid" data-mode="standalone">
-      <img class="card-img" loading="eager" src="https://media.4rgos.it/s/Argos/7220711_R_SET?$Main768$&w=620&h=620" alt="Acctim Aura LED alarm clock" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none"></div>
-      <div class="card-body">
-        <div class="card-badges"><span class="badge badge-uk">UK brand</span></div>
-        <p class="card-title">Acctim Aura LED Alarm Clock</p>
-        <p class="card-desc">Simple digital alarm with a large, readable display and a gently dimming night mode. Under £30 from a British brand. No app, no Bluetooth — just reliable timekeeping at the bedside.</p>
-        <div class="card-footer">
-          <p class="card-price"><span class="price-gbp">£28</span><span class="price-us">$33</span></p>
-          <a class="card-link" href="https://www.amazon.co.uk/s?k=acctim+aura+alarm+clock" target="_blank" rel="noopener">View →</a>
-        </div>
-      
-    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
-    <div class="card-detail">
-      <div class="card-detail-grid">
-        <div class="card-detail-item">
-          <h4>Does</h4>
-          <p>Large clear display. Gradual dim mode. Two alarms. Battery backup.</p>
-        </div>
-        <div class="card-detail-item">
-          <h4>Doesn't do</h4>
-          <p>No app. No Bluetooth. Simple buttons only.</p>
-        </div>
-        <div class="card-detail-item full">
-          <h4>Who it's for</h4>
-          <p>Anyone who wants an affordable, reliable bedside clock.</p>
-        </div>
-    </div>
-    </div>
-    </div>
-    </div>
-
-    <div class="card" data-cat="sleep" data-budget="high" data-mode="standalone">
-      <img class="card-img" loading="eager" src="https://static01.galaxus.com/productimages/7/6/5/9/2/7/0/2/1/8/3/4/6/5/1/5/6/6/0/01a0b2e2-1f4c-776c-804c-9420157faf51_720.jpeg" alt="Beurer TL 30 SAD lamp" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none"></div>
-      <div class="card-body">
-        <div class="card-badges"><span class="badge badge-new">2023</span></div>
-        <p class="card-title">Beurer TL 30 SAD Lamp</p>
-        <p class="card-desc">10,000 lux SAD therapy lamp for winter mornings. 30 minutes of morning light exposure is well-evidenced for mood and sleep regulation. Compact, medical-grade, no app required.</p>
-        <div class="card-footer">
-          <p class="card-price"><span class="price-gbp">£49</span><span class="price-us">$55</span></p>
-          <a class="card-link" href="https://www.amazon.co.uk/dp/B074V53FTX" target="_blank" rel="noopener">View →</a>
-        </div>
-      
-    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
-    <div class="card-detail">
-      <div class="card-detail-grid">
-        <div class="card-detail-item">
-          <h4>Does</h4>
-          <p>10,000 lux light therapy. Timer function. Medical-grade UV-free.</p>
-        </div>
-        <div class="card-detail-item">
-          <h4>Doesn't do</h4>
-          <p>No app. No subscription. Plug-in only.</p>
-        </div>
-        <div class="card-detail-item full">
-          <h4>Who it's for</h4>
-          <p>People affected by winter low mood or irregular sleep cycles.</p>
-        </div>
-      <p class="card-detail-caveat">Note: Not a substitute for medical advice. Use in the morning only.</p>
-      
-      <div class="yt-wrap"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/Vx7K3_SMjvE" title="Beurer TL 30 SAD lamp review" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-    </div>
-    </div>
-    </div>
-    </div>
 
   </div>
 </div>
@@ -1037,42 +919,6 @@ footer a:hover { color: var(--accent); }
     </div>
 
     <div class="card" data-cat="reading" data-budget="high" data-mode="either">
-      <img class="card-img" loading="eager" src="https://shop.boox.com/cdn/shop/files/1_295503b0-e1e5-4492-9693-a843c282e4ba_medium.jpg?v=1729236227" alt="Boox Note Air4 C" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none"></div>
-      <div class="card-body">
-        <div class="card-badges"><span class="badge badge-new">2024</span></div>
-        <p class="card-title">Boox Note Air4 C</p>
-        <p class="card-desc">10.3" colour e-ink Android tablet. More flexible than a Kindle — install any app — but that's also the risk. Best for determined adults who want colour annotations.</p>
-        <div class="card-footer">
-          <p class="card-price"><span class="price-gbp">£479</span><span class="price-us">$549</span></p>
-          <a class="card-link" href="https://shop.boox.com/products/noteair4c" target="_blank" rel="noopener">View →</a>
-        </div>
-      
-    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
-    <div class="card-detail">
-      <div class="card-detail-grid">
-        <div class="card-detail-item">
-          <h4>Does</h4>
-          <p>Colour e-ink. Android OS for apps. Stylus. 10.3" screen. Full PDF workflow.</p>
-        </div>
-        <div class="card-detail-item">
-          <h4>Doesn't do</h4>
-          <p>No mandatory subscription. Can run third-party apps.</p>
-        </div>
-        <div class="card-detail-item full">
-          <h4>Who it's for</h4>
-          <p>Power users who want e-ink + apps + handwriting in one device.</p>
-        </div>
-      <p class="card-detail-caveat">Note: Android on e-ink is sluggish. Security updates not guaranteed long-term.</p>
-      
-      <div class="yt-wrap"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/buqNwOwGZMk" title="Boox Note Air4 C review" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-    </div>
-    </div>
-    </div>
-      <div class="card-caveat">Note: Runs Android — you can install distracting apps. Use with intention.</div>
-    </div>
-
-    <div class="card" data-cat="reading" data-budget="high" data-mode="either">
       <img class="card-img" loading="eager" src="https://www.notebookcheck.net/fileadmin/Notebooks/News/_nc4/Kindle-Scribe-2024-b.jpg" alt="Kindle Scribe e-reader with stylus" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
       <div class="card-img-placeholder" style="display:none"></div>
       <div class="card-body">
@@ -1140,42 +986,6 @@ footer a:hover { color: var(--accent); }
     </div>
     </div>
     </div>
-    </div>
-
-    <div class="card" data-cat="reading" data-budget="high" data-mode="connected">
-      <img class="card-img" loading="eager" src="https://daylightcomputer.com/_next/static/media/OG-product.3a410372.png" alt="Daylight Computer DC-1" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none"></div>
-      <div class="card-body">
-        <div class="card-badges"><span class="badge badge-new">2024</span></div>
-        <p class="card-title">Daylight Computer DC-1</p>
-        <p class="card-desc">A tablet built entirely around calm computing: a LivePaper display runs at 60fps with no eye strain, no notifications by design, no social apps in the app store. Positioned as the anti-iPad. US-shipping currently; UK availability in 2025–26.</p>
-        <div class="card-footer">
-          <p class="card-price"><span class="price-gbp">~£600</span><span class="price-us">$729</span></p>
-          <a class="card-link" href="https://daylightcomputer.com" target="_blank" rel="noopener">View →</a>
-        </div>
-      
-    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
-    <div class="card-detail">
-      <div class="card-detail-grid">
-        <div class="card-detail-item">
-          <h4>Does</h4>
-          <p>Reflective colour LCD. Works outdoors in sunlight. No blue light. Slow scroll speed.</p>
-        </div>
-        <div class="card-detail-item">
-          <h4>Doesn't do</h4>
-          <p>No backlit glow. No notifications. Runs Android apps but intentionally slow.</p>
-        </div>
-        <div class="card-detail-item full">
-          <h4>Who it's for</h4>
-          <p>Heavy readers bothered by eye strain or blue light at night.</p>
-        </div>
-      <p class="card-detail-caveat">Note: Very expensive for the specs. App compatibility limited. Not a general tablet.</p>
-      </div>
-    
-      <div class="yt-wrap"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/nkORLuSRVcc" title="Daylight DC-1 review" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-    </div>
-    </div>
-      <div class="card-caveat">Note: US shipping currently; import costs apply for UK buyers.</div>
     </div>
 
     <div class="card" data-cat="reading" data-budget="high" data-mode="standalone">
@@ -1288,41 +1098,6 @@ footer a:hover { color: var(--accent); }
       <p class="card-detail-caveat">Note: Very small screen means awkward browsing long playlists.</p>
       
       <div class="yt-wrap"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/IsMTnF7Z86Y" title="Shanling M0 Pro review" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-    </div>
-    </div>
-    </div>
-    </div>
-
-    <div class="card" data-cat="music" data-budget="low" data-mode="standalone">
-      <img class="card-img" loading="eager" src="https://muzikercdn.com/uploads/products/782/78248/main_0148f9b3.jpg" alt="SanDisk Clip Sport Plus" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none"></div>
-      <div class="card-body">
-        <div class="card-badges"><span class="badge badge-budget">Budget pick</span></div>
-        <p class="card-title">SanDisk Clip Sport Plus</p>
-        <p class="card-desc">Clips to your shirt. 16GB built-in + microSD. 20-hour battery. Built-in FM radio. Designed for running. £35 and completely distraction-free.</p>
-        <div class="card-footer">
-          <p class="card-price"><span class="price-gbp">£35</span><span class="price-us">$40</span></p>
-          <a class="card-link" href="https://www.amazon.co.uk/dp/B07412FXJK" target="_blank" rel="noopener">View →</a>
-        </div>
-      
-    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
-    <div class="card-detail">
-      <div class="card-detail-grid">
-        <div class="card-detail-item">
-          <h4>Does</h4>
-          <p>Plays MP3/AAC/FLAC from SD card. FM radio. Clip. 20hr battery.</p>
-        </div>
-        <div class="card-detail-item">
-          <h4>Doesn't do</h4>
-          <p>No streaming. No Wi-Fi. No app. Files only.</p>
-        </div>
-        <div class="card-detail-item full">
-          <h4>Who it's for</h4>
-          <p>The simplest possible music player. Gym, running, kids.</p>
-        </div>
-      <p class="card-detail-caveat">Note: Must manage a music library yourself (MP3 files). No streaming.</p>
-      
-      <div class="yt-wrap"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/GCSAquHknXQ" title="SanDisk Clip Sport Plus review" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
     </div>
     </div>
     </div>
@@ -1469,225 +1244,6 @@ footer a:hover { color: var(--accent); }
   </div>
 </div>
 
-<!-- ════════════════════════════════════════════
-     HEADPHONES
-═════════════════════════════════════════════ -->
-<div class="cat-section" id="headphones" data-cat="headphones">
-  <h2>Headphones &amp; Earphones</h2>
-  <p class="cat-desc">Good headphones make listening intentional. These don't need your phone — pair with a DAP or just a dumb source.</p>
-  <div class="cards">
-
-    <div class="card" data-cat="headphones" data-budget="mid" data-mode="standalone">
-      <img class="card-img" loading="eager" src="https://headphones.com/cdn/shop/files/SonyXM5Black41024x1024.jpg?v=1702431625&width=1946" alt="Sony WH-1000XM5" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none"></div>
-      <div class="card-body">
-        <div class="card-badges"><span class="badge badge-best">Best ANC</span></div>
-        <p class="card-title">Sony WH-1000XM5</p>
-        <p class="card-desc">Best-in-class noise cancellation creates a private listening space. 30-hour battery. Works via Bluetooth or wired. Use with a DAP — no phone needed once paired.</p>
-        <div class="card-footer">
-          <p class="card-price"><span class="price-gbp">£279</span><span class="price-us">$349</span></p>
-          <a class="card-link" href="https://www.sony.co.uk/en/headphones/products/wh-1000xm5" target="_blank" rel="noopener">View →</a>
-        </div>
-      
-    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
-    <div class="card-detail">
-      <div class="card-detail-grid">
-        <div class="card-detail-item">
-          <h4>Does</h4>
-          <p>Best-in-class noise cancellation. 30hr battery. Folds flat. USB-C.</p>
-        </div>
-        <div class="card-detail-item">
-          <h4>Doesn't do</h4>
-          <p>No subscription needed. Works wired with any player.</p>
-        </div>
-        <div class="card-detail-item full">
-          <h4>Who it's for</h4>
-          <p>Commuters, office workers, anyone who wants to cut out the world.</p>
-        </div>
-      <p class="card-detail-caveat">Note: Requires initial Sony app setup for ANC customisation (optional). Premium price.</p>
-      </div>
-    
-      <div class="yt-wrap"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/FE-X8xlwXRw" title="Sony WH-1000XM5 review" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-    </div>
-    </div>
-    </div>
-
-    <div class="card" data-cat="headphones" data-budget="mid" data-mode="standalone">
-      <img class="card-img" loading="eager" src="https://assets.bosecreative.com/transform/1cc87f19-5612-4a8f-af10-3cd339220e3f/QC45_WhiteSmoke_8289_RGB" alt="Bose QuietComfort 45" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none"></div>
-      <div class="card-body">
-        <div class="card-badges"><span class="badge badge-uk">UK favourite</span></div>
-        <p class="card-title">Bose QuietComfort 45</p>
-        <p class="card-desc">Slightly warmer sound than Sony. More comfortable for long sessions. 24-hour battery. Pairs perfectly with a standalone music player.</p>
-        <div class="card-footer">
-          <p class="card-price"><span class="price-gbp">£249</span><span class="price-us">$279</span></p>
-          <a class="card-link" href="https://www.bose.co.uk/en_gb/products/headphones/over_ear_headphones/quietcomfort-headphones-45.html" target="_blank" rel="noopener">View →</a>
-        </div>
-      
-    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
-    <div class="card-detail">
-      <div class="card-detail-grid">
-        <div class="card-detail-item">
-          <h4>Does</h4>
-          <p>Excellent ANC. Comfortable for all-day wear. USB-C. 24hr battery.</p>
-        </div>
-        <div class="card-detail-item">
-          <h4>Doesn't do</h4>
-          <p>No mandatory app. Works straight out of the box.</p>
-        </div>
-        <div class="card-detail-item full">
-          <h4>Who it's for</h4>
-          <p>Those who find Sony's sound too "digital" — Bose is warmer.</p>
-        </div>
-      <p class="card-detail-caveat">Note: Slightly bulkier than XM5. Older model now — check for XM5 pricing.</p>
-      </div>
-    
-      <div class="yt-wrap"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/1WEdZrUlcbE" title="Bose QuietComfort 45 review" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-    </div>
-    </div>
-    </div>
-
-    <div class="card" data-cat="headphones" data-budget="low" data-mode="standalone">
-      <img class="card-img" loading="eager" src="https://koss.com/cdn/shop/files/Koss_KPH30i_Rhythm_Beige_2000x.jpg?v=1791295165" alt="Koss KPH30i headphones" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none"></div>
-      <div class="card-body">
-        <div class="card-badges"><span class="badge badge-budget">Under £50</span></div>
-        <p class="card-title">Koss KPH30i</p>
-        <p class="card-desc">Lightweight on-ear, wired only. No app, no firmware, no ANC. Just excellent sound for under £30. A cult classic among audiophiles who understand that simple is better.</p>
-        <div class="card-footer">
-          <p class="card-price"><span class="price-gbp">£29</span><span class="price-us">$32</span></p>
-          <a class="card-link" href="https://www.koss.com/products/kph30i" target="_blank" rel="noopener">View →</a>
-        </div>
-      
-    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
-    <div class="card-detail">
-      <div class="card-detail-grid">
-        <div class="card-detail-item">
-          <h4>Does</h4>
-          <p>On-ear open-back. Light. Driven by anything — phone, DAP, amp. Replaceable cable.</p>
-        </div>
-        <div class="card-detail-item">
-          <h4>Doesn't do</h4>
-          <p>No ANC. No Bluetooth. Wired only.</p>
-        </div>
-        <div class="card-detail-item full">
-          <h4>Who it's for</h4>
-          <p>Budget buyers who want excellent sound without wireless complexity.</p>
-        </div>
-      <p class="card-detail-caveat">Note: Open-back means sound leaks — not for public transport. No ANC.</p>
-      
-      <div class="yt-wrap"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/SsVGE6sqQnM" title="Koss KPH30i review" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-    </div>
-    </div>
-    </div>
-    </div>
-
-    <div class="card" data-cat="headphones" data-budget="mid" data-mode="standalone">
-      <img class="card-img" loading="eager" src="https://www.pbtech.com/pacific/imgprod/H/S/HSTSEN509144__1.jpg?h=4133995672" alt="Sennheiser HD 560S headphones" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none"></div>
-      <div class="card-body">
-        <div class="card-badges"><span class="badge badge-best">Best wired over-ear</span></div>
-        <p class="card-title">Sennheiser HD 560S</p>
-        <p class="card-desc">Open-back wired headphones. No batteries, no Bluetooth, no app, no firmware updates — ever. Exceptional soundstage and detail. Pairs superbly with a DAP or desktop DAC. Designed to disappear and let the music exist.</p>
-        <div class="card-footer">
-          <p class="card-price"><span class="price-gbp">£149</span><span class="price-us">$169</span></p>
-          <a class="card-link" href="https://www.amazon.co.uk/s?k=sennheiser+hd+560s" target="_blank" rel="noopener">View →</a>
-        </div>
-      
-    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
-    <div class="card-detail">
-      <div class="card-detail-grid">
-        <div class="card-detail-item">
-          <h4>Does</h4>
-          <p>Open-back. Neutral, accurate sound. Good for hi-fi listening. Easy to drive.</p>
-        </div>
-        <div class="card-detail-item">
-          <h4>Doesn't do</h4>
-          <p>No Bluetooth. No ANC. Home/desk use only.</p>
-        </div>
-        <div class="card-detail-item full">
-          <h4>Who it's for</h4>
-          <p>Home listeners who want accurate audio for music or film.</p>
-        </div>
-      <p class="card-detail-caveat">Note: Open-back — not for commuting. No noise isolation.</p>
-      
-      <div class="yt-wrap"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/pbzq3rOrEbI" title="Sennheiser HD 560S review" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-    </div>
-    </div>
-    </div>
-    </div>
-
-    <div class="card" data-cat="headphones" data-budget="mid" data-mode="standalone">
-      <img class="card-img" loading="eager" src="https://api.beyerdynamic.de/media/catalog/product/d/t/dt-770-pro-80-ohm-headphones-beyerdynamic-perspective_transparent.png?store=usa_en&image-type=image" alt="Beyerdynamic DT 770 Pro headphones" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none"></div>
-      <div class="card-body">
-        <p class="card-title">Beyerdynamic DT 770 Pro (80 Ohm)</p>
-        <p class="card-desc">Closed-back, wired, German-made, no app, no Bluetooth. The 80-ohm version drives well from portable DAPs. A studio standard since 1985 — improved over the years but fundamentally unchanged because they got it right.</p>
-        <div class="card-footer">
-          <p class="card-price"><span class="price-gbp">£129</span><span class="price-us">$149</span></p>
-          <a class="card-link" href="https://www.amazon.co.uk/s?k=beyerdynamic+dt+770+pro+80+ohm" target="_blank" rel="noopener">View →</a>
-        </div>
-      
-    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
-    <div class="card-detail">
-      <div class="card-detail-grid">
-        <div class="card-detail-item">
-          <h4>Does</h4>
-          <p>Closed-back. Excellent isolation. Detailed sound. Replaceable parts.</p>
-        </div>
-        <div class="card-detail-item">
-          <h4>Doesn't do</h4>
-          <p>No Bluetooth. Wired only. Needs a decent headphone amp for best results.</p>
-        </div>
-        <div class="card-detail-item full">
-          <h4>Who it's for</h4>
-          <p>Studio-style listening at home. Those who want to block the world out.</p>
-        </div>
-      <p class="card-detail-caveat">Note: 80 ohm version needs more amplification than the 32 ohm model.</p>
-      
-      <div class="yt-wrap"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/-Px6iRn3qa8" title="Beyerdynamic DT 770 Pro review" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-    </div>
-    </div>
-    </div>
-    </div>
-
-    <div class="card" data-cat="headphones" data-budget="mid" data-mode="standalone">
-      <img class="card-img" loading="eager" src="https://cdn.prod.website-files.com/627128d862c9a44234848dda/6540a32b1b300656259455e3_ARIA2.jpg" alt="Moondrop Aria 2 IEM earphones" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none"></div>
-      <div class="card-body">
-        <div class="card-badges"><span class="badge badge-new">2023</span></div>
-        <p class="card-title">Moondrop Aria 2 (IEM)</p>
-        <p class="card-desc">In-ear monitors designed for DAPs, not phones. Single dynamic driver, flat frequency response, 3.5mm wired. No ANC, no Bluetooth, no app. Pair with any DAP for a genuinely high-quality portable system under £100 combined.</p>
-        <div class="card-footer">
-          <p class="card-price"><span class="price-gbp">£59</span><span class="price-us">$69</span></p>
-          <a class="card-link" href="https://www.amazon.co.uk/s?k=moondrop+aria+2" target="_blank" rel="noopener">View →</a>
-        </div>
-      
-    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
-    <div class="card-detail">
-      <div class="card-detail-grid">
-        <div class="card-detail-item">
-          <h4>Does</h4>
-          <p>In-ear monitor. Warm, musical sound. Detachable cable. Affordable audiophile tier.</p>
-        </div>
-        <div class="card-detail-item">
-          <h4>Doesn't do</h4>
-          <p>No Bluetooth. No ANC. Must be used with a DAP or phone headphone jack.</p>
-        </div>
-        <div class="card-detail-item full">
-          <h4>Who it's for</h4>
-          <p>Anyone who wants hi-res IEM quality without spending £200+.</p>
-        </div>
-      <p class="card-detail-caveat">Note: No wireless option. Requires 3.5mm — may need a dongle for newer phones.</p>
-      
-      <div class="yt-wrap"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/TXRrY7ULLa8" title="Moondrop Aria 2 review" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-    </div>
-    </div>
-    </div>
-    </div>
-
-  </div>
-</div>
 
 <!-- ════════════════════════════════════════════
      WRITING
@@ -1835,42 +1391,6 @@ footer a:hover { color: var(--accent); }
     </div>
     </div>
       <div class="card-caveat">Note: Japan import; available via proxy services or Amazon Japan.</div>
-    </div>
-
-    <div class="card" data-cat="writing" data-budget="low" data-mode="standalone">
-      <img class="card-img" loading="eager" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/AlphaSmart_Neo2.jpg/1200px-AlphaSmart_Neo2.jpg" alt="AlphaSmart Neo 2 word processor" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none"></div>
-      <div class="card-body">
-        <div class="card-badges"><span class="badge badge-budget">Cult classic</span></div>
-        <p class="card-title">AlphaSmart Neo 2</p>
-        <p class="card-desc">Made in the early 2000s for US schools: a keyboard with a 4-line display that stores up to 8 files, runs on 3 AA batteries for 700 hours, and plugs into a computer as a USB keyboard. Still sold secondhand for £30–60. Beloved by distraction-haters.</p>
-        <div class="card-footer">
-          <p class="card-price"><span class="price-gbp">£30–60</span><span class="price-us">$30–80</span></p>
-          <a class="card-link" href="https://www.ebay.co.uk/sch/i.html?_nkw=alphasmart+neo+2" target="_blank" rel="noopener">Find secondhand →</a>
-        </div>
-      
-    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
-    <div class="card-detail">
-      <div class="card-detail-grid">
-        <div class="card-detail-item">
-          <h4>Does</h4>
-          <p>Runs on AA batteries for 700 hours. Types directly into any computer when plugged in via USB. Fast.</p>
-        </div>
-        <div class="card-detail-item">
-          <h4>Doesn't do</h4>
-          <p>No internet. No apps. No backlight. Purely mechanical.</p>
-        </div>
-        <div class="card-detail-item full">
-          <h4>Who it's for</h4>
-          <p>Writers who want a retro, distraction-free tool with almost no running costs.</p>
-        </div>
-      <p class="card-detail-caveat">Note: Discontinued — buy used. No modern sync. Basic LCD screen.</p>
-      
-      <div class="yt-wrap"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/8TT8tcSP2i0" title="Freewrite Alpha distraction-free writer review" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-    </div>
-    </div>
-    </div>
-      <div class="card-caveat">Note: Secondhand only — no new stock. Check eBay UK.</div>
     </div>
 
     <div class="card" data-cat="writing" data-budget="mid" data-mode="standalone">
@@ -2092,40 +1612,7 @@ footer a:hover { color: var(--accent); }
     </div>
     </div>
 
-    <div class="card" data-cat="camera" data-budget="mid" data-mode="standalone">
-      <img class="card-img" loading="eager" src="https://www.glazerscamera.com/cdn/shop/files/1222_01_Hero_1200x1200.png?v=1708107755" alt="Ricoh GR IIIx Urban Edition camera" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none"></div>
-      <div class="card-body">
-        <div class="card-badges"><span class="badge badge-new">2024</span></div>
-        <p class="card-title">Ricoh GR IIIx Urban Edition</p>
-        <p class="card-desc">A hardware-identical variant of the GR IIIx with matte black finish. Same excellent 40mm-equivalent APS-C sensor. Mentioned separately because it's often in stock when the standard edition isn't, and the aesthetic suits the philosophy.</p>
-        <div class="card-footer">
-          <p class="card-price"><span class="price-gbp">£949</span><span class="price-us">$1,049</span></p>
-          <a class="card-link" href="https://www.amazon.co.uk/s?k=ricoh+gr+iiix+urban" target="_blank" rel="noopener">View →</a>
-        </div>
-      
-    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
-    <div class="card-detail">
-      <div class="card-detail-grid">
-        <div class="card-detail-item">
-          <h4>Does</h4>
-          <p>Same internals as GR IIIx. Limited edition finish. APS-C. Pocketable.</p>
-        </div>
-        <div class="card-detail-item">
-          <h4>Doesn't do</h4>
-          <p>Limited edition — availability varies.</p>
-        </div>
-        <div class="card-detail-item full">
-          <h4>Who it's for</h4>
-          <p>GR IIIx fans who want the distinctive colourway.</p>
-        </div>
-      <p class="card-detail-caveat">Note: Same caveats as GR IIIx. Premium price for cosmetic difference.</p>
-      
-      <div class="yt-wrap"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/iP8pPoSEAuc" title="Ricoh GR IIIx review" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-    </div>
-    </div>
-    </div>
-    </div>
+
 
   </div>
 </div>
@@ -2173,40 +1660,6 @@ footer a:hover { color: var(--accent); }
     </div>
     </div>
 
-    <div class="card" data-cat="fitness" data-budget="mid" data-mode="standalone">
-      <img class="card-img" loading="eager" src="https://cdn.fleetfeet.com/a:1.5-f:cover-w:1200/products/vivosmart5_HR_1001.7.png?s=b29a0470" alt="Garmin Vivosmart 5" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none"></div>
-      <div class="card-body">
-        <p class="card-title">Garmin Vivosmart 5</p>
-        <p class="card-desc">Slim fitness band. Tracks steps, sleep, heart rate, stress. Minimal notification pass-through. 7-day battery. Good for people who want health data, not a mini phone.</p>
-        <div class="card-footer">
-          <p class="card-price"><span class="price-gbp">£99</span><span class="price-us">$109</span></p>
-          <a class="card-link" href="https://www.garmin.com/en-GB/p/707770" target="_blank" rel="noopener">View →</a>
-        </div>
-      
-    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
-    <div class="card-detail">
-      <div class="card-detail-grid">
-        <div class="card-detail-item">
-          <h4>Does</h4>
-          <p>Slim fitness tracker. Heart rate. Sleep. Stress. Notifications (mutable).</p>
-        </div>
-        <div class="card-detail-item">
-          <h4>Doesn't do</h4>
-          <p>Notifications can be fully disabled. Steps and health without the phone.</p>
-        </div>
-        <div class="card-detail-item full">
-          <h4>Who it's for</h4>
-          <p>Those who want health data without a smartwatch.</p>
-        </div>
-      <p class="card-detail-caveat">Note: Needs Garmin Connect app to set up. Notifications enabled by default.</p>
-      
-      <div class="yt-wrap"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/N1l36UnILc8" title="Garmin Vivosmart 5 review" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-    </div>
-    </div>
-    </div>
-    </div>
-
     <div class="card" data-cat="fitness" data-budget="high" data-mode="standalone">
       <img class="card-img" loading="eager" src="https://www.withings.com/cdn/shop/files/PACKSHOT_scanwatch-2-42b__70830531_INT_front-face_01.jpg?v=1781268118&width=1200" alt="Withings ScanWatch 2" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
       <div class="card-img-placeholder" style="display:none"></div>
@@ -2237,40 +1690,6 @@ footer a:hover { color: var(--accent); }
       <p class="card-detail-caveat">Note: Needs Withings app to unlock full health features. Premium price.</p>
       
       <div class="yt-wrap"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/FHF0_TgpJhA" title="Withings ScanWatch 2 review" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-    </div>
-    </div>
-    </div>
-    </div>
-
-    <div class="card" data-cat="fitness" data-budget="high" data-mode="standalone">
-      <img class="card-img" loading="eager" src="https://ascentoutdoors.com/cdn/shop/products/inreachblack_grande.png?v=1643828657" alt="Garmin inReach Mini 2" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none"></div>
-      <div class="card-body">
-        <p class="card-title">Garmin inReach Mini 2</p>
-        <p class="card-desc">Satellite communicator for the outdoors. Two-way messaging anywhere on earth — no mobile signal needed. The ultimate "leave your phone behind" device for hikers.</p>
-        <div class="card-footer">
-          <p class="card-price"><span class="price-gbp">£329</span><span class="price-us">$399</span></p>
-          <a class="card-link" href="https://www.garmin.com/en-GB/p/592606" target="_blank" rel="noopener">View →</a>
-        </div>
-      
-    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
-    <div class="card-detail">
-      <div class="card-detail-grid">
-        <div class="card-detail-item">
-          <h4>Does</h4>
-          <p>Two-way satellite messaging. SOS. GPS tracking — no phone signal needed.</p>
-        </div>
-        <div class="card-detail-item">
-          <h4>Doesn't do</h4>
-          <p>Not a fitness tracker. Satellite subscription required.</p>
-        </div>
-        <div class="card-detail-item full">
-          <h4>Who it's for</h4>
-          <p>Hikers, solo adventurers, anyone going off-grid who needs emergency comms.</p>
-        </div>
-      <p class="card-detail-caveat">Note: Monthly satellite subscription (from ~£13/month). Bulky for everyday carry.</p>
-      
-      <div class="yt-wrap"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/263jKPWNaDU" title="Garmin inReach Mini 2 review" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
     </div>
     </div>
     </div>
@@ -2307,76 +1726,6 @@ footer a:hover { color: var(--accent); }
       </div>
     
       <div class="yt-wrap"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/e0WYzuq_Xro" title="Garmin Vivoactive 5 review" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-    </div>
-    </div>
-    </div>
-
-    <div class="card" data-cat="fitness" data-budget="mid" data-mode="standalone">
-      <img class="card-img" loading="eager" src="https://www.withings.com/cdn/shop/files/PACKSHOT_scanwatch-light-37rgw__70832931_INT_front-close-up_01.jpg?v=1781272906&width=1200" alt="Withings ScanWatch Light" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none"></div>
-      <div class="card-body">
-        <div class="card-badges"><span class="badge badge-new">2023</span></div>
-        <p class="card-title">Withings ScanWatch Light</p>
-        <p class="card-desc">Looks like an analogue watch. Tracks steps, sleep, heart rate, and SpO2 — no screen cluttering your wrist with pings. 30-day battery. Syncs to the app when you want to look, not constantly. A watch that earns a second glance for the wrong reasons.</p>
-        <div class="card-footer">
-          <p class="card-price"><span class="price-gbp">£199</span><span class="price-us">$229</span></p>
-          <a class="card-link" href="https://www.withings.com/uk/en/scanwatch-light" target="_blank" rel="noopener">View →</a>
-        </div>
-
-    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
-    <div class="card-detail">
-      <div class="card-detail-grid">
-        <div class="card-detail-item">
-          <h4>Does</h4>
-          <p>Steps, sleep, heart rate, SpO2. 30-day battery. Classic dial face. Syncs when docked.</p>
-        </div>
-        <div class="card-detail-item">
-          <h4>Doesn't do</h4>
-          <p>No notifications. No app on the wrist. No charging every night.</p>
-        </div>
-        <div class="card-detail-item full">
-          <h4>Who it's for</h4>
-          <p>People who want health data without a screen on their wrist demanding attention.</p>
-        </div>
-      <p class="card-detail-caveat">Note: No GPS. Sleep tracking requires wearing it at night. Syncs via Bluetooth — phone needed weekly.</p>
-      
-      <div class="yt-wrap"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/g3sw2I5sHXg" title="Withings ScanWatch Light review" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-    </div>
-    </div>
-    </div>
-    </div>
-
-    <div class="card" data-cat="fitness" data-budget="high" data-mode="either">
-      <img class="card-img" loading="eager" src="https://ourahealth.imgix.net/blue-sky/pop/gen4/hero-final.jpg" alt="Oura Ring Gen 4" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none"></div>
-      <div class="card-body">
-        <div class="card-badges"><span class="badge badge-new">2024</span></div>
-        <p class="card-title">Oura Ring (Gen 4)</p>
-        <p class="card-desc">Health tracking without anything on your wrist or in your hand. Tracks sleep, HRV, body temp. Check the app once a day intentionally — rather than all day casually like a watch.</p>
-        <div class="card-footer">
-          <p class="card-price"><span class="price-gbp">£349</span><span class="price-us">$349</span></p>
-          <a class="card-link" href="https://ouraring.com" target="_blank" rel="noopener">View →</a>
-        </div>
-      
-    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
-    <div class="card-detail">
-      <div class="card-detail-grid">
-        <div class="card-detail-item">
-          <h4>Does</h4>
-          <p>Sleep staging. HRV. Temperature. Readiness score. Worn as a ring.</p>
-        </div>
-        <div class="card-detail-item">
-          <h4>Doesn't do</h4>
-          <p>No screen. Subtle. No notifications. Data on the app only.</p>
-        </div>
-        <div class="card-detail-item full">
-          <h4>Who it's for</h4>
-          <p>People who want health tracking without any wrist presence.</p>
-        </div>
-      <p class="card-detail-caveat">Note: Monthly subscription after first year (~£5.99/month). Ring sizing important — try sizing kit first.</p>
-      
-      <div class="yt-wrap"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/RCELNZL9USc" title="Oura Ring 4 review" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-    </div>
     </div>
     </div>
     </div>
@@ -2451,39 +1800,7 @@ footer a:hover { color: var(--accent); }
     </div>
     </div>
 
-    <div class="card" data-cat="fitness" data-budget="mid" data-mode="standalone">
-      <img class="card-img" loading="eager" src="https://www.casio.com/content/dam/casio/product-info/locales/ca/en/timepiece/product/watch/G/GW/GWM/GW-M5610U-1/assets/GW-M5610U-1.png.transform/main-visual-pc/image.png" alt="Casio G-Shock GW-M5610 watch" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none"></div>
-      <div class="card-body">
-        <p class="card-title">Casio G-Shock GW-M5610</p>
-        <p class="card-desc">Atomic time-sync via radio signal, solar powered, 200m water resistance. The functional end of sports watches: no GPS, no apps, just precise time, a stopwatch, and a watch that survives anything. An honest upgrade from the F-91W if you're hard on watches.</p>
-        <div class="card-footer">
-          <p class="card-price"><span class="price-gbp">£99</span><span class="price-us">$109</span></p>
-          <a class="card-link" href="https://www.amazon.co.uk/s?k=casio+g-shock+gw-m5610" target="_blank" rel="noopener">View →</a>
-        </div>
-      
-    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
-    <div class="card-detail">
-      <div class="card-detail-grid">
-        <div class="card-detail-item">
-          <h4>Does</h4>
-          <p>Atomic timekeeping (radio sync). Solar powered. Shock-resistant. 10-year battery.</p>
-        </div>
-        <div class="card-detail-item">
-          <h4>Doesn't do</h4>
-          <p>No apps. No notifications. No charging.</p>
-        </div>
-        <div class="card-detail-item full">
-          <h4>Who it's for</h4>
-          <p>Anyone who wants an indestructible, always-accurate watch.</p>
-        </div>
-      <p class="card-detail-caveat">Note: No GPS — time syncs via radio signal (strongest in Japan/Europe/US). May not sync indoors.</p>
-      
-      <div class="yt-wrap"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/uUXRp4pM7_4" title="Casio G-Shock GW-M5610 review" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-    </div>
-    </div>
-    </div>
-    </div>
+
 
   </div>
 </div>
@@ -2599,109 +1916,6 @@ footer a:hover { color: var(--accent); }
     </div>
     </div>
 
-    <div class="card" data-cat="kids" data-budget="mid" data-mode="standalone">
-      <img class="card-img" loading="eager" src="https://sharperimage.com/cdn/shop/files/209177-z1.jpg?v=1767727291&width=720" alt="Fujifilm Instax Mini 12 camera" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none"></div>
-      <div class="card-body">
-        <p class="card-title">Fujifilm Instax Mini 12 (Kids)</p>
-        <p class="card-desc">Give a child their own camera. Prints instantly. Creates real memories. No scrolling through albums, no cloud, no sharing — just the physical print in their hands.</p>
-        <div class="card-footer">
-          <p class="card-price"><span class="price-gbp">£89</span><span class="price-us">$99</span></p>
-          <a class="card-link" href="https://instax.com/mini_12/en/" target="_blank" rel="noopener">View →</a>
-        </div>
-      
-    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
-    <div class="card-detail">
-      <div class="card-detail-grid">
-        <div class="card-detail-item">
-          <h4>Does</h4>
-          <p>Physical photos instantly. Simple controls. Selfie mirror. Kids love the immediacy.</p>
-        </div>
-        <div class="card-detail-item">
-          <h4>Doesn't do</h4>
-          <p>No screen. No editing. No sharing to social.</p>
-        </div>
-        <div class="card-detail-item full">
-          <h4>Who it's for</h4>
-          <p>Children aged 6+ who want a camera that's theirs.</p>
-        </div>
-      <p class="card-detail-caveat">Note: Film costs ~£1 per shot. Teach children to be selective with shots.</p>
-      </div>
-    
-      <div class="yt-wrap"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/S-yH30q_x98" title="Fujifilm Instax Mini 12 review" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-    </div>
-    </div>
-    </div>
-
-    <div class="card" data-cat="kids" data-budget="low" data-mode="standalone">
-      <img class="card-img" loading="eager" src="https://us.tonies.com/cdn/shop/files/Chase-10000571-TB2Hero2.png?v=1774883304&width=1200" alt="Tonie character figures" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none"></div>
-      <div class="card-body">
-        <div class="card-badges"><span class="badge badge-budget">Content add-on</span></div>
-        <p class="card-title">Tonie Figures (content packs)</p>
-        <p class="card-desc">The Tonies content library covers Roald Dahl, The Gruffalo, Peppa Pig, David Walliams, and hundreds more. Each figure is a self-contained audio experience — no subscriptions, no algorithm recommending the next one. Buy one, play one.</p>
-        <div class="card-footer">
-          <p class="card-price"><span class="price-gbp">£14–17 each</span><span class="price-us">$15–19 each</span></p>
-          <a class="card-link" href="https://www.tonies.com/en-gb/tonies/" target="_blank" rel="noopener">View →</a>
-        </div>
-      
-    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
-    <div class="card-detail">
-      <div class="card-detail-grid">
-        <div class="card-detail-item">
-          <h4>Does</h4>
-          <p>Physical figurines that play audio on the Toniebox. Stories, music, learning.</p>
-        </div>
-        <div class="card-detail-item">
-          <h4>Doesn't do</h4>
-          <p>Works only with Toniebox. No screen.</p>
-        </div>
-        <div class="card-detail-item full">
-          <h4>Who it's for</h4>
-          <p>Extending a Toniebox library for children.</p>
-        </div>
-      <p class="card-detail-caveat">Note: Each figure is a one-time purchase (~£15–20) for one album/story.</p>
-      
-      <div class="yt-wrap"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/6sM_7CL_6jg" title="Toniebox review with Tonie characters" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-    </div>
-    </div>
-    </div>
-    </div>
-
-    <div class="card" data-cat="kids" data-budget="low" data-mode="standalone">
-      <img class="card-img" loading="eager" src="https://media-static.yotomedia.com/yoto/pub/bR1utqRjhOMTMgm3l3oE-FG0_lj3d-E5Cy3EZqeQrbg" alt="Yoto story cards" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none"></div>
-      <div class="card-body">
-        <div class="card-badges"><span class="badge badge-new">2024</span></div>
-        <p class="card-title">Yoto Cards (Story &amp; Educational)</p>
-        <p class="card-desc">Individual Yoto cards for the Yoto Player — covering audiobooks, children's radio, podcasts, and educational content. No monthly subscription needed for single-card content. The cards themselves make good gifts: physical, giftable audio.</p>
-        <div class="card-footer">
-          <p class="card-price"><span class="price-gbp">£5–12 each</span><span class="price-us">$6–14 each</span></p>
-          <a class="card-link" href="https://www.yotoplay.com/collections/cards" target="_blank" rel="noopener">View →</a>
-        </div>
-      </div>
-    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
-    <div class="card-detail">
-      <div class="card-detail-grid">
-        <div class="card-detail-item">
-          <h4>Does</h4>
-          <p>Physical cards that play audio on Yoto Player. Wide range of licensed content.</p>
-        </div>
-        <div class="card-detail-item">
-          <h4>Doesn't do</h4>
-          <p>Works only with Yoto Player. No video.</p>
-        </div>
-        <div class="card-detail-item full">
-          <h4>Who it's for</h4>
-          <p>Extending a Yoto library for children.</p>
-        </div>
-      <p class="card-detail-caveat">Note: Sold individually (~£7–15). Content is fixed once purchased.</p>
-      
-      <div class="yt-wrap"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/73fiN3j68Ko" title="Yoto Player and story cards review" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-    </div>
-    </div>
-    </div>
-
     <div class="card" data-cat="kids" data-budget="low" data-mode="standalone">
       <img class="card-img" loading="eager" src="https://www.vtech.com/wp-content/uploads/2024/03/VTech__KidiBuzz__3_ID_04622c2c3a44-1-scaled.jpg" alt="VTech KidiBuzz G3 kids tablet" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
       <div class="card-img-placeholder" style="display:none"></div>
@@ -2740,121 +1954,6 @@ footer a:hover { color: var(--accent); }
   </div>
 </div>
 
-<!-- ════════════════════════════════════════════
-     NEWS
-═════════════════════════════════════════════ -->
-<div class="cat-section" id="news" data-cat="news">
-  <h2>Intentional Reading &amp; News</h2>
-  <p class="cat-desc">Dedicated reading surfaces. No algorithm, no notifications — just what you chose to read, on a screen that doesn't fight you.</p>
-  <div class="cards">
-
-    <div class="card" data-cat="news" data-budget="mid" data-mode="standalone">
-      <img class="card-img" loading="eager" src="https://cdn.sanity.io/images/xpujt61d/production/ec334f1cfaf91834419d10a71671e3f7af37e357-2600x2367.png" alt="Remarkable 2 e-ink tablet" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none"></div>
-      <div class="card-body">
-        <div class="card-badges"><span class="badge badge-best">Best overall</span></div>
-        <p class="card-title">reMarkable 2</p>
-        <p class="card-desc">Paper-like e-ink tablet for reading and writing. Send PDFs, news articles, and documents to it — read them with a stylus in hand, no notifications, no browser, nothing pulling your attention sideways. The typing experience alone is worth it for anyone who reads to think.</p>
-        <div class="card-footer">
-          <p class="card-price"><span class="price-gbp">£299</span><span class="price-us">$299</span></p>
-          <a class="card-link" href="https://remarkable.com/store/remarkable-2" target="_blank" rel="noopener">View →</a>
-        </div>
-
-    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
-    <div class="card-detail">
-      <div class="card-detail-grid">
-        <div class="card-detail-item">
-          <h4>Does</h4>
-          <p>E-ink reading and handwriting. Send articles and PDFs. Stylus annotation. Email integration for document delivery.</p>
-        </div>
-        <div class="card-detail-item">
-          <h4>Doesn't do</h4>
-          <p>No browser. No apps. No notifications. Purely reading and writing.</p>
-        </div>
-        <div class="card-detail-item full">
-          <h4>Who it's for</h4>
-          <p>People who read long-form to think, not just consume — and want a surface that supports that.</p>
-        </div>
-      <p class="card-detail-caveat">Note: Connect subscription (~£2.99/month) unlocks cloud sync and email send-to-device. Works without it.</p>
-      </div>
-    
-      <div class="yt-wrap"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/yLbAh2oBPU0" title="reMarkable 2 review" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-    </div>
-    </div>
-    </div>
-
-    <div class="card" data-cat="news" data-budget="high" data-mode="standalone">
-      <img class="card-img" loading="eager" src="https://daylightcomputer.com/_next/static/media/OG-product.3a410372.png" alt="Daylight DC1 e-ink tablet" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none"></div>
-      <div class="card-body">
-        <div class="card-badges"><span class="badge badge-new">2024</span></div>
-        <p class="card-title">Daylight DC1</p>
-        <p class="card-desc">A new kind of screen: LivePaper technology refreshes fast enough to read video at 60fps, with no blue light. Warm amber-orange display designed specifically for eyes. Better for long reading sessions than any backlit screen, without the sluggishness of traditional e-ink.</p>
-        <div class="card-footer">
-          <p class="card-price"><span class="price-gbp">~£589</span><span class="price-us">$729</span></p>
-          <a class="card-link" href="https://daylightcomputer.com" target="_blank" rel="noopener">View →</a>
-        </div>
-
-    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
-    <div class="card-detail">
-      <div class="card-detail-grid">
-        <div class="card-detail-item">
-          <h4>Does</h4>
-          <p>Fast-refresh e-ink. No blue light. Runs Android apps. Sunlight-readable. Stylus support.</p>
-        </div>
-        <div class="card-detail-item">
-          <h4>Doesn't do</h4>
-          <p>Not a colour display. Limited app ecosystem vs. a full tablet.</p>
-        </div>
-        <div class="card-detail-item full">
-          <h4>Who it's for</h4>
-          <p>People who spend hours reading and want a screen that doesn't drain them.</p>
-        </div>
-      <p class="card-detail-caveat">Note: Expensive and niche. Primarily a US product — check shipping and warranty for UK buyers.</p>
-      </div>
-    
-      <div class="yt-wrap"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/nkORLuSRVcc" title="Daylight DC1 review" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-    </div>
-    </div>
-    </div>
-
-    <div class="card" data-cat="news" data-budget="low" data-mode="connected">
-      <img class="card-img" loading="eager" src="https://ereader.kobo.com/cdn/shop/files/1-Dual_Device-UK-ANZ_1080x1080_8783d29f-1db3-4f71-a028-fabe94de4892_1200x1200.png?v=1757384449" alt="Kobo Clara BW e-reader" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none"></div>
-      <div class="card-body">
-        <div class="card-badges"><span class="badge badge-budget">Budget pick</span></div>
-        <p class="card-title">Kobo Clara BW + Pocket</p>
-        <p class="card-desc">The Kobo Clara BW is the no-frills e-reader. Pair it with Pocket (free with Kobo) and every article you save from any browser lands on the device overnight. Wake up to reading, not feeds. No notifications on the device, ever.</p>
-        <div class="card-footer">
-          <p class="card-price"><span class="price-gbp">£109</span><span class="price-us">$119</span></p>
-          <a class="card-link" href="https://uk.kobobooks.com/products/kobo-clara-bw" target="_blank" rel="noopener">View →</a>
-        </div>
-
-    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
-    <div class="card-detail">
-      <div class="card-detail-grid">
-        <div class="card-detail-item">
-          <h4>Does</h4>
-          <p>E-ink reading. Built-in Pocket syncs saved articles. OverDrive library integration. ComfortLight.</p>
-        </div>
-        <div class="card-detail-item">
-          <h4>Doesn't do</h4>
-          <p>No Amazon lock-in. No ads. No browser. No notifications.</p>
-        </div>
-        <div class="card-detail-item full">
-          <h4>Who it's for</h4>
-          <p>Long-form readers who want articles and books on the same device, without Amazon.</p>
-        </div>
-      <p class="card-detail-caveat">Note: Pocket article sync works over Wi-Fi — needs occasional connection. Kobo account required.</p>
-      
-      <div class="yt-wrap"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/-bPWRbrOzTk" title="Kobo Clara BW review" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-    </div>
-    </div>
-    </div>
-    </div>
-
-  </div>
-</div>
 
 
 <!-- ════════════════════════════════════════════
@@ -2895,41 +1994,6 @@ footer a:hover { color: var(--accent); }
       <p class="card-detail-caveat">Note: Signal setup requires a smartphone initially. Premium price for minimal features.</p>
       
       <div class="yt-wrap"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/Wzg4RdJB2j4" title="Punkt MP02 review" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-    </div>
-    </div>
-    </div>
-    </div>
-
-    <div class="card" data-cat="phone" data-budget="low" data-mode="standalone">
-      <img class="card-img" loading="eager" src="https://cdn.cs.1worldsync.com/bb/2a/bb2a0f0d-600d-4fee-8a6f-1ca8fe6e3232.jpg" alt="Doro 6620 4G senior phone" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none"></div>
-      <div class="card-body">
-        <div class="card-badges"><span class="badge badge-budget">Budget pick</span></div>
-        <p class="card-title">Doro 6620</p>
-        <p class="card-desc">4G flip phone. Calls, texts, camera, FM radio, physical keypad. Built for people who want their phone to be a phone — nothing else. One of the few budget options that actually works on 4G, so it won't be cut off when 2G switches off.</p>
-        <div class="card-footer">
-          <p class="card-price"><span class="price-gbp">£59</span><span class="price-us">$70</span></p>
-          <a class="card-link" href="https://www.amazon.co.uk/s?k=doro+6620" target="_blank" rel="noopener">View →</a>
-        </div>
-
-    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
-    <div class="card-detail">
-      <div class="card-detail-grid">
-        <div class="card-detail-item">
-          <h4>Does</h4>
-          <p>4G calls and texts. Flip design. Camera. FM radio. Emergency call button.</p>
-        </div>
-        <div class="card-detail-item">
-          <h4>Doesn't do</h4>
-          <p>No app stores. No social media. No browser to speak of.</p>
-        </div>
-        <div class="card-detail-item full">
-          <h4>Who it's for</h4>
-          <p>Anyone who wants a phone that's just a phone — and won't be cut off when 2G ends.</p>
-        </div>
-      <p class="card-detail-caveat">Note: Call quality depends on carrier. Limited to voice/text use cases.</p>
-      
-      <div class="yt-wrap"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/iXq5sWMngX4" title="Doro 6620 review" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
     </div>
     </div>
     </div>
@@ -3084,75 +2148,6 @@ footer a:hover { color: var(--accent); }
     </div>
     </div>
 
-    <div class="card" data-cat="speaker" data-budget="high" data-mode="connected">
-      <img class="card-img" loading="eager" src="https://cdn.shopify.com/s/files/1/1053/6891/2204/files/Ruark-R1-MK4-Espresso.jpg?v=1777556613" alt="Ruark Audio R1 Mk4 radio" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none"></div>
-      <div class="card-body">
-        <div class="card-badges"><span class="badge badge-uk">British made</span><span class="badge badge-best">Beautifully made</span></div>
-        <p class="card-title">Ruark Audio R1 (Mk4)</p>
-        <p class="card-desc">A Bluetooth and DAB+ radio in a walnut veneer cabinet. No voice assistant, no app ecosystem, no firmware gremlins. Tune it, press play. British-designed audio furniture that makes listening to the radio feel intentional again.</p>
-        <div class="card-footer">
-          <p class="card-price"><span class="price-gbp">£279</span><span class="price-us">$319</span></p>
-          <a class="card-link" href="https://www.ruarkaudio.com/products/r1-mk4-compact-music-system" target="_blank" rel="noopener">View →</a>
-        </div>
-      
-    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
-    <div class="card-detail">
-      <div class="card-detail-grid">
-        <div class="card-detail-item">
-          <h4>Does</h4>
-          <p>DAB/FM radio. Bluetooth. Alarm. Warm wooden design. Mains powered.</p>
-        </div>
-        <div class="card-detail-item">
-          <h4>Doesn't do</h4>
-          <p>No subscription. No account. Just turns on and plays.</p>
-        </div>
-        <div class="card-detail-item full">
-          <h4>Who it's for</h4>
-          <p>Anyone wanting a proper kitchen or living room radio.</p>
-        </div>
-      <p class="card-detail-caveat">Note: Bluetooth-only for non-radio sources — no Wi-Fi streaming.</p>
-      
-      <div class="yt-wrap"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/PVH7jaJfWJo" title="Ruark Audio R1 Mk4 review" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-    </div>
-    </div>
-    </div>
-    </div>
-
-    <div class="card" data-cat="speaker" data-budget="high" data-mode="connected">
-      <img class="card-img" loading="eager" src="https://dam.focal-naim.com/m/6fb60cc1fb445a5e/original/Mu-So_QB2_Main-jpg.jpg" alt="Naim Mu-so Qb 2nd gen speaker" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none"></div>
-      <div class="card-body">
-        <div class="card-badges"><span class="badge badge-best">Audiophile pick</span></div>
-        <p class="card-title">Naim Mu-so Qb 2nd Gen</p>
-        <p class="card-desc">Naim's compact all-in-one wireless speaker. Streams Spotify, Tidal, Qobuz, internet radio, and AirPlay. Controlled via physical dial or app. The kind of speaker you stop noticing after a week because it just plays music reliably, indefinitely.</p>
-        <div class="card-footer">
-          <p class="card-price"><span class="price-gbp">£799</span><span class="price-us">$899</span></p>
-          <a class="card-link" href="https://www.naimaudio.com/product/mu-so-qb-2nd-generation" target="_blank" rel="noopener">View →</a>
-        </div>
-      
-    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
-    <div class="card-detail">
-      <div class="card-detail-grid">
-        <div class="card-detail-item">
-          <h4>Does</h4>
-          <p>Hi-fi grade speaker. AirPlay 2. Chromecast. Spotify Connect. Qobuz. No Alexa mic.</p>
-        </div>
-        <div class="card-detail-item">
-          <h4>Doesn't do</h4>
-          <p>No always-on microphone. Audiophile streaming without surveillance.</p>
-        </div>
-        <div class="card-detail-item full">
-          <h4>Who it's for</h4>
-          <p>Hi-fi listeners who want streaming quality without Alexa or Google.</p>
-        </div>
-      <p class="card-detail-caveat">Note: Expensive. App required for setup. Not a smart home controller.</p>
-      
-      <div class="yt-wrap"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/iy-WseWpZL8" title="Naim Mu-so Qb 2 review" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-    </div>
-    </div>
-    </div>
-    </div>
 
 
   </div>
@@ -3345,187 +2340,6 @@ footer a:hover { color: var(--accent); }
   </div>
 </div>
 
-<!-- ════════════════════════════════════════════
-     HOME PHONES
-═════════════════════════════════════════════ -->
-<div class="cat-section" id="homephone" data-cat="homephone">
-  <h2>Home Phones</h2>
-  <p class="cat-desc">A dedicated device for calls — stationary, always charged, all your contacts synced. The way phones were before they became everything else.</p>
-  <div class="cards">
-
-    <div class="card" data-cat="homephone" data-budget="mid" data-mode="connected">
-      <img class="card-img" loading="eager" src="https://www.gigaset.com/media/catalog/product/cache/36/image/1800x/040ec09b1e35df139433887a97daa66f/c/5/c575_black_tl_screen_menu.jpg" alt="Gigaset Premium C575A DECT phone" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none"></div>
-      <div class="card-body">
-        <div class="card-badges"><span class="badge badge-best">Best overall</span></div>
-        <p class="card-title">Gigaset Premium C575A</p>
-        <p class="card-desc">A genuinely modern DECT home phone with a large colour display, Bluetooth pairing so it rings when your mobile does, and contact sync from your phone — set it up once, then leave your mobile in another room. German-made, robust, comes with an answering machine built in.</p>
-        <div class="card-footer">
-          <p class="card-price"><span class="price-gbp">£89</span><span class="price-us">$99</span></p>
-          <a class="card-link" href="https://www.amazon.co.uk/dp/B09JWYJ34T" target="_blank" rel="noopener">View →</a>
-        </div>
-      
-    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
-    <div class="card-detail">
-      <div class="card-detail-grid">
-        <div class="card-detail-item">
-          <h4>Does</h4>
-          <p>DECT cordless. Rings when your mobile does (via Bluetooth link). Answer machine. HD voice.</p>
-        </div>
-        <div class="card-detail-item">
-          <h4>Doesn't do</h4>
-          <p>No internet browsing. No apps. Stays in the home.</p>
-        </div>
-        <div class="card-detail-item full">
-          <h4>Who it's for</h4>
-          <p>Anyone who wants calls in any room without carrying their phone.</p>
-        </div>
-      <p class="card-detail-caveat">Note: Bluetooth link to mobile requires one-time setup with your phone.</p>
-      
-      <div class="yt-wrap"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/yhrVSwDsdSQ" title="Gigaset C575A review" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-    </div>
-    </div>
-    </div>
-    </div>
-
-    <div class="card" data-cat="homephone" data-budget="low" data-mode="connected">
-      <img class="card-img" loading="eager" src="https://uk.store.eu.panasonic.com/media/catalog/product/cache/207e23213cf636ccdef205098cf3c8a3/K/X/KX-TGK222EB_2-HIGH_RES-en_GB.jpg" alt="Panasonic KX-TGK222 cordless phone" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none"></div>
-      <div class="card-body">
-        <div class="card-badges"><span class="badge badge-budget">Budget pick</span></div>
-        <p class="card-title">Panasonic KX-TGK222</p>
-        <p class="card-desc">Reliable, easy-to-use DECT phone with large keypad and nuisance call blocking. Links to your mobile via Bluetooth — so calls come to the handset and your phone can stay in another room. Comes with two handsets. Simple to set up.</p>
-        <div class="card-footer">
-          <p class="card-price"><span class="price-gbp">£49</span><span class="price-us">$59</span></p>
-          <a class="card-link" href="https://www.amazon.co.uk/dp/B077N9C5VX" target="_blank" rel="noopener">View →</a>
-        </div>
-      
-    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
-    <div class="card-detail">
-      <div class="card-detail-grid">
-        <div class="card-detail-item">
-          <h4>Does</h4>
-          <p>DECT cordless. Nuisance call blocker. Large buttons. Clear display.</p>
-        </div>
-        <div class="card-detail-item">
-          <h4>Doesn't do</h4>
-          <p>No internet. No app required. Plug and play.</p>
-        </div>
-        <div class="card-detail-item full">
-          <h4>Who it's for</h4>
-          <p>Home users who want a reliable cordless with spam call blocking.</p>
-        </div>
-      
-      <div class="yt-wrap"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/6HLezTYaZfo" title="Panasonic KX-TGK222 review" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-    </div>
-    </div>
-    </div>
-    </div>
-
-    <div class="card" data-cat="homephone" data-budget="mid" data-mode="connected">
-      <img class="card-img" loading="eager" src="https://media.currys.biz/i/currysprod/10144167?$l-large$&fmt=jpg" alt="BT 4600 Advanced cordless phone" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none"></div>
-      <div class="card-body">
-        <div class="card-badges"><span class="badge badge-uk">UK brand</span></div>
-        <p class="card-title">BT 4600 Advanced Cordless Phone</p>
-        <p class="card-desc">BT's own nuisance call blocking phone — blocks 100% of nuisance calls before they ring, using their call guardian system. Pairs with your mobile via Bluetooth so your phone stays put. Sold as single or twin pack. Often on offer at Currys or BT directly.</p>
-        <div class="card-footer">
-          <p class="card-price"><span class="price-gbp">£59</span><span class="price-us">$69</span></p>
-          <a class="card-link" href="https://www.amazon.co.uk/s?k=bt+4600+advanced+cordless+phone" target="_blank" rel="noopener">View →</a>
-        </div>
-      
-    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
-    <div class="card-detail">
-      <div class="card-detail-grid">
-        <div class="card-detail-item">
-          <h4>Does</h4>
-          <p>DECT. Smart call blocker. Answering machine. UK brand. Plug and play.</p>
-        </div>
-        <div class="card-detail-item">
-          <h4>Doesn't do</h4>
-          <p>No internet. No account. Blocks nuisance calls automatically.</p>
-        </div>
-        <div class="card-detail-item full">
-          <h4>Who it's for</h4>
-          <p>UK home users who want protection from spam calls without a smartphone.</p>
-        </div>
-      
-      <div class="yt-wrap"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/0bBX4EB7n1E" title="BT 4600 cordless phone review" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-    </div>
-    </div>
-    </div>
-    </div>
-
-    <div class="card" data-cat="homephone" data-budget="mid" data-mode="connected">
-      <img class="card-img" loading="eager" src="https://www.gigaset.com/media/catalog/product/cache/36/image/1800x/040ec09b1e35df139433887a97daa66f/c/l/cl660hx_duo_bundle_tr_composing_hx_screen.jpg" alt="Gigaset CL660A HX cordless phone" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none"></div>
-      <div class="card-body">
-        <div class="card-badges"><span class="badge badge-new">2024</span></div>
-        <p class="card-title">Gigaset CL660A HX</p>
-        <p class="card-desc">A more affordable Gigaset than the C575A. Large display, ECO DECT (reduces radiation when idle), answering machine, and contact sync from your phone. German-made reliability at a lower price. Does everything a home phone should do, nothing a phone shouldn't.</p>
-        <div class="card-footer">
-          <p class="card-price"><span class="price-gbp">£59</span><span class="price-us">$69</span></p>
-          <a class="card-link" href="https://www.amazon.co.uk/s?k=gigaset+cl660a" target="_blank" rel="noopener">View →</a>
-        </div>
-      
-    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
-    <div class="card-detail">
-      <div class="card-detail-grid">
-        <div class="card-detail-item">
-          <h4>Does</h4>
-          <p>Premium DECT. HD voice. Colour display. Compatible with other Gigaset handsets.</p>
-        </div>
-        <div class="card-detail-item">
-          <h4>Doesn't do</h4>
-          <p>No internet. No apps. Just clear calls.</p>
-        </div>
-        <div class="card-detail-item full">
-          <h4>Who it's for</h4>
-          <p>Those who want a premium-feel handset for a home phone system.</p>
-        </div>
-      
-      <div class="yt-wrap"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/IwUHVS5STgI" title="Gigaset CL660HX review" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-    </div>
-    </div>
-    </div>
-    </div>
-
-    <div class="card" data-cat="homephone" data-budget="low" data-mode="connected">
-      <img class="card-img" loading="eager" src="https://www.bt.com/content/dam/bt/help/legacy/bt_3580.png" alt="BT 3580 Big Button phone" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none"></div>
-      <div class="card-body">
-        <div class="card-badges"><span class="badge badge-budget">Simplest option</span></div>
-        <p class="card-title">BT 3580 Big Button Phone</p>
-        <p class="card-desc">Designed for clarity and simplicity: large buttons, loud ringer, hearing aid compatible. Not a smart phone — doesn't pretend to be. If you want a phone in the house for people who find smartphones confusing, this is the honest answer.</p>
-        <div class="card-footer">
-          <p class="card-price"><span class="price-gbp">£25</span><span class="price-us">$29</span></p>
-          <a class="card-link" href="https://www.amazon.co.uk/s?k=bt+3580+big+button+phone" target="_blank" rel="noopener">View →</a>
-        </div>
-      
-    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
-    <div class="card-detail">
-      <div class="card-detail-grid">
-        <div class="card-detail-item">
-          <h4>Does</h4>
-          <p>Large buttons. Loud ringer. Hearing aid compatible. Easy to use.</p>
-        </div>
-        <div class="card-detail-item">
-          <h4>Doesn't do</h4>
-          <p>No apps. No internet. Simple call and answer.</p>
-        </div>
-        <div class="card-detail-item full">
-          <h4>Who it's for</h4>
-          <p>Older users, those with visual or hearing difficulties.</p>
-        </div>
-      
-      <div class="yt-wrap"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/F02z07DLVic" title="BT 3580 Big Button phone review" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-    </div>
-    </div>
-    </div>
-    </div>
-
-  </div>
-</div>
 
 </section><!-- end filter-bar -->
 
@@ -3599,8 +2413,8 @@ function toggleDetail(btn) {
 }
 
 // ─── Two-level category nav ───────────────────────
-const MUSIC_CATS = ['music','headphones','hifi','speaker'];
-const PHONE_CATS = ['phone','homephone'];
+const MUSIC_CATS = ['music','hifi','speaker'];
+const PHONE_CATS = ['phone'];
 let activeGroup = null; // 'music' | 'phone' | null
 
 function closeAllGroups() {
@@ -3637,7 +2451,7 @@ function filterTop(cat, btn) {
   document.querySelectorAll('.cat-pill').forEach(p => p.classList.remove('active'));
   btn.classList.add('active');
   // show/hide sections
-  const allCats = ['sleep','reading','music','headphones','hifi','speaker','writing','camera','fitness','kids','news','phone','homephone'];
+  const allCats = ['sleep','reading','music','hifi','speaker','writing','camera','fitness','kids','phone'];
   document.querySelectorAll('.cat-section').forEach(sec => {
     if (cat === 'all') {
       sec.classList.remove('hidden');
@@ -3693,12 +2507,10 @@ let wizDotCount = 4; // updated per path
 function wizNextStep(key, val) {
   if (key === 'category') {
     if (val === 'music')  return 'wiz-sm1';   // home vs portable
-    if (val === 'phone')  return 'wiz-sp1';   // minimal vs home phone
     return 'wiz-sb';                           // everything else → budget
   }
   if (key === 'musicContext') return 'wiz-sm2'; // streaming question
   if (key === 'streaming')   return 'wiz-sb';   // then budget
-  if (key === 'phoneType')   return 'wiz-sb';   // then budget
   if (key === 'budget')      return null;        // done → results
   return null;
 }
@@ -3707,7 +2519,6 @@ function wizNextStep(key, val) {
 function wizPathLength() {
   const cat = wizState.category;
   if (cat === 'music')  return 4; // category → home/portable → streaming → budget
-  if (cat === 'phone')  return 3; // category → type → budget
   if (cat)              return 2; // category → budget
   return 4; // unknown yet
 }
@@ -3738,7 +2549,7 @@ function wizPick(key, val, btn) {
 function updateWizDots() {
   const total = wizPathLength();
   // Count how many answers we have
-  const steps = ['category','musicContext','streaming','phoneType','budget'];
+  const steps = ['category','musicContext','streaming','budget'];
   const answered = steps.filter(k => wizState[k] !== undefined).length;
 
   for (let i = 0; i < 4; i++) {
@@ -3755,14 +2566,13 @@ function updateWizDots() {
 function updateWizBreadcrumb() {
   const labels = {
     category: { music:'Music', reading:'Reading', sleep:'Sleep', camera:'Camera',
-                 fitness:'Fitness', writing:'Writing', news:'News', kids:'Kids',
+                 fitness:'Fitness', writing:'Writing', kids:'Kids',
                  phone:'Phone' },
     musicContext: { home:'At home', portable:'Portable' },
     streaming: { yes:'Streaming', no:'Offline files', either:'Either' },
-    phoneType: { minimal:'Minimal phone', home:'Home phone' },
     budget: { low:'Under £50', mid:'£50–150', high:'£150+', any:'Any budget' }
   };
-  const order = ['category','musicContext','streaming','phoneType','budget'];
+  const order = ['category','musicContext','streaming','budget'];
   const bc = document.getElementById('wiz-breadcrumb');
   const parts = [];
   order.forEach(k => {
@@ -3778,7 +2588,6 @@ function wizGetTarget() {
   const cat = wizState.category;
   const musicCtx = wizState.musicContext;
   const streaming = wizState.streaming;
-  const phoneType = wizState.phoneType;
   const budget = wizState.budget;
 
   let targetSections = []; // data-cat values to show
@@ -3794,18 +2603,10 @@ function wizGetTarget() {
       if (streaming === 'no')  filterMode = 'standalone';
     } else {
       // portable
-      targetSections = ['music', 'headphones'];
-      targetLabel = 'Portable players & headphones';
+      targetSections = ['music'];
+      targetLabel = 'Portable music players';
       if (streaming === 'yes') { filterMode = null; } // DAPs with Spotify
       if (streaming === 'no')  { filterMode = 'standalone'; }
-    }
-  } else if (cat === 'phone') {
-    if (phoneType === 'minimal') {
-      targetSections = ['phone'];
-      targetLabel = 'Minimal & dumb phones';
-    } else {
-      targetSections = ['homephone'];
-      targetLabel = 'Home phones';
     }
   } else {
     // Simple path — one section
@@ -3813,7 +2614,7 @@ function wizGetTarget() {
     const sectionLabels = {
       reading: 'E-readers & reading devices', sleep: 'Sleep & wake-up lights',
       camera: 'Cameras', fitness: 'Fitness & health trackers',
-      writing: 'Distraction-free writing', news: 'Reading devices & news',
+      writing: 'Distraction-free writing', phone: 'Minimal & dumb phones',
       kids: 'Kids\' audio & learning'
     };
     targetLabel = sectionLabels[cat] || cat;
@@ -3830,7 +2631,7 @@ function showWizResults() {
   const headings = {
     music: 'Your music setup', reading: 'Your reading device', sleep: 'Your bedroom alternative',
     camera: 'Your camera', fitness: 'Your fitness tracker', writing: 'Your writing device',
-    news: 'Your reading device', kids: 'For the kids', phone: 'Your phone alternative'
+    kids: 'For the kids', phone: 'Your phone alternative'
   };
   document.getElementById('wiz-heading').textContent = headings[wizState.category] || 'Here\'s where to look';
 
