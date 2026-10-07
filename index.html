@@ -363,6 +363,28 @@ footer strong { color: var(--fg); }
   .hero-strip::-webkit-scrollbar { display: none; }
   .hs-tile { flex: 0 0 132px; scroll-snap-align: start; }
 }
+
+/* ─── Phones: product rows you swipe across ─────── */
+.rail-count { display: none; }
+@media (max-width: 760px) {
+  .cards {
+    display: flex; flex-wrap: nowrap; gap: 12px; align-items: stretch;
+    overflow-x: auto; overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;
+    margin: 0 -16px; padding: 2px 16px 14px; scroll-padding-left: 16px;
+    scrollbar-width: none;
+  }
+  .cards::-webkit-scrollbar { display: none; }
+  .cards:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; border-radius: 14px; }
+  .cards:has(.card-detail.open) { align-items: flex-start; }
+  .cards > .card, .cards > .card.extra { display: flex; flex: 0 0 min(82vw, 320px); scroll-snap-align: start; }
+  .cards::after { content: ''; flex: 0 0 4px; }
+  .show-more-wrap { display: none; }
+  .rail-count {
+    display: block; font-family: var(--mono); font-size: 0.72rem; color: var(--fg-mid);
+    letter-spacing: .02em; margin: -8px 0 10px;
+  }
+}
 </style>
 </head>
 <body>
@@ -2052,6 +2074,50 @@ const bttBtn = document.getElementById('back-to-top');
 function updateBtt() { bttBtn.classList.toggle('show', window.scrollY > 700); }
 window.addEventListener('scroll', updateBtt, { passive: true });
 updateBtt();
+
+
+// ─── Phones: swipe rows ───────────────────────────
+// Rows are plain scrolling lists; this adds a "2 of 5" cue and makes each row reachable by keyboard.
+(function () {
+  const mq = window.matchMedia('(max-width: 760px)');
+  const rails = [];
+  document.querySelectorAll('.cat-section').forEach(sec => {
+    const cards = sec.querySelector('.cards');
+    if (!cards) return;
+    const cue = document.createElement('p');
+    cue.className = 'rail-count';
+    cue.setAttribute('aria-hidden', 'true');
+    const anchor = sec.querySelector('.cat-reviewed') || sec.querySelector('h2');
+    anchor.insertAdjacentElement('afterend', cue);
+    const items = () => [...cards.querySelectorAll(':scope > .card')];
+    const update = () => {
+      if (!mq.matches) return;
+      const list = items();
+      const left = cards.scrollLeft;
+      let idx = 0, best = Infinity;
+      list.forEach((c, i) => { const d = Math.abs(c.offsetLeft - cards.offsetLeft - left - 16); if (d < best) { best = d; idx = i; } });
+      const atEnd = cards.scrollLeft + cards.clientWidth >= cards.scrollWidth - 4;
+      if (atEnd) idx = list.length - 1;
+      cue.textContent = list.length > 1 ? 'Swipe \u2192  ' + (idx + 1) + ' of ' + list.length : '';
+    };
+    cards.addEventListener('scroll', () => requestAnimationFrame(update), { passive: true });
+    rails.push({ sec, cards, update });
+  });
+  const apply = () => {
+    rails.forEach(r => {
+      if (mq.matches) {
+        r.cards.tabIndex = 0;
+        r.cards.setAttribute('role', 'region');
+        r.cards.setAttribute('aria-label', r.sec.querySelector('h2').textContent + ' products, scroll sideways');
+      } else {
+        r.cards.removeAttribute('tabindex'); r.cards.removeAttribute('role'); r.cards.removeAttribute('aria-label');
+      }
+      r.update();
+    });
+  };
+  mq.addEventListener('change', apply);
+  apply();
+})();
 
 // ─── Legacy compat ───────────────────────────────
 function filterCat(cat, btn) { filterTop(cat, btn); }
