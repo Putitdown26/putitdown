@@ -27,6 +27,7 @@
   --note-bg:     #EBE6DC;
   --serif: 'DM Serif Display', Georgia, serif;
   --sans:  'Source Sans 3', 'Helvetica Neue', Arial, sans-serif;
+  --header-h: 65px; /* header height for sticky offsets */
 }
 
 /* ─── Reset & Base ───────────────────────────────── */
@@ -36,7 +37,7 @@ body {
   background: var(--bg);
   color: var(--fg);
   font-family: var(--sans);
-  font-size: 16px;
+  font-size: 17px;
   line-height: 1.65;
   min-height: 100vh;
 }
@@ -81,7 +82,7 @@ header {
 }
 .hero h1 { font-size: clamp(2rem, 5vw, 3.2rem); margin-bottom: 16px; }
 .hero h1 em { font-style: italic; color: var(--accent); }
-.hero p { font-size: 1.1rem; color: var(--fg-mid); max-width: 540px; margin: 0 auto 28px; }
+.hero p { font-size: 1.1rem; color: var(--fg-mid); max-width: 600px; margin: 0 auto 28px; }
 .hero-cta { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
 .btn-primary {
   background: var(--accent); color: #fff; font-family: var(--sans); font-size: 0.95rem;
@@ -193,7 +194,7 @@ header {
 /* ─── Sections & Cards ───────────────────────────── */
 .cat-section { margin-bottom: 48px; }
 .cat-section h2 {
-  font-size: 1.4rem; margin-bottom: 4px;
+  font-size: 1.8rem; margin-bottom: 4px;
   border-bottom: 1px solid var(--rule); padding-bottom: 10px; margin-bottom: 20px;
 }
 .cat-section .cat-label {
@@ -214,12 +215,12 @@ header {
 }
 .card:hover { box-shadow: 0 4px 20px rgba(0,0,0,.1); }
 .card-img {
-  width: 100%; height: 200px; object-fit: contain;
+  width: 100%; aspect-ratio: 4/3; object-fit: contain;
   background: #fff; padding: 16px;
   box-shadow: inset 0 -1px 0 rgba(60,40,20,0.08);
 }
 .card-img-placeholder {
-  width: 100%; height: 200px; background: #f5f5f5;
+  width: 100%; aspect-ratio: 4/3; background: #f5f5f5;
   display: flex; align-items: center; justify-content: center;
   font-size: 2.8rem;
   box-shadow: inset 0 -1px 0 rgba(60,40,20,0.08);
@@ -315,10 +316,32 @@ footer a:hover { color: var(--accent); }
   .hero { padding: 40px 16px 32px; }
   .cards { grid-template-columns: 1fr; }
   .price-toggle { margin-left: 0; }
+  .cat-nav {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-bottom: 4px;
+  }
+  .cat-nav::-webkit-scrollbar { display: none; }
+  .sub-pills {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .sub-pills::-webkit-scrollbar { display: none; }
 }
 
 /* ─── Two-level category nav ─────────────────────── */
-.cat-nav { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 8px; }
+.cat-nav {
+  display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 8px;
+  position: sticky; top: var(--header-h); z-index: 90;
+  background: var(--bg);
+  padding: 12px 0 8px;
+  border-bottom: 1px solid var(--rule);
+  margin-left: -16px; margin-right: -16px;
+  padding-left: 16px; padding-right: 16px;
+}
 .cat-nav-group {
   position: relative;
 }
