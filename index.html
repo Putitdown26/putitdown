@@ -388,7 +388,6 @@ footer a:hover { color: var(--accent); }
   <div class="wrap header-inner">
     <a href="#" class="logo">Put It <em>Down</em></a>
     <div class="header-actions">
-      <a href="#finder" class="btn-primary btn-header-cta">Find your alternative →</a>
     </div>
   </div>
 </header>
@@ -411,17 +410,17 @@ footer a:hover { color: var(--accent); }
   <h2>Most common escapes</h2>
   <p class="sub">The three things people reach for their phones to do — and the best single-purpose alternatives.</p>
   <div class="qs-grid">
-    <a href="#sleep" class="qs-card">
+    <a href="#sleep" class="qs-card" onclick="qsNav('sleep',event)">
       <div class="qs-icon">🌙</div>
       <h3>Better sleep</h3>
       <p>Phone charging outside the bedroom. Gentle wake-up light instead of a notification alarm.</p>
     </a>
-    <a href="#reading" class="qs-card">
+    <a href="#reading" class="qs-card" onclick="qsNav('reading',event)">
       <div class="qs-icon">📖</div>
       <h3>Deep reading</h3>
       <p>E-ink screens without notifications. Your book, nothing else.</p>
     </a>
-    <a href="#music" class="qs-card">
+    <a href="#music" class="qs-card" onclick="qsNav('music',event)">
       <div class="qs-icon">🎵</div>
       <h3>Music anywhere</h3>
       <p>Portable players that hold your library offline — no data, no distractions.</p>
@@ -3404,6 +3403,22 @@ function closeAllGroups() {
     if (sub) sub.querySelectorAll('.sub-pill').forEach(p => p.classList.remove('active'));
   });
   activeGroup = null;
+}
+
+function qsNav(sectionId, e) {
+  // Reset filter to "All" so the target section is visible, then scroll to it.
+  e.preventDefault();
+  const allBtn = document.querySelector('.cat-pill.active') || document.querySelector('.cat-pill');
+  closeAllGroups();
+  document.querySelectorAll('.cat-pill').forEach(p => p.classList.remove('active'));
+  const allPill = document.querySelector('.cat-pill[onclick*="all"]');
+  if (allPill) allPill.classList.add('active');
+  document.querySelectorAll('.cat-section').forEach(sec => sec.classList.remove('hidden'));
+  // Scroll after a tiny delay so layout has updated
+  setTimeout(() => {
+    const target = document.getElementById(sectionId);
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, 30);
 }
 
 function filterTop(cat, btn) {
