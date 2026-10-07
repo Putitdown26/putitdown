@@ -48,7 +48,7 @@ h1,h2,h3,h4 { font-family: var(--serif); font-weight: 400; line-height: 1.25; le
 body { -webkit-font-smoothing: antialiased; }
 
 /* ─── Layout ─────────────────────────────────────── */
-.wrap { max-width: 1100px; margin: 0 auto; padding: 0 16px; }
+.wrap { max-width: 1100px; margin: 0 auto; padding: 0 32px; }
 
 /* ─── Header ─────────────────────────────────────── */
 header {
@@ -126,7 +126,6 @@ header {
   display: flex; flex-direction: column; gap: 8px;
 }
 .qs-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,.08); transform: translateY(-2px); color: inherit; }
-.qs-icon { font-size: 1.6rem; }
 .qs-card h3 { font-family: var(--sans); font-size: 1rem; font-weight: 600; }
 .qs-card p { font-size: 0.85rem; color: var(--fg-mid); }
 
@@ -343,6 +342,7 @@ footer a:hover { color: var(--accent); }
 
 /* ─── Responsive ─────────────────────────────────── */
 @media(max-width:600px) {
+  .wrap { padding: 0 16px; }
   .hero { padding: 40px 16px 32px; }
   .cards { grid-template-columns: 1fr; }
   .price-toggle { margin-left: 0; }
@@ -352,6 +352,8 @@ footer a:hover { color: var(--accent); }
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
     padding-bottom: 4px;
+    margin-left: -16px; margin-right: -16px;
+    padding-left: 16px; padding-right: 16px;
   }
   .cat-nav::-webkit-scrollbar { display: none; }
   .sub-pills {
@@ -369,8 +371,8 @@ footer a:hover { color: var(--accent); }
   background: var(--bg);
   padding: 12px 0 8px;
   border-bottom: 1px solid var(--rule);
-  margin-left: -16px; margin-right: -16px;
-  padding-left: 16px; padding-right: 16px;
+  margin-left: -32px; margin-right: -32px;
+  padding-left: 32px; padding-right: 32px;
 }
 .cat-nav-group {
   position: relative;
@@ -433,6 +435,17 @@ footer a:hover { color: var(--accent); }
   padding: 6px 10px; border-radius: 0 4px 4px 0; margin-top: 8px;
   grid-column: 1 / -1;
 }
+
+/* ─── YouTube embed ──────────────────────────────── */
+.yt-wrap {
+  position: relative; width: 100%; padding-top: 56.25%; /* 16:9 */
+  margin-top: 12px; border-radius: 8px; overflow: hidden;
+  background: #000;
+}
+.yt-wrap iframe {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  border: none;
+}
 </style>
 </head>
 <body>
@@ -464,17 +477,14 @@ footer a:hover { color: var(--accent); }
   <p class="sub">The three things people reach for their phones to do — and the best single-purpose alternatives.</p>
   <div class="qs-grid">
     <a href="#sleep" class="qs-card" onclick="qsNav('sleep',event)">
-      <div class="qs-icon">🌙</div>
       <h3>Better sleep</h3>
       <p>A £12 alarm clock fixed my mornings. Still slightly embarrassed it took me this long.</p>
     </a>
     <a href="#reading" class="qs-card" onclick="qsNav('reading',event)">
-      <div class="qs-icon">📖</div>
       <h3>Actually reading</h3>
       <p>I read more books in three months with a Kindle than in the two years before it.</p>
     </a>
     <a href="#music" class="qs-card" onclick="qsNav('music',event)">
-      <div class="qs-icon">🎵</div>
       <h3>Music without the rest</h3>
       <p>There's a whole category of music player barely anyone knows exists. This is where I start.</p>
     </a>
@@ -498,15 +508,15 @@ footer a:hover { color: var(--accent); }
     <div class="wiz-step active" id="wiz-s0">
       <p class="wiz-q">What do you reach for your phone for most?</p>
       <div class="wiz-opts">
-        <button class="wiz-opt" onclick="wizPick('category','music',this)">🎵 Music</button>
-        <button class="wiz-opt" onclick="wizPick('category','reading',this)">📖 Reading</button>
-        <button class="wiz-opt" onclick="wizPick('category','sleep',this)">🌙 Sleep &amp; alarms</button>
-        <button class="wiz-opt" onclick="wizPick('category','camera',this)">📷 Camera</button>
-        <button class="wiz-opt" onclick="wizPick('category','fitness',this)">🏃 Fitness &amp; health</button>
-        <button class="wiz-opt" onclick="wizPick('category','writing',this)">✏️ Notes &amp; writing</button>
-        <button class="wiz-opt" onclick="wizPick('category','news',this)">📰 News &amp; long reads</button>
-        <button class="wiz-opt" onclick="wizPick('category','kids',this)">🧒 Kids' entertainment</button>
-        <button class="wiz-opt" onclick="wizPick('category','phone',this)">📵 Replace the phone itself</button>
+        <button class="wiz-opt" onclick="wizPick('category','music',this)">Music</button>
+        <button class="wiz-opt" onclick="wizPick('category','reading',this)">Reading</button>
+        <button class="wiz-opt" onclick="wizPick('category','sleep',this)">Sleep &amp; alarms</button>
+        <button class="wiz-opt" onclick="wizPick('category','camera',this)">Camera</button>
+        <button class="wiz-opt" onclick="wizPick('category','fitness',this)">Fitness &amp; health</button>
+        <button class="wiz-opt" onclick="wizPick('category','writing',this)">Notes &amp; writing</button>
+        <button class="wiz-opt" onclick="wizPick('category','news',this)">News &amp; long reads</button>
+        <button class="wiz-opt" onclick="wizPick('category','kids',this)">Kids' entertainment</button>
+        <button class="wiz-opt" onclick="wizPick('category','phone',this)">Replace the phone itself</button>
       </div>
     </div>
 
@@ -514,8 +524,8 @@ footer a:hover { color: var(--accent); }
     <div class="wiz-step" id="wiz-sm1">
       <p class="wiz-q">Home listening or on the move?</p>
       <div class="wiz-opts">
-        <button class="wiz-opt" onclick="wizPick('musicContext','home',this)">🏠 At home</button>
-        <button class="wiz-opt" onclick="wizPick('musicContext','portable',this)">🚶 Portable — gym, commute, walks</button>
+        <button class="wiz-opt" onclick="wizPick('musicContext','home',this)">At home</button>
+        <button class="wiz-opt" onclick="wizPick('musicContext','portable',this)">Portable — gym, commute, walks</button>
       </div>
     </div>
 
@@ -534,8 +544,8 @@ footer a:hover { color: var(--accent); }
     <div class="wiz-step" id="wiz-sp1">
       <p class="wiz-q">What kind of replacement?</p>
       <div class="wiz-opts">
-        <button class="wiz-opt" onclick="wizPick('phoneType','minimal',this)">📵 A minimal or dumb phone</button>
-        <button class="wiz-opt" onclick="wizPick('phoneType','home',this)">☎️ A home landline</button>
+        <button class="wiz-opt" onclick="wizPick('phoneType','minimal',this)">A minimal or dumb phone</button>
+        <button class="wiz-opt" onclick="wizPick('phoneType','home',this)">A home landline</button>
       </div>
     </div>
 
@@ -568,21 +578,21 @@ footer a:hover { color: var(--accent); }
   <div class="cat-nav" id="catNav">
     <button class="cat-pill active" onclick="filterTop('all',this)">All</button>
 
-    <button class="cat-pill" onclick="filterTop('sleep',this)">🌙 Sleep</button>
-    <button class="cat-pill" onclick="filterTop('reading',this)">📖 Reading</button>
+    <button class="cat-pill" onclick="filterTop('sleep',this)">Sleep</button>
+    <button class="cat-pill" onclick="filterTop('reading',this)">Reading</button>
 
     <div class="cat-nav-group">
-      <button class="cat-pill" id="pill-music" onclick="toggleGroup('music',this)">🎵 Music <span class="arrow">▾</span></button>
+      <button class="cat-pill" id="pill-music" onclick="toggleGroup('music',this)">Music <span class="arrow">▾</span></button>
     </div>
 
-    <button class="cat-pill" onclick="filterTop('writing',this)">✏️ Writing</button>
-    <button class="cat-pill" onclick="filterTop('camera',this)">📷 Camera</button>
-    <button class="cat-pill" onclick="filterTop('fitness',this)">🏃 Fitness</button>
-    <button class="cat-pill" onclick="filterTop('kids',this)">🧒 Kids</button>
-    <button class="cat-pill" onclick="filterTop('news',this)">📰 News</button>
+    <button class="cat-pill" onclick="filterTop('writing',this)">Writing</button>
+    <button class="cat-pill" onclick="filterTop('camera',this)">Camera</button>
+    <button class="cat-pill" onclick="filterTop('fitness',this)">Fitness</button>
+    <button class="cat-pill" onclick="filterTop('kids',this)">Kids</button>
+    <button class="cat-pill" onclick="filterTop('news',this)">News</button>
 
     <div class="cat-nav-group">
-      <button class="cat-pill" id="pill-phone" onclick="toggleGroup('phone',this)">📞 Phones <span class="arrow">▾</span></button>
+      <button class="cat-pill" id="pill-phone" onclick="toggleGroup('phone',this)">Phones <span class="arrow">▾</span></button>
     </div>
 
     <div class="price-toggle">
@@ -594,16 +604,16 @@ footer a:hover { color: var(--accent); }
 
   <!-- Music sub-pills -->
   <div class="sub-pills" id="sub-music">
-    <button class="sub-pill" onclick="filterSub('music',this)">🎵 Portable players</button>
-    <button class="sub-pill" onclick="filterSub('headphones',this)">🎧 Headphones</button>
-    <button class="sub-pill" onclick="filterSub('hifi',this)">🎷 Home hi-fi</button>
-    <button class="sub-pill" onclick="filterSub('speaker',this)">🔊 Smart speakers</button>
+    <button class="sub-pill" onclick="filterSub('music',this)">Portable players</button>
+    <button class="sub-pill" onclick="filterSub('headphones',this)">Headphones</button>
+    <button class="sub-pill" onclick="filterSub('hifi',this)">Home hi-fi</button>
+    <button class="sub-pill" onclick="filterSub('speaker',this)">Smart speakers</button>
   </div>
 
   <!-- Phones sub-pills -->
   <div class="sub-pills" id="sub-phone">
-    <button class="sub-pill" onclick="filterSub('phone',this)">📵 Minimal / dumb phones</button>
-    <button class="sub-pill" onclick="filterSub('homephone',this)">☎️ Home phones</button>
+    <button class="sub-pill" onclick="filterSub('phone',this)">Minimal / dumb phones</button>
+    <button class="sub-pill" onclick="filterSub('homephone',this)">Home phones</button>
   </div>
 
 
@@ -612,13 +622,13 @@ footer a:hover { color: var(--accent); }
      SLEEP
 ═════════════════════════════════════════════ -->
 <div class="cat-section" id="sleep" data-cat="sleep">
-  <h2>🌙 Sleep &amp; Wake</h2>
+  <h2>Sleep &amp; Wake</h2>
   <p class="cat-desc">Get the phone out of your bedroom. A wake-up light is gentler than any alarm app.</p>
   <div class="cards">
 
     <div class="card" data-cat="sleep" data-budget="high" data-mode="standalone">
       <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/41QyTxxhMLL._AC_SL1500_.jpg" alt="Philips SmartSleep Wake-up Light HF3650" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none">🌅</div>
+      <div class="card-img-placeholder" style="display:none"></div>
       <div class="card-body">
         <div class="card-badges"><span class="badge badge-best">Best overall</span></div>
         <p class="card-title">Philips SmartSleep Wake-up Light HF3650</p>
@@ -646,7 +656,7 @@ footer a:hover { color: var(--accent); }
           <h4>Who it's for</h4>
           <p>Anyone who wakes up groggy or dread their phone alarm.</p>
         </div>
-      <p class="card-detail-caveat">⚠️ Requires a mains socket by the bed. Larger than a typical alarm clock.</p>
+      <p class="card-detail-caveat">Note: Requires a mains socket by the bed. Larger than a typical alarm clock.</p>
       </div>
     </div>
     </div>
@@ -654,7 +664,7 @@ footer a:hover { color: var(--accent); }
 
     <div class="card" data-cat="sleep" data-budget="mid" data-mode="standalone">
       <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/611xWSy9D3L._AC_SL1500_.jpg" alt="Lumie Bodyclock Rise 100" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none">🌄</div>
+      <div class="card-img-placeholder" style="display:none"></div>
       <div class="card-body">
         <div class="card-badges"><span class="badge badge-budget">Budget pick</span></div>
         <p class="card-title">Lumie Bodyclock Rise 100</p>
@@ -679,7 +689,7 @@ footer a:hover { color: var(--accent); }
           <h4>Who it's for</h4>
           <p>Minimalists who just want a phone-free morning ritual.</p>
         </div>
-      <p class="card-detail-caveat">⚠️ No backup battery — power cut means no alarm.</p>
+      <p class="card-detail-caveat">Note: No backup battery — power cut means no alarm.</p>
       </div>
     </div>
     </div>
@@ -687,7 +697,7 @@ footer a:hover { color: var(--accent); }
 
     <div class="card" data-cat="sleep" data-budget="mid" data-mode="standalone">
       <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/71-cq1dM3TL._AC_SL1500_.jpg" alt="Hatch Restore 2 sunrise alarm clock" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none">🌅</div>
+      <div class="card-img-placeholder" style="display:none"></div>
       <div class="card-body">
         <div class="card-badges"><span class="badge badge-new">2023</span></div>
         <p class="card-title">Hatch Restore 2</p>
@@ -712,7 +722,7 @@ footer a:hover { color: var(--accent); }
           <h4>Who it's for</h4>
           <p>Anyone building a deliberate sleep routine — separate from their phone.</p>
         </div>
-      <p class="card-detail-caveat">⚠️ App-based setup. Optional subscription for expanded sound library (free tier is fine).</p>
+      <p class="card-detail-caveat">Note: App-based setup. Optional subscription for expanded sound library (free tier is fine).</p>
       </div>
     </div>
     </div>
@@ -720,7 +730,7 @@ footer a:hover { color: var(--accent); }
 
     <div class="card" data-cat="sleep" data-budget="high" data-mode="standalone">
       <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/61MkVDnTCbL._AC_SL1500_.jpg" alt="Lumie Bodyclock Luxe 750DAB" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none">🌅</div>
+      <div class="card-img-placeholder" style="display:none"></div>
       <div class="card-body">
         <div class="card-badges"><span class="badge badge-new">2024</span></div>
         <p class="card-title">Lumie Bodyclock Luxe 750DAB</p>
@@ -745,7 +755,7 @@ footer a:hover { color: var(--accent); }
           <h4>Who it's for</h4>
           <p>Those who've tried basic wake lights and want the full version.</p>
         </div>
-      <p class="card-detail-caveat">⚠️ Expensive. DAB reception depends on your area.</p>
+      <p class="card-detail-caveat">Note: Expensive. DAB reception depends on your area.</p>
       </div>
     </div>
     </div>
@@ -753,7 +763,7 @@ footer a:hover { color: var(--accent); }
 
     <div class="card" data-cat="sleep" data-budget="mid" data-mode="standalone">
       <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/51vKFl3xQVL._AC_SL1500_.jpg" alt="Yogasleep Dohm Classic white noise machine" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none">🌊</div>
+      <div class="card-img-placeholder" style="display:none"></div>
       <div class="card-body">
         <p class="card-title">Yogasleep Dohm Classic</p>
         <p class="card-desc">The original mechanical white noise machine — a real fan inside a plastic housing, not a digital recording. Two-speed control, plug-in. Used by sleep clinics. Nothing digital, nothing that updates, nothing with Wi-Fi.</p>
@@ -777,7 +787,7 @@ footer a:hover { color: var(--accent); }
           <h4>Who it's for</h4>
           <p>Light sleepers, shift workers, parents settling babies.</p>
         </div>
-      <p class="card-detail-caveat">⚠️ Only works plugged in — not for travel without an adapter.</p>
+      <p class="card-detail-caveat">Note: Only works plugged in — not for travel without an adapter.</p>
       </div>
     </div>
     </div>
@@ -785,7 +795,7 @@ footer a:hover { color: var(--accent); }
 
     <div class="card" data-cat="sleep" data-budget="mid" data-mode="standalone">
       <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/61l4G+ZQh5L._AC_SL1500_.jpg" alt="Acctim Aura LED alarm clock" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none">🕰️</div>
+      <div class="card-img-placeholder" style="display:none"></div>
       <div class="card-body">
         <div class="card-badges"><span class="badge badge-uk">UK brand</span></div>
         <p class="card-title">Acctim Aura LED Alarm Clock</p>
@@ -817,7 +827,7 @@ footer a:hover { color: var(--accent); }
 
     <div class="card" data-cat="sleep" data-budget="high" data-mode="standalone">
       <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/61t3VkumrLL._AC_SL1500_.jpg" alt="Beurer TL 30 SAD lamp" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none">💡</div>
+      <div class="card-img-placeholder" style="display:none"></div>
       <div class="card-body">
         <div class="card-badges"><span class="badge badge-new">2023</span></div>
         <p class="card-title">Beurer TL 30 SAD Lamp</p>
@@ -842,7 +852,7 @@ footer a:hover { color: var(--accent); }
           <h4>Who it's for</h4>
           <p>People affected by winter low mood or irregular sleep cycles.</p>
         </div>
-      <p class="card-detail-caveat">⚠️ Not a substitute for medical advice. Use in the morning only.</p>
+      <p class="card-detail-caveat">Note: Not a substitute for medical advice. Use in the morning only.</p>
       </div>
     </div>
     </div>
@@ -855,13 +865,13 @@ footer a:hover { color: var(--accent); }
      READING
 ═════════════════════════════════════════════ -->
 <div class="cat-section" id="reading" data-cat="reading">
-  <h2>📖 Reading</h2>
+  <h2>Reading</h2>
   <p class="cat-desc">E-ink screens with weeks of battery life. No notifications. No browser. Just the book.</p>
   <div class="cards">
 
     <div class="card" data-cat="reading" data-budget="mid" data-mode="connected">
       <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/415UxzdDy3L._AC_SL1500_.jpg" alt="Kindle Paperwhite 2024" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none">📖</div>
+      <div class="card-img-placeholder" style="display:none"></div>
       <div class="card-body">
         <div class="card-badges"><span class="badge badge-new">2024</span><span class="badge badge-best">Best overall</span></div>
         <p class="card-title">Kindle Paperwhite (2024)</p>
@@ -886,15 +896,17 @@ footer a:hover { color: var(--accent); }
           <h4>Who it's for</h4>
           <p>Anyone wanting to read more and scroll less. The default recommendation.</p>
         </div>
-      <p class="card-detail-caveat">⚠️ You'll need a Kindle account. Wi-Fi only for purchases — can be disabled after.</p>
+      <p class="card-detail-caveat">Note: You'll need a Kindle account. Wi-Fi only for purchases — can be disabled after.</p>
       </div>
+    
+      <div class="yt-wrap"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/ac0xV6W34QE" title="Kindle Paperwhite 2024 review" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
     </div>
     </div>
     </div>
 
     <div class="card" data-cat="reading" data-budget="mid" data-mode="connected">
       <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/61ShjNlaI1L._AC_SL1500_.jpg" alt="Kobo Clara Colour" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none">🎨</div>
+      <div class="card-img-placeholder" style="display:none"></div>
       <div class="card-body">
         <div class="card-badges"><span class="badge badge-new">2024</span></div>
         <p class="card-title">Kobo Clara Colour</p>
@@ -919,15 +931,17 @@ footer a:hover { color: var(--accent); }
           <h4>Who it's for</h4>
           <p>Readers who want colour illustrations, or who borrow from public libraries.</p>
         </div>
-      <p class="card-detail-caveat">⚠️ Colour e-ink is still not quite paper-quality. Battery life shorter than B&W.</p>
+      <p class="card-detail-caveat">Note: Colour e-ink is still not quite paper-quality. Battery life shorter than B&W.</p>
       </div>
+    
+      <div class="yt-wrap"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/dkazunTNw3A" title="Kobo Clara Colour review" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
     </div>
     </div>
     </div>
 
     <div class="card" data-cat="reading" data-budget="high" data-mode="either">
       <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/81J43G1zqJL._AC_SL1500_.jpg" alt="Kobo Elipsa 2E" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none">📝</div>
+      <div class="card-img-placeholder" style="display:none"></div>
       <div class="card-body">
         <div class="card-badges"><span class="badge badge-new">2023</span></div>
         <p class="card-title">Kobo Elipsa 2E</p>
@@ -952,15 +966,17 @@ footer a:hover { color: var(--accent); }
           <h4>Who it's for</h4>
           <p>Students, researchers, PDF-heavy readers, note-takers.</p>
         </div>
-      <p class="card-detail-caveat">⚠️ Expensive. Heavy for single-handed reading.</p>
+      <p class="card-detail-caveat">Note: Expensive. Heavy for single-handed reading.</p>
       </div>
+    
+      <div class="yt-wrap"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/yhR6dXYF5L0" title="Kobo Elipsa 2E review" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
     </div>
     </div>
     </div>
 
     <div class="card" data-cat="reading" data-budget="high" data-mode="either">
       <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/61uKy2XVVHL._AC_SL1500_.jpg" alt="Boox Note Air4 C" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none">📱</div>
+      <div class="card-img-placeholder" style="display:none"></div>
       <div class="card-body">
         <div class="card-badges"><span class="badge badge-new">2024</span></div>
         <p class="card-title">Boox Note Air4 C</p>
@@ -985,16 +1001,16 @@ footer a:hover { color: var(--accent); }
           <h4>Who it's for</h4>
           <p>Power users who want e-ink + apps + handwriting in one device.</p>
         </div>
-      <p class="card-detail-caveat">⚠️ Android on e-ink is sluggish. Security updates not guaranteed long-term.</p>
+      <p class="card-detail-caveat">Note: Android on e-ink is sluggish. Security updates not guaranteed long-term.</p>
       </div>
     </div>
     </div>
-      <div class="card-caveat">⚠️ Runs Android — you can install distracting apps. Use with intention.</div>
+      <div class="card-caveat">Note: Runs Android — you can install distracting apps. Use with intention.</div>
     </div>
 
     <div class="card" data-cat="reading" data-budget="high" data-mode="either">
       <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/71Jf7sIeROL._AC_SL1500_.jpg" alt="Kindle Scribe e-reader with stylus" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none">📝</div>
+      <div class="card-img-placeholder" style="display:none"></div>
       <div class="card-body">
         <div class="card-badges"><span class="badge badge-new">2024</span></div>
         <p class="card-title">Kindle Scribe (2024)</p>
@@ -1019,15 +1035,17 @@ footer a:hover { color: var(--accent); }
           <h4>Who it's for</h4>
           <p>Kindle users who want handwriting without a separate notebook app.</p>
         </div>
-      <p class="card-detail-caveat">⚠️ Expensive for what it does. Note features are basic vs. reMarkable or Kobo Elipsa.</p>
+      <p class="card-detail-caveat">Note: Expensive for what it does. Note features are basic vs. reMarkable or Kobo Elipsa.</p>
       </div>
+    
+      <div class="yt-wrap"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/XjN5XmFSGQU" title="Kindle Scribe 2024 review" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
     </div>
     </div>
     </div>
 
     <div class="card" data-cat="reading" data-budget="high" data-mode="either">
       <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/61kxDO1mFzL._AC_SL1500_.jpg" alt="Kobo Sage e-reader" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none">📚</div>
+      <div class="card-img-placeholder" style="display:none"></div>
       <div class="card-body">
         <div class="card-badges"><span class="badge badge-new">2024</span></div>
         <p class="card-title">Kobo Sage</p>
@@ -1052,7 +1070,7 @@ footer a:hover { color: var(--accent); }
           <h4>Who it's for</h4>
           <p>Readers who want a larger screen with stylus capability.</p>
         </div>
-      <p class="card-detail-caveat">⚠️ Stylus costs extra. Slightly awkward one-handed.</p>
+      <p class="card-detail-caveat">Note: Stylus costs extra. Slightly awkward one-handed.</p>
       </div>
     </div>
     </div>
@@ -1060,7 +1078,7 @@ footer a:hover { color: var(--accent); }
 
     <div class="card" data-cat="reading" data-budget="high" data-mode="connected">
       <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/71i7t7JWRCL._AC_SL1500_.jpg" alt="Daylight Computer DC-1" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none">🔆</div>
+      <div class="card-img-placeholder" style="display:none"></div>
       <div class="card-body">
         <div class="card-badges"><span class="badge badge-new">2024</span></div>
         <p class="card-title">Daylight Computer DC-1</p>
@@ -1085,16 +1103,18 @@ footer a:hover { color: var(--accent); }
           <h4>Who it's for</h4>
           <p>Heavy readers bothered by eye strain or blue light at night.</p>
         </div>
-      <p class="card-detail-caveat">⚠️ Very expensive for the specs. App compatibility limited. Not a general tablet.</p>
+      <p class="card-detail-caveat">Note: Very expensive for the specs. App compatibility limited. Not a general tablet.</p>
       </div>
+    
+      <div class="yt-wrap"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/ovF3w8neDUw" title="Daylight DC-1 review" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
     </div>
     </div>
-      <div class="card-caveat">⚠️ US shipping currently; import costs apply for UK buyers.</div>
+      <div class="card-caveat">Note: US shipping currently; import costs apply for UK buyers.</div>
     </div>
 
     <div class="card" data-cat="reading" data-budget="high" data-mode="standalone">
       <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/71wJYzM2mxL._AC_SL1500_.jpg" alt="Kindle Colorsoft e-reader" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none">🎨</div>
+      <div class="card-img-placeholder" style="display:none"></div>
       <div class="card-body">
         <div class="card-badges"><span class="badge badge-new">2024</span></div>
         <p class="card-title">Kindle Colorsoft</p>
@@ -1119,8 +1139,10 @@ footer a:hover { color: var(--accent); }
           <h4>Who it's for</h4>
           <p>Kindle users who read illustrated or colour-rich books and want the full-colour version.</p>
         </div>
-      <p class="card-detail-caveat">⚠️ Expensive step up from the Paperwhite. Colour is richer than older Kobo Colour but still not glossy-magazine vivid.</p>
+      <p class="card-detail-caveat">Note: Expensive step up from the Paperwhite. Colour is richer than older Kobo Colour but still not glossy-magazine vivid.</p>
       </div>
+    
+      <div class="yt-wrap"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/nvqszAQ7clw" title="Kindle Colorsoft review" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
     </div>
     </div>
     </div>
@@ -1132,13 +1154,13 @@ footer a:hover { color: var(--accent); }
      MUSIC
 ═════════════════════════════════════════════ -->
 <div class="cat-section" id="music" data-cat="music">
-  <h2>🎵 Music &amp; Audio Players</h2>
+  <h2>Music &amp; Audio Players</h2>
   <p class="cat-desc">Spotify, Tidal, FLAC libraries — without your phone being involved. Dedicated players sound better and stay in their lane.</p>
   <div class="cards">
 
     <div class="card" data-cat="music" data-budget="mid" data-mode="standalone">
       <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/31oIkyTXn6L._AC_SL1500_.jpg" alt="Sony NW-A306 Walkman" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none">🎶</div>
+      <div class="card-img-placeholder" style="display:none"></div>
       <div class="card-body">
         <div class="card-badges"><span class="badge badge-best">Best overall</span></div>
         <p class="card-title">Sony NW-A306 Walkman</p>
@@ -1163,7 +1185,7 @@ footer a:hover { color: var(--accent); }
           <h4>Who it's for</h4>
           <p>Music lovers who want a step up from phone audio without going audiophile.</p>
         </div>
-      <p class="card-detail-caveat">⚠️ Needs phone app to initially sync Spotify playlists. After that: fully standalone.</p>
+      <p class="card-detail-caveat">Note: Needs phone app to initially sync Spotify playlists. After that: fully standalone.</p>
       </div>
     </div>
     </div>
@@ -1171,7 +1193,7 @@ footer a:hover { color: var(--accent); }
 
     <div class="card" data-cat="music" data-budget="mid" data-mode="standalone">
       <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/61R7yCiib0L._AC_SL1500_.jpg" alt="Shanling M0 Pro" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none">🎵</div>
+      <div class="card-img-placeholder" style="display:none"></div>
       <div class="card-body">
         <p class="card-title">Shanling M0 Pro</p>
         <p class="card-desc">Tiny, pocketable DAP with touchscreen. Plays local files and supports Tidal/Qobuz. 600mW output drives most headphones. No social apps possible.</p>
@@ -1195,7 +1217,7 @@ footer a:hover { color: var(--accent); }
           <h4>Who it's for</h4>
           <p>Those who want great sound in a tiny pocket device.</p>
         </div>
-      <p class="card-detail-caveat">⚠️ Very small screen means awkward browsing long playlists.</p>
+      <p class="card-detail-caveat">Note: Very small screen means awkward browsing long playlists.</p>
       </div>
     </div>
     </div>
@@ -1203,7 +1225,7 @@ footer a:hover { color: var(--accent); }
 
     <div class="card" data-cat="music" data-budget="low" data-mode="standalone">
       <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/51pistYIQhL._AC_SL1500_.jpg" alt="SanDisk Clip Sport Plus" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none">🎧</div>
+      <div class="card-img-placeholder" style="display:none"></div>
       <div class="card-body">
         <div class="card-badges"><span class="badge badge-budget">Budget pick</span></div>
         <p class="card-title">SanDisk Clip Sport Plus</p>
@@ -1228,7 +1250,7 @@ footer a:hover { color: var(--accent); }
           <h4>Who it's for</h4>
           <p>The simplest possible music player. Gym, running, kids.</p>
         </div>
-      <p class="card-detail-caveat">⚠️ Must manage a music library yourself (MP3 files). No streaming.</p>
+      <p class="card-detail-caveat">Note: Must manage a music library yourself (MP3 files). No streaming.</p>
       </div>
     </div>
     </div>
@@ -1236,7 +1258,7 @@ footer a:hover { color: var(--accent); }
 
     <div class="card" data-cat="music" data-budget="mid" data-mode="standalone">
       <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/71XtSFMAp4L._AC_SL1500_.jpg" alt="Mighty 3 offline music player" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none">🎙️</div>
+      <div class="card-img-placeholder" style="display:none"></div>
       <div class="card-body">
         <p class="card-title">Mighty 3 (Spotify offline)</p>
         <p class="card-desc">The size of a credit card. Syncs Spotify playlists offline — no phone, no WiFi needed for playback. No screen, no notifications. Clip it on and go.</p>
@@ -1260,7 +1282,7 @@ footer a:hover { color: var(--accent); }
           <h4>Who it's for</h4>
           <p>Spotify subscribers who want phone-free gym or running sessions.</p>
         </div>
-      <p class="card-detail-caveat">⚠️ Requires Spotify Premium. Sync needs Wi-Fi and the Mighty app on your phone (once).</p>
+      <p class="card-detail-caveat">Note: Requires Spotify Premium. Sync needs Wi-Fi and the Mighty app on your phone (once).</p>
       </div>
     </div>
     </div>
@@ -1268,7 +1290,7 @@ footer a:hover { color: var(--accent); }
 
     <div class="card" data-cat="music" data-budget="high" data-mode="standalone">
       <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/71X4r6mOl5L._AC_SL1500_.jpg" alt="FiiO M11S hi-res music player" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none">🎵</div>
+      <div class="card-img-placeholder" style="display:none"></div>
       <div class="card-body">
         <div class="card-badges"><span class="badge badge-new">2024</span></div>
         <p class="card-title">FiiO M11S</p>
@@ -1293,7 +1315,7 @@ footer a:hover { color: var(--accent); }
           <h4>Who it's for</h4>
           <p>Audiophiles who want the best portable sound short of a £1,000+ DAP.</p>
         </div>
-      <p class="card-detail-caveat">⚠️ Android on DAPs can be slow. Battery life shorter under streaming.</p>
+      <p class="card-detail-caveat">Note: Android on DAPs can be slow. Battery life shorter under streaming.</p>
       </div>
     </div>
     </div>
@@ -1301,7 +1323,7 @@ footer a:hover { color: var(--accent); }
 
     <div class="card" data-cat="music" data-budget="high" data-mode="standalone">
       <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/71HmP+WCUQL._AC_SL1500_.jpg" alt="Astell&Kern AK Jr II DAP" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none">🎶</div>
+      <div class="card-img-placeholder" style="display:none"></div>
       <div class="card-body">
         <div class="card-badges"><span class="badge badge-best">Audiophile pick</span></div>
         <p class="card-title">Astell&amp;Kern AK Jr II</p>
@@ -1326,7 +1348,7 @@ footer a:hover { color: var(--accent); }
           <h4>Who it's for</h4>
           <p>Audiophiles who want sound quality without any distractions.</p>
         </div>
-      <p class="card-detail-caveat">⚠️ No streaming. Expensive. Niche market.</p>
+      <p class="card-detail-caveat">Note: No streaming. Expensive. Niche market.</p>
       </div>
     </div>
     </div>
@@ -1334,7 +1356,7 @@ footer a:hover { color: var(--accent); }
 
     <div class="card" data-cat="music" data-budget="mid" data-mode="standalone">
       <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/61A47BWSRLL._AC_SL1500_.jpg" alt="FiiO M6 hi-res music player" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none">🎵</div>
+      <div class="card-img-placeholder" style="display:none"></div>
       <div class="card-body">
         <p class="card-title">FiiO M6</p>
         <p class="card-desc">Small, light, affordable DAP from the leading Chinese audio brand. Supports most streaming services offline. 1.5" AMOLED screen. 13-hour battery. A genuine step up from using a phone, at an accessible price.</p>
@@ -1358,7 +1380,7 @@ footer a:hover { color: var(--accent); }
           <h4>Who it's for</h4>
           <p>Budget audiophiles or anyone stepping up from a phone for music.</p>
         </div>
-      <p class="card-detail-caveat">⚠️ Older Android version. Streaming app support varies.</p>
+      <p class="card-detail-caveat">Note: Older Android version. Streaming app support varies.</p>
       </div>
     </div>
     </div>
@@ -1371,13 +1393,13 @@ footer a:hover { color: var(--accent); }
      HEADPHONES
 ═════════════════════════════════════════════ -->
 <div class="cat-section" id="headphones" data-cat="headphones">
-  <h2>🎧 Headphones &amp; Earphones</h2>
+  <h2>Headphones &amp; Earphones</h2>
   <p class="cat-desc">Good headphones make listening intentional. These don't need your phone — pair with a DAP or just a dumb source.</p>
   <div class="cards">
 
     <div class="card" data-cat="headphones" data-budget="mid" data-mode="standalone">
       <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/21ZaAGHSdNL._AC_SL1500_.jpg" alt="Sony WH-1000XM5" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none">🎧</div>
+      <div class="card-img-placeholder" style="display:none"></div>
       <div class="card-body">
         <div class="card-badges"><span class="badge badge-best">Best ANC</span></div>
         <p class="card-title">Sony WH-1000XM5</p>
@@ -1402,15 +1424,17 @@ footer a:hover { color: var(--accent); }
           <h4>Who it's for</h4>
           <p>Commuters, office workers, anyone who wants to cut out the world.</p>
         </div>
-      <p class="card-detail-caveat">⚠️ Requires initial Sony app setup for ANC customisation (optional). Premium price.</p>
+      <p class="card-detail-caveat">Note: Requires initial Sony app setup for ANC customisation (optional). Premium price.</p>
       </div>
+    
+      <div class="yt-wrap"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/FE-X8xlwXRw" title="Sony WH-1000XM5 review" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
     </div>
     </div>
     </div>
 
     <div class="card" data-cat="headphones" data-budget="mid" data-mode="standalone">
       <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/61pFH9onSNL._AC_SL1500_.jpg" alt="Bose QuietComfort 45" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none">🎵</div>
+      <div class="card-img-placeholder" style="display:none"></div>
       <div class="card-body">
         <div class="card-badges"><span class="badge badge-uk">UK favourite</span></div>
         <p class="card-title">Bose QuietComfort 45</p>
@@ -1435,15 +1459,17 @@ footer a:hover { color: var(--accent); }
           <h4>Who it's for</h4>
           <p>Those who find Sony's sound too "digital" — Bose is warmer.</p>
         </div>
-      <p class="card-detail-caveat">⚠️ Slightly bulkier than XM5. Older model now — check for XM5 pricing.</p>
+      <p class="card-detail-caveat">Note: Slightly bulkier than XM5. Older model now — check for XM5 pricing.</p>
       </div>
+    
+      <div class="yt-wrap"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/1WEdZrUlcbE" title="Bose QuietComfort 45 review" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
     </div>
     </div>
     </div>
 
     <div class="card" data-cat="headphones" data-budget="low" data-mode="standalone">
       <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/61dnBIC2ktL._AC_SL1500_.jpg" alt="Koss KPH30i headphones" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none">🎶</div>
+      <div class="card-img-placeholder" style="display:none"></div>
       <div class="card-body">
         <div class="card-badges"><span class="badge badge-budget">Under £50</span></div>
         <p class="card-title">Koss KPH30i</p>
@@ -1468,7 +1494,7 @@ footer a:hover { color: var(--accent); }
           <h4>Who it's for</h4>
           <p>Budget buyers who want excellent sound without wireless complexity.</p>
         </div>
-      <p class="card-detail-caveat">⚠️ Open-back means sound leaks — not for public transport. No ANC.</p>
+      <p class="card-detail-caveat">Note: Open-back means sound leaks — not for public transport. No ANC.</p>
       </div>
     </div>
     </div>
@@ -1476,7 +1502,7 @@ footer a:hover { color: var(--accent); }
 
     <div class="card" data-cat="headphones" data-budget="mid" data-mode="standalone">
       <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/71t1GFqIlQL._AC_SL1500_.jpg" alt="Sennheiser HD 560S headphones" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none">🎧</div>
+      <div class="card-img-placeholder" style="display:none"></div>
       <div class="card-body">
         <div class="card-badges"><span class="badge badge-best">Best wired over-ear</span></div>
         <p class="card-title">Sennheiser HD 560S</p>
@@ -1501,7 +1527,7 @@ footer a:hover { color: var(--accent); }
           <h4>Who it's for</h4>
           <p>Home listeners who want accurate audio for music or film.</p>
         </div>
-      <p class="card-detail-caveat">⚠️ Open-back — not for commuting. No noise isolation.</p>
+      <p class="card-detail-caveat">Note: Open-back — not for commuting. No noise isolation.</p>
       </div>
     </div>
     </div>
@@ -1509,7 +1535,7 @@ footer a:hover { color: var(--accent); }
 
     <div class="card" data-cat="headphones" data-budget="mid" data-mode="standalone">
       <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/61hPNg4SUNL._AC_SL1500_.jpg" alt="Beyerdynamic DT 770 Pro headphones" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none">🎵</div>
+      <div class="card-img-placeholder" style="display:none"></div>
       <div class="card-body">
         <p class="card-title">Beyerdynamic DT 770 Pro (80 Ohm)</p>
         <p class="card-desc">Closed-back, wired, German-made, no app, no Bluetooth. The 80-ohm version drives well from portable DAPs. A studio standard since 1985 — improved over the years but fundamentally unchanged because they got it right.</p>
@@ -1533,7 +1559,7 @@ footer a:hover { color: var(--accent); }
           <h4>Who it's for</h4>
           <p>Studio-style listening at home. Those who want to block the world out.</p>
         </div>
-      <p class="card-detail-caveat">⚠️ 80 ohm version needs more amplification than the 32 ohm model.</p>
+      <p class="card-detail-caveat">Note: 80 ohm version needs more amplification than the 32 ohm model.</p>
       </div>
     </div>
     </div>
@@ -1541,7 +1567,7 @@ footer a:hover { color: var(--accent); }
 
     <div class="card" data-cat="headphones" data-budget="mid" data-mode="standalone">
       <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/61LUeETiXJL._AC_SL1500_.jpg" alt="Moondrop Aria 2 IEM earphones" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none">🎶</div>
+      <div class="card-img-placeholder" style="display:none"></div>
       <div class="card-body">
         <div class="card-badges"><span class="badge badge-new">2023</span></div>
         <p class="card-title">Moondrop Aria 2 (IEM)</p>
@@ -1566,7 +1592,7 @@ footer a:hover { color: var(--accent); }
           <h4>Who it's for</h4>
           <p>Anyone who wants hi-res IEM quality without spending £200+.</p>
         </div>
-      <p class="card-detail-caveat">⚠️ No wireless option. Requires 3.5mm — may need a dongle for newer phones.</p>
+      <p class="card-detail-caveat">Note: No wireless option. Requires 3.5mm — may need a dongle for newer phones.</p>
       </div>
     </div>
     </div>
@@ -1579,13 +1605,13 @@ footer a:hover { color: var(--accent); }
      WRITING
 ═════════════════════════════════════════════ -->
 <div class="cat-section" id="writing" data-cat="writing">
-  <h2>✏️ Writing &amp; Notes</h2>
+  <h2>Writing &amp; Notes</h2>
   <p class="cat-desc">Capture thoughts without opening a browser. E-ink note-takers and distraction-free keyboards.</p>
   <div class="cards">
 
     <div class="card" data-cat="writing" data-budget="high" data-mode="standalone">
-      <img class="card-img" loading="eager" src="https://getfreewrite.com/cdn/shop/files/SmartTypewriter-13_2000x.jpg?v=1683734481" alt="Freewrite Smart Typewriter" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none">⌨️</div>
+      <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/61fGkzq9P2L._AC_SL1500_.jpg" alt="Freewrite Smart Typewriter" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="card-img-placeholder" style="display:none"></div>
       <div class="card-body">
         <div class="card-badges"><span class="badge badge-best">Writers' pick</span></div>
         <p class="card-title">Freewrite Smart Typewriter</p>
@@ -1610,15 +1636,17 @@ footer a:hover { color: var(--accent); }
           <h4>Who it's for</h4>
           <p>Writers who need a distraction-free first draft machine.</p>
         </div>
-      <p class="card-detail-caveat">⚠️ Expensive. Cannot edit or rearrange text beyond basic cursor. Sync requires Wi-Fi.</p>
+      <p class="card-detail-caveat">Note: Expensive. Cannot edit or rearrange text beyond basic cursor. Sync requires Wi-Fi.</p>
       </div>
+    
+      <div class="yt-wrap"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/p42i_hfBJgE" title="Freewrite Smart Typewriter review" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
     </div>
     </div>
     </div>
 
     <div class="card" data-cat="writing" data-budget="mid" data-mode="standalone">
       <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/61HlD77Gd3L._AC_SL1500_.jpg" alt="Freewrite Traveler" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none">🗒️</div>
+      <div class="card-img-placeholder" style="display:none"></div>
       <div class="card-body">
         <p class="card-title">Freewrite Traveler</p>
         <p class="card-desc">Foldable, lighter version of the Smart Typewriter. Same philosophy — write only. Better for travel and coffee shops. Roughly half the weight.</p>
@@ -1642,15 +1670,17 @@ footer a:hover { color: var(--accent); }
           <h4>Who it's for</h4>
           <p>Writers who travel and want a portable first-draft device.</p>
         </div>
-      <p class="card-detail-caveat">⚠️ Keyboard feel divides opinion — try before buying if possible.</p>
+      <p class="card-detail-caveat">Note: Keyboard feel divides opinion — try before buying if possible.</p>
       </div>
+    
+      <div class="yt-wrap"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/rHOrs7qRyiE" title="Freewrite Traveler review" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
     </div>
     </div>
     </div>
 
     <div class="card" data-cat="writing" data-budget="mid" data-mode="either">
       <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/611ojBbpOhL._AC_SL1500_.jpg" alt="reMarkable 2" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none">📝</div>
+      <div class="card-img-placeholder" style="display:none"></div>
       <div class="card-body">
         <div class="card-badges"><span class="badge badge-new">2024 software</span></div>
         <p class="card-title">reMarkable 2</p>
@@ -1675,15 +1705,17 @@ footer a:hover { color: var(--accent); }
           <h4>Who it's for</h4>
           <p>Note-takers, PDF annotators, sketchers who want a paper feel.</p>
         </div>
-      <p class="card-detail-caveat">⚠️ Subscription (Connect) needed for cloud sync and some features. Expensive.</p>
+      <p class="card-detail-caveat">Note: Subscription (Connect) needed for cloud sync and some features. Expensive.</p>
       </div>
+    
+      <div class="yt-wrap"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/yLbAh2oBPU0" title="reMarkable 2 review" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
     </div>
     </div>
     </div>
 
     <div class="card" data-cat="writing" data-budget="mid" data-mode="standalone">
       <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/71NhgEqGi0L._AC_SL1500_.jpg" alt="King Jim Pomera DM250 word processor" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none">⌨️</div>
+      <div class="card-img-placeholder" style="display:none"></div>
       <div class="card-body">
         <div class="card-badges"><span class="badge badge-best">Budget writers' pick</span></div>
         <p class="card-title">King Jim Pomera DM250</p>
@@ -1708,16 +1740,16 @@ footer a:hover { color: var(--accent); }
           <h4>Who it's for</h4>
           <p>Writers who want total offline focus with a great keyboard.</p>
         </div>
-      <p class="card-detail-caveat">⚠️ Japanese brand — import only in UK. No real-time sync.</p>
+      <p class="card-detail-caveat">Note: Japanese brand — import only in UK. No real-time sync.</p>
       </div>
     </div>
     </div>
-      <div class="card-caveat">⚠️ Japan import; available via proxy services or Amazon Japan.</div>
+      <div class="card-caveat">Note: Japan import; available via proxy services or Amazon Japan.</div>
     </div>
 
     <div class="card" data-cat="writing" data-budget="low" data-mode="standalone">
       <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/61IY9VKQXML._AC_SL1500_.jpg" alt="AlphaSmart Neo 2 word processor" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none">🖮</div>
+      <div class="card-img-placeholder" style="display:none"></div>
       <div class="card-body">
         <div class="card-badges"><span class="badge badge-budget">Cult classic</span></div>
         <p class="card-title">AlphaSmart Neo 2</p>
@@ -1742,16 +1774,16 @@ footer a:hover { color: var(--accent); }
           <h4>Who it's for</h4>
           <p>Writers who want a retro, distraction-free tool with almost no running costs.</p>
         </div>
-      <p class="card-detail-caveat">⚠️ Discontinued — buy used. No modern sync. Basic LCD screen.</p>
+      <p class="card-detail-caveat">Note: Discontinued — buy used. No modern sync. Basic LCD screen.</p>
       </div>
     </div>
     </div>
-      <div class="card-caveat">⚠️ Secondhand only — no new stock. Check eBay UK.</div>
+      <div class="card-caveat">Note: Secondhand only — no new stock. Check eBay UK.</div>
     </div>
 
     <div class="card" data-cat="writing" data-budget="mid" data-mode="standalone">
       <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/71XkMEj5q4L._AC_SL1500_.jpg" alt="Freewrite Alpha distraction-free writer" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none">📖</div>
+      <div class="card-img-placeholder" style="display:none"></div>
       <div class="card-body">
         <div class="card-badges"><span class="badge badge-new">2024</span></div>
         <p class="card-title">Freewrite Alpha</p>
@@ -1776,7 +1808,7 @@ footer a:hover { color: var(--accent); }
           <h4>Who it's for</h4>
           <p>Writers on a budget who want distraction-free typing.</p>
         </div>
-      <p class="card-detail-caveat">⚠️ Less polished than the Smart Typewriter. Sync via Wi-Fi only.</p>
+      <p class="card-detail-caveat">Note: Less polished than the Smart Typewriter. Sync via Wi-Fi only.</p>
       </div>
     </div>
     </div>
@@ -1789,13 +1821,13 @@ footer a:hover { color: var(--accent); }
      CAMERA
 ═════════════════════════════════════════════ -->
 <div class="cat-section" id="camera" data-cat="camera">
-  <h2>📷 Cameras</h2>
+  <h2>Cameras</h2>
   <p class="cat-desc">Real cameras make photography intentional again. No post-shooting scroll, no filters, no feed.</p>
   <div class="cards">
 
     <div class="card" data-cat="camera" data-budget="high" data-mode="standalone">
       <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/71olA3UfFXL._AC_SL1500_.jpg" alt="Fujifilm X100VI" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none">📷</div>
+      <div class="card-img-placeholder" style="display:none"></div>
       <div class="card-body">
         <div class="card-badges"><span class="badge badge-new">2024</span><span class="badge badge-best">The one</span></div>
         <p class="card-title">Fujifilm X100VI</p>
@@ -1820,15 +1852,17 @@ footer a:hover { color: var(--accent); }
           <h4>Who it's for</h4>
           <p>Enthusiast photographers who want a pocketable do-everything camera.</p>
         </div>
-      <p class="card-detail-caveat">⚠️ Frequently sold out — check for availability. Not cheap.</p>
+      <p class="card-detail-caveat">Note: Frequently sold out — check for availability. Not cheap.</p>
       </div>
+    
+      <div class="yt-wrap"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/zj4snEXRmc0" title="Fujifilm X100VI review" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
     </div>
     </div>
     </div>
 
     <div class="card" data-cat="camera" data-budget="mid" data-mode="standalone">
       <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/81sJc3nJtdL._AC_SL1500_.jpg" alt="Ricoh GR IIIx" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none">📸</div>
+      <div class="card-img-placeholder" style="display:none"></div>
       <div class="card-body">
         <p class="card-title">Ricoh GR IIIx</p>
         <p class="card-desc">Pocketable street camera with APS-C sensor and 40mm equivalent lens. Beloved by street photographers. Deliberately minimal — quick capture, then put it away.</p>
@@ -1852,15 +1886,17 @@ footer a:hover { color: var(--accent); }
           <h4>Who it's for</h4>
           <p>Street photographers who want an inconspicuous pocketable APS-C.</p>
         </div>
-      <p class="card-detail-caveat">⚠️ No image stabilisation. Easy to miss focus in low light without snap mode.</p>
+      <p class="card-detail-caveat">Note: No image stabilisation. Easy to miss focus in low light without snap mode.</p>
       </div>
+    
+      <div class="yt-wrap"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/Xw_pMTszvj0" title="Ricoh GR IIIx review" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
     </div>
     </div>
     </div>
 
     <div class="card" data-cat="camera" data-budget="mid" data-mode="standalone">
       <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/31PUyXhm0uL._AC_SL1500_.jpg" alt="Fujifilm Instax Mini 12" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none">🖼️</div>
+      <div class="card-img-placeholder" style="display:none"></div>
       <div class="card-body">
         <div class="card-badges"><span class="badge badge-budget">Family pick</span></div>
         <p class="card-title">Fujifilm Instax Mini 12</p>
@@ -1885,7 +1921,7 @@ footer a:hover { color: var(--accent); }
           <h4>Who it's for</h4>
           <p>Kids, parties, anyone who wants tangible memories.</p>
         </div>
-      <p class="card-detail-caveat">⚠️ Film costs money per shot (~£1 per photo). Can't undo a bad exposure.</p>
+      <p class="card-detail-caveat">Note: Film costs money per shot (~£1 per photo). Can't undo a bad exposure.</p>
       </div>
     </div>
     </div>
@@ -1893,7 +1929,7 @@ footer a:hover { color: var(--accent); }
 
     <div class="card" data-cat="camera" data-budget="low" data-mode="standalone">
       <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/71mXJqFdpYL._AC_SL1500_.jpg" alt="Kodak M35 35mm film camera" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none">📷</div>
+      <div class="card-img-placeholder" style="display:none"></div>
       <div class="card-body">
         <div class="card-badges"><span class="badge badge-budget">Under £30</span></div>
         <p class="card-title">Kodak M35 35mm Film Camera</p>
@@ -1918,7 +1954,7 @@ footer a:hover { color: var(--accent); }
           <h4>Who it's for</h4>
           <p>Anyone who wants to slow down and shoot on film cheaply.</p>
         </div>
-      <p class="card-detail-caveat">⚠️ Must develop film — costs time and money. Fixed focus means not sharp up-close.</p>
+      <p class="card-detail-caveat">Note: Must develop film — costs time and money. Fixed focus means not sharp up-close.</p>
       </div>
     </div>
     </div>
@@ -1926,7 +1962,7 @@ footer a:hover { color: var(--accent); }
 
     <div class="card" data-cat="camera" data-budget="low" data-mode="standalone">
       <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/71a1Xt5HniL._AC_SL1500_.jpg" alt="Kodak Ektar H35 half-frame camera" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none">🎞️</div>
+      <div class="card-img-placeholder" style="display:none"></div>
       <div class="card-body">
         <p class="card-title">Kodak Ektar H35 Half-Frame</p>
         <p class="card-desc">Shoots half-frame on 35mm film — 72 exposures per roll. Slows you down, makes you choose. The results are deliberately imperfect. A good entry to film photography without the cost of developing a 24-exposure roll every two outings.</p>
@@ -1950,7 +1986,7 @@ footer a:hover { color: var(--accent); }
           <h4>Who it's for</h4>
           <p>Budget film shooters. Anyone who wants to stretch film further.</p>
         </div>
-      <p class="card-detail-caveat">⚠️ Half-frame means smaller negatives — grain is more visible.</p>
+      <p class="card-detail-caveat">Note: Half-frame means smaller negatives — grain is more visible.</p>
       </div>
     </div>
     </div>
@@ -1958,7 +1994,7 @@ footer a:hover { color: var(--accent); }
 
     <div class="card" data-cat="camera" data-budget="mid" data-mode="standalone">
       <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/81JHv0l8P+L._AC_SL1500_.jpg" alt="Ricoh GR IIIx Urban Edition camera" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none">📸</div>
+      <div class="card-img-placeholder" style="display:none"></div>
       <div class="card-body">
         <div class="card-badges"><span class="badge badge-new">2024</span></div>
         <p class="card-title">Ricoh GR IIIx Urban Edition</p>
@@ -1983,7 +2019,7 @@ footer a:hover { color: var(--accent); }
           <h4>Who it's for</h4>
           <p>GR IIIx fans who want the distinctive colourway.</p>
         </div>
-      <p class="card-detail-caveat">⚠️ Same caveats as GR IIIx. Premium price for cosmetic difference.</p>
+      <p class="card-detail-caveat">Note: Same caveats as GR IIIx. Premium price for cosmetic difference.</p>
       </div>
     </div>
     </div>
@@ -1996,13 +2032,13 @@ footer a:hover { color: var(--accent); }
      FITNESS
 ═════════════════════════════════════════════ -->
 <div class="cat-section" id="fitness" data-cat="fitness">
-  <h2>🏃 Fitness Trackers &amp; GPS Watches</h2>
+  <h2>Fitness Trackers &amp; GPS Watches</h2>
   <p class="cat-desc">Track your health without carrying a supercomputer. These do sport, not notifications.</p>
   <div class="cards">
 
     <div class="card" data-cat="fitness" data-budget="high" data-mode="standalone">
       <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/71J8pYsllBL._AC_SL1500_.jpg" alt="Garmin Fenix 7S" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none">⌚</div>
+      <div class="card-img-placeholder" style="display:none"></div>
       <div class="card-body">
         <div class="card-badges"><span class="badge badge-best">Serious athletes</span></div>
         <p class="card-title">Garmin Fenix 7S</p>
@@ -2027,15 +2063,17 @@ footer a:hover { color: var(--accent); }
           <h4>Who it's for</h4>
           <p>Hikers, trail runners, adventure users who want maps and sensors without a phone.</p>
         </div>
-      <p class="card-detail-caveat">⚠️ Expensive. Bulky for everyday wear. Some features need phone pairing initially.</p>
+      <p class="card-detail-caveat">Note: Expensive. Bulky for everyday wear. Some features need phone pairing initially.</p>
       </div>
+    
+      <div class="yt-wrap"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/3620mR7nZL8" title="Garmin Fenix 7 review" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
     </div>
     </div>
     </div>
 
     <div class="card" data-cat="fitness" data-budget="mid" data-mode="standalone">
       <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/71-iVjaYJIL._AC_SL1500_.jpg" alt="Garmin Vivosmart 5" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none">💪</div>
+      <div class="card-img-placeholder" style="display:none"></div>
       <div class="card-body">
         <p class="card-title">Garmin Vivosmart 5</p>
         <p class="card-desc">Slim fitness band. Tracks steps, sleep, heart rate, stress. Minimal notification pass-through. 7-day battery. Good for people who want health data, not a mini phone.</p>
@@ -2059,7 +2097,7 @@ footer a:hover { color: var(--accent); }
           <h4>Who it's for</h4>
           <p>Those who want health data without a smartwatch.</p>
         </div>
-      <p class="card-detail-caveat">⚠️ Needs Garmin Connect app to set up. Notifications enabled by default.</p>
+      <p class="card-detail-caveat">Note: Needs Garmin Connect app to set up. Notifications enabled by default.</p>
       </div>
     </div>
     </div>
@@ -2067,7 +2105,7 @@ footer a:hover { color: var(--accent); }
 
     <div class="card" data-cat="fitness" data-budget="high" data-mode="standalone">
       <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/71yCwj2MPcL._AC_SL1500_.jpg" alt="Withings ScanWatch 2" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none">🕐</div>
+      <div class="card-img-placeholder" style="display:none"></div>
       <div class="card-body">
         <div class="card-badges"><span class="badge badge-new">2023</span><span class="badge badge-uk">UK pick</span></div>
         <p class="card-title">Withings ScanWatch 2</p>
@@ -2092,7 +2130,7 @@ footer a:hover { color: var(--accent); }
           <h4>Who it's for</h4>
           <p>Health-conscious users who want monitoring in a traditional watch form.</p>
         </div>
-      <p class="card-detail-caveat">⚠️ Needs Withings app to unlock full health features. Premium price.</p>
+      <p class="card-detail-caveat">Note: Needs Withings app to unlock full health features. Premium price.</p>
       </div>
     </div>
     </div>
@@ -2100,7 +2138,7 @@ footer a:hover { color: var(--accent); }
 
     <div class="card" data-cat="fitness" data-budget="high" data-mode="standalone">
       <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/619e3077wWL._AC_SL1500_.jpg" alt="Garmin inReach Mini 2" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none">🛰️</div>
+      <div class="card-img-placeholder" style="display:none"></div>
       <div class="card-body">
         <p class="card-title">Garmin inReach Mini 2</p>
         <p class="card-desc">Satellite communicator for the outdoors. Two-way messaging anywhere on earth — no mobile signal needed. The ultimate "leave your phone behind" device for hikers.</p>
@@ -2124,7 +2162,7 @@ footer a:hover { color: var(--accent); }
           <h4>Who it's for</h4>
           <p>Hikers, solo adventurers, anyone going off-grid who needs emergency comms.</p>
         </div>
-      <p class="card-detail-caveat">⚠️ Monthly satellite subscription (from ~£13/month). Bulky for everyday carry.</p>
+      <p class="card-detail-caveat">Note: Monthly satellite subscription (from ~£13/month). Bulky for everyday carry.</p>
       </div>
     </div>
     </div>
@@ -2132,7 +2170,7 @@ footer a:hover { color: var(--accent); }
 
     <div class="card" data-cat="fitness" data-budget="high" data-mode="either">
       <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/61wOGWIxMAL._AC_SL1500_.jpg" alt="Garmin Vívoactive 5 smartwatch" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none">⌚</div>
+      <div class="card-img-placeholder" style="display:none"></div>
       <div class="card-body">
         <div class="card-badges"><span class="badge badge-new">2024</span></div>
         <p class="card-title">Garmin Vívoactive 5</p>
@@ -2157,15 +2195,17 @@ footer a:hover { color: var(--accent); }
           <h4>Who it's for</h4>
           <p>Active users who want GPS and health tracking without a full smartwatch.</p>
         </div>
-      <p class="card-detail-caveat">⚠️ Smaller screen. Lower-resolution vs. Apple Watch. Needs Garmin Connect once to set up.</p>
+      <p class="card-detail-caveat">Note: Smaller screen. Lower-resolution vs. Apple Watch. Needs Garmin Connect once to set up.</p>
       </div>
+    
+      <div class="yt-wrap"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/e0WYzuq_Xro" title="Garmin Vivoactive 5 review" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
     </div>
     </div>
     </div>
 
     <div class="card" data-cat="fitness" data-budget="mid" data-mode="standalone">
       <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/71W4uo0+ZPL._AC_SL1500_.jpg" alt="Withings ScanWatch Light" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none">⌚</div>
+      <div class="card-img-placeholder" style="display:none"></div>
       <div class="card-body">
         <div class="card-badges"><span class="badge badge-new">2023</span></div>
         <p class="card-title">Withings ScanWatch Light</p>
@@ -2190,7 +2230,7 @@ footer a:hover { color: var(--accent); }
           <h4>Who it's for</h4>
           <p>People who want health data without a screen on their wrist demanding attention.</p>
         </div>
-      <p class="card-detail-caveat">⚠️ No GPS. Sleep tracking requires wearing it at night. Syncs via Bluetooth — phone needed weekly.</p>
+      <p class="card-detail-caveat">Note: No GPS. Sleep tracking requires wearing it at night. Syncs via Bluetooth — phone needed weekly.</p>
       </div>
     </div>
     </div>
@@ -2198,7 +2238,7 @@ footer a:hover { color: var(--accent); }
 
     <div class="card" data-cat="fitness" data-budget="high" data-mode="either">
       <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/61i6V78jX7L._AC_SL1500_.jpg" alt="Oura Ring Gen 4" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none">💍</div>
+      <div class="card-img-placeholder" style="display:none"></div>
       <div class="card-body">
         <div class="card-badges"><span class="badge badge-new">2024</span></div>
         <p class="card-title">Oura Ring (Gen 4)</p>
@@ -2223,7 +2263,7 @@ footer a:hover { color: var(--accent); }
           <h4>Who it's for</h4>
           <p>People who want health tracking without any wrist presence.</p>
         </div>
-      <p class="card-detail-caveat">⚠️ Monthly subscription after first year (~£5.99/month). Ring sizing important — try sizing kit first.</p>
+      <p class="card-detail-caveat">Note: Monthly subscription after first year (~£5.99/month). Ring sizing important — try sizing kit first.</p>
       </div>
     </div>
     </div>
@@ -2231,7 +2271,7 @@ footer a:hover { color: var(--accent); }
 
     <div class="card" data-cat="fitness" data-budget="high" data-mode="standalone">
       <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/71wlhM5SXDL._AC_SL1500_.jpg" alt="Polar Pacer Pro GPS watch" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none">⌚</div>
+      <div class="card-img-placeholder" style="display:none"></div>
       <div class="card-body">
         <div class="card-badges"><span class="badge badge-new">2024</span></div>
         <p class="card-title">Polar Pacer Pro</p>
@@ -2256,15 +2296,17 @@ footer a:hover { color: var(--accent); }
           <h4>Who it's for</h4>
           <p>Runners who want serious training analytics without distractions.</p>
         </div>
-      <p class="card-detail-caveat">⚠️ Polar ecosystem is smaller than Garmin. Less third-party app support.</p>
+      <p class="card-detail-caveat">Note: Polar ecosystem is smaller than Garmin. Less third-party app support.</p>
       </div>
+    
+      <div class="yt-wrap"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/1cml9uOOqRg" title="Polar Pacer Pro review" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
     </div>
     </div>
     </div>
 
     <div class="card" data-cat="fitness" data-budget="high" data-mode="standalone">
       <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/71h7TYFFJKL._AC_SL1500_.jpg" alt="Suunto Race S GPS watch" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none">🏔️</div>
+      <div class="card-img-placeholder" style="display:none"></div>
       <div class="card-body">
         <div class="card-badges"><span class="badge badge-best">Outdoor pick</span></div>
         <p class="card-title">Suunto Race S</p>
@@ -2289,7 +2331,7 @@ footer a:hover { color: var(--accent); }
           <h4>Who it's for</h4>
           <p>Runners and triathletes who want maps and training data.</p>
         </div>
-      <p class="card-detail-caveat">⚠️ Expensive. Ecosystem smaller than Garmin. App is improving but behind Garmin Connect.</p>
+      <p class="card-detail-caveat">Note: Expensive. Ecosystem smaller than Garmin. App is improving but behind Garmin Connect.</p>
       </div>
     </div>
     </div>
@@ -2297,7 +2339,7 @@ footer a:hover { color: var(--accent); }
 
     <div class="card" data-cat="fitness" data-budget="mid" data-mode="standalone">
       <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/71TBbFMt46L._AC_SL1500_.jpg" alt="Casio G-Shock GW-M5610 watch" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none">🕰️</div>
+      <div class="card-img-placeholder" style="display:none"></div>
       <div class="card-body">
         <p class="card-title">Casio G-Shock GW-M5610</p>
         <p class="card-desc">Atomic time-sync via radio signal, solar powered, 200m water resistance. The functional end of sports watches: no GPS, no apps, just precise time, a stopwatch, and a watch that survives anything. An honest upgrade from the F-91W if you're hard on watches.</p>
@@ -2321,7 +2363,7 @@ footer a:hover { color: var(--accent); }
           <h4>Who it's for</h4>
           <p>Anyone who wants an indestructible, always-accurate watch.</p>
         </div>
-      <p class="card-detail-caveat">⚠️ No GPS — time syncs via radio signal (strongest in Japan/Europe/US). May not sync indoors.</p>
+      <p class="card-detail-caveat">Note: No GPS — time syncs via radio signal (strongest in Japan/Europe/US). May not sync indoors.</p>
       </div>
     </div>
     </div>
@@ -2334,13 +2376,13 @@ footer a:hover { color: var(--accent); }
      KIDS
 ═════════════════════════════════════════════ -->
 <div class="cat-section" id="kids" data-cat="kids">
-  <h2>🧒 Kids &amp; Family</h2>
+  <h2>Kids &amp; Family</h2>
   <p class="cat-desc">Audio content and creativity tools that give children independence without handing them a smartphone.</p>
   <div class="cards">
 
     <div class="card" data-cat="kids" data-budget="mid" data-mode="standalone">
       <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/61L8IuElgoL._AC_SL1500_.jpg" alt="Yoto Player 3rd Gen" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none">🧸</div>
+      <div class="card-img-placeholder" style="display:none"></div>
       <div class="card-body">
         <div class="card-badges"><span class="badge badge-new">2023</span><span class="badge badge-best">Best for kids</span><span class="badge badge-uk">Made in UK</span></div>
         <p class="card-title">Yoto Player (3rd Gen)</p>
@@ -2365,15 +2407,17 @@ footer a:hover { color: var(--accent); }
           <h4>Who it's for</h4>
           <p>Children aged 3–12 who want audio content independently.</p>
         </div>
-      <p class="card-detail-caveat">⚠️ Content is Yoto-card only — ongoing cost for new stories/songs.</p>
+      <p class="card-detail-caveat">Note: Content is Yoto-card only — ongoing cost for new stories/songs.</p>
       </div>
+    
+      <div class="yt-wrap"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/WrDXE5H_Gv0" title="Yoto Player 3rd Gen review" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
     </div>
     </div>
     </div>
 
     <div class="card" data-cat="kids" data-budget="mid" data-mode="standalone">
       <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/61oKXuf3HML._AC_SL1500_.jpg" alt="Yoto Mini" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none">🎒</div>
+      <div class="card-img-placeholder" style="display:none"></div>
       <div class="card-body">
         <p class="card-title">Yoto Mini</p>
         <p class="card-desc">Portable, pocket-sized Yoto. Same card system, same content — but clips to a backpack. Perfect for car journeys and holidays where a phone would usually come out.</p>
@@ -2397,7 +2441,7 @@ footer a:hover { color: var(--accent); }
           <h4>Who it's for</h4>
           <p>Younger children or travel use where the full player is too bulky.</p>
         </div>
-      <p class="card-detail-caveat">⚠️ Less features than the full player. Still requires Yoto cards.</p>
+      <p class="card-detail-caveat">Note: Less features than the full player. Still requires Yoto cards.</p>
       </div>
     </div>
     </div>
@@ -2405,7 +2449,7 @@ footer a:hover { color: var(--accent); }
 
     <div class="card" data-cat="kids" data-budget="mid" data-mode="standalone">
       <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/81cSkQZkQQL._AC_SL1500_.jpg" alt="Toniebox" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none">🎭</div>
+      <div class="card-img-placeholder" style="display:none"></div>
       <div class="card-body">
         <p class="card-title">Toniebox</p>
         <p class="card-desc">Place a Tonie figure on top to play its story. Designed for toddlers — no buttons, no screen, no complexity. Extremely durable. Great starter for ages 2–7.</p>
@@ -2429,7 +2473,7 @@ footer a:hover { color: var(--accent); }
           <h4>Who it's for</h4>
           <p>Toddlers aged 2–6 — intuitive enough for very young children.</p>
         </div>
-      <p class="card-detail-caveat">⚠️ Tonie figurines cost ~£15–20 each. Content locked to the Tonie ecosystem.</p>
+      <p class="card-detail-caveat">Note: Tonie figurines cost ~£15–20 each. Content locked to the Tonie ecosystem.</p>
       </div>
     </div>
     </div>
@@ -2437,7 +2481,7 @@ footer a:hover { color: var(--accent); }
 
     <div class="card" data-cat="kids" data-budget="mid" data-mode="standalone">
       <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/51EMcRazC8L._AC_SL1500_.jpg" alt="Fujifilm Instax Mini 12 camera" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none">🎨</div>
+      <div class="card-img-placeholder" style="display:none"></div>
       <div class="card-body">
         <p class="card-title">Fujifilm Instax Mini 12 (Kids)</p>
         <p class="card-desc">Give a child their own camera. Prints instantly. Creates real memories. No scrolling through albums, no cloud, no sharing — just the physical print in their hands.</p>
@@ -2461,15 +2505,17 @@ footer a:hover { color: var(--accent); }
           <h4>Who it's for</h4>
           <p>Children aged 6+ who want a camera that's theirs.</p>
         </div>
-      <p class="card-detail-caveat">⚠️ Film costs ~£1 per shot. Teach children to be selective with shots.</p>
+      <p class="card-detail-caveat">Note: Film costs ~£1 per shot. Teach children to be selective with shots.</p>
       </div>
+    
+      <div class="yt-wrap"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/S-yH30q_x98" title="Fujifilm Instax Mini 12 review" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
     </div>
     </div>
     </div>
 
     <div class="card" data-cat="kids" data-budget="low" data-mode="standalone">
       <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/71X+mNaLHuL._AC_SL1500_.jpg" alt="Tonie character figures" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none">🎭</div>
+      <div class="card-img-placeholder" style="display:none"></div>
       <div class="card-body">
         <div class="card-badges"><span class="badge badge-budget">Content add-on</span></div>
         <p class="card-title">Tonie Figures (content packs)</p>
@@ -2494,7 +2540,7 @@ footer a:hover { color: var(--accent); }
           <h4>Who it's for</h4>
           <p>Extending a Toniebox library for children.</p>
         </div>
-      <p class="card-detail-caveat">⚠️ Each figure is a one-time purchase (~£15–20) for one album/story.</p>
+      <p class="card-detail-caveat">Note: Each figure is a one-time purchase (~£15–20) for one album/story.</p>
       </div>
     </div>
     </div>
@@ -2502,7 +2548,7 @@ footer a:hover { color: var(--accent); }
 
     <div class="card" data-cat="kids" data-budget="low" data-mode="standalone">
       <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/61hCCO7IJUL._AC_SL1500_.jpg" alt="Yoto story cards" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none">📚</div>
+      <div class="card-img-placeholder" style="display:none"></div>
       <div class="card-body">
         <div class="card-badges"><span class="badge badge-new">2024</span></div>
         <p class="card-title">Yoto Cards (Story &amp; Educational)</p>
@@ -2527,14 +2573,14 @@ footer a:hover { color: var(--accent); }
           <h4>Who it's for</h4>
           <p>Extending a Yoto library for children.</p>
         </div>
-      <p class="card-detail-caveat">⚠️ Sold individually (~£7–15). Content is fixed once purchased.</p>
+      <p class="card-detail-caveat">Note: Sold individually (~£7–15). Content is fixed once purchased.</p>
       </div>
     </div>
     </div>
 
     <div class="card" data-cat="kids" data-budget="low" data-mode="standalone">
       <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/71VjMtQi0EL._AC_SL1500_.jpg" alt="VTech KidiBuzz G3 kids tablet" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none">📱</div>
+      <div class="card-img-placeholder" style="display:none"></div>
       <div class="card-body">
         <div class="card-badges"><span class="badge badge-uk">UK available</span></div>
         <p class="card-title">VTech KidiBuzz G3</p>
@@ -2559,7 +2605,7 @@ footer a:hover { color: var(--accent); }
           <h4>Who it's for</h4>
           <p>Children aged 6–12 who want a tablet with guardrails.</p>
         </div>
-      <p class="card-detail-caveat">⚠️ Still a screen device — doesn't remove screen time, just limits adult content.</p>
+      <p class="card-detail-caveat">Note: Still a screen device — doesn't remove screen time, just limits adult content.</p>
       </div>
     </div>
     </div>
@@ -2572,13 +2618,13 @@ footer a:hover { color: var(--accent); }
      NEWS
 ═════════════════════════════════════════════ -->
 <div class="cat-section" id="news" data-cat="news">
-  <h2>📰 Intentional Reading &amp; News</h2>
+  <h2>Intentional Reading &amp; News</h2>
   <p class="cat-desc">Dedicated reading surfaces. No algorithm, no notifications — just what you chose to read, on a screen that doesn't fight you.</p>
   <div class="cards">
 
     <div class="card" data-cat="news" data-budget="mid" data-mode="standalone">
       <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/61u2j11HZFL._AC_SL1500_.jpg" alt="Remarkable 2 e-ink tablet" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none">📄</div>
+      <div class="card-img-placeholder" style="display:none"></div>
       <div class="card-body">
         <div class="card-badges"><span class="badge badge-best">Best overall</span></div>
         <p class="card-title">reMarkable 2</p>
@@ -2603,15 +2649,17 @@ footer a:hover { color: var(--accent); }
           <h4>Who it's for</h4>
           <p>People who read long-form to think, not just consume — and want a surface that supports that.</p>
         </div>
-      <p class="card-detail-caveat">⚠️ Connect subscription (~£2.99/month) unlocks cloud sync and email send-to-device. Works without it.</p>
+      <p class="card-detail-caveat">Note: Connect subscription (~£2.99/month) unlocks cloud sync and email send-to-device. Works without it.</p>
       </div>
+    
+      <div class="yt-wrap"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/yLbAh2oBPU0" title="reMarkable 2 review" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
     </div>
     </div>
     </div>
 
     <div class="card" data-cat="news" data-budget="high" data-mode="standalone">
       <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/61mEuadGfNL._AC_SL1500_.jpg" alt="Daylight DC1 e-ink tablet" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none">☀️</div>
+      <div class="card-img-placeholder" style="display:none"></div>
       <div class="card-body">
         <div class="card-badges"><span class="badge badge-new">2024</span></div>
         <p class="card-title">Daylight DC1</p>
@@ -2636,15 +2684,17 @@ footer a:hover { color: var(--accent); }
           <h4>Who it's for</h4>
           <p>People who spend hours reading and want a screen that doesn't drain them.</p>
         </div>
-      <p class="card-detail-caveat">⚠️ Expensive and niche. Primarily a US product — check shipping and warranty for UK buyers.</p>
+      <p class="card-detail-caveat">Note: Expensive and niche. Primarily a US product — check shipping and warranty for UK buyers.</p>
       </div>
+    
+      <div class="yt-wrap"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/ovF3w8neDUw" title="Daylight DC1 review" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
     </div>
     </div>
     </div>
 
     <div class="card" data-cat="news" data-budget="low" data-mode="connected">
       <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/81h+6Aw2RLL._AC_SL1500_.jpg" alt="Kobo Clara BW e-reader" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none">📰</div>
+      <div class="card-img-placeholder" style="display:none"></div>
       <div class="card-body">
         <div class="card-badges"><span class="badge badge-budget">Budget pick</span></div>
         <p class="card-title">Kobo Clara BW + Pocket</p>
@@ -2669,7 +2719,7 @@ footer a:hover { color: var(--accent); }
           <h4>Who it's for</h4>
           <p>Long-form readers who want articles and books on the same device, without Amazon.</p>
         </div>
-      <p class="card-detail-caveat">⚠️ Pocket article sync works over Wi-Fi — needs occasional connection. Kobo account required.</p>
+      <p class="card-detail-caveat">Note: Pocket article sync works over Wi-Fi — needs occasional connection. Kobo account required.</p>
       </div>
     </div>
     </div>
@@ -2683,13 +2733,13 @@ footer a:hover { color: var(--accent); }
      DUMB / MINIMAL PHONES
 ═════════════════════════════════════════════ -->
 <div class="cat-section" id="phone" data-cat="phone">
-  <h2>📞 Minimal &amp; Dumb Phones</h2>
+  <h2>Minimal &amp; Dumb Phones</h2>
   <p class="cat-desc">For when the real answer is to replace the smartphone itself, not just add more devices.</p>
   <div class="cards">
 
     <div class="card" data-cat="phone" data-budget="high" data-mode="standalone">
       <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/511iltsIFbL._AC_SL1500_.jpg" alt="Punkt MP02" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none">📱</div>
+      <div class="card-img-placeholder" style="display:none"></div>
       <div class="card-body">
         <div class="card-badges"><span class="badge badge-best">Premium pick</span></div>
         <p class="card-title">Punkt MP02</p>
@@ -2714,7 +2764,7 @@ footer a:hover { color: var(--accent); }
           <h4>Who it's for</h4>
           <p>Digital minimalists who need a phone but want no smartphone features.</p>
         </div>
-      <p class="card-detail-caveat">⚠️ Signal setup requires a smartphone initially. Premium price for minimal features.</p>
+      <p class="card-detail-caveat">Note: Signal setup requires a smartphone initially. Premium price for minimal features.</p>
       </div>
     </div>
     </div>
@@ -2722,7 +2772,7 @@ footer a:hover { color: var(--accent); }
 
     <div class="card" data-cat="phone" data-budget="low" data-mode="standalone">
       <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/51UebyM+xdL._AC_SL1500_.jpg" alt="Doro 6620 4G senior phone" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none">📱</div>
+      <div class="card-img-placeholder" style="display:none"></div>
       <div class="card-body">
         <div class="card-badges"><span class="badge badge-budget">Budget pick</span></div>
         <p class="card-title">Doro 6620</p>
@@ -2747,7 +2797,7 @@ footer a:hover { color: var(--accent); }
           <h4>Who it's for</h4>
           <p>Anyone who wants a phone that's just a phone — and won't be cut off when 2G ends.</p>
         </div>
-      <p class="card-detail-caveat">⚠️ Call quality depends on carrier. Limited to voice/text use cases.</p>
+      <p class="card-detail-caveat">Note: Call quality depends on carrier. Limited to voice/text use cases.</p>
       </div>
     </div>
     </div>
@@ -2755,7 +2805,7 @@ footer a:hover { color: var(--accent); }
 
     <div class="card" data-cat="phone" data-budget="high" data-mode="standalone">
       <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/61gxrwUPE0L._AC_SL1500_.jpg" alt="Mudita Kompakt E Ink minimal phone" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none">🔵</div>
+      <div class="card-img-placeholder" style="display:none"></div>
       <div class="card-body">
         <div class="card-badges"><span class="badge badge-new">2025</span></div>
         <p class="card-title">Mudita Kompakt</p>
@@ -2780,15 +2830,17 @@ footer a:hover { color: var(--accent); }
           <h4>Who it's for</h4>
           <p>Those wanting the look and feel of a minimal phone with modern connectivity.</p>
         </div>
-      <p class="card-detail-caveat">⚠️ New device from small Polish company — long-term support uncertain.</p>
+      <p class="card-detail-caveat">Note: New device from small Polish company — long-term support uncertain.</p>
       </div>
+    
+      <div class="yt-wrap"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/wDOp5WuNCAY" title="Mudita Kompakt review" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
     </div>
     </div>
     </div>
 
     <div class="card" data-cat="phone" data-budget="high" data-mode="either">
-      <img class="card-img" loading="eager" src="https://images.unsplash.com/photo-1634403665481-74948d815f03?w=800&q=80" alt="Light Phone III minimal phone" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none">📗</div>
+      <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/61n3WaWovsL._AC_SL1500_.jpg" alt="Light Phone III minimal phone" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="card-img-placeholder" style="display:none"></div>
       <div class="card-body">
         <p class="card-title">Light Phone III</p>
         <p class="card-desc">Phone, music, maps, podcast, notes. Nothing else. Slim e-ink screen. Made by people who genuinely believe less is more. Still needs a monthly plan — but radically calmer than a smartphone.</p>
@@ -2812,7 +2864,7 @@ footer a:hover { color: var(--accent); }
           <h4>Who it's for</h4>
           <p>Smartphone users who want to go minimal without losing essential functions.</p>
         </div>
-      <p class="card-detail-caveat">⚠️ US-focused initially. UK/EU availability limited. Premium price.</p>
+      <p class="card-detail-caveat">Note: US-focused initially. UK/EU availability limited. Premium price.</p>
       </div>
     </div>
     </div>
@@ -2825,13 +2877,13 @@ footer a:hover { color: var(--accent); }
      SMART SPEAKERS
 ═════════════════════════════════════════════ -->
 <div class="cat-section" id="speaker" data-cat="speaker">
-  <h2>🔊 Smart Speakers</h2>
+  <h2>Smart Speakers</h2>
   <p class="cat-desc">Voice-controlled music and podcasts — no picking up the phone, no screen, no rabbit holes.</p>
   <div class="cards">
 
     <div class="card" data-cat="speaker" data-budget="mid" data-mode="connected">
       <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/81t8gScXClL._AC_SL1500_.jpg" alt="Amazon Echo (4th gen)" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none">🔊</div>
+      <div class="card-img-placeholder" style="display:none"></div>
       <div class="card-body">
         <div class="card-badges"><span class="badge badge-budget">Most affordable</span></div>
         <p class="card-title">Amazon Echo (4th gen)</p>
@@ -2856,15 +2908,15 @@ footer a:hover { color: var(--accent); }
           <h4>Who it's for</h4>
           <p>Those who want smart home control and music without picking up their phone.</p>
         </div>
-      <p class="card-detail-caveat">⚠️ Always-on microphone. Amazon account required. Some features require subscriptions.</p>
+      <p class="card-detail-caveat">Note: Always-on microphone. Amazon account required. Some features require subscriptions.</p>
       </div>
     </div>
     </div>
     </div>
 
     <div class="card" data-cat="speaker" data-budget="high" data-mode="connected">
-      <img class="card-img" loading="eager" src="https://images.unsplash.com/photo-1603090067602-cac4e283d866?w=800&q=80" alt="Apple HomePod 2nd generation" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none">🍎</div>
+      <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/61Dv-0-CTIL._AC_SL1500_.jpg" alt="Apple HomePod 2nd generation" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="card-img-placeholder" style="display:none"></div>
       <div class="card-body">
         <p class="card-title">Apple HomePod (2nd gen)</p>
         <p class="card-desc">Best sound quality in the category. Siri for control. Deep Apple Music integration. If you're already in the Apple ecosystem, this replaces a lot of casual phone pickups.</p>
@@ -2888,15 +2940,17 @@ footer a:hover { color: var(--accent); }
           <h4>Who it's for</h4>
           <p>Apple users who want voice control and great audio in one device.</p>
         </div>
-      <p class="card-detail-caveat">⚠️ Apple ecosystem only — less useful without iPhone/Apple Music. Expensive for a speaker.</p>
+      <p class="card-detail-caveat">Note: Apple ecosystem only — less useful without iPhone/Apple Music. Expensive for a speaker.</p>
       </div>
+    
+      <div class="yt-wrap"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/gvqZCMGjh3s" title="Apple HomePod 2 review" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
     </div>
     </div>
     </div>
 
     <div class="card" data-cat="speaker" data-budget="mid" data-mode="connected">
       <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/619SmYo+h6L._AC_SL1500_.jpg" alt="Sonos Era 100 speaker" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none">🎵</div>
+      <div class="card-img-placeholder" style="display:none"></div>
       <div class="card-body">
         <p class="card-title">Sonos Era 100</p>
         <p class="card-desc">Premium room-filling sound. App or voice control. Multi-room capable. The idea: a great speaker in every room means there's never a reason to stream from your phone speaker.</p>
@@ -2920,7 +2974,7 @@ footer a:hover { color: var(--accent); }
           <h4>Who it's for</h4>
           <p>Music lovers who want hi-fi quality wireless audio that works independently.</p>
         </div>
-      <p class="card-detail-caveat">⚠️ Needs Sonos app to set up. Sonos has a history of discontinuing older devices.</p>
+      <p class="card-detail-caveat">Note: Needs Sonos app to set up. Sonos has a history of discontinuing older devices.</p>
       </div>
     </div>
     </div>
@@ -2928,7 +2982,7 @@ footer a:hover { color: var(--accent); }
 
     <div class="card" data-cat="speaker" data-budget="high" data-mode="connected">
       <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/61p0UKkfgZL._AC_SL1500_.jpg" alt="Ruark Audio R1 Mk4 radio" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none">📻</div>
+      <div class="card-img-placeholder" style="display:none"></div>
       <div class="card-body">
         <div class="card-badges"><span class="badge badge-uk">British made</span><span class="badge badge-best">Beautifully made</span></div>
         <p class="card-title">Ruark Audio R1 (Mk4)</p>
@@ -2953,7 +3007,7 @@ footer a:hover { color: var(--accent); }
           <h4>Who it's for</h4>
           <p>Anyone wanting a proper kitchen or living room radio.</p>
         </div>
-      <p class="card-detail-caveat">⚠️ Bluetooth-only for non-radio sources — no Wi-Fi streaming.</p>
+      <p class="card-detail-caveat">Note: Bluetooth-only for non-radio sources — no Wi-Fi streaming.</p>
       </div>
     </div>
     </div>
@@ -2961,7 +3015,7 @@ footer a:hover { color: var(--accent); }
 
     <div class="card" data-cat="speaker" data-budget="high" data-mode="connected">
       <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/51PxfSS4fZL._AC_SL1500_.jpg" alt="Naim Mu-so Qb 2nd gen speaker" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none">🔊</div>
+      <div class="card-img-placeholder" style="display:none"></div>
       <div class="card-body">
         <div class="card-badges"><span class="badge badge-best">Audiophile pick</span></div>
         <p class="card-title">Naim Mu-so Qb 2nd Gen</p>
@@ -2986,7 +3040,7 @@ footer a:hover { color: var(--accent); }
           <h4>Who it's for</h4>
           <p>Hi-fi listeners who want streaming quality without Alexa or Google.</p>
         </div>
-      <p class="card-detail-caveat">⚠️ Expensive. App required for setup. Not a smart home controller.</p>
+      <p class="card-detail-caveat">Note: Expensive. App required for setup. Not a smart home controller.</p>
       </div>
     </div>
     </div>
@@ -2994,7 +3048,7 @@ footer a:hover { color: var(--accent); }
 
     <div class="card" data-cat="speaker" data-budget="mid" data-mode="standalone">
       <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/71eXBqH8o5L._AC_SL1500_.jpg" alt="JBL Charge 5 Wi-Fi speaker" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none">🎒</div>
+      <div class="card-img-placeholder" style="display:none"></div>
       <div class="card-body">
         <div class="card-badges"><span class="badge badge-new">2024</span></div>
         <p class="card-title">JBL Charge 5 Wi-Fi</p>
@@ -3019,7 +3073,7 @@ footer a:hover { color: var(--accent); }
           <h4>Who it's for</h4>
           <p>Those wanting a portable, waterproof speaker that doesn't need a phone nearby.</p>
         </div>
-      <p class="card-detail-caveat">⚠️ Wi-Fi streaming setup requires the JBL Portable app once.</p>
+      <p class="card-detail-caveat">Note: Wi-Fi streaming setup requires the JBL Portable app once.</p>
       </div>
     </div>
     </div>
@@ -3034,13 +3088,13 @@ footer a:hover { color: var(--accent); }
      HI-FI STREAMERS
 ═════════════════════════════════════════════ -->
 <div class="cat-section" id="hifi" data-cat="hifi">
-  <h2>🎷 Hi-Fi Streamers</h2>
+  <h2>Hi-Fi Streamers</h2>
   <p class="cat-desc">A proper hi-fi system that runs Spotify, Tidal, or Qobuz from the network — no phone required. Put it on a shelf and it just plays music.</p>
   <div class="cards">
 
     <div class="card" data-cat="hifi" data-budget="mid" data-mode="connected">
       <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/51XE3OXY46L._AC_SL1500_.jpg" alt="WiiM Pro Plus streamer" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none">🎷</div>
+      <div class="card-img-placeholder" style="display:none"></div>
       <div class="card-body">
         <div class="card-badges"><span class="badge badge-best">Best value</span></div>
         <p class="card-title">WiiM Pro Plus</p>
@@ -3065,15 +3119,17 @@ footer a:hover { color: var(--accent); }
           <h4>Who it's for</h4>
           <p>Anyone with a hi-fi amp who wants wireless streaming without a full streamer cost.</p>
         </div>
-      <p class="card-detail-caveat">⚠️ Needs WiiM app to configure initially. No display — blind operation after setup.</p>
+      <p class="card-detail-caveat">Note: Needs WiiM app to configure initially. No display — blind operation after setup.</p>
       </div>
+    
+      <div class="yt-wrap"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/V2mV155qGIM" title="WiiM Pro Plus review" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
     </div>
     </div>
     </div>
 
     <div class="card" data-cat="hifi" data-budget="high" data-mode="connected">
       <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/51saNPn7EaL._AC_SL1500_.jpg" alt="Bluesound Node 2024 network streamer" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none">🎵</div>
+      <div class="card-img-placeholder" style="display:none"></div>
       <div class="card-body">
         <div class="card-badges"><span class="badge badge-best">Audiophile pick</span></div>
         <p class="card-title">Bluesound Node (2024)</p>
@@ -3098,7 +3154,7 @@ footer a:hover { color: var(--accent); }
           <h4>Who it's for</h4>
           <p>Audiophiles who want a mature, well-supported streaming platform.</p>
         </div>
-      <p class="card-detail-caveat">⚠️ Premium price. BluOS subscription not required but some features cost extra.</p>
+      <p class="card-detail-caveat">Note: Premium price. BluOS subscription not required but some features cost extra.</p>
       </div>
     </div>
     </div>
@@ -3106,7 +3162,7 @@ footer a:hover { color: var(--accent); }
 
     <div class="card" data-cat="hifi" data-budget="high" data-mode="connected">
       <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/61HhbLwbZGL._AC_SL1500_.jpg" alt="Cambridge Audio CXN100 network streamer" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none">🎶</div>
+      <div class="card-img-placeholder" style="display:none"></div>
       <div class="card-body">
         <p class="card-title">Cambridge Audio CXN100</p>
         <p class="card-desc">British engineering. Streams Spotify, Tidal, Qobuz, and internet radio via StreamMagic. Has AirPlay 2 and Chromecast built in. Balanced XLR outputs. Made to last. Pair it with a Cambridge amp and you have a serious system that never once asks you to scroll.</p>
@@ -3130,15 +3186,17 @@ footer a:hover { color: var(--accent); }
           <h4>Who it's for</h4>
           <p>Audiophiles who want Cambridge's legendary engineering in a streamer.</p>
         </div>
-      <p class="card-detail-caveat">⚠️ Expensive. Balanced output requires balanced amp input to benefit.</p>
+      <p class="card-detail-caveat">Note: Expensive. Balanced output requires balanced amp input to benefit.</p>
       </div>
+    
+      <div class="yt-wrap"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/2LBmBLJqz_M" title="Cambridge Audio CXN100 review" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
     </div>
     </div>
     </div>
 
     <div class="card" data-cat="hifi" data-budget="low" data-mode="connected">
       <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/51GChPK9EtL._AC_SL1500_.jpg" alt="WiiM Mini network streamer" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none">🎵</div>
+      <div class="card-img-placeholder" style="display:none"></div>
       <div class="card-body">
         <div class="card-badges"><span class="badge badge-budget">Budget streamer</span></div>
         <p class="card-title">WiiM Mini</p>
@@ -3163,15 +3221,17 @@ footer a:hover { color: var(--accent); }
           <h4>Who it's for</h4>
           <p>Anyone with a stereo amp who wants to add wireless streaming cheaply.</p>
         </div>
-      <p class="card-detail-caveat">⚠️ No DAC — needs external DAC or amp with digital input for best results.</p>
+      <p class="card-detail-caveat">Note: No DAC — needs external DAC or amp with digital input for best results.</p>
       </div>
+    
+      <div class="yt-wrap"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/xExu7ixth_E" title="WiiM Mini review" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
     </div>
     </div>
     </div>
 
     <div class="card" data-cat="hifi" data-budget="mid" data-mode="connected">
       <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/51hj2tJ5UwL._AC_SL1500_.jpg" alt="iFi Zen Stream network streamer" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none">🎷</div>
+      <div class="card-img-placeholder" style="display:none"></div>
       <div class="card-body">
         <div class="card-badges"><span class="badge badge-new">2024</span></div>
         <p class="card-title">iFi Zen Stream</p>
@@ -3196,7 +3256,7 @@ footer a:hover { color: var(--accent); }
           <h4>Who it's for</h4>
           <p>Audiophiles in a Roon or high-end streaming ecosystem.</p>
         </div>
-      <p class="card-detail-caveat">⚠️ Setup can be technical. Roon subscription is expensive (~£12/month).</p>
+      <p class="card-detail-caveat">Note: Setup can be technical. Roon subscription is expensive (~£12/month).</p>
       </div>
     </div>
     </div>
@@ -3204,7 +3264,7 @@ footer a:hover { color: var(--accent); }
 
     <div class="card" data-cat="hifi" data-budget="high" data-mode="connected">
       <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/41I6XhYJHAL._AC_SL1500_.jpg" alt="Linn Sneaky DSM streamer amplifier" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none">🎶</div>
+      <div class="card-img-placeholder" style="display:none"></div>
       <div class="card-body">
         <div class="card-badges"><span class="badge badge-uk">UK made</span></div>
         <p class="card-title">Linn Sneaky DSM</p>
@@ -3229,7 +3289,7 @@ footer a:hover { color: var(--accent); }
           <h4>Who it's for</h4>
           <p>Audiophiles who want a single high-end box for speakers and streaming.</p>
         </div>
-      <p class="card-detail-caveat">⚠️ Very expensive. Linn ecosystem can lock you in. Needs passive speakers.</p>
+      <p class="card-detail-caveat">Note: Very expensive. Linn ecosystem can lock you in. Needs passive speakers.</p>
       </div>
     </div>
     </div>
@@ -3242,13 +3302,13 @@ footer a:hover { color: var(--accent); }
      HOME PHONES
 ═════════════════════════════════════════════ -->
 <div class="cat-section" id="homephone" data-cat="homephone">
-  <h2>☎️ Home Phones</h2>
+  <h2>Home Phones</h2>
   <p class="cat-desc">A dedicated device for calls — stationary, always charged, all your contacts synced. The way phones were before they became everything else.</p>
   <div class="cards">
 
     <div class="card" data-cat="homephone" data-budget="mid" data-mode="connected">
       <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/51Go8f6FQVL._AC_SL1500_.jpg" alt="Gigaset Premium C575A DECT phone" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none">☎️</div>
+      <div class="card-img-placeholder" style="display:none"></div>
       <div class="card-body">
         <div class="card-badges"><span class="badge badge-best">Best overall</span></div>
         <p class="card-title">Gigaset Premium C575A</p>
@@ -3273,7 +3333,7 @@ footer a:hover { color: var(--accent); }
           <h4>Who it's for</h4>
           <p>Anyone who wants calls in any room without carrying their phone.</p>
         </div>
-      <p class="card-detail-caveat">⚠️ Bluetooth link to mobile requires one-time setup with your phone.</p>
+      <p class="card-detail-caveat">Note: Bluetooth link to mobile requires one-time setup with your phone.</p>
       </div>
     </div>
     </div>
@@ -3281,7 +3341,7 @@ footer a:hover { color: var(--accent); }
 
     <div class="card" data-cat="homephone" data-budget="low" data-mode="connected">
       <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/41DENxhvtkL._AC_SL1500_.jpg" alt="Panasonic KX-TGK222 cordless phone" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none">📞</div>
+      <div class="card-img-placeholder" style="display:none"></div>
       <div class="card-body">
         <div class="card-badges"><span class="badge badge-budget">Budget pick</span></div>
         <p class="card-title">Panasonic KX-TGK222</p>
@@ -3313,7 +3373,7 @@ footer a:hover { color: var(--accent); }
 
     <div class="card" data-cat="homephone" data-budget="mid" data-mode="connected">
       <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/61X4JRLF3QL._AC_SL1500_.jpg" alt="BT 4600 Advanced cordless phone" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none">☎️</div>
+      <div class="card-img-placeholder" style="display:none"></div>
       <div class="card-body">
         <div class="card-badges"><span class="badge badge-uk">UK brand</span></div>
         <p class="card-title">BT 4600 Advanced Cordless Phone</p>
@@ -3345,7 +3405,7 @@ footer a:hover { color: var(--accent); }
 
     <div class="card" data-cat="homephone" data-budget="mid" data-mode="connected">
       <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/61UlXtbR9FL._AC_SL1500_.jpg" alt="Gigaset CL660A HX cordless phone" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none">📲</div>
+      <div class="card-img-placeholder" style="display:none"></div>
       <div class="card-body">
         <div class="card-badges"><span class="badge badge-new">2024</span></div>
         <p class="card-title">Gigaset CL660A HX</p>
@@ -3377,7 +3437,7 @@ footer a:hover { color: var(--accent); }
 
     <div class="card" data-cat="homephone" data-budget="low" data-mode="connected">
       <img class="card-img" loading="eager" src="https://m.media-amazon.com/images/I/71cBVZv2y9L._AC_SL1500_.jpg" alt="BT 3580 Big Button phone" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none">📞</div>
+      <div class="card-img-placeholder" style="display:none"></div>
       <div class="card-body">
         <div class="card-badges"><span class="badge badge-budget">Simplest option</span></div>
         <p class="card-title">BT 3580 Big Button Phone</p>
@@ -3637,9 +3697,9 @@ function updateWizDots() {
 
 function updateWizBreadcrumb() {
   const labels = {
-    category: { music:'🎵 Music', reading:'📖 Reading', sleep:'🌙 Sleep', camera:'📷 Camera',
-                 fitness:'🏃 Fitness', writing:'✏️ Writing', news:'📰 News', kids:'🧒 Kids',
-                 phone:'📵 Phone' },
+    category: { music:'Music', reading:'Reading', sleep:'Sleep', camera:'Camera',
+                 fitness:'Fitness', writing:'Writing', news:'News', kids:'Kids',
+                 phone:'Phone' },
     musicContext: { home:'At home', portable:'Portable' },
     streaming: { yes:'Streaming', no:'Offline files', either:'Either' },
     phoneType: { minimal:'Minimal phone', home:'Home phone' },
