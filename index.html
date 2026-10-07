@@ -340,6 +340,29 @@ footer strong { color: var(--fg); }
   * { transition: none !important; }
 }
 .header-inner { min-height: 38px; }
+
+/* ─── Item 17/24: phone line + tie-breaker ───────── */
+.card-phone { font-family: var(--mono); font-size: 0.74rem; color: var(--fg-mid); letter-spacing: .01em; }
+.card-phone span { text-transform: uppercase; letter-spacing: .06em; color: var(--fg-light); margin-right: 6px; }
+.card-choose { font-size: 0.85rem; color: var(--fg-mid); line-height: 1.5; }
+.card-choose b { font-weight: 600; color: var(--accent); }
+
+/* ─── Item 18/19: hero test line + product strip ─── */
+.hero .hero-test { font-size: 0.95rem; max-width: 600px; margin: -10px auto 28px; color: var(--fg-mid); }
+.hero .hero-test a { color: var(--fg); text-decoration: underline; text-underline-offset: 3px; }
+.hero-strip { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 12px; margin: 40px auto 0; max-width: 960px; text-align: left; }
+.hs-tile { display: flex; flex-direction: column; gap: 4px; text-decoration: none; color: inherit; }
+.hs-tile:hover { color: inherit; }
+.hs-tile:hover .hs-img { box-shadow: 0 4px 16px var(--shadow); }
+.hs-img { display: block; aspect-ratio: 1 / 1; background: var(--img-bg); border: 1px solid var(--rule); border-radius: 12px; overflow: hidden; transition: box-shadow .15s; }
+.hs-img img { width: 100%; height: 100%; object-fit: contain; padding: 10px; mix-blend-mode: var(--img-blend); display: block; }
+.hs-name { font-size: 0.85rem; font-weight: 600; line-height: 1.25; margin-top: 4px; }
+.hs-job { font-family: var(--mono); font-size: 0.7rem; color: var(--fg-mid); line-height: 1.35; }
+@media (max-width: 760px) {
+  .hero-strip { display: flex; overflow-x: auto; scroll-snap-type: x proximity; gap: 12px; padding-bottom: 6px; margin-left: -8px; margin-right: -8px; padding-left: 8px; padding-right: 8px; scrollbar-width: none; }
+  .hero-strip::-webkit-scrollbar { display: none; }
+  .hs-tile { flex: 0 0 132px; scroll-snap-align: start; }
+}
 </style>
 </head>
 <body>
@@ -372,8 +395,17 @@ footer strong { color: var(--fg); }
 <section class="hero">
   <h1>I didn't want to quit my phone.<br><em>I just wanted it to stop winning.</em></h1>
   <p>Things that do one thing. No affiliate links, no sponsored anything. Just what's worth knowing about.</p>
+  <p class="hero-test">The test for getting on the list: it does a job a phone does, it works without the phone after setup, and it opens no door to anything else. <a href="#left-out">What didn't make it</a></p>
   <div class="hero-cta">
     <a href="#quickstart" class="btn-primary">Where to start</a>
+  </div>
+  <div class="hero-strip" aria-label="A few things on the list">
+    <a href="#sleep" class="hs-tile" onclick="qsNav('sleep',event)"><span class="hs-img"><img src="https://i5.walmartimages.com/seo/Philips-Smartsleep-Sleep-and-Wake-Up-Light-Simulated-Sunrise-and-Sunset-Multiple-Lights-and-Sounds-Relaxbreathe-To-Sleep-HF3650-60_5cf9e872-23a2-4d3e-9346-48e24c989d41.a49583eee05b670f519512e7ca20ea98.jpeg" alt="Philips SmartSleep" loading="lazy" onerror="this.style.display='none'"></span><span class="hs-name">Philips SmartSleep</span><span class="hs-job">Wakes you with light, not an alarm app</span></a>
+    <a href="#reading" class="hs-tile" onclick="qsNav('reading',event)"><span class="hs-img"><img src="https://www.staples.ca/cdn/shop/files/1b5791e222139b61ec53c8fd5263c97ca7be689a_square3108688_1.jpg?v=1770362385" alt="Kindle Paperwhite" loading="lazy" onerror="this.style.display='none'"></span><span class="hs-name">Kindle Paperwhite</span><span class="hs-job">Books, weeks of battery, no browser</span></a>
+    <a href="#music" class="hs-tile" onclick="qsNav('music',event)"><span class="hs-img"><img src="https://www.bhphotovideo.com/images/images500x500/sony_nwa306_b_walkman_nw_a306_a_series_1675853429_1749982.jpg" alt="Sony NW-A306" loading="lazy" onerror="this.style.display='none'"></span><span class="hs-name">Sony NW-A306</span><span class="hs-job">Music player. Just music</span></a>
+    <a href="#writing" class="hs-tile" onclick="qsNav('writing',event)"><span class="hs-img"><img src="https://getfreewrite.com/cdn/shop/files/SmartTypewriter-13_2000x.jpg?v=1683734481" alt="Freewrite" loading="lazy" onerror="this.style.display='none'"></span><span class="hs-name">Freewrite</span><span class="hs-job">Typewriter that saves to the cloud</span></a>
+    <a href="#camera" class="hs-tile" onclick="qsNav('camera',event)"><span class="hs-img"><img src="https://ricohgr.eu/cdn/shop/products/ricohgriiix2_a7e8e3ee-b60c-4708-9e74-f24a53d2ea7c.png?v=1788258615" alt="Ricoh GR IIIx" loading="lazy" onerror="this.style.display='none'"></span><span class="hs-name">Ricoh GR IIIx</span><span class="hs-job">A pocket camera with no apps</span></a>
+    <a href="#phone" class="hs-tile" onclick="qsNav('phone',event)"><span class="hs-img"><img src="https://www.punkt.ch/cdn/shop/files/Punkt-MP02-black_03.webp?v=1749150318&width=1400" alt="Punkt MP02" loading="lazy" onerror="this.style.display='none'"></span><span class="hs-name">Punkt MP02</span><span class="hs-job">Calls and texts. Nothing else</span></a>
   </div>
 </section>
 
@@ -412,12 +444,19 @@ footer strong { color: var(--fg); }
     </div>
 
     <button class="cat-pill" onclick="filterTop('writing',this)">Writing</button>
-    <button class="cat-pill" onclick="filterTop('camera',this)">Camera</button>
-    <button class="cat-pill" onclick="filterTop('fitness',this)">Fitness</button>
+    <div class="cat-nav-group">
+      <button class="cat-pill" id="pill-out" onclick="toggleGroup('out',this)">Out &amp; about <span class="arrow">▾</span></button>
+    </div>
     <button class="cat-pill" onclick="filterTop('kids',this)">Kids</button>
 
     <button class="cat-pill" onclick="filterTop('phone',this)">Phones</button>
 
+  </div>
+
+  <!-- Out & about sub-pills -->
+  <div class="sub-pills" id="sub-out">
+    <button class="sub-pill" onclick="filterSub('camera',this)">Camera</button>
+    <button class="sub-pill" onclick="filterSub('fitness',this)">Fitness</button>
   </div>
 
   <!-- Music sub-pills -->
@@ -446,6 +485,7 @@ footer strong { color: var(--fg); }
         <p class="card-title">Philips SmartSleep Wake-up Light HF3650</p>
         <p class="card-desc">Sunrise simulation starts 30 minutes before alarm. Natural sounds. FM radio. Makes waking easier, and Philips cites its own sleep research for it.</p>
         <p class="card-catch"><b>Catch:</b> Requires a mains socket by the bed. Larger than a typical alarm clock.</p>
+        <p class="card-phone"><span>Phone</span> never needed</p>
         <div class="card-footer">
           <p class="card-price">
             <span class="price-gbp">£89</span>
@@ -471,7 +511,6 @@ footer strong { color: var(--fg); }
           <p>Anyone who wakes up groggy or dread their phone alarm.</p>
         </div>
       
-      <div class="yt-wrap"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/M2kHT5Jq1As" title="Philips SmartSleep Wake-up Light review" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
     </div>
     </div>
     </div>
@@ -485,6 +524,7 @@ footer strong { color: var(--fg); }
         <p class="card-title">Lumie Bodyclock Rise 100</p>
         <p class="card-desc">Entry-level sunrise alarm. Simple, no app required, no Bluetooth. Just light — the oldest and most proven sleep cue there is.</p>
         <p class="card-catch"><b>Catch:</b> No backup battery — power cut means no alarm.</p>
+        <p class="card-phone"><span>Phone</span> never needed</p>
         <div class="card-footer">
           <p class="card-price"><span class="price-gbp">£59</span><span class="price-us">$68</span></p>
           <a class="card-link" href="https://www.lumie.com/products/bodyclock-rise-100" target="_blank" rel="noopener">View →</a>
@@ -507,7 +547,6 @@ footer strong { color: var(--fg); }
           <p>Minimalists who just want a phone-free morning ritual.</p>
         </div>
       
-      <div class="yt-wrap"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/KAUEz0-bcuY" title="Lumie Bodyclock review" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
     </div>
     </div>
     </div>
@@ -521,6 +560,7 @@ footer strong { color: var(--fg); }
         <p class="card-title">Lumie Bodyclock Luxe 750DAB</p>
         <p class="card-desc">Lumie's flagship: DAB radio, 20 gradual sunset/sunrise intensities, and a library of natural sounds. Overkill for most people, but worth it if the basic model hasn't worked for you.</p>
         <p class="card-catch"><b>Catch:</b> Expensive. DAB reception depends on your area.</p>
+        <p class="card-phone"><span>Phone</span> never needed</p>
         <div class="card-footer">
           <p class="card-price"><span class="price-gbp">£189</span><span class="price-us">$219</span></p>
           <a class="card-link" href="https://www.lumie.com/products/bodyclock-luxe-750dab" target="_blank" rel="noopener">View →</a>
@@ -543,7 +583,6 @@ footer strong { color: var(--fg); }
           <p>Those who've tried basic wake lights and want the full version.</p>
         </div>
       
-      <div class="yt-wrap"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/YOvoIYYDqlE" title="Lumie Bodyclock review" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
     </div>
     </div>
     </div>
@@ -568,6 +607,8 @@ footer strong { color: var(--fg); }
         <p class="card-title">Kindle Paperwhite (2024)</p>
         <p class="card-desc">The best e-reader for most people. 7" screen, USB-C, warm light, weeks of battery. Amazon's content library is unbeatable. You're tied to Amazon's store.</p>
         <p class="card-catch"><b>Catch:</b> You'll need a Kindle account. Wi-Fi only for purchases — can be disabled after.</p>
+        <p class="card-phone"><span>Phone</span> never needed</p>
+        <p class="card-choose"><b>Choose this if</b> you buy your books from Amazon and want the plainest, simplest option.</p>
         <div class="card-footer">
           <p class="card-price"><span class="price-gbp">£149</span><span class="price-us">$139</span></p>
           <a class="card-link" href="https://www.amazon.co.uk/dp/B0CF44VCM5" target="_blank" rel="noopener">View →</a>
@@ -604,6 +645,8 @@ footer strong { color: var(--fg); }
         <p class="card-title">Kobo Clara Colour</p>
         <p class="card-desc">Colour e-ink display makes comics, illustrated books, and magazines good. No ads. Supports ePub so you can get books from your library for free.</p>
         <p class="card-catch"><b>Catch:</b> Colour e-ink is still not quite paper-quality. Battery life shorter than B&W.</p>
+        <p class="card-phone"><span>Phone</span> never needed</p>
+        <p class="card-choose"><b>Choose this if</b> you would rather not buy into Amazon, or want to borrow library books, and a 6-inch screen is enough.</p>
         <div class="card-footer">
           <p class="card-price"><span class="price-gbp">£149</span><span class="price-us">$149</span></p>
           <a class="card-link" href="https://uk.kobobooks.com/products/kobo-clara-colour" target="_blank" rel="noopener">View →</a>
@@ -640,6 +683,7 @@ footer strong { color: var(--fg); }
         <p class="card-title">Kindle Scribe (2024)</p>
         <p class="card-desc">Amazon's largest e-reader: 10.2" screen with stylus for writing notes in the margins of books and documents. The reading experience is excellent; the writing integration has improved significantly in recent updates.</p>
         <p class="card-catch"><b>Catch:</b> Expensive for what it does. Note features are basic vs. reMarkable or Kobo Elipsa.</p>
+        <p class="card-phone"><span>Phone</span> never needed</p>
         <div class="card-footer">
           <p class="card-price"><span class="price-gbp">£299</span><span class="price-us">$339</span></p>
           <a class="card-link" href="https://www.amazon.co.uk/dp/B09BKX9LRH" target="_blank" rel="noopener">View →</a>
@@ -663,7 +707,6 @@ footer strong { color: var(--fg); }
         </div>
       </div>
     
-      <div class="yt-wrap"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/XjN5XmFSGQU" title="Kindle Scribe 2024 review" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
     </div>
     </div>
     </div>
@@ -675,6 +718,7 @@ footer strong { color: var(--fg); }
         <p class="card-title">Kobo Elipsa 2E</p>
         <p class="card-desc">10.3" e-ink screen with stylus for annotating PDFs and ebooks. Perfect for students and professionals who read long documents. Comes with Kobo Stylus 2.</p>
         <p class="card-catch"><b>Catch:</b> Expensive. Heavy for single-handed reading.</p>
+        <p class="card-phone"><span>Phone</span> never needed</p>
         <div class="card-footer">
           <p class="card-price"><span class="price-gbp">£349</span><span class="price-us">$399</span></p>
           <a class="card-link" href="https://uk.kobobooks.com/products/kobo-elipsa-2e" target="_blank" rel="noopener">View →</a>
@@ -710,6 +754,8 @@ footer strong { color: var(--fg); }
         <p class="card-title">Kobo Sage</p>
         <p class="card-desc">8" Kobo with stylus support. Sits between the Clara Colour and Elipsa in size. Supports ePub from libraries and the Kobo Plus subscription. A strong standalone device that isn't tied to one store.</p>
         <p class="card-catch"><b>Catch:</b> Stylus costs extra. Slightly awkward one-handed.</p>
+        <p class="card-phone"><span>Phone</span> never needed</p>
+        <p class="card-choose"><b>Choose this if</b> you want page-turn buttons and an 8-inch screen, and you are happy with Kobo’s store.</p>
         <div class="card-footer">
           <p class="card-price"><span class="price-gbp">£229</span><span class="price-us">$249</span></p>
           <a class="card-link" href="https://uk.kobobooks.com/products/kobo-sage" target="_blank" rel="noopener">View →</a>
@@ -745,6 +791,8 @@ footer strong { color: var(--fg); }
         <p class="card-title">Kindle Colorsoft</p>
         <p class="card-desc">Amazon's first colour Kindle. Warm amber light, vivid colour for covers and graphics, sharp black text for prose. Comics, cookbooks, non-fiction with charts — finally readable on e-ink. Same no-notifications setup as every other Kindle.</p>
         <p class="card-catch"><b>Catch:</b> Expensive step up from the Paperwhite. Colour is richer than older Kobo Colour but still not glossy-magazine vivid.</p>
+        <p class="card-phone"><span>Phone</span> never needed</p>
+        <p class="card-choose"><b>Choose this if</b> colour matters (covers, comics, cookbooks) and you accept paying more for it.</p>
         <div class="card-footer">
           <p class="card-price"><span class="price-gbp">£249</span><span class="price-us">$279</span></p>
           <a class="card-link" href="https://www.amazon.co.uk/dp/B0CNBPK9QP" target="_blank" rel="noopener">View →</a>
@@ -793,6 +841,7 @@ footer strong { color: var(--fg); }
         <p class="card-title">Sony NW-A306 Walkman</p>
         <p class="card-desc">Android-based but has no SIM. Holds 32GB + microSD. Supports Spotify, Tidal, and local files. Brilliant DAC. Doesn't open a door to Instagram.</p>
         <p class="card-catch"><b>Catch:</b> Needs phone app to initially sync Spotify playlists. After that: fully standalone.</p>
+        <p class="card-phone"><span>Phone</span> only at setup</p>
         <div class="card-footer">
           <p class="card-price"><span class="price-gbp">£299</span><span class="price-us">$329</span></p>
           <a class="card-link" href="https://www.sony.co.uk/en/articles/nw-a306-high-resolution-music-player" target="_blank" rel="noopener">View →</a>
@@ -829,9 +878,10 @@ footer strong { color: var(--fg); }
         <p class="card-title">FiiO M11S</p>
         <p class="card-desc">Mid-range Android DAP with dual ES9038Q2M chips and balanced output. 32GB built-in, microSD expandable. Supports Spotify, Tidal, and local FLAC. Sounds significantly better than any phone's headphone stage. No SIM slot, no social apps.</p>
         <p class="card-catch"><b>Catch:</b> Android on DAPs can be slow. Battery life shorter under streaming.</p>
+        <p class="card-phone"><span>Phone</span> only at setup</p>
         <div class="card-footer">
           <p class="card-price"><span class="price-gbp">£349</span><span class="price-us">$399</span></p>
-          <a class="card-link" href="https://www.amazon.co.uk/s?k=fiio+m11s" target="_blank" rel="noopener">View →</a>
+          <a class="card-link" href="https://www.fiio.com/m11s" target="_blank" rel="noopener">View →</a>
         </div>
       
     <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
@@ -858,41 +908,6 @@ footer strong { color: var(--fg); }
     </div>
 
 
-    <div class="card" data-cat="music" data-budget="mid" data-mode="standalone">
-      <img class="card-img" loading="lazy" src="https://bemighty.com/cdn/shop/files/mighty-audio-mighty3-spotify-and-amazon-music-player-no-screen-time-blue-2_8b5505c7-004d-46bf-aab1-fb08594f96ca_1200x1200.jpg?v=1749744221" alt="Mighty 3 offline music player" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-img-placeholder" style="display:none"></div>
-      <div class="card-body">
-        <div class="card-badges"><span class="badge">Wildcard</span></div>
-        <p class="card-title">Mighty 3 (Spotify offline)</p>
-        <p class="card-desc">The size of a credit card. Syncs Spotify playlists offline — no phone, no WiFi needed for playback. No screen, no notifications. Clip it on and go.</p>
-        <p class="card-catch"><b>Catch:</b> Requires Spotify Premium. Sync needs Wi-Fi and the Mighty app on your phone (once).</p>
-        <div class="card-footer">
-          <p class="card-price"><span class="price-gbp">£79</span><span class="price-us">$89</span></p>
-          <a class="card-link" href="https://www.amazon.co.uk/dp/B0FHBYQJ31" target="_blank" rel="noopener">View →</a>
-        </div>
-      
-    <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
-
-    <div class="card-detail">
-      <div class="card-detail-grid">
-        <div class="card-detail-item">
-          <h4>Does</h4>
-          <p>Syncs Spotify playlists via Wi-Fi. Plays completely offline — no phone, no Wi-Fi during playback. Clip.</p>
-        </div>
-        <div class="card-detail-item">
-          <h4>Doesn't do</h4>
-          <p>Only works with Spotify Premium. No Apple Music or Tidal.</p>
-        </div>
-        <div class="card-detail-item full">
-          <h4>Who it's for</h4>
-          <p>Spotify subscribers who want phone-free gym or running sessions.</p>
-        </div>
-      
-      <div class="yt-wrap"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/jLV10WHne04" title="Mighty offline music player review" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-    </div>
-    </div>
-    </div>
-    </div>
 
   </div>
 </div>
@@ -913,6 +928,7 @@ footer strong { color: var(--fg); }
         <p class="card-title">Eversolo DMP-A6</p>
         <p class="card-desc">A dedicated music streamer with a built-in DAC — you plug it into your amp or speakers, browse your streaming services from the 6-inch touchscreen, and your phone stays in the other room. Not cheap at around £760, but it's doing what a separate streamer, DAC, and preamp would do, for less.</p>
         <p class="card-catch"><b>Catch:</b> Spotify uses Connect — your phone still controls it. Every other major service (Tidal, Qobuz, Apple Music, Amazon Music) runs natively on the screen.</p>
+        <p class="card-phone"><span>Phone</span> only at setup</p>
         <div class="card-footer">
           <p class="card-price"><span class="price-gbp">£759</span><span class="price-us">$859</span></p>
           <a class="card-link" href="https://www.richersounds.com/eversolo-dmp-a6-black" target="_blank" rel="noopener">View →</a>
@@ -949,6 +965,7 @@ footer strong { color: var(--fg); }
         <p class="card-title">FiiO R7</p>
         <p class="card-desc">FiiO makes DAPs and headphone amps. Most people don't know they also make a desktop version. The R7 runs Android, has a 5-inch touchscreen, and lets you open Tidal, Qobuz, Spotify or Apple Music directly on the device. Connect it to your amp or active speakers. No phone required — this is the screen.</p>
         <p class="card-catch"><b>Catch:</b> Android on dedicated hardware can be slow — streaming apps work well but don't expect a snappy tablet experience.</p>
+        <p class="card-phone"><span>Phone</span> only at setup</p>
         <div class="card-footer">
           <p class="card-price"><span class="price-gbp">£650</span><span class="price-us">$699</span></p>
           <a class="card-link" href="https://www.fiio.com/r7" target="_blank" rel="noopener">View →</a>
@@ -985,6 +1002,7 @@ footer strong { color: var(--fg); }
         <p class="card-title">HiFi Rose RS250</p>
         <p class="card-desc">A Korean brand almost nobody in the UK has heard of. The RS250 has an 8.8-inch touchscreen that runs its own streaming OS — Tidal, Qobuz, Spotify, Apple Music, and internet radio browsable directly on screen. Beautiful hardware, and a category most people don't know exists.</p>
         <p class="card-catch"><b>Catch:</b> Expensive and niche. Rose OS is proprietary — it works well but it's not Android, so side-loading apps isn't an option.</p>
+        <p class="card-phone"><span>Phone</span> only at setup</p>
         <div class="card-footer">
           <p class="card-price"><span class="price-gbp">£1,949</span><span class="price-us">$2,199</span></p>
           <a class="card-link" href="https://hifirose.com/products/rs250" target="_blank" rel="noopener">View →</a>
@@ -1020,6 +1038,7 @@ footer strong { color: var(--fg); }
         <p class="card-title">Eversolo DMP-A8</p>
         <p class="card-desc">The bigger sibling of the DMP-A6. Same idea — a dedicated streamer-DAC you control entirely from the device — but with a larger 6-inch screen, a more powerful DAC, and better analogue output stages. If you're building a serious system and the A6 feels like a compromise, this is the version that isn't.</p>
         <p class="card-catch"><b>Catch:</b> Spotify uses Connect — your phone still controls it. Every other major service runs natively on the screen.</p>
+        <p class="card-phone"><span>Phone</span> only at setup</p>
         <div class="card-footer">
           <p class="card-price"><span class="price-gbp">£1,299</span><span class="price-us">$1,399</span></p>
           <a class="card-link" href="https://www.richersounds.com/eversolo-dmp-a8" target="_blank" rel="noopener">View →</a>
@@ -1055,6 +1074,7 @@ footer strong { color: var(--fg); }
         <p class="card-title">Volumio Motivo</p>
         <p class="card-desc">Italian-designed streamer with an 8-inch touchscreen and a built-in headphone amplifier. Volumio runs a proprietary audio OS — lean, stable, no Android bloat — with Qobuz, Tidal, Spotify, and internet radio browsable directly on screen. Unusual thing: it's as happy driving headphones as it is driving a hi-fi system.</p>
         <p class="card-catch"><b>Catch:</b> Volumio is a smaller company than Eversolo or FiiO — long-term software support is less certain.</p>
+        <p class="card-phone"><span>Phone</span> only at setup</p>
         <div class="card-footer">
           <p class="card-price"><span class="price-gbp">£1,799</span><span class="price-us">$1,999</span></p>
           <a class="card-link" href="https://volumio.com/en/motivo" target="_blank" rel="noopener">View →</a>
@@ -1103,6 +1123,7 @@ footer strong { color: var(--fg); }
         <p class="card-title">Amazon Echo (4th gen)</p>
         <p class="card-desc">Voice-first. Ask for music, news, or the time without touching a phone. Asking the room for the music or the time is one less reason to pick up the phone. Works with Spotify, Apple Music, Amazon Music.</p>
         <p class="card-catch"><b>Catch:</b> Always-on microphone. Amazon account required. Some features require subscriptions.</p>
+        <p class="card-phone"><span>Phone</span> only at setup</p>
         <div class="card-footer">
           <p class="card-price"><span class="price-gbp">£89</span><span class="price-us">$99</span></p>
           <a class="card-link" href="https://www.amazon.co.uk/dp/B07XJ8C8F7" target="_blank" rel="noopener">View →</a>
@@ -1139,6 +1160,7 @@ footer strong { color: var(--fg); }
         <p class="card-title">Apple HomePod (2nd gen)</p>
         <p class="card-desc">Best sound quality in the category. Siri for control. Deep Apple Music integration. If you're already in Apple's world, this replaces a lot of casual phone pickups.</p>
         <p class="card-catch"><b>Catch:</b> Only really works with Apple devices — less useful without iPhone/Apple Music. Expensive for a speaker.</p>
+        <p class="card-phone"><span>Phone</span> only at setup</p>
         <div class="card-footer">
           <p class="card-price"><span class="price-gbp">£299</span><span class="price-us">$299</span></p>
           <a class="card-link" href="https://www.apple.com/uk/homepod/" target="_blank" rel="noopener">View →</a>
@@ -1186,6 +1208,7 @@ footer strong { color: var(--fg); }
         <p class="card-title">Freewrite Smart Typewriter</p>
         <p class="card-desc">Mechanical keyboard + e-ink screen. No editing mode, no browser. Just write. Syncs to Google Docs or Dropbox when you get home. For people serious about drafting.</p>
         <p class="card-catch"><b>Catch:</b> Expensive. Cannot edit or rearrange text beyond basic cursor. Sync requires Wi-Fi.</p>
+        <p class="card-phone"><span>Phone</span> only at setup</p>
         <div class="card-footer">
           <p class="card-price"><span class="price-gbp">£429</span><span class="price-us">$549</span></p>
           <a class="card-link" href="https://freewrite.com/products/freewrite-smart-typewriter" target="_blank" rel="noopener">View →</a>
@@ -1222,6 +1245,7 @@ footer strong { color: var(--fg); }
         <p class="card-title">Freewrite Alpha</p>
         <p class="card-desc">Freewrite's most affordable device: a compact keyboard with a small e-ink display, designed for drafting only. No cursor keys, no editing mode by design. Syncs to Freewrite's cloud when connected to Wi-Fi. Cheaper entry point for the Freewrite philosophy.</p>
         <p class="card-catch"><b>Catch:</b> Less polished than the Smart Typewriter. Sync via Wi-Fi only.</p>
+        <p class="card-phone"><span>Phone</span> only at setup</p>
         <div class="card-footer">
           <p class="card-price"><span class="price-gbp">£179</span><span class="price-us">$199</span></p>
           <a class="card-link" href="https://freewrite.com/products/alpha" target="_blank" rel="noopener">View →</a>
@@ -1258,6 +1282,7 @@ footer strong { color: var(--fg); }
         <p class="card-title">King Jim Pomera DM250</p>
         <p class="card-desc">Japanese foldable keyboard with an e-ink display. Word processor only: no browser, no distraction, no cloud. Battery lasts weeks. The DM250 adds light and ATOK IME for Japanese input. A writer's tool that takes itself seriously.</p>
         <p class="card-catch"><b>Catch:</b> Japanese brand — import only in UK. No real-time sync.</p>
+        <p class="card-phone"><span>Phone</span> never needed</p>
         <div class="card-footer">
           <p class="card-price"><span class="price-gbp">~£250</span><span class="price-us">$279</span></p>
           <a class="card-link" href="https://www.kingjim.co.jp/pomera/dm250/" target="_blank" rel="noopener">View →</a>
@@ -1293,6 +1318,7 @@ footer strong { color: var(--fg); }
         <p class="card-title">Freewrite Traveler</p>
         <p class="card-desc">Foldable, lighter version of the Smart Typewriter. Same philosophy — write only. Better for travel and coffee shops. Roughly half the weight.</p>
         <p class="card-catch"><b>Catch:</b> Keyboard feel divides opinion — try before buying if possible.</p>
+        <p class="card-phone"><span>Phone</span> only at setup</p>
         <div class="card-footer">
           <p class="card-price"><span class="price-gbp">£299</span><span class="price-us">$349</span></p>
           <a class="card-link" href="https://freewrite.com/products/traveler" target="_blank" rel="noopener">View →</a>
@@ -1328,6 +1354,7 @@ footer strong { color: var(--fg); }
         <p class="card-title">reMarkable 2</p>
         <p class="card-desc">Paper-like e-ink writing tablet. Brilliant for annotating PDFs, sketching, journalling. No distracting apps. The closest digital thing to paper.</p>
         <p class="card-catch"><b>Catch:</b> Subscription (Connect) needed for cloud sync and some features. Expensive.</p>
+        <p class="card-phone"><span>Phone</span> only at setup</p>
         <div class="card-footer">
           <p class="card-price"><span class="price-gbp">£279</span><span class="price-us">$299</span></p>
           <a class="card-link" href="https://remarkable.com/store/remarkable-2" target="_blank" rel="noopener">View →</a>
@@ -1376,6 +1403,7 @@ footer strong { color: var(--fg); }
         <p class="card-title">Ricoh GR IIIx</p>
         <p class="card-desc">Pocketable street camera with APS-C sensor and 40mm equivalent lens. Beloved by street photographers. Deliberately minimal — quick capture, then put it away.</p>
         <p class="card-catch"><b>Catch:</b> No image stabilisation. Easy to miss focus in low light without snap mode.</p>
+        <p class="card-phone"><span>Phone</span> never needed</p>
         <div class="card-footer">
           <p class="card-price"><span class="price-gbp">£899</span><span class="price-us">$999</span></p>
           <a class="card-link" href="https://www.ricoh-imaging.co.uk/product/gr-iiix" target="_blank" rel="noopener">View →</a>
@@ -1412,6 +1440,7 @@ footer strong { color: var(--fg); }
         <p class="card-title">Fujifilm X100VI</p>
         <p class="card-desc">The camera people carry instead of their phone. Fixed 35mm lens, film simulations, built-in ND filter. Takes a picture and that's it — no notifications waiting.</p>
         <p class="card-catch"><b>Catch:</b> Frequently sold out — check for availability. Not cheap.</p>
+        <p class="card-phone"><span>Phone</span> never needed</p>
         <div class="card-footer">
           <p class="card-price"><span class="price-gbp">£1,699</span><span class="price-us">$1,599</span></p>
           <a class="card-link" href="https://www.fujifilm.com/uk/en/consumer/cameras/x/x100vi" target="_blank" rel="noopener">View →</a>
@@ -1459,6 +1488,7 @@ footer strong { color: var(--fg); }
         <p class="card-title">Garmin Fenix 7S</p>
         <p class="card-desc">Serious GPS sports watch. Weeks of battery in smartwatch mode. Detailed training metrics. No social apps, no feeds. Pairs to your phone for data sync only.</p>
         <p class="card-catch"><b>Catch:</b> Expensive. Bulky for everyday wear. Some features need phone pairing initially.</p>
+        <p class="card-phone"><span>Phone</span> only at setup</p>
         <div class="card-footer">
           <p class="card-price"><span class="price-gbp">£549</span><span class="price-us">$599</span></p>
           <a class="card-link" href="https://www.garmin.com/en-GB/p/735611" target="_blank" rel="noopener">View →</a>
@@ -1495,6 +1525,7 @@ footer strong { color: var(--fg); }
         <p class="card-title">Garmin Vívoactive 5</p>
         <p class="card-desc">Smartwatch that prioritises fitness over feeds. GPS, 11-day battery, 30+ sports. Can receive notification previews but doesn't encourage engagement. Garmin's apps are about sport, not social.</p>
         <p class="card-catch"><b>Catch:</b> Smaller screen. Lower-resolution vs. Apple Watch. Needs Garmin Connect once to set up.</p>
+        <p class="card-phone"><span>Phone</span> only at setup</p>
         <div class="card-footer">
           <p class="card-price"><span class="price-gbp">£249</span><span class="price-us">$269</span></p>
           <a class="card-link" href="https://www.garmin.com/en-GB/p/1025217" target="_blank" rel="noopener">View →</a>
@@ -1531,6 +1562,7 @@ footer strong { color: var(--fg); }
         <p class="card-title">Suunto Race S</p>
         <p class="card-desc">Finnish GPS watch designed for trail running and mountaineering. AMOLED display, 26-day battery in watch mode, 40-hour GPS. No social apps, no app store — Suunto's software is sports data only. Excellent for anyone who wants to leave the phone behind outdoors.</p>
         <p class="card-catch"><b>Catch:</b> Expensive. Fewer apps and accessories than Garmin. App is improving but behind Garmin Connect.</p>
+        <p class="card-phone"><span>Phone</span> only at setup</p>
         <div class="card-footer">
           <p class="card-price"><span class="price-gbp">£399</span><span class="price-us">$449</span></p>
           <a class="card-link" href="https://www.suunto.com/en-gb/Products/sports-watches/suunto-race-s/" target="_blank" rel="noopener">View →</a>
@@ -1566,6 +1598,7 @@ footer strong { color: var(--fg); }
         <p class="card-title">Polar Pacer Pro</p>
         <p class="card-desc">Serious running and triathlon watch from Finland's original GPS watch maker. Excellent training load and recovery analytics, barometric altimeter, and 35-hour GPS battery. Minimal notification interface — Polar's software is about sport, not apps.</p>
         <p class="card-catch"><b>Catch:</b> Fewer apps and third-party extras than Garmin. Less third-party app support.</p>
+        <p class="card-phone"><span>Phone</span> only at setup</p>
         <div class="card-footer">
           <p class="card-price"><span class="price-gbp">£299</span><span class="price-us">$329</span></p>
           <a class="card-link" href="https://www.polar.com/en/products/sport-watches/pacer-pro" target="_blank" rel="noopener">View →</a>
@@ -1614,6 +1647,7 @@ footer strong { color: var(--fg); }
         <p class="card-title">Yoto Player (3rd Gen)</p>
         <p class="card-desc">Screenless audio player for children. Insert a card, play a story. Kids control their own listening. Brilliant content library including BBC podcasts and Audible. No screen whatsoever.</p>
         <p class="card-catch"><b>Catch:</b> Content is Yoto-card only — ongoing cost for new stories/songs.</p>
+        <p class="card-phone"><span>Phone</span> only at setup</p>
         <div class="card-footer">
           <p class="card-price"><span class="price-gbp">£99</span><span class="price-us">$109</span></p>
           <a class="card-link" href="https://www.yotoplay.com/products/yoto-player-third-gen" target="_blank" rel="noopener">View →</a>
@@ -1637,7 +1671,6 @@ footer strong { color: var(--fg); }
         </div>
       </div>
     
-      <div class="yt-wrap"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/WrDXE5H_Gv0" title="Yoto Player 3rd Gen review" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
     </div>
     </div>
     </div>
@@ -1650,6 +1683,7 @@ footer strong { color: var(--fg); }
         <p class="card-title">Yoto Mini</p>
         <p class="card-desc">Portable, pocket-sized Yoto. Same card system, same content — but clips to a backpack. Good for car journeys and holidays, when the phone would usually come out.</p>
         <p class="card-catch"><b>Catch:</b> Less features than the full player. Still requires Yoto cards.</p>
+        <p class="card-phone"><span>Phone</span> only at setup</p>
         <div class="card-footer">
           <p class="card-price"><span class="price-gbp">£59</span><span class="price-us">$69</span></p>
           <a class="card-link" href="https://www.yotoplay.com/products/yoto-mini" target="_blank" rel="noopener">View →</a>
@@ -1686,6 +1720,7 @@ footer strong { color: var(--fg); }
         <p class="card-title">Toniebox</p>
         <p class="card-desc">Place a Tonie figure on top to play its story. Designed for toddlers — no buttons, no screen, no complexity. Extremely durable. Great starter for ages 2–7.</p>
         <p class="card-catch"><b>Catch:</b> Tonie figurines cost ~£15–20 each. Stories only come from Tonie figures.</p>
+        <p class="card-phone"><span>Phone</span> only at setup</p>
         <div class="card-footer">
           <p class="card-price"><span class="price-gbp">£79</span><span class="price-us">$89</span></p>
           <a class="card-link" href="https://www.tonies.com/en-gb/" target="_blank" rel="noopener">View →</a>
@@ -1733,6 +1768,7 @@ footer strong { color: var(--fg); }
         <p class="card-title">Punkt MP02</p>
         <p class="card-desc">4G calling and encrypted SMS via Signal. That's it. Beautifully made in Switzerland. No apps, no browser, no camera. The thinking person's dumb phone. A statement as much as a tool.</p>
         <p class="card-catch"><b>Catch:</b> Signal setup requires a smartphone initially. Premium price for minimal features.</p>
+        <p class="card-phone"><span>Phone</span> never needed</p>
         <div class="card-footer">
           <p class="card-price"><span class="price-gbp">£299</span><span class="price-us">$349</span></p>
           <a class="card-link" href="https://www.punkt.ch/en/products/mp02-4g-mobile-phone/" target="_blank" rel="noopener">View →</a>
@@ -1769,6 +1805,7 @@ footer strong { color: var(--fg); }
         <p class="card-title">Light Phone III</p>
         <p class="card-desc">Phone, music, maps, podcast, notes. Nothing else. Slim e-ink screen. Made by people who believe less is more. Still needs a monthly plan — but radically calmer than a smartphone.</p>
         <p class="card-catch"><b>Catch:</b> US-focused initially. UK/EU availability limited. Premium price.</p>
+        <p class="card-phone"><span>Phone</span> never needed</p>
         <div class="card-footer">
           <p class="card-price"><span class="price-gbp">~£299</span><span class="price-us">$299</span></p>
           <a class="card-link" href="https://www.thelightphone.com" target="_blank" rel="noopener">View →</a>
@@ -1805,9 +1842,10 @@ footer strong { color: var(--fg); }
         <p class="card-title">Mudita Kompakt</p>
         <p class="card-desc">E-ink display, calls, texts, offline maps. Designed by designers who believed phones should do less. The Offline+ mode disables data entirely. Minimal, calm, beautiful.</p>
         <p class="card-catch"><b>Catch:</b> New device from small Polish company — long-term support uncertain.</p>
+        <p class="card-phone"><span>Phone</span> never needed</p>
         <div class="card-footer">
           <p class="card-price"><span class="price-gbp">~£399</span><span class="price-us">$449</span></p>
-          <a class="card-link" href="https://www.amazon.co.uk/dp/B0FBX4SNRG" target="_blank" rel="noopener">View →</a>
+          <a class="card-link" href="https://mudita.com/kompakt" target="_blank" rel="noopener">View →</a>
         </div>
       
     <button class="card-more-btn" onclick="toggleDetail(this)">More ↓</button>
@@ -1848,7 +1886,7 @@ footer strong { color: var(--fg); }
     <div><dt>Film cameras</dt><dd>Lovely things, but they give up what makes a phone camera useful (storing, sharing, finding a photo again) without replacing it.</dd></div>
     <div><dt>Tablets that run any app</dt><dd>If it can install Instagram, it's a phone with a bigger screen.</dd></div>
     <div><dt>Trackers you read in an app</dt><dd>Rings, bands and watches that only make sense on your phone's screen keep the phone in the loop all day.</dd></div>
-    <div><dt>Streamers run from an app</dt><dd>WiiM, Sonos, Bluesound and friends use your phone as the remote. If you have to pick it up to choose a song, it doesn't count.</dd></div>
+    <div><dt>Players and streamers you run from an app</dt><dd>WiiM, Sonos, Bluesound and friends use your phone as the remote, and screenless players like the Mighty 3 need Spotify on a phone to change what's on them. If you have to pick the phone up to choose a song, it doesn't count.</dd></div>
     <div><dt>Kids' starter smartphones</dt><dd>Still a screen, just a cuter one.</dd></div>
   </dl>
 </section>
@@ -1877,7 +1915,7 @@ footer strong { color: var(--fg); }
   <div class="newsletter">
     <h3>New finds, when there are any</h3>
     <p>Occasional emails when something worth knowing about turns up. No noise.</p>
-    <form class="nl-form" action="https://buttondown.email/api/emails/embed-subscribe/silentmode" method="post" target="_blank">
+    <form class="nl-form" action="https://buttondown.email/api/emails/embed-subscribe/silentmode" method="post">
       <input class="nl-input" type="email" name="email" placeholder="your@email.com" required aria-label="Email address">
       <button type="submit" class="btn-primary">Subscribe</button>
     </form>
@@ -1921,7 +1959,7 @@ function toggleDetail(btn) {
 }
 
 // ─── Category nav ─────────────────────────────────
-const MUSIC_CATS = ['music','hifi','speaker'];
+const GROUPS = { music: ['music','hifi','speaker'], out: ['camera','fitness'] };
 
 function setExpanded(on) {
   document.querySelectorAll('.cat-section').forEach(sec => {
@@ -1931,10 +1969,24 @@ function setExpanded(on) {
 function expandSection(btn) { btn.closest('.cat-section').classList.add('expanded'); }
 
 function closeAllGroups() {
-  const sub = document.getElementById('sub-music');
-  const pill = document.getElementById('pill-music');
-  if (sub) { sub.classList.remove('open'); sub.querySelectorAll('.sub-pill').forEach(p => p.classList.remove('active')); }
-  if (pill) pill.classList.remove('open', 'active');
+  Object.keys(GROUPS).forEach(g => {
+    const sub = document.getElementById('sub-' + g);
+    const pill = document.getElementById('pill-' + g);
+    if (sub) { sub.classList.remove('open'); sub.querySelectorAll('.sub-pill').forEach(p => p.classList.remove('active')); }
+    if (pill) pill.classList.remove('open', 'active');
+  });
+}
+
+// After a filter, bring the results into view so the page never looks unchanged.
+function scrollToResults() {
+  const first = document.querySelector('.cat-section:not(.hidden)');
+  const nav = document.getElementById('catNav');
+  const offset = (parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header-h')) || 65) + (nav ? nav.offsetHeight : 0) + 8;
+  const filterTopY = document.getElementById('all').getBoundingClientRect().top + window.scrollY;
+  const target = first ? first.getBoundingClientRect().top + window.scrollY - offset : filterTopY;
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // Only scroll when the results start above the current view; never drag the reader back up past where they are looking.
+  if (Math.abs(window.scrollY - target) > 40) window.scrollTo({ top: Math.max(target, 0), behavior: reduce ? 'auto' : 'smooth' });
 }
 
 function showAllSections() {
@@ -1963,6 +2015,7 @@ function filterTop(cat, btn) {
     sec.classList.toggle('hidden', cat !== 'all' && sec.dataset.cat !== cat);
   });
   setExpanded(cat !== 'all');
+  scrollToResults();
 }
 
 function toggleGroup(group, btn) {
@@ -1977,9 +2030,10 @@ function toggleGroup(group, btn) {
     sub.classList.add('open');
     btn.classList.add('open', 'active');
     document.querySelectorAll('.cat-section').forEach(sec => {
-      sec.classList.toggle('hidden', !MUSIC_CATS.includes(sec.dataset.cat));
+      sec.classList.toggle('hidden', !GROUPS[group].includes(sec.dataset.cat));
     });
     setExpanded(true);
+    scrollToResults();
   }
 }
 
@@ -1990,6 +2044,7 @@ function filterSub(cat, btn) {
     sec.classList.toggle('hidden', sec.dataset.cat !== cat);
   });
   setExpanded(true);
+  scrollToResults();
 }
 
 // Back-to-top only appears once you've scrolled past the hero
