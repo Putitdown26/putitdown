@@ -136,8 +136,10 @@ header {
 .wizard-section .sub { color: var(--fg-mid); margin-bottom: 24px; font-size: 0.95rem; }
 #wizard { max-width: 640px; }
 .wiz-step { display: none; }
-.wiz-step.active { display: block; }
+.wiz-step.active { display: block; animation: wiz-in .18s ease; }
+@keyframes wiz-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
 .wiz-q { font-size: 1.05rem; font-weight: 500; margin-bottom: 14px; }
+.wiz-sub-q { font-size: 0.88rem; color: var(--fg-mid); margin: -8px 0 14px; }
 .wiz-opts { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 8px; }
 .wiz-opt {
   background: var(--bg-card); border: 1.5px solid var(--rule);
@@ -145,24 +147,38 @@ header {
   padding: 8px 14px; border-radius: 8px; cursor: pointer; transition: all .12s;
 }
 .wiz-opt:hover, .wiz-opt.sel { background: var(--accent-dim); border-color: var(--accent); color: var(--accent-deep); }
-.wiz-hint { font-size: 0.8rem; color: var(--fg-light); margin-bottom: 16px; }
-.wiz-progress { display: flex; gap: 6px; margin-bottom: 20px; }
+.wiz-breadcrumb { font-size: 0.78rem; color: var(--fg-light); margin-bottom: 16px; display: flex; flex-wrap: wrap; gap: 4px; align-items: center; min-height: 20px; }
+.wiz-breadcrumb span { background: var(--bg-tag); padding: 2px 8px; border-radius: 10px; color: var(--fg-mid); }
+.wiz-breadcrumb-sep { color: var(--fg-light); }
+.wiz-progress { display: flex; gap: 6px; margin-bottom: 20px; align-items: center; }
 .wiz-dot {
   width: 8px; height: 8px; border-radius: 50%;
   background: var(--rule); transition: background .2s;
 }
 .wiz-dot.done { background: var(--accent); }
-#wiz-results { display: none; }
-#wiz-results h3 { font-size: 1.1rem; margin-bottom: 16px; }
-.wiz-result-grid {
-  display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px;
+.wiz-dot.active-dot { background: var(--accent); opacity: 0.45; }
+#wiz-results { display: none; padding: 4px 0; }
+#wiz-results h3 { font-size: 1.05rem; margin-bottom: 6px; }
+#wiz-results p { font-size: 0.88rem; color: var(--fg-mid); margin-bottom: 14px; }
+.wiz-result-summary { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
+.wiz-result-tag { background: var(--accent-dim); border: 1px solid var(--accent); color: var(--accent-deep); font-size: 0.78rem; padding: 3px 10px; border-radius: 10px; }
+.wiz-go-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: var(--accent); color: #fff; border: none;
+  font-family: var(--sans); font-size: 0.92rem; font-weight: 600;
+  padding: 10px 20px; border-radius: 8px; cursor: pointer; transition: opacity .12s;
+  text-decoration: none;
 }
+.wiz-go-btn:hover { opacity: 0.88; }
 .wiz-reset {
-  margin-top: 16px; background: none; border: 1px solid var(--rule);
+  margin-top: 12px; margin-left: 10px; background: none; border: 1px solid var(--rule);
   color: var(--fg-mid); font-family: var(--sans); font-size: 0.85rem;
-  padding: 6px 14px; border-radius: 6px; cursor: pointer;
+  padding: 9px 14px; border-radius: 8px; cursor: pointer;
 }
 .wiz-reset:hover { border-color: var(--accent); color: var(--accent); }
+/* card highlight pulse when wizard scrolls to section */
+@keyframes wiz-highlight { 0%,100% { box-shadow: none; } 30% { box-shadow: 0 0 0 3px var(--accent); } }
+.wiz-highlighted { animation: wiz-highlight 1.4s ease 0.1s; }
 
 /* ─── Filter Bar ─────────────────────────────────── */
 .filter-bar {
@@ -467,51 +483,79 @@ footer a:hover { color: var(--accent); }
 
 <!-- ── Wizard ── -->
 <section class="wizard-section" id="finder">
-  <h2>Find yours in 3 questions</h2>
-  <p class="sub">Answer quickly — we'll show you the right category.</p>
+  <h2>Find yours</h2>
+  <p class="sub">Answer a few questions — we'll take you straight to the right section.</p>
   <div id="wizard">
-    <div class="wiz-progress">
-      <div class="wiz-dot" id="dot0"></div>
-      <div class="wiz-dot" id="dot1"></div>
-      <div class="wiz-dot" id="dot2"></div>
+    <div class="wiz-progress" id="wiz-progress">
+      <div class="wiz-dot active-dot" id="wdot-0"></div>
+      <div class="wiz-dot" id="wdot-1"></div>
+      <div class="wiz-dot" id="wdot-2"></div>
+      <div class="wiz-dot" id="wdot-3"></div>
     </div>
+    <div class="wiz-breadcrumb" id="wiz-breadcrumb"></div>
 
-    <div class="wiz-step active" id="wiz0">
+    <!-- Step 0: what are you replacing? -->
+    <div class="wiz-step active" id="wiz-s0">
       <p class="wiz-q">What do you reach for your phone for most?</p>
       <div class="wiz-opts">
-        <button class="wiz-opt" onclick="pickWiz(0,'music')">🎵 Music / podcasts</button>
-        <button class="wiz-opt" onclick="pickWiz(0,'reading')">📖 Reading</button>
-        <button class="wiz-opt" onclick="pickWiz(0,'sleep')">🌙 Bedtime / alarm</button>
-        <button class="wiz-opt" onclick="pickWiz(0,'camera')">📷 Camera</button>
-        <button class="wiz-opt" onclick="pickWiz(0,'kids')">🧒 Kids' entertainment</button>
-        <button class="wiz-opt" onclick="pickWiz(0,'fitness')">🏃 Fitness tracking</button>
-        <button class="wiz-opt" onclick="pickWiz(0,'news')">📰 News / reading long-form</button>
-        <button class="wiz-opt" onclick="pickWiz(0,'writing')">✏️ Notes / journalling</button>
+        <button class="wiz-opt" onclick="wizPick('category','music',this)">🎵 Music</button>
+        <button class="wiz-opt" onclick="wizPick('category','reading',this)">📖 Reading</button>
+        <button class="wiz-opt" onclick="wizPick('category','sleep',this)">🌙 Sleep &amp; alarms</button>
+        <button class="wiz-opt" onclick="wizPick('category','camera',this)">📷 Camera</button>
+        <button class="wiz-opt" onclick="wizPick('category','fitness',this)">🏃 Fitness &amp; health</button>
+        <button class="wiz-opt" onclick="wizPick('category','writing',this)">✏️ Notes &amp; writing</button>
+        <button class="wiz-opt" onclick="wizPick('category','news',this)">📰 News &amp; long reads</button>
+        <button class="wiz-opt" onclick="wizPick('category','kids',this)">🧒 Kids' entertainment</button>
+        <button class="wiz-opt" onclick="wizPick('category','phone',this)">📵 Replace the phone itself</button>
       </div>
-      <p class="wiz-hint">Tap to advance automatically</p>
     </div>
 
-    <div class="wiz-step" id="wiz1">
+    <!-- Step M1: music — home or portable? -->
+    <div class="wiz-step" id="wiz-sm1">
+      <p class="wiz-q">Home listening or on the move?</p>
+      <div class="wiz-opts">
+        <button class="wiz-opt" onclick="wizPick('musicContext','home',this)">🏠 At home</button>
+        <button class="wiz-opt" onclick="wizPick('musicContext','portable',this)">🚶 Portable — gym, commute, walks</button>
+      </div>
+    </div>
+
+    <!-- Step M2: streaming or offline? (music only) -->
+    <div class="wiz-step" id="wiz-sm2">
+      <p class="wiz-q">Do you use Spotify, Tidal, or a streaming service?</p>
+      <p class="wiz-sub-q">The right answer here changes the recommendation a lot.</p>
+      <div class="wiz-opts">
+        <button class="wiz-opt" onclick="wizPick('streaming','yes',this)">Yes — I want to keep using it</button>
+        <button class="wiz-opt" onclick="wizPick('streaming','no',this)">No — I have my own music files</button>
+        <button class="wiz-opt" onclick="wizPick('streaming','either',this)">Either works for me</button>
+      </div>
+    </div>
+
+    <!-- Step P1: phone replacement type -->
+    <div class="wiz-step" id="wiz-sp1">
+      <p class="wiz-q">What kind of replacement?</p>
+      <div class="wiz-opts">
+        <button class="wiz-opt" onclick="wizPick('phoneType','minimal',this)">📵 A minimal or dumb phone</button>
+        <button class="wiz-opt" onclick="wizPick('phoneType','home',this)">☎️ A home landline</button>
+      </div>
+    </div>
+
+    <!-- Step B: budget (all paths end here) -->
+    <div class="wiz-step" id="wiz-sb">
       <p class="wiz-q">What's your budget?</p>
       <div class="wiz-opts">
-        <button class="wiz-opt" onclick="pickWiz(1,'low')">Under £50</button>
-        <button class="wiz-opt" onclick="pickWiz(1,'mid')">£50–150</button>
-        <button class="wiz-opt" onclick="pickWiz(1,'high')">£150+</button>
+        <button class="wiz-opt" onclick="wizPick('budget','low',this)">Under £50</button>
+        <button class="wiz-opt" onclick="wizPick('budget','mid',this)">£50–150</button>
+        <button class="wiz-opt" onclick="wizPick('budget','high',this)">£150+</button>
+        <button class="wiz-opt" onclick="wizPick('budget','any',this)">Show me everything</button>
       </div>
     </div>
 
-    <div class="wiz-step" id="wiz2">
-      <p class="wiz-q">Do you want it to work offline / without a subscription?</p>
-      <div class="wiz-opts">
-        <button class="wiz-opt" onclick="pickWiz(2,'standalone')">Yes — standalone only</button>
-        <button class="wiz-opt" onclick="pickWiz(2,'either')">Either is fine</button>
-        <button class="wiz-opt" onclick="pickWiz(2,'connected')">Subscription / streaming ok</button>
-      </div>
-    </div>
-
+    <!-- Results -->
     <div id="wiz-results">
-      <h3 id="wiz-heading">Our picks for you</h3>
-      <div class="wiz-result-grid" id="wiz-result-grid"></div>
+      <h3 id="wiz-heading">Here's where to look</h3>
+      <p id="wiz-subheading"></p>
+      <div class="wiz-result-summary" id="wiz-tags"></div>
+      <button class="wiz-go-btn" id="wiz-go-btn" onclick="wizGoToSection()">Go to these picks ↓</button>
       <button class="wiz-reset" onclick="resetWiz()">← Start over</button>
     </div>
   </div>
@@ -3525,75 +3569,236 @@ function filterSub(cat, btn) {
 
 // ─── Wizard ──────────────────────────────────────
 const wizState = {};
-function pickWiz(step, val) {
-  wizState[step] = val;
-  document.querySelectorAll('#wiz' + step + ' .wiz-opt').forEach(b => b.classList.remove('sel'));
-  event.target.classList.add('sel');
-  document.getElementById('dot' + step).classList.add('done');
+let wizDotCount = 4; // updated per path
+
+// Branch map: after picking a value for a key, which step comes next?
+// Returns step element id, or null to show results
+function wizNextStep(key, val) {
+  if (key === 'category') {
+    if (val === 'music')  return 'wiz-sm1';   // home vs portable
+    if (val === 'phone')  return 'wiz-sp1';   // minimal vs home phone
+    return 'wiz-sb';                           // everything else → budget
+  }
+  if (key === 'musicContext') return 'wiz-sm2'; // streaming question
+  if (key === 'streaming')   return 'wiz-sb';   // then budget
+  if (key === 'phoneType')   return 'wiz-sb';   // then budget
+  if (key === 'budget')      return null;        // done → results
+  return null;
+}
+
+// How many dots for this path?
+function wizPathLength() {
+  const cat = wizState.category;
+  if (cat === 'music')  return 4; // category → home/portable → streaming → budget
+  if (cat === 'phone')  return 3; // category → type → budget
+  if (cat)              return 2; // category → budget
+  return 4; // unknown yet
+}
+
+function wizPick(key, val, btn) {
+  wizState[key] = val;
+
+  // Mark the button selected in its parent step
+  btn.closest('.wiz-opts').querySelectorAll('.wiz-opt').forEach(b => b.classList.remove('sel'));
+  btn.classList.add('sel');
+
+  // Update progress dots
+  updateWizDots();
+  updateWizBreadcrumb();
+
+  const nextId = wizNextStep(key, val);
   setTimeout(() => {
-    document.getElementById('wiz' + step).classList.remove('active');
-    if (step < 2) {
-      document.getElementById('wiz' + (step + 1)).classList.add('active');
+    // Hide all steps
+    document.querySelectorAll('.wiz-step').forEach(s => s.classList.remove('active'));
+    if (nextId) {
+      document.getElementById(nextId).classList.add('active');
     } else {
       showWizResults();
     }
   }, 220);
 }
 
-function showWizResults() {
-  document.getElementById('wizard').querySelectorAll('.wiz-step').forEach(s => s.classList.remove('active'));
-  const results = document.getElementById('wiz-results');
-  const grid = document.getElementById('wiz-result-grid');
-  const cat = wizState[0];
-  const budget = wizState[1];
-  const mode = wizState[2];
+function updateWizDots() {
+  const total = wizPathLength();
+  // Count how many answers we have
+  const steps = ['category','musicContext','streaming','phoneType','budget'];
+  const answered = steps.filter(k => wizState[k] !== undefined).length;
 
-  const allCards = Array.from(document.querySelectorAll('.card'));
-  let matches = allCards.filter(card => {
-    const cardCat = card.dataset.cat;
-    const cardBudget = card.dataset.budget;
-    const cardMode = card.dataset.mode;
-    const catMatch = !cat || cardCat === cat || (cat === 'music' && ['music','headphones'].includes(cardCat));
-    const budgetMatch = !budget || budget === 'high' ||
-      (budget === 'mid' && (cardBudget === 'low' || cardBudget === 'mid')) ||
-      (budget === 'low' && cardBudget === 'low');
-    const modeMatch = !mode || mode === 'either' || cardMode === mode || cardMode === 'either';
-    return catMatch && budgetMatch && modeMatch;
-  }).slice(0, 4);
+  for (let i = 0; i < 4; i++) {
+    const dot = document.getElementById('wdot-' + i);
+    if (!dot) continue;
+    if (i >= total) { dot.style.display = 'none'; continue; }
+    dot.style.display = '';
+    dot.classList.remove('done','active-dot');
+    if (i < answered) dot.classList.add('done');
+    else if (i === answered) dot.classList.add('active-dot');
+  }
+}
 
-  if (matches.length === 0) {
-    matches = allCards.filter(c => c.dataset.cat === cat).slice(0, 3);
+function updateWizBreadcrumb() {
+  const labels = {
+    category: { music:'🎵 Music', reading:'📖 Reading', sleep:'🌙 Sleep', camera:'📷 Camera',
+                 fitness:'🏃 Fitness', writing:'✏️ Writing', news:'📰 News', kids:'🧒 Kids',
+                 phone:'📵 Phone' },
+    musicContext: { home:'At home', portable:'Portable' },
+    streaming: { yes:'Streaming', no:'Offline files', either:'Either' },
+    phoneType: { minimal:'Minimal phone', home:'Home phone' },
+    budget: { low:'Under £50', mid:'£50–150', high:'£150+', any:'Any budget' }
+  };
+  const order = ['category','musicContext','streaming','phoneType','budget'];
+  const bc = document.getElementById('wiz-breadcrumb');
+  const parts = [];
+  order.forEach(k => {
+    if (wizState[k] !== undefined && labels[k] && labels[k][wizState[k]]) {
+      parts.push('<span>' + labels[k][wizState[k]] + '</span>');
+    }
+  });
+  bc.innerHTML = parts.join('<span class="wiz-breadcrumb-sep">›</span>');
+}
+
+// Work out which section(s) to show and what filter to apply
+function wizGetTarget() {
+  const cat = wizState.category;
+  const musicCtx = wizState.musicContext;
+  const streaming = wizState.streaming;
+  const phoneType = wizState.phoneType;
+  const budget = wizState.budget;
+
+  let targetSections = []; // data-cat values to show
+  let targetLabel = '';
+  let filterMode = null; // 'standalone'|'connected'|null
+  let budgetFilter = budget === 'any' ? null : budget;
+
+  if (cat === 'music') {
+    if (musicCtx === 'home') {
+      targetSections = ['hifi', 'speaker'];
+      targetLabel = 'Home hi-fi & smart speakers';
+      if (streaming === 'yes') filterMode = null; // all home speakers stream
+      if (streaming === 'no')  filterMode = 'standalone';
+    } else {
+      // portable
+      targetSections = ['music', 'headphones'];
+      targetLabel = 'Portable players & headphones';
+      if (streaming === 'yes') { filterMode = null; } // DAPs with Spotify
+      if (streaming === 'no')  { filterMode = 'standalone'; }
+    }
+  } else if (cat === 'phone') {
+    if (phoneType === 'minimal') {
+      targetSections = ['phone'];
+      targetLabel = 'Minimal & dumb phones';
+    } else {
+      targetSections = ['homephone'];
+      targetLabel = 'Home phones';
+    }
+  } else {
+    // Simple path — one section
+    targetSections = [cat];
+    const sectionLabels = {
+      reading: 'E-readers & reading devices', sleep: 'Sleep & wake-up lights',
+      camera: 'Cameras', fitness: 'Fitness & health trackers',
+      writing: 'Distraction-free writing', news: 'Reading devices & news',
+      kids: 'Kids\' audio & learning'
+    };
+    targetLabel = sectionLabels[cat] || cat;
   }
 
-  grid.innerHTML = '';
-  matches.forEach(card => {
-    const clone = card.cloneNode(true);
-    clone.style.cssText = '';
-    grid.appendChild(clone);
+  return { targetSections, targetLabel, filterMode, budgetFilter };
+}
+
+function showWizResults() {
+  document.querySelectorAll('.wiz-step').forEach(s => s.classList.remove('active'));
+  const { targetSections, targetLabel, filterMode, budgetFilter } = wizGetTarget();
+
+  // Set heading copy
+  const headings = {
+    music: 'Your music setup', reading: 'Your reading device', sleep: 'Your bedroom alternative',
+    camera: 'Your camera', fitness: 'Your fitness tracker', writing: 'Your writing device',
+    news: 'Your reading device', kids: 'For the kids', phone: 'Your phone alternative'
+  };
+  document.getElementById('wiz-heading').textContent = headings[wizState.category] || 'Here\'s where to look';
+
+  // Subheading
+  const sub = document.getElementById('wiz-subheading');
+  sub.textContent = 'Filtered to: ' + targetLabel + (budgetFilter ? ' · ' + ({low:'under £50',mid:'£50–150',high:'£150+'}[budgetFilter]||'') : '') + '.';
+
+  // Tags
+  const tagsEl = document.getElementById('wiz-tags');
+  tagsEl.innerHTML = [targetLabel, budgetFilter ? ({low:'Under £50',mid:'£50–150',high:'£150+'}[budgetFilter]) : null]
+    .filter(Boolean).map(t => '<span class="wiz-result-tag">' + t + '</span>').join('');
+
+  // Store targeting for the go button
+  wizState._target = { targetSections, filterMode, budgetFilter };
+
+  document.getElementById('wiz-results').style.display = 'block';
+  updateWizDots();
+}
+
+function wizGoToSection() {
+  const { targetSections, filterMode, budgetFilter } = wizState._target || {};
+  if (!targetSections || !targetSections.length) return;
+
+  // Reset filter state to show the right sections
+  closeAllGroups();
+  document.querySelectorAll('.cat-pill').forEach(p => p.classList.remove('active'));
+
+  // Show only target sections
+  document.querySelectorAll('.cat-section').forEach(sec => {
+    const inTarget = targetSections.includes(sec.dataset.cat);
+    sec.classList.toggle('hidden', !inTarget);
+
+    if (inTarget) {
+      // Apply budget filter to cards within the section
+      sec.querySelectorAll('.card').forEach(card => {
+        let show = true;
+        if (budgetFilter && budgetFilter !== 'any') {
+          const cb = card.dataset.budget;
+          if (budgetFilter === 'low') show = cb === 'low';
+          else if (budgetFilter === 'mid') show = cb === 'low' || cb === 'mid';
+          // 'high' shows all
+        }
+        if (filterMode && filterMode !== 'either') {
+          const cm = card.dataset.mode;
+          if (cm && cm !== filterMode && cm !== 'either') show = false;
+        }
+        card.style.display = show ? '' : 'none';
+      });
+    }
   });
 
-  const headings = {
-    sleep: 'Great choices for sleep & wake',
-    reading: 'Our e-reader picks for you',
-    music: 'Music players matched to you',
-    camera: 'Camera picks for you',
-    kids: 'Kids audio picks',
-    fitness: 'Fitness tracker picks',
-    news: 'Intentional reading picks',
-    writing: 'Writing tool picks',
-    headphones: 'Headphone picks'
-  };
-  document.getElementById('wiz-heading').textContent = headings[cat] || 'Our picks for you';
-  results.style.display = 'block';
+  // Scroll to first visible target section
+  setTimeout(() => {
+    const firstSection = document.getElementById(targetSections[0]);
+    if (firstSection) {
+      const offset = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header-h') || '65');
+      const top = firstSection.getBoundingClientRect().top + window.scrollY - offset - 12;
+      window.scrollTo({ top, behavior: 'smooth' });
+      // Briefly pulse the section heading
+      firstSection.classList.add('wiz-highlighted');
+      setTimeout(() => firstSection.classList.remove('wiz-highlighted'), 1600);
+    }
+  }, 50);
 }
 
 function resetWiz() {
+  // Clear state
   Object.keys(wizState).forEach(k => delete wizState[k]);
+  // Hide all steps, show first
   document.querySelectorAll('.wiz-step').forEach(s => s.classList.remove('active'));
-  document.getElementById('wiz0').classList.add('active');
-  document.querySelectorAll('.wiz-dot').forEach(d => d.classList.remove('done'));
-  document.querySelectorAll('.wiz-opt').forEach(b => b.classList.remove('sel'));
+  document.getElementById('wiz-s0').classList.add('active');
+  // Reset dots
+  for (let i = 0; i < 4; i++) {
+    const d = document.getElementById('wdot-' + i);
+    if (d) { d.classList.remove('done'); d.style.display = ''; }
+  }
+  document.getElementById('wdot-0').classList.add('active-dot');
+  // Clear breadcrumb and results
+  document.getElementById('wiz-breadcrumb').innerHTML = '';
   document.getElementById('wiz-results').style.display = 'none';
+  document.querySelectorAll('.wiz-opt').forEach(b => b.classList.remove('sel'));
+  // Restore all cards and sections
+  document.querySelectorAll('.cat-section').forEach(s => s.classList.remove('hidden'));
+  document.querySelectorAll('.card').forEach(c => c.style.display = '');
+  document.querySelector('.cat-pill').classList.add('active');
 }
 
 // ─── Legacy compat ───────────────────────────────
