@@ -350,40 +350,51 @@ footer strong { color: var(--fg); }
 /* ─── Item 18/19: hero test line + product strip ─── */
 .hero .hero-test { font-size: 0.95rem; max-width: 600px; margin: -10px auto 28px; color: var(--fg-mid); }
 .hero .hero-test a { color: var(--fg); text-decoration: underline; text-underline-offset: 3px; }
-.hero-strip { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 12px; margin: 40px auto 0; max-width: 960px; text-align: left; }
+.hero .hs-label { font-family: var(--mono); font-size: 0.72rem; letter-spacing: .08em; text-transform: uppercase; color: var(--fg-mid); margin: 44px auto 14px; max-width: none; text-align: center; }
+.hero-strip { display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 12px; margin: 0 auto; max-width: 1036px; text-align: left; }
+.hs-cat { font-family: var(--mono); font-size: 0.66rem; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); margin-top: 6px; }
 .hs-tile { display: flex; flex-direction: column; gap: 4px; text-decoration: none; color: inherit; }
 .hs-tile:hover { color: inherit; }
 .hs-tile:hover .hs-img { box-shadow: 0 4px 16px var(--shadow); }
 .hs-img { display: block; aspect-ratio: 1 / 1; background: var(--img-bg); border: 1px solid var(--rule); border-radius: 12px; overflow: hidden; transition: box-shadow .15s; }
 .hs-img img { width: 100%; height: 100%; object-fit: contain; padding: 10px; mix-blend-mode: var(--img-blend); display: block; }
-.hs-name { font-size: 0.85rem; font-weight: 600; line-height: 1.25; margin-top: 4px; }
+.hs-name { font-size: 0.85rem; font-weight: 600; line-height: 1.25; }
 .hs-job { font-family: var(--mono); font-size: 0.7rem; color: var(--fg-mid); line-height: 1.35; }
+@media (max-width: 1000px) { .hero-strip { grid-template-columns: repeat(4, minmax(0, 1fr)); row-gap: 18px; } }
 @media (max-width: 760px) {
   .hero-strip { display: flex; overflow-x: auto; scroll-snap-type: x proximity; gap: 12px; padding-bottom: 6px; margin-left: -8px; margin-right: -8px; padding-left: 8px; padding-right: 8px; scrollbar-width: none; }
   .hero-strip::-webkit-scrollbar { display: none; }
   .hs-tile { flex: 0 0 132px; scroll-snap-align: start; }
 }
 
-/* ─── Phones: product rows you swipe across ─────── */
-.rail-count { display: none; }
+/* ─── Product rows: slide across, all screen sizes ─ */
+.cards {
+  display: flex; flex-wrap: nowrap; gap: 20px; align-items: stretch;
+  overflow-x: auto; overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;
+  padding: 2px 2px 16px; scroll-padding-left: 2px; scrollbar-width: thin;
+  scrollbar-color: var(--rule) transparent;
+}
+.cards:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 14px; }
+.cards:has(.card-detail.open) { align-items: flex-start; }
+.cards > .card, .cards > .card.extra { display: flex; flex: 0 0 300px; scroll-snap-align: start; }
+.cards::after { content: ''; flex: 0 0 2px; }
+.card-detail-grid { grid-template-columns: 1fr; }
+.show-more-wrap { display: none; }
+.rail-bar { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: -6px 0 12px; min-height: 34px; }
+.rail-count { font-family: var(--mono); font-size: 0.74rem; color: var(--fg-mid); letter-spacing: .02em; }
+.rail-ctl { display: flex; gap: 8px; }
+.rail-btn {
+  width: 34px; height: 34px; border-radius: 50%; border: 1px solid var(--rule); background: var(--bg-card);
+  color: var(--fg); font-size: 1rem; line-height: 1; cursor: pointer; transition: all .12s;
+}
+.rail-btn:hover:not(:disabled) { background: var(--fg); border-color: var(--fg); color: var(--bg); }
+.rail-btn:disabled { opacity: .35; cursor: default; }
 @media (max-width: 760px) {
-  .cards {
-    display: flex; flex-wrap: nowrap; gap: 12px; align-items: stretch;
-    overflow-x: auto; overscroll-behavior-x: contain;
-    scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;
-    margin: 0 -16px; padding: 2px 16px 14px; scroll-padding-left: 16px;
-    scrollbar-width: none;
-  }
+  .cards { gap: 12px; margin: 0 -16px; padding: 2px 16px 14px; scroll-padding-left: 16px; scrollbar-width: none; }
   .cards::-webkit-scrollbar { display: none; }
-  .cards:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; border-radius: 14px; }
-  .cards:has(.card-detail.open) { align-items: flex-start; }
-  .cards > .card, .cards > .card.extra { display: flex; flex: 0 0 min(82vw, 320px); scroll-snap-align: start; }
-  .cards::after { content: ''; flex: 0 0 4px; }
-  .show-more-wrap { display: none; }
-  .rail-count {
-    display: block; font-family: var(--mono); font-size: 0.72rem; color: var(--fg-mid);
-    letter-spacing: .02em; margin: -8px 0 10px;
-  }
+  .cards > .card, .cards > .card.extra { flex: 0 0 min(82vw, 320px); }
+  .rail-ctl { display: none; }
 }
 </style>
 </head>
@@ -421,13 +432,16 @@ footer strong { color: var(--fg); }
   <div class="hero-cta">
     <a href="#quickstart" class="btn-primary">Where to start</a>
   </div>
-  <div class="hero-strip" aria-label="A few things on the list">
-    <a href="#sleep" class="hs-tile" onclick="qsNav('sleep',event)"><span class="hs-img"><img src="https://i5.walmartimages.com/seo/Philips-Smartsleep-Sleep-and-Wake-Up-Light-Simulated-Sunrise-and-Sunset-Multiple-Lights-and-Sounds-Relaxbreathe-To-Sleep-HF3650-60_5cf9e872-23a2-4d3e-9346-48e24c989d41.a49583eee05b670f519512e7ca20ea98.jpeg" alt="Philips SmartSleep" loading="lazy" onerror="this.style.display='none'"></span><span class="hs-name">Philips SmartSleep</span><span class="hs-job">Wakes you with light, not an alarm app</span></a>
-    <a href="#reading" class="hs-tile" onclick="qsNav('reading',event)"><span class="hs-img"><img src="https://www.staples.ca/cdn/shop/files/1b5791e222139b61ec53c8fd5263c97ca7be689a_square3108688_1.jpg?v=1770362385" alt="Kindle Paperwhite" loading="lazy" onerror="this.style.display='none'"></span><span class="hs-name">Kindle Paperwhite</span><span class="hs-job">Books, weeks of battery, no browser</span></a>
-    <a href="#music" class="hs-tile" onclick="qsNav('music',event)"><span class="hs-img"><img src="https://www.bhphotovideo.com/images/images500x500/sony_nwa306_b_walkman_nw_a306_a_series_1675853429_1749982.jpg" alt="Sony NW-A306" loading="lazy" onerror="this.style.display='none'"></span><span class="hs-name">Sony NW-A306</span><span class="hs-job">Music player. Just music</span></a>
-    <a href="#writing" class="hs-tile" onclick="qsNav('writing',event)"><span class="hs-img"><img src="https://getfreewrite.com/cdn/shop/files/SmartTypewriter-13_2000x.jpg?v=1683734481" alt="Freewrite" loading="lazy" onerror="this.style.display='none'"></span><span class="hs-name">Freewrite</span><span class="hs-job">Typewriter that saves to the cloud</span></a>
-    <a href="#camera" class="hs-tile" onclick="qsNav('camera',event)"><span class="hs-img"><img src="https://ricohgr.eu/cdn/shop/products/ricohgriiix2_a7e8e3ee-b60c-4708-9e74-f24a53d2ea7c.png?v=1788258615" alt="Ricoh GR IIIx" loading="lazy" onerror="this.style.display='none'"></span><span class="hs-name">Ricoh GR IIIx</span><span class="hs-job">A pocket camera with no apps</span></a>
-    <a href="#phone" class="hs-tile" onclick="qsNav('phone',event)"><span class="hs-img"><img src="https://www.punkt.ch/cdn/shop/files/Punkt-MP02-black_03.webp?v=1749150318&width=1400" alt="Punkt MP02" loading="lazy" onerror="this.style.display='none'"></span><span class="hs-name">Punkt MP02</span><span class="hs-job">Calls and texts. Nothing else</span></a>
+  <p class="hs-label">Our top pick in each category</p>
+  <div class="hero-strip" aria-label="Top pick in each category">
+    <a href="#sleep" class="hs-tile" onclick="qsNav('sleep',event)"><span class="hs-img"><img src="https://i5.walmartimages.com/seo/Philips-Smartsleep-Sleep-and-Wake-Up-Light-Simulated-Sunrise-and-Sunset-Multiple-Lights-and-Sounds-Relaxbreathe-To-Sleep-HF3650-60_5cf9e872-23a2-4d3e-9346-48e24c989d41.a49583eee05b670f519512e7ca20ea98.jpeg" alt="Philips SmartSleep" loading="lazy" onerror="this.style.display='none'"></span><span class="hs-cat">Sleep</span><span class="hs-name">Philips SmartSleep</span></a>
+    <a href="#reading" class="hs-tile" onclick="qsNav('reading',event)"><span class="hs-img"><img src="https://www.staples.ca/cdn/shop/files/1b5791e222139b61ec53c8fd5263c97ca7be689a_square3108688_1.jpg?v=1770362385" alt="Kindle Paperwhite" loading="lazy" onerror="this.style.display='none'"></span><span class="hs-cat">Reading</span><span class="hs-name">Kindle Paperwhite</span></a>
+    <a href="#music" class="hs-tile" onclick="qsNav('music',event)"><span class="hs-img"><img src="https://www.bhphotovideo.com/images/images500x500/sony_nwa306_b_walkman_nw_a306_a_series_1675853429_1749982.jpg" alt="Sony NW-A306" loading="lazy" onerror="this.style.display='none'"></span><span class="hs-cat">Music</span><span class="hs-name">Sony NW-A306</span></a>
+    <a href="#hifi" class="hs-tile" onclick="qsNav('hifi',event)"><span class="hs-img"><img src="https://bloomaudio.com/cdn/shop/files/eversolo-a6-gen2-thumb_1800x1800.webp?v=1737733070" alt="Eversolo DMP-A6" loading="lazy" onerror="this.style.display='none'"></span><span class="hs-cat">Home hi-fi</span><span class="hs-name">Eversolo DMP-A6</span></a>
+    <a href="#writing" class="hs-tile" onclick="qsNav('writing',event)"><span class="hs-img"><img src="https://getfreewrite.com/cdn/shop/files/SmartTypewriter-13_2000x.jpg?v=1683734481" alt="Freewrite" loading="lazy" onerror="this.style.display='none'"></span><span class="hs-cat">Writing</span><span class="hs-name">Freewrite</span></a>
+    <a href="#camera" class="hs-tile" onclick="qsNav('camera',event)"><span class="hs-img"><img src="https://ricohgr.eu/cdn/shop/products/ricohgriiix2_a7e8e3ee-b60c-4708-9e74-f24a53d2ea7c.png?v=1788258615" alt="Ricoh GR IIIx" loading="lazy" onerror="this.style.display='none'"></span><span class="hs-cat">Camera</span><span class="hs-name">Ricoh GR IIIx</span></a>
+    <a href="#kids" class="hs-tile" onclick="qsNav('kids',event)"><span class="hs-img"><img src="https://www.datocms-assets.com/48136/1765451129-player_5x4.png?auto=format&fit=crop&w=1296" alt="Yoto Player" loading="lazy" onerror="this.style.display='none'"></span><span class="hs-cat">Kids</span><span class="hs-name">Yoto Player</span></a>
+    <a href="#phone" class="hs-tile" onclick="qsNav('phone',event)"><span class="hs-img"><img src="https://www.punkt.ch/cdn/shop/files/Punkt-MP02-black_03.webp?v=1749150318&width=1400" alt="Punkt MP02" loading="lazy" onerror="this.style.display='none'"></span><span class="hs-cat">Phones</span><span class="hs-name">Punkt MP02</span></a>
   </div>
 </section>
 
@@ -2076,47 +2090,50 @@ window.addEventListener('scroll', updateBtt, { passive: true });
 updateBtt();
 
 
-// ─── Phones: swipe rows ───────────────────────────
-// Rows are plain scrolling lists; this adds a "2 of 5" cue and makes each row reachable by keyboard.
+// ─── Product rows ─────────────────────────────────
+// Each section is a sideways-scrolling row. This adds the "1–3 of 6" cue and arrow buttons, and makes the row keyboard reachable.
 (function () {
-  const mq = window.matchMedia('(max-width: 760px)');
-  const rails = [];
   document.querySelectorAll('.cat-section').forEach(sec => {
     const cards = sec.querySelector('.cards');
     if (!cards) return;
-    const cue = document.createElement('p');
-    cue.className = 'rail-count';
-    cue.setAttribute('aria-hidden', 'true');
-    const anchor = sec.querySelector('.cat-reviewed') || sec.querySelector('h2');
-    anchor.insertAdjacentElement('afterend', cue);
+    const title = sec.querySelector('h2').textContent;
+    cards.tabIndex = 0;
+    cards.setAttribute('role', 'region');
+    cards.setAttribute('aria-label', title + ' products, scroll sideways');
+    const bar = document.createElement('div');
+    bar.className = 'rail-bar';
+    bar.innerHTML = '<span class="rail-count" aria-hidden="true"></span><span class="rail-ctl"><button type="button" class="rail-btn" aria-label="Previous products">\u2190</button><button type="button" class="rail-btn" aria-label="Next products">\u2192</button></span>';
+    (sec.querySelector('.cat-reviewed') || sec.querySelector('h2')).insertAdjacentElement('afterend', bar);
+    const count = bar.querySelector('.rail-count');
+    const [prev, next] = bar.querySelectorAll('.rail-btn');
     const items = () => [...cards.querySelectorAll(':scope > .card')];
+    const step = () => { const c = items()[0]; return c ? c.getBoundingClientRect().width + 20 : 300; };
     const update = () => {
-      if (!mq.matches) return;
-      const list = items();
-      const left = cards.scrollLeft;
-      let idx = 0, best = Infinity;
-      list.forEach((c, i) => { const d = Math.abs(c.offsetLeft - cards.offsetLeft - left - 16); if (d < best) { best = d; idx = i; } });
+      const list = items(); if (!list.length) return;
+      const box = cards.getBoundingClientRect();
+      const vis = list.map((c, i) => { const r = c.getBoundingClientRect(); return (r.left >= box.left - 8 && r.right <= box.right + 8) ? i + 1 : 0; }).filter(Boolean);
       const atEnd = cards.scrollLeft + cards.clientWidth >= cards.scrollWidth - 4;
-      if (atEnd) idx = list.length - 1;
-      cue.textContent = list.length > 1 ? 'Swipe \u2192  ' + (idx + 1) + ' of ' + list.length : '';
+      const atStart = cards.scrollLeft <= 4;
+      let first = vis.length ? vis[0] : 1, last = vis.length ? vis[vis.length - 1] : 1;
+      if (atEnd) last = list.length;
+      if (atStart) first = 1;
+      const touch = window.matchMedia('(max-width: 760px)').matches;
+      count.textContent = list.length < 2 ? '' : touch ? 'Swipe \u2192  ' + first + ' of ' + list.length : (first === last ? first : first + '\u2013' + last) + ' of ' + list.length;
+      prev.disabled = atStart; next.disabled = atEnd;
+      bar.hidden = list.length < 2 || (atStart && atEnd);
     };
+    prev.addEventListener('click', () => cards.scrollBy({ left: -step() * 3, behavior: 'smooth' }));
+    next.addEventListener('click', () => cards.scrollBy({ left: step() * 3, behavior: 'smooth' }));
     cards.addEventListener('scroll', () => requestAnimationFrame(update), { passive: true });
-    rails.push({ sec, cards, update });
+    window.addEventListener('resize', update);
+    update();
+    sec._railUpdate = update;
   });
-  const apply = () => {
-    rails.forEach(r => {
-      if (mq.matches) {
-        r.cards.tabIndex = 0;
-        r.cards.setAttribute('role', 'region');
-        r.cards.setAttribute('aria-label', r.sec.querySelector('h2').textContent + ' products, scroll sideways');
-      } else {
-        r.cards.removeAttribute('tabindex'); r.cards.removeAttribute('role'); r.cards.removeAttribute('aria-label');
-      }
-      r.update();
-    });
-  };
-  mq.addEventListener('change', apply);
-  apply();
+  // Rows inside hidden sections measure as zero, so refresh them whenever a filter shows them.
+  const refresh = () => document.querySelectorAll('.cat-section:not(.hidden)').forEach(s => s._railUpdate && s._railUpdate());
+  const old = window.setExpanded; // setExpanded runs after every filter change
+  window.setExpanded = function (on) { old(on); requestAnimationFrame(refresh); };
+  requestAnimationFrame(refresh);
 })();
 
 // ─── Legacy compat ───────────────────────────────
