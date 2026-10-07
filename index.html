@@ -255,7 +255,7 @@ header {
   padding-top: 8px;
 }
 
-/* ─── About / Manifesto section ──────────────────── */
+/* ─── About / Charlotte section ──────────────────── */
 .about-section {
   border-top: 1px solid var(--rule);
   padding: 48px 0;
@@ -263,6 +263,20 @@ header {
 }
 .about-section h2 { font-size: 1.5rem; margin-bottom: 16px; }
 .about-section p { color: var(--fg-mid); margin-bottom: 14px; line-height: 1.75; font-size: 0.975rem; }
+.charlotte-intro {
+  display: flex; gap: 28px; align-items: flex-start; margin-bottom: 28px;
+}
+.charlotte-photo {
+  width: 100px; height: 100px; border-radius: 50%; object-fit: cover;
+  object-position: center top;
+  flex-shrink: 0;
+  border: 2px solid var(--rule);
+}
+.charlotte-byline { font-size: 0.82rem; color: var(--fg-light); margin-top: 4px; margin-bottom: 0; }
+@media(max-width:500px) {
+  .charlotte-intro { flex-direction: column; align-items: center; text-align: center; }
+  .charlotte-photo { width: 80px; height: 80px; }
+}
 
 /* ─── Newsletter ─────────────────────────────────── */
 .newsletter {
@@ -420,8 +434,8 @@ footer a:hover { color: var(--accent); }
 
 <!-- ── Hero ── -->
 <section class="hero">
-  <h1>Your phone is a slot machine.<br><em>These aren't.</em></h1>
-  <p>Single-purpose devices that do one thing well — without pulling you back into the feed. No affiliate links. No sponsored picks. Just honest guidance.</p>
+  <h1>I didn't want to quit my phone.<br><em>I just wanted it to stop winning.</em></h1>
+  <p>Things that do one thing well. No affiliate links, no sponsored anything — just what I actually use, and what I wish I'd known about sooner.</p>
   <div class="hero-cta">
     <a href="#finder" class="btn-primary">Find your alternative</a>
     <a href="#all" class="btn-secondary">Browse everything</a>
@@ -436,17 +450,17 @@ footer a:hover { color: var(--accent); }
     <a href="#sleep" class="qs-card" onclick="qsNav('sleep',event)">
       <div class="qs-icon">🌙</div>
       <h3>Better sleep</h3>
-      <p>Phone charging outside the bedroom. Gentle wake-up light instead of a notification alarm.</p>
+      <p>A £12 alarm clock fixed my mornings. Still slightly embarrassed it took me this long.</p>
     </a>
     <a href="#reading" class="qs-card" onclick="qsNav('reading',event)">
       <div class="qs-icon">📖</div>
-      <h3>Deep reading</h3>
-      <p>E-ink screens without notifications. Your book, nothing else.</p>
+      <h3>Actually reading</h3>
+      <p>I read more books in three months with a Kindle than in the two years before it.</p>
     </a>
     <a href="#music" class="qs-card" onclick="qsNav('music',event)">
       <div class="qs-icon">🎵</div>
-      <h3>Music anywhere</h3>
-      <p>Portable players that hold your library offline — no data, no distractions.</p>
+      <h3>Music without the rest</h3>
+      <p>There's a whole category of music player barely anyone knows exists. This is where I start.</p>
     </a>
   </div>
 </section>
@@ -3357,19 +3371,25 @@ footer a:hover { color: var(--accent); }
 
 <!-- ── About ── -->
 <div class="about-section" id="about">
-  <h2>About Put It Down</h2>
-  <p>This site exists because the problem isn't phones. It's that phones are designed to replace everything else — and most "digital wellness" content just points you to another app.</p>
-  <p>We believe the best solution is often a single-purpose device that does one thing well, without pulling you back into the feed. Every product here was chosen for that reason alone.</p>
-  <p>No affiliate links. No sponsored products. No commission. Just honest guidance from people who've tried to put their phones down — and found that real objects help.</p>
+  <div class="charlotte-intro">
+    <img src="charlotte.jpg" alt="Charlotte" class="charlotte-photo">
+    <div>
+      <h2>About this site</h2>
+      <p class="charlotte-byline">Charlotte Marsh — UX designer, Bristol</p>
+    </div>
+  </div>
+  <p>Tom asked if I wanted to watch something together. I said yes and spent the next forty minutes on my phone. He didn't say anything. That was the moment.</p>
+  <p>I didn't go cold turkey — I tried that, lasted three days. Instead I started replacing specific habits with specific things. A Kindle instead of reading on my phone. An alarm clock instead of leaving it on the nightstand. A film camera instead of Instagram. Small swaps. The cumulative effect surprised me.</p>
+  <p>People kept asking what I'd switched to, so I made a list. Then the list got longer. This site is what I wish had existed when I started — honest about what works, honest about what doesn't, and not trying to sell you anything.</p>
 
   <div class="manifesto">
-    <strong>Our rule:</strong> Every product listed here must do one thing well, without opening a door to distraction. The moment it can check social media, it comes off the list.
+    <strong>One rule:</strong> Everything here does one thing. The moment a device can check social media or open a browser, it comes off the list.
   </div>
 
   <!-- Newsletter -->
   <div class="newsletter">
-    <h3>New products, tested and honest</h3>
-    <p>Occasional emails when we find something genuinely worth knowing about. No noise.</p>
+    <h3>New finds, when I find them</h3>
+    <p>Occasional emails when something genuinely worth knowing about turns up. No noise.</p>
     <form class="nl-form" action="https://buttondown.email/api/emails/embed-subscribe/putitdown" method="post" target="_blank">
       <input class="nl-input" type="email" name="email" placeholder="your@email.com" required>
       <button type="submit" class="btn-primary">Subscribe</button>
