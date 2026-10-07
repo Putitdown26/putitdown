@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Put It Down — Practical Alternatives to Your Phone</title>
+<title>Silent Mode — Practical Alternatives to Your Phone</title>
 <meta name="description" content="No affiliate links. No sponsored content. Just honest guidance on the best single-purpose devices that help you reclaim your attention.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -61,10 +61,13 @@ header {
   display: flex; align-items: center; justify-content: space-between; gap: 12px;
 }
 .logo {
-  font-family: var(--serif); font-size: 1.5rem; color: var(--fg);
-  text-decoration: none; letter-spacing: 0.02em;
+  color: var(--fg);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  line-height: 1;
 }
-.logo em { font-style: italic; color: var(--accent); }
+.logo svg { display: block; height: 44px; width: auto; }
 .header-actions { display: flex; align-items: center; gap: 8px; }
 .btn-ghost {
   background: none; border: 1px solid var(--rule);
@@ -493,7 +496,13 @@ footer a:hover { color: var(--accent); }
 
 <header>
   <div class="wrap header-inner">
-    <a href="#" class="logo">Put It <em>Down</em></a>
+    <a href="#" class="logo" aria-label="Silent Mode">
+      <svg width="200" height="60" viewBox="0 0 240 72" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect x="0" y="4" width="36" height="64" rx="18" fill="none" stroke="currentColor" stroke-width="1.8"/>
+        <circle cx="18" cy="22" r="12" fill="var(--accent)"/>
+        <text x="52" y="48" font-family="'DM Serif Display', Georgia, serif" font-size="32" font-weight="300" fill="currentColor" letter-spacing="0.01em">Silent Mode</text>
+      </svg>
+    </a>
     <div class="header-actions">
     </div>
   </div>
@@ -3523,7 +3532,7 @@ footer a:hover { color: var(--accent); }
 <!-- ── Share ── -->
 <div class="share-row">
   <span>Found this useful?</span>
-  <a class="share-btn" href="https://twitter.com/intent/tweet?text=Put+It+Down+%E2%80%94+practical+alternatives+to+your+phone%3A+https%3A%2F%2Fputitdown26.github.io%2Fputitdown" target="_blank" rel="noopener">Share on X</a>
+  <a class="share-btn" href="https://twitter.com/intent/tweet?text=Silent+Mode+%E2%80%94+practical+alternatives+to+your+phone%3A+https%3A%2F%2Fputitdown26.github.io%2Fputitdown" target="_blank" rel="noopener">Share on X</a>
   <button class="share-btn" onclick="copyLink()">Copy link</button>
 </div>
 
@@ -3561,7 +3570,7 @@ footer a:hover { color: var(--accent); }
 <footer>
   <div class="wrap footer-inner">
     <div>
-      <strong>Put It Down</strong> — practical alternatives to your phone<br>
+      <strong>Silent Mode</strong> — practical alternatives to your phone<br>
       No affiliate links · No sponsored content · Updated 2025–26
     </div>
     <div style="text-align:right">
