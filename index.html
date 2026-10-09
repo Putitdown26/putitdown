@@ -155,7 +155,6 @@ header {
   display: flex; flex-direction: column; gap: 4px;
 }
 .finder-tile:hover { border-color: var(--fg); box-shadow: 0 3px 12px var(--shadow); transform: translateY(-1px); }
-.finder-tile .ft-icon { font-size: 1.4rem; line-height: 1; }
 .finder-close {
   display: block; margin: 20px auto 0; background: none; border: none;
   color: var(--fg-mid); font-size: 0.85rem; cursor: pointer; padding: 4px 8px;
@@ -2505,33 +2504,15 @@ initLang();
   <div class="finder-modal" role="dialog" aria-modal="true" aria-labelledby="finderTitle">
     <h2 id="finderTitle">What do you want to stop using your phone for?</h2>
     <div class="finder-grid">
-      <button class="finder-tile" onclick="finderPick('sleep')">
-        <span class="ft-icon">🌅</span>Sleep &amp; wake-up
-      </button>
-      <button class="finder-tile" onclick="finderPick('reading')">
-        <span class="ft-icon">📖</span>Reading
-      </button>
-      <button class="finder-tile" onclick="finderPickSub('music','music')">
-        <span class="ft-icon">🎵</span>Music on the go
-      </button>
-      <button class="finder-tile" onclick="finderPickSub('music','hifi')">
-        <span class="ft-icon">🔊</span>Home hi-fi
-      </button>
-      <button class="finder-tile" onclick="finderPick('writing')">
-        <span class="ft-icon">✍️</span>Writing
-      </button>
-      <button class="finder-tile" onclick="finderPickSub('out','camera')">
-        <span class="ft-icon">📷</span>Photography
-      </button>
-      <button class="finder-tile" onclick="finderPickSub('out','fitness')">
-        <span class="ft-icon">🏃</span>Fitness &amp; sport
-      </button>
-      <button class="finder-tile" onclick="finderPick('kids')">
-        <span class="ft-icon">🧸</span>Kids
-      </button>
-      <button class="finder-tile" onclick="finderPick('phone')">
-        <span class="ft-icon">📵</span>Calls &amp; messages
-      </button>
+      <button class="finder-tile" onclick="finderPick('sleep')">Sleep &amp; wake-up</button>
+      <button class="finder-tile" onclick="finderPick('reading')">Reading</button>
+      <button class="finder-tile" onclick="finderPickSub('music','music')">Music on the go</button>
+      <button class="finder-tile" onclick="finderPickSub('music','hifi')">Home hi-fi</button>
+      <button class="finder-tile" onclick="finderPick('writing')">Writing</button>
+      <button class="finder-tile" onclick="finderPickSub('out','camera')">Photography</button>
+      <button class="finder-tile" onclick="finderPickSub('out','fitness')">Fitness &amp; sport</button>
+      <button class="finder-tile" onclick="finderPick('kids')">Kids</button>
+      <button class="finder-tile" onclick="finderPick('phone')">Calls &amp; messages</button>
     </div>
     <button class="finder-close" onclick="closeFinder()">Close ✕</button>
   </div>
