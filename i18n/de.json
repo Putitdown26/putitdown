@@ -6,7 +6,6 @@
   "a.pounds-0c8c0": "Pfund",
   "a.dollars-ac45b": "Dollar",
   "i-didn-t-want-893c5": "Ich wollte mein Handy nicht aufgeben.<br><em>Es sollte nur aufhören, ständig zu gewinnen.</em>",
-  "things-that-do-one-b0dbb": "Dinge, die eine Sache tun. Keine Affiliate-Links, nichts Gesponsertes. Nur das, was man wissen sollte.",
   "where-to-start-98aa0": "Zum Einstieg",
   "our-top-pick-in-9e163": "Unsere Empfehlung je Kategorie",
   "a.top-pick-in-each-ce692": "Empfehlung je Kategorie",
@@ -256,7 +255,6 @@
   "a.email-address-c94d3": "E-Mail-Adresse",
   "a.your-email-com-2894e": "deine@email.com",
   "subscribe-d6981": "Abonnieren",
-  "silent-mode-things-that-fba16": "<strong>Silent Mode</strong> — Dinge, die eine Sache tun<br> Keine Affiliate-Links · Keine gesponserten Inhalte · Liste geprüft im Oktober 2026<br> Preise sind grobe Richtwerte und ändern sich. Prüf die Produktseite.",
   "about-6b21f": "Über uns",
   "contact-b3745": "Kontakt",
   "meta.title": "Silent Mode — Dinge, die eine Sache tun",
@@ -298,5 +296,7 @@
   "portable-music-audio-players-8f6a8": "Portable Music &amp; Audio Players",
   "phone-77064": "Phone",
   "only-at-setup-5d736": "only at setup",
-  "the-test-for-getting-be5c3": "The test for getting on the list: it does a job a phone does, it works without the phone after setup, and it opens no door to anything else."
+  "the-test-for-getting-be5c3": "The test for getting on the list: it does a job a phone does, it works without the phone after setup, and it opens no door to anything else.",
+  "things-that-do-one-fadf3": "Things that do one thing. Just what's worth knowing about.",
+  "silent-mode-things-that-72f99": "<strong>Silent Mode</strong> — things that do one thing<br> List reviewed October 2026 · Prices are rough guides and move around. Check the product page."
 }

@@ -6,7 +6,6 @@
   "a.pounds-0c8c0": "Punt",
   "a.dollars-ac45b": "Dollar",
   "i-didn-t-want-893c5": "Níor theastaigh uaim éirí as m'fhón.<br><em>Níor theastaigh uaim ach go stopfadh sé de bheith ag buachan.</em>",
-  "things-that-do-one-b0dbb": "Rudaí a dhéanann rud amháin. Gan naisc cleamhnaithe, gan aon cheo urraithe. Ach an méid is fiú a bheith ar an eolas faoi.",
   "where-to-start-98aa0": "Cá dtosóidh tú",
   "our-top-pick-in-9e163": "An rogha is fearr againn i ngach catagóir",
   "a.top-pick-in-each-ce692": "An rogha is fearr i ngach catagóir",
@@ -256,7 +255,6 @@
   "a.email-address-c94d3": "Seoladh ríomhphoist",
   "a.your-email-com-2894e": "do@ríomhphost.com",
   "subscribe-d6981": "Liostáil",
-  "silent-mode-things-that-fba16": "<strong>Silent Mode</strong> — rudaí a dhéanann rud amháin<br> Gan naisc cleamhnaithe · Gan ábhar urraithe · Liosta athbhreithnithe Deireadh Fómhair 2026<br> Treoracha garbha is ea praghsanna agus athraíonn siad. Seiceáil leathanach an táirge.",
   "about-6b21f": "Fúinn",
   "contact-b3745": "Teagmháil",
   "meta.title": "Silent Mode — rudaí a dhéanann rud amháin",
@@ -298,5 +296,7 @@
   "portable-music-audio-players-8f6a8": "Portable Music &amp; Audio Players",
   "phone-77064": "Phone",
   "only-at-setup-5d736": "only at setup",
-  "the-test-for-getting-be5c3": "The test for getting on the list: it does a job a phone does, it works without the phone after setup, and it opens no door to anything else."
+  "the-test-for-getting-be5c3": "The test for getting on the list: it does a job a phone does, it works without the phone after setup, and it opens no door to anything else.",
+  "things-that-do-one-fadf3": "Things that do one thing. Just what's worth knowing about.",
+  "silent-mode-things-that-72f99": "<strong>Silent Mode</strong> — things that do one thing<br> List reviewed October 2026 · Prices are rough guides and move around. Check the product page."
 }

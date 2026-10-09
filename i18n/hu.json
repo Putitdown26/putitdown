@@ -6,7 +6,6 @@
   "a.pounds-0c8c0": "Font",
   "a.dollars-ac45b": "Dollár",
   "i-didn-t-want-893c5": "Nem lemondani akartam a telefonomról.<br><em>Csak azt akartam, hogy ne ő nyerjen mindig.</em>",
-  "things-that-do-one-b0dbb": "Dolgok, amik egyetlen dolgot csinálnak. Nincsenek partnerlinkek, nincs szponzorált tartalom. Csak az, amit érdemes tudni.",
   "where-to-start-98aa0": "Hol kezdd",
   "our-top-pick-in-9e163": "Kategóriánként a mi első számú választásunk",
   "a.top-pick-in-each-ce692": "Első választás kategóriánként",
@@ -256,7 +255,6 @@
   "a.email-address-c94d3": "E-mail-cím",
   "a.your-email-com-2894e": "te@email.com",
   "subscribe-d6981": "Feliratkozás",
-  "silent-mode-things-that-fba16": "<strong>Silent Mode</strong> — dolgok, amik egyetlen dolgot csinálnak<br> Nincsenek partnerlinkek · Nincs szponzorált tartalom · A lista átnézve: 2026 október<br> Az árak tájékoztató jellegűek, és változnak. Nézd meg a termék oldalát.",
   "about-6b21f": "Rólunk",
   "contact-b3745": "Kapcsolat",
   "meta.title": "Silent Mode — dolgok, amik egyetlen dolgot csinálnak",
@@ -298,5 +296,7 @@
   "portable-music-audio-players-8f6a8": "Portable Music &amp; Audio Players",
   "phone-77064": "Phone",
   "only-at-setup-5d736": "only at setup",
-  "the-test-for-getting-be5c3": "The test for getting on the list: it does a job a phone does, it works without the phone after setup, and it opens no door to anything else."
+  "the-test-for-getting-be5c3": "The test for getting on the list: it does a job a phone does, it works without the phone after setup, and it opens no door to anything else.",
+  "things-that-do-one-fadf3": "Things that do one thing. Just what's worth knowing about.",
+  "silent-mode-things-that-72f99": "<strong>Silent Mode</strong> — things that do one thing<br> List reviewed October 2026 · Prices are rough guides and move around. Check the product page."
 }

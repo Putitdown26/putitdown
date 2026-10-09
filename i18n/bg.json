@@ -6,7 +6,6 @@
   "a.pounds-0c8c0": "Лири",
   "a.dollars-ac45b": "Долари",
   "i-didn-t-want-893c5": "Не исках да се откажа от телефона си.<br><em>Исках само да спре да печели.</em>",
-  "things-that-do-one-b0dbb": "Неща, които вършат само една работа. Без афилиейт линкове, без нищо спонсорирано. Само това, което си струва да знаеш.",
   "where-to-start-98aa0": "Откъде да започнеш",
   "our-top-pick-in-9e163": "Нашият избор във всяка категория",
   "a.top-pick-in-each-ce692": "Избор във всяка категория",
@@ -256,7 +255,6 @@
   "a.email-address-c94d3": "Имейл адрес",
   "a.your-email-com-2894e": "your@email.com",
   "subscribe-d6981": "Абонирай се",
-  "silent-mode-things-that-fba16": "<strong>Silent Mode</strong> — неща, които вършат само една работа<br> Без афилиейт линкове · Без спонсорирано съдържание · Списъкът е прегледан през октомври 2026<br> Цените са приблизителни и се менят. Провери страницата на продукта.",
   "about-6b21f": "За сайта",
   "contact-b3745": "Контакт",
   "meta.title": "Silent Mode — неща, които вършат само една работа",
@@ -298,5 +296,7 @@
   "portable-music-audio-players-8f6a8": "Portable Music &amp; Audio Players",
   "phone-77064": "Phone",
   "only-at-setup-5d736": "only at setup",
-  "the-test-for-getting-be5c3": "The test for getting on the list: it does a job a phone does, it works without the phone after setup, and it opens no door to anything else."
+  "the-test-for-getting-be5c3": "The test for getting on the list: it does a job a phone does, it works without the phone after setup, and it opens no door to anything else.",
+  "things-that-do-one-fadf3": "Things that do one thing. Just what's worth knowing about.",
+  "silent-mode-things-that-72f99": "<strong>Silent Mode</strong> — things that do one thing<br> List reviewed October 2026 · Prices are rough guides and move around. Check the product page."
 }

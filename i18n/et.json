@@ -6,7 +6,6 @@
   "a.pounds-0c8c0": "Naelsterlingid",
   "a.dollars-ac45b": "Dollarid",
   "i-didn-t-want-893c5": "Ma ei tahtnud telefonist loobuda.<br><em>Tahtsin lihtsalt, et ta enam alati ei võidaks.</em>",
-  "things-that-do-one-b0dbb": "Asjad, mis teevad ühte asja. Ei mingeid partnerlinke ega tellitud sisu. Ainult see, mida tasub teada.",
   "where-to-start-98aa0": "Kust alustada",
   "our-top-pick-in-9e163": "Meie lemmik igas kategoorias",
   "a.top-pick-in-each-ce692": "Lemmik igas kategoorias",
@@ -256,7 +255,6 @@
   "a.email-address-c94d3": "E-posti aadress",
   "a.your-email-com-2894e": "sinu@email.com",
   "subscribe-d6981": "Telli",
-  "silent-mode-things-that-fba16": "<strong>Silent Mode</strong> — asjad, mis teevad ühte asja<br> Partnerlinke pole · Sponsoreeritud sisu pole · Nimekiri üle vaadatud oktoobris 2026<br> Hinnad on ligikaudsed ja muutuvad. Kontrolli tootelehte.",
   "about-6b21f": "Saidist",
   "contact-b3745": "Kontakt",
   "meta.title": "Silent Mode — asjad, mis teevad ühte asja",
@@ -298,5 +296,7 @@
   "portable-music-audio-players-8f6a8": "Portable Music &amp; Audio Players",
   "phone-77064": "Phone",
   "only-at-setup-5d736": "only at setup",
-  "the-test-for-getting-be5c3": "The test for getting on the list: it does a job a phone does, it works without the phone after setup, and it opens no door to anything else."
+  "the-test-for-getting-be5c3": "The test for getting on the list: it does a job a phone does, it works without the phone after setup, and it opens no door to anything else.",
+  "things-that-do-one-fadf3": "Things that do one thing. Just what's worth knowing about.",
+  "silent-mode-things-that-72f99": "<strong>Silent Mode</strong> — things that do one thing<br> List reviewed October 2026 · Prices are rough guides and move around. Check the product page."
 }

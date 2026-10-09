@@ -6,7 +6,6 @@
   "a.pounds-0c8c0": "Svarai sterlingų",
   "a.dollars-ac45b": "JAV doleriai",
   "i-didn-t-want-893c5": "Nenorėjau mesti telefono.<br><em>Tiesiog norėjau, kad jis nustotų laimėti.</em>",
-  "things-that-do-one-b0dbb": "Daiktai, kurie daro vieną dalyką. Jokių partnerių nuorodų, jokio remiamo turinio. Tik tai, ką verta žinoti.",
   "where-to-start-98aa0": "Nuo ko pradėti",
   "our-top-pick-in-9e163": "Mūsų pasirinkimas kiekvienoje kategorijoje",
   "a.top-pick-in-each-ce692": "Geriausias pasirinkimas kiekvienoje kategorijoje",
@@ -256,7 +255,6 @@
   "a.email-address-c94d3": "El. pašto adresas",
   "a.your-email-com-2894e": "tavo@pastas.com",
   "subscribe-d6981": "Prenumeruoti",
-  "silent-mode-things-that-fba16": "<strong>Silent Mode</strong> — daiktai, kurie daro vieną dalyką<br> Jokių partnerių nuorodų · Jokio remiamo turinio · Sąrašas peržiūrėtas 2026 m. spalį<br> Kainos apytikslės ir kinta. Pasitikrink gaminio puslapyje.",
   "about-6b21f": "Apie",
   "contact-b3745": "Kontaktai",
   "meta.title": "Silent Mode — daiktai, kurie daro vieną dalyką",
@@ -298,5 +296,7 @@
   "portable-music-audio-players-8f6a8": "Portable Music &amp; Audio Players",
   "phone-77064": "Phone",
   "only-at-setup-5d736": "only at setup",
-  "the-test-for-getting-be5c3": "The test for getting on the list: it does a job a phone does, it works without the phone after setup, and it opens no door to anything else."
+  "the-test-for-getting-be5c3": "The test for getting on the list: it does a job a phone does, it works without the phone after setup, and it opens no door to anything else.",
+  "things-that-do-one-fadf3": "Things that do one thing. Just what's worth knowing about.",
+  "silent-mode-things-that-72f99": "<strong>Silent Mode</strong> — things that do one thing<br> List reviewed October 2026 · Prices are rough guides and move around. Check the product page."
 }

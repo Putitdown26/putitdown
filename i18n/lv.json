@@ -6,7 +6,6 @@
   "a.pounds-0c8c0": "Sterliņu mārciņas",
   "a.dollars-ac45b": "ASV dolāri",
   "i-didn-t-want-893c5": "Es negribēju atteikties no telefona.<br><em>Es tikai gribēju, lai tas beidz uzvarēt.</em>",
-  "things-that-do-one-b0dbb": "Ierīces, kas dara vienu lietu. Bez partneru saitēm, bez sponsorēta satura. Tikai tas, ko vērts zināt.",
   "where-to-start-98aa0": "Kur sākt",
   "our-top-pick-in-9e163": "Mūsu izvēle katrā kategorijā",
   "a.top-pick-in-each-ce692": "Labākā izvēle katrā kategorijā",
@@ -256,7 +255,6 @@
   "a.email-address-c94d3": "E-pasta adrese",
   "a.your-email-com-2894e": "tavs@epasts.com",
   "subscribe-d6981": "Abonēt",
-  "silent-mode-things-that-fba16": "<strong>Silent Mode</strong> — ierīces, kas dara vienu lietu<br> Bez partneru saitēm · Bez sponsorēta satura · Saraksts pārskatīts 2026. gada oktobrī<br> Cenas ir aptuvenas un mainās. Pārbaudi produkta lapu.",
   "about-6b21f": "Par vietni",
   "contact-b3745": "Kontakti",
   "meta.title": "Silent Mode — ierīces, kas dara vienu lietu",
@@ -298,5 +296,7 @@
   "portable-music-audio-players-8f6a8": "Portable Music &amp; Audio Players",
   "phone-77064": "Phone",
   "only-at-setup-5d736": "only at setup",
-  "the-test-for-getting-be5c3": "The test for getting on the list: it does a job a phone does, it works without the phone after setup, and it opens no door to anything else."
+  "the-test-for-getting-be5c3": "The test for getting on the list: it does a job a phone does, it works without the phone after setup, and it opens no door to anything else.",
+  "things-that-do-one-fadf3": "Things that do one thing. Just what's worth knowing about.",
+  "silent-mode-things-that-72f99": "<strong>Silent Mode</strong> — things that do one thing<br> List reviewed October 2026 · Prices are rough guides and move around. Check the product page."
 }
