@@ -15,13 +15,10 @@
   "camera-4da9c": "Камера",
   "kids-5b108": "Деца",
   "phones-cc2d5": "Телефони",
-  "the-three-things-people-72bf2": "Трите неща, заради които хората най-често посягат към телефона, и с какво да ги заменят.",
-  "better-sleep-7fec6": "По-добър сън",
   "wake-up-to-light-9bfc0": "Събуждай се със светлина, а не с известие. Телефонът остава извън спалнята.",
   "actually-reading-ba543": "Истинско четене",
   "no-browser-no-notifications-7ec1a": "Без браузър, без известия. Само книгата и батерия, която държи седмици.",
   "music-without-the-rest-df0d3": "Музика без останалото",
-  "there-s-a-whole-3e8d1": "Има цяла категория музикални плейъри, за която почти никой не знае. Започни оттук.",
   "everything-on-the-list-20904": "Всичко в списъка",
   "filter-by-the-job-ff4ed": "Филтрирай по работата, която искаш телефонът да спре да върши, или просто скролирай.",
   "all-6a720": "Всички",
@@ -297,5 +294,8 @@
   "only-at-setup-5d736": "only at setup",
   "silent-mode-things-that-72f99": "<strong>Silent Mode</strong> — things that do one thing<br> List reviewed October 2026 · Prices are rough guides and move around. Check the product page.",
   "the-test-it-does-171b3": "The test: it does a job a phone does, it works without the phone after setup, and it opens no door to anything else.",
-  "for-most-things-a-2cf47": "For most things a phone does, there's something that does just that."
+  "for-most-things-a-2cf47": "For most things a phone does, there's something that does just that.",
+  "three-good-places-to-2390a": "Three good places to start.",
+  "wake-up-light-fcf64": "Wake-up light",
+  "no-algorithm-no-feed-e9313": "No algorithm, no feed, no rabbit holes. Pick a song, press play."
 }

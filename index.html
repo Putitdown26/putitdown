@@ -142,7 +142,7 @@ header {
 .quickstart { padding: 48px 0 0; }
 .quickstart h2 { font-size: 1.8rem; margin-bottom: 6px; }
 .quickstart .sub { color: var(--fg-mid); margin-bottom: 24px; font-size: 0.98rem; }
-.qs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-bottom: 48px; }
+.qs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 48px; }
 .qs-card {
   background: var(--bg-card); border: 1px solid var(--rule); border-radius: 14px;
   padding: 22px; cursor: pointer; transition: box-shadow .15s, transform .1s;
@@ -150,8 +150,15 @@ header {
   display: flex; flex-direction: column; gap: 8px;
 }
 .qs-card:hover { box-shadow: 0 4px 16px var(--shadow); transform: translateY(-2px); color: inherit; }
-.qs-card h3 { font-family: var(--serif); font-size: 1.15rem; font-weight: 600; }
+.qs-card h3 { font-family: var(--serif); font-size: 1.15rem; font-weight: 600; display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+.qs-card h3::after { content: '→'; font-family: var(--sans); font-weight: 400; font-size: 1rem; color: var(--fg-light); flex-shrink: 0; transition: transform .15s; }
+.qs-card:hover h3::after { transform: translateX(3px); }
 .qs-card p { font-size: 0.92rem; color: var(--fg-mid); }
+@media (max-width: 640px) {
+  .qs-grid { grid-template-columns: repeat(3, minmax(200px, 1fr)); overflow-x: auto; scroll-snap-type: x proximity; padding-bottom: 4px; margin-left: -16px; margin-right: -16px; padding-left: 16px; padding-right: 16px; scrollbar-width: none; }
+  .qs-grid::-webkit-scrollbar { display: none; }
+  .qs-card { scroll-snap-align: start; }
+}
 
 /* ─── Filter bar ─────────────────────────────────── */
 .filter-bar { padding: 40px 0 0; border-top: 1px solid var(--rule); }
@@ -473,10 +480,10 @@ h1, h2, h3, h4, p, dd, dt, .qs-card, .card-body { overflow-wrap: break-word; }
 <!-- ── Quick-Start ── -->
 <section class="quickstart" id="quickstart">
   <h2 data-i18n="where-to-start-98aa0">Where to start</h2>
-  <p data-i18n="the-three-things-people-72bf2" class="sub">The three things people reach their phones for most, and what to use instead.</p>
+  <p data-i18n="three-good-places-to-2390a" class="sub">Three good places to start.</p>
   <div class="qs-grid">
     <a href="#sleep" class="qs-card" onclick="qsNav('sleep',event)">
-      <h3 data-i18n="better-sleep-7fec6">Better sleep</h3>
+      <h3 data-i18n="wake-up-light-fcf64">Wake-up light</h3>
       <p data-i18n="wake-up-to-light-9bfc0">Wake up to light instead of a notification. The phone stays out of the bedroom.</p>
     </a>
     <a href="#reading" class="qs-card" onclick="qsNav('reading',event)">
@@ -485,7 +492,7 @@ h1, h2, h3, h4, p, dd, dt, .qs-card, .card-body { overflow-wrap: break-word; }
     </a>
     <a href="#music" class="qs-card" onclick="qsNav('music',event)">
       <h3 data-i18n="music-without-the-rest-df0d3">Music without the rest</h3>
-      <p data-i18n="there-s-a-whole-3e8d1">There's a whole category of music player barely anyone knows exists. Start here.</p>
+      <p data-i18n="no-algorithm-no-feed-e9313">No algorithm, no feed, no rabbit holes. Pick a song, press play.</p>
     </a>
   </div>
 </section>

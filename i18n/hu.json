@@ -15,13 +15,10 @@
   "camera-4da9c": "Kamera",
   "kids-5b108": "Gyerekek",
   "phones-cc2d5": "Telefonok",
-  "the-three-things-people-72bf2": "A három dolog, amiért a legtöbben a telefonjukért nyúlnak, és hogy mit használj helyette.",
-  "better-sleep-7fec6": "Jobb alvás",
   "wake-up-to-light-9bfc0": "Fényre ébredj értesítés helyett. A telefon kint marad a hálószobából.",
   "actually-reading-ba543": "Tényleg olvasni",
   "no-browser-no-notifications-7ec1a": "Se böngésző, se értesítések. Csak a könyv, és egy akkumulátor, ami hetekig bírja.",
   "music-without-the-rest-df0d3": "Zene a többi nélkül",
-  "there-s-a-whole-3e8d1": "Van egy egész zenelejátszó-kategória, amiről szinte senki sem tud. Itt kezdd.",
   "everything-on-the-list-20904": "Minden, ami a listán van",
   "filter-by-the-job-ff4ed": "Szűrj aszerint, melyik feladatot szeretnéd kivenni a telefon kezéből, vagy görgess.",
   "all-6a720": "Mind",
@@ -297,5 +294,8 @@
   "only-at-setup-5d736": "only at setup",
   "silent-mode-things-that-72f99": "<strong>Silent Mode</strong> — things that do one thing<br> List reviewed October 2026 · Prices are rough guides and move around. Check the product page.",
   "the-test-it-does-171b3": "The test: it does a job a phone does, it works without the phone after setup, and it opens no door to anything else.",
-  "for-most-things-a-2cf47": "For most things a phone does, there's something that does just that."
+  "for-most-things-a-2cf47": "For most things a phone does, there's something that does just that.",
+  "three-good-places-to-2390a": "Three good places to start.",
+  "wake-up-light-fcf64": "Wake-up light",
+  "no-algorithm-no-feed-e9313": "No algorithm, no feed, no rabbit holes. Pick a song, press play."
 }

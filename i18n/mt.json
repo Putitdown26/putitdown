@@ -15,13 +15,10 @@
   "camera-4da9c": "Kamera",
   "kids-5b108": "Tfal",
   "phones-cc2d5": "Telefons",
-  "the-three-things-people-72bf2": "It-tliet affarijiet li l-aktar li n-nies jaqbdu t-telefon għalihom, u x'tuża minflok.",
-  "better-sleep-7fec6": "Rqad aħjar",
   "wake-up-to-light-9bfc0": "Qum bid-dawl minflok notifika. It-telefon jibqa' barra mill-kamra tas-sodda.",
   "actually-reading-ba543": "Taqra tassew",
   "no-browser-no-notifications-7ec1a": "Bla browser, bla notifiki. Il-ktieb biss, u batterija li ddum ġimgħat.",
   "music-without-the-rest-df0d3": "Mużika mingħajr il-bqija",
-  "there-s-a-whole-3e8d1": "Hemm kategorija sħiħa ta' plejers tal-mużika li kważi ħadd ma jaf li teżisti. Ibda minn hawn.",
   "everything-on-the-list-20904": "Kollox fil-lista",
   "filter-by-the-job-ff4ed": "Iffiltra skont ix-xogħol li trid li t-telefon jieqaf jagħmel, jew iscrollja.",
   "all-6a720": "Kollha",
@@ -297,5 +294,8 @@
   "only-at-setup-5d736": "only at setup",
   "silent-mode-things-that-72f99": "<strong>Silent Mode</strong> — things that do one thing<br> List reviewed October 2026 · Prices are rough guides and move around. Check the product page.",
   "the-test-it-does-171b3": "The test: it does a job a phone does, it works without the phone after setup, and it opens no door to anything else.",
-  "for-most-things-a-2cf47": "For most things a phone does, there's something that does just that."
+  "for-most-things-a-2cf47": "For most things a phone does, there's something that does just that.",
+  "three-good-places-to-2390a": "Three good places to start.",
+  "wake-up-light-fcf64": "Wake-up light",
+  "no-algorithm-no-feed-e9313": "No algorithm, no feed, no rabbit holes. Pick a song, press play."
 }

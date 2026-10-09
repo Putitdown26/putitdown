@@ -15,13 +15,10 @@
   "camera-4da9c": "Aparat",
   "kids-5b108": "Dzieci",
   "phones-cc2d5": "Telefony",
-  "the-three-things-people-72bf2": "Trzy rzeczy, po które ludzie sięgają po telefon najczęściej, i czego użyć zamiast niego.",
-  "better-sleep-7fec6": "Lepszy sen",
   "wake-up-to-light-9bfc0": "Budź się przy świetle, nie przy powiadomieniu. Telefon zostaje poza sypialnią.",
   "actually-reading-ba543": "Czytanie naprawdę",
   "no-browser-no-notifications-7ec1a": "Bez przeglądarki, bez powiadomień. Tylko książka i bateria na tygodnie.",
   "music-without-the-rest-df0d3": "Muzyka bez reszty",
-  "there-s-a-whole-3e8d1": "Istnieje cała kategoria odtwarzaczy muzyki, o której prawie nikt nie wie. Zacznij tutaj.",
   "everything-on-the-list-20904": "Wszystko z listy",
   "filter-by-the-job-ff4ed": "Filtruj według zadania, którego telefon ma przestać wykonywać, albo po prostu przewijaj.",
   "all-6a720": "Wszystko",
@@ -297,5 +294,8 @@
   "only-at-setup-5d736": "only at setup",
   "silent-mode-things-that-72f99": "<strong>Silent Mode</strong> — things that do one thing<br> List reviewed October 2026 · Prices are rough guides and move around. Check the product page.",
   "the-test-it-does-171b3": "The test: it does a job a phone does, it works without the phone after setup, and it opens no door to anything else.",
-  "for-most-things-a-2cf47": "For most things a phone does, there's something that does just that."
+  "for-most-things-a-2cf47": "For most things a phone does, there's something that does just that.",
+  "three-good-places-to-2390a": "Three good places to start.",
+  "wake-up-light-fcf64": "Wake-up light",
+  "no-algorithm-no-feed-e9313": "No algorithm, no feed, no rabbit holes. Pick a song, press play."
 }
