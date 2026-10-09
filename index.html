@@ -115,15 +115,6 @@ header {
 .header-actions { display: flex; align-items: center; gap: 8px; }
 
 /* ─── Price toggle (header) ──────────────────────── */
-.price-toggle { display: flex; align-items: center; gap: 6px; font-size: 0.78rem; color: var(--fg-mid); }
-.price-toggle button {
-  background: none; border: 1px solid var(--rule);
-  font-family: var(--mono); font-size: 0.74rem; font-weight: 500;
-  padding: 4px 9px; border-radius: 6px; cursor: pointer; color: var(--fg-mid);
-  transition: all .12s;
-}
-.price-toggle button:hover { border-color: var(--fg); color: var(--fg); }
-.price-toggle button.active { background: var(--fg); border-color: var(--fg); color: var(--bg); }
 
 /* ─── Hero ───────────────────────────────────────── */
 .hero { text-align: center; padding: 72px 16px 56px; border-bottom: 1px solid var(--rule); }
@@ -346,7 +337,6 @@ footer strong { color: var(--fg); }
   .cards { grid-template-columns: 1fr; }
   .cat-nav { margin-left: -16px; margin-right: -16px; padding-left: 16px; padding-right: 16px; }
   .logo svg { height: 32px; }
-  .price-toggle > span { display: none; }
   .card-detail-grid { grid-template-columns: 1fr; }
   #back-to-top { bottom: 16px; right: 16px; }
 }
@@ -444,12 +434,11 @@ h1, h2, h3, h4, p, dd, dt, .qs-card, .card-body { overflow-wrap: break-word; }
     </a>
     <div class="header-actions">
       <select class="lang-select" id="langSelect" aria-label="Language" onchange="setLang(this.value)"><option value="en">English</option><option value="bg">Български</option><option value="hr">Hrvatski</option><option value="cs">Čeština</option><option value="da">Dansk</option><option value="nl">Nederlands</option><option value="et">Eesti</option><option value="fi">Suomi</option><option value="fr">Français</option><option value="de">Deutsch</option><option value="el">Ελληνικά</option><option value="hu">Magyar</option><option value="ga">Gaeilge</option><option value="it">Italiano</option><option value="lv">Latviešu</option><option value="lt">Lietuvių</option><option value="mt">Malti</option><option value="pl">Polski</option><option value="pt">Português</option><option value="ro">Română</option><option value="sk">Slovenčina</option><option value="sl">Slovenščina</option><option value="es">Español</option><option value="sv">Svenska</option></select>
-      <div data-i18n-attr="aria-label:a.currency-e070d" class="price-toggle" role="group" aria-label="Currency">
-        <span data-i18n="prices-3f6ef">Prices</span>
-        <button data-i18n-attr="aria-label:a.pounds-0c8c0" class="active" id="pBtn-gbp" onclick="setCurrency('gbp')" aria-label="Pounds">£</button>
-        <button data-i18n-attr="aria-label:a.dollars-ac45b" id="pBtn-usd" onclick="setCurrency('usd')" aria-label="Dollars">$</button>
-        <button data-i18n-attr="aria-label:a.euros-26912" id="pBtn-eur" onclick="setCurrency('eur')" aria-label="Euros">€</button>
-      </div>
+      <select class="lang-select" id="currSelect" aria-label="Currency" onchange="setCurrency(this.value)">
+        <option value="gbp">£ GBP</option>
+        <option value="usd">$ USD</option>
+        <option value="eur">€ EUR</option>
+      </select>
     </div>
   </div>
 </header>
@@ -2333,9 +2322,9 @@ function setCurrency(c) {
   document.querySelectorAll('.price-gbp').forEach(el => el.style.display = c === 'gbp' ? 'inline' : 'none');
   document.querySelectorAll('.price-us').forEach(el => el.style.display = c === 'usd' ? 'inline' : 'none');
   document.querySelectorAll('.price-eur').forEach(el => el.style.display = c === 'eur' ? 'inline' : 'none');
-  document.getElementById('pBtn-gbp').classList.toggle('active', c === 'gbp');
-  document.getElementById('pBtn-usd').classList.toggle('active', c === 'usd');
-  document.getElementById('pBtn-eur').classList.toggle('active', c === 'eur');
+  const sel = document.getElementById('currSelect');
+  if (sel) sel.value = c;
+  try { localStorage.setItem('silentmode-currency', c); } catch (e) {}
 }
 
 // ─── Expandable card detail ───────────────────────
@@ -2507,6 +2496,11 @@ function copyLink() {
   });
 }
 initLang();
+(function initCurrency() {
+  let saved = null;
+  try { saved = localStorage.getItem('silentmode-currency'); } catch (e) {}
+  setCurrency(saved && ['gbp','usd','eur'].includes(saved) ? saved : 'gbp');
+})();
 </script>
 </body>
 </html>
