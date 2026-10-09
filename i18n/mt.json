@@ -100,7 +100,6 @@
   "spotify-tidal-flac-libraries-6e656": "Spotify, Tidal, libreriji FLAC — mingħajr ma jkun involut it-telefon tiegħek. Plejers dedikati jisimgħu aħjar u jibqgħu fil-korsija tagħhom.",
   "android-based-but-has-fbd19": "Ibbażat fuq Android imma mingħajr SIM. 32GB + microSD. Jaqra Spotify, Tidal u fajls lokali. DAC brillanti. Ma jiftaħlekx bieb għal Instagram.",
   "catch-needs-phone-app-2410a": "<b>Il-problema:</b> Jeħtieġ app tat-telefon biex tisinkronizza l-playlists ta' Spotify l-ewwel darba. Wara: indipendenti għal kollox.",
-  "phone-only-at-setup-2b1a3": "<span>Telefon</span> biss mas-setup",
   "hi-res-audio-playback-f8219": "Playback tal-awdjo hi-res. Wi-Fi biex tniżżel il-mużika. Streaming offline integrat (Spotify, Tidal). Bluetooth. Batterija ta' 36 siegħa.",
   "no-social-media-no-1e02a": "Bla social media. Bla sejħiet. Bla notifiki. Mhux telefon.",
   "music-lovers-who-want-5158e": "Dawk li jħobbu l-mużika u jridu pass 'il fuq mill-awdjo tat-telefon mingħajr ma jsiru awdjofili.",
@@ -314,5 +313,7 @@
   "note-takers-and-pdf-c0bcf": "Note-takers and PDF annotators who want the reMarkable alternative — more repairable, more expandable, with a pen that never runs out.",
   "a.euros-26912": "Euros",
   "portable-music-9aa33": "Portable Music",
-  "portable-music-audio-players-8f6a8": "Portable Music &amp; Audio Players"
+  "portable-music-audio-players-8f6a8": "Portable Music &amp; Audio Players",
+  "phone-77064": "Phone",
+  "only-at-setup-5d736": "only at setup"
 }

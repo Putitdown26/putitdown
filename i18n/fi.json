@@ -100,7 +100,6 @@
   "spotify-tidal-flac-libraries-6e656": "Spotify, Tidal, FLAC-kirjastot – ilman että puhelin on mukana kuvioissa. Erilliset soittimet kuulostavat paremmilta ja pysyvät tehtävässään.",
   "android-based-but-has-fbd19": "Androidpohjainen, mutta ei SIM-korttia. 32 GB + microSD. Tukee Spotifya, Tidalia ja paikallisia tiedostoja. Loistava DAC. Ei avaa ovea Instagramiin.",
   "catch-needs-phone-app-2410a": "<b>Haittapuoli:</b> Spotify-soittolistojen ensimmäiseen synkronointiin tarvitaan puhelinsovellus. Sen jälkeen täysin itsenäinen.",
-  "phone-only-at-setup-2b1a3": "<span>Puhelin</span> vain asennuksessa",
   "hi-res-audio-playback-f8219": "Hi-res-äänentoisto. Wi-Fi musiikin lataamiseen. Sisäänrakennettu suoratoisto offline-tilassa (Spotify, Tidal). Bluetooth. 36 h akku.",
   "no-social-media-no-1e02a": "Ei sosiaalista mediaa. Ei puheluita. Ei ilmoituksia. Ei ole puhelin.",
   "music-lovers-who-want-5158e": "Musiikinystäville, jotka haluavat askeleen puhelimen ääntä parempaa joutumatta audiofiiliksi.",
@@ -314,5 +313,7 @@
   "note-takers-and-pdf-c0bcf": "Note-takers and PDF annotators who want the reMarkable alternative — more repairable, more expandable, with a pen that never runs out.",
   "a.euros-26912": "Euros",
   "portable-music-9aa33": "Portable Music",
-  "portable-music-audio-players-8f6a8": "Portable Music &amp; Audio Players"
+  "portable-music-audio-players-8f6a8": "Portable Music &amp; Audio Players",
+  "phone-77064": "Phone",
+  "only-at-setup-5d736": "only at setup"
 }

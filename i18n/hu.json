@@ -100,7 +100,6 @@
   "spotify-tidal-flac-libraries-6e656": "Spotify, Tidal, FLAC-gyűjtemények — a telefonod nélkül. A célkészülékek jobban szólnak, és megmaradnak a feladatuknál.",
   "android-based-but-has-fbd19": "Androidos, de nincs benne SIM. 32GB + microSD. Támogatja a Spotify-t, a Tidalt és a helyi fájlokat. Remek DAC. Nem nyit ajtót az Instagram felé.",
   "catch-needs-phone-app-2410a": "<b>A bökkenő:</b> A Spotify-lejátszási listák első szinkronizálásához telefonos app kell. Utána teljesen önálló.",
-  "phone-only-at-setup-2b1a3": "<span>Telefon</span> csak a beállításhoz",
   "hi-res-audio-playback-f8219": "Hi-res hanglejátszás. Wi-Fi a zeneletöltéshez. Beépített streaming offline módban (Spotify, Tidal). Bluetooth. 36 órás akkumulátor.",
   "no-social-media-no-1e02a": "Nincs közösségi média. Nincsenek hívások. Nincsenek értesítések. Nem telefon.",
   "music-lovers-who-want-5158e": "Zenekedvelőknek, akik a telefon hangjánál többet szeretnének, de nem akarnak audiofilek lenni.",
@@ -314,5 +313,7 @@
   "note-takers-and-pdf-c0bcf": "Note-takers and PDF annotators who want the reMarkable alternative — more repairable, more expandable, with a pen that never runs out.",
   "a.euros-26912": "Euros",
   "portable-music-9aa33": "Portable Music",
-  "portable-music-audio-players-8f6a8": "Portable Music &amp; Audio Players"
+  "portable-music-audio-players-8f6a8": "Portable Music &amp; Audio Players",
+  "phone-77064": "Phone",
+  "only-at-setup-5d736": "only at setup"
 }

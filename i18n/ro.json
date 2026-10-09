@@ -100,7 +100,6 @@
   "spotify-tidal-flac-libraries-6e656": "Spotify, Tidal, biblioteci FLAC — fără telefon la mijloc. Playerele dedicate sună mai bine și nu ies din rolul lor.",
   "android-based-but-has-fbd19": "Pe bază de Android, dar fără SIM. 32GB + microSD. Acceptă Spotify, Tidal și fișiere locale. DAC excelent. Nu deschide nicio ușă spre Instagram.",
   "catch-needs-phone-app-2410a": "<b>Dezavantaj:</b> Are nevoie de aplicația de pe telefon pentru prima sincronizare a playlisturilor Spotify. După aceea: complet independent.",
-  "phone-only-at-setup-2b1a3": "<span>Telefon</span> doar la configurare",
   "hi-res-audio-playback-f8219": "Redare audio hi-res. Wi-Fi pentru descărcarea muzicii. Streaming offline integrat (Spotify, Tidal). Bluetooth. Baterie de 36 de ore.",
   "no-social-media-no-1e02a": "Fără rețele sociale. Fără apeluri. Fără notificări. Nu e telefon.",
   "music-lovers-who-want-5158e": "Iubitori de muzică care vor ceva mai bun decât sunetul de pe telefon, fără să devină audiofili.",
@@ -314,5 +313,7 @@
   "note-takers-and-pdf-c0bcf": "Note-takers and PDF annotators who want the reMarkable alternative — more repairable, more expandable, with a pen that never runs out.",
   "a.euros-26912": "Euros",
   "portable-music-9aa33": "Portable Music",
-  "portable-music-audio-players-8f6a8": "Portable Music &amp; Audio Players"
+  "portable-music-audio-players-8f6a8": "Portable Music &amp; Audio Players",
+  "phone-77064": "Phone",
+  "only-at-setup-5d736": "only at setup"
 }

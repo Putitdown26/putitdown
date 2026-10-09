@@ -359,6 +359,9 @@ footer strong { color: var(--fg); }
 /* ─── Item 17/24: phone line + tie-breaker ───────── */
 .card-phone { font-family: var(--mono); font-size: 0.74rem; color: var(--fg-mid); letter-spacing: .01em; }
 .card-phone span { text-transform: uppercase; letter-spacing: .06em; color: var(--fg-light); margin-right: 6px; }
+.card-phone abbr { text-decoration: underline dotted; text-underline-offset: 2px; cursor: help; position: relative; }
+.card-phone abbr::after { content: attr(data-tip); position: absolute; bottom: calc(100% + 6px); left: 50%; transform: translateX(-50%); background: var(--bg-card, #1a1a1a); color: var(--fg, #e8e8e8); font-size: 0.72rem; font-family: var(--sans, sans-serif); letter-spacing: 0; text-transform: none; white-space: nowrap; padding: 5px 9px; border-radius: 5px; border: 1px solid var(--rule, #333); box-shadow: 0 3px 10px rgba(0,0,0,.25); pointer-events: none; opacity: 0; transition: opacity .15s; z-index: 10; }
+.card-phone abbr:hover::after { opacity: 1; }
 .card-choose { font-size: 0.85rem; color: var(--fg-mid); line-height: 1.5; }
 .card-choose b { font-weight: 600; color: var(--accent); }
 
@@ -945,7 +948,7 @@ h1, h2, h3, h4, p, dd, dt, .qs-card, .card-body { overflow-wrap: break-word; }
         <p class="card-title">Sony NW-A306 Walkman</p>
         <p data-i18n="android-based-but-has-fbd19" class="card-desc">Android-based but has no SIM. Holds 32GB + microSD. Supports Spotify, Tidal, and local files. Brilliant DAC. Doesn't open a door to Instagram.</p>
         <p data-i18n="catch-needs-phone-app-2410a" class="card-catch"><b>Catch:</b> Needs phone app to initially sync Spotify playlists. After that: fully standalone.</p>
-        <p data-i18n="phone-only-at-setup-2b1a3" class="card-phone"><span>Phone</span> only at setup</p>
+        <p class="card-phone"><span data-i18n="phone-77064">Phone</span> <abbr data-i18n="only-at-setup-5d736" data-tip="Needs a phone or computer once to set up — after that it works on its own.">only at setup</abbr></p>
         <div class="card-footer">
           <p class="card-price"><span class="price-gbp">£299</span><span class="price-us">$329</span><span class="price-eur">€345</span></p>
           <a data-i18n="view-cf3db" class="card-link" href="https://www.sony.co.uk/en/articles/nw-a306-high-resolution-music-player" target="_blank" rel="noopener">View →</a>
@@ -982,7 +985,7 @@ h1, h2, h3, h4, p, dd, dt, .qs-card, .card-body { overflow-wrap: break-word; }
         <p class="card-title">FiiO M11S</p>
         <p data-i18n="mid-range-android-dap-cb18f" class="card-desc">Mid-range Android DAP with dual ES9038Q2M chips and balanced output. 32GB built-in, microSD expandable. Supports Spotify, Tidal, and local FLAC. Sounds significantly better than any phone's headphone stage. No SIM slot, no social apps.</p>
         <p data-i18n="catch-android-on-daps-dac7a" class="card-catch"><b>Catch:</b> Android on DAPs can be slow. Battery life shorter under streaming.</p>
-        <p data-i18n="phone-only-at-setup-2b1a3" class="card-phone"><span>Phone</span> only at setup</p>
+        <p class="card-phone"><span data-i18n="phone-77064">Phone</span> <abbr data-i18n="only-at-setup-5d736" data-tip="Needs a phone or computer once to set up — after that it works on its own.">only at setup</abbr></p>
         <div class="card-footer">
           <p class="card-price"><span class="price-gbp">£349</span><span class="price-us">$399</span><span class="price-eur">€399</span></p>
           <a data-i18n="view-cf3db" class="card-link" href="https://www.fiio.com/m11s" target="_blank" rel="noopener">View →</a>
@@ -1018,7 +1021,7 @@ h1, h2, h3, h4, p, dd, dt, .qs-card, .card-body { overflow-wrap: break-word; }
         <p class="card-title">Sony NW-ZX707 Walkman</p>
         <p data-i18n="sony-s-upper-mid-3581d" class="card-desc">Sony's upper-mid-tier DAP. Significantly better DAC than the NW-A306 — the step for people who've committed to phone-free listening and want to spend properly. 5" touchscreen, side-mounted physical buttons, balanced 4.4mm output. Streams Tidal and Qobuz directly on-device.</p>
         <p data-i18n="catch-streaming-service-avai-2f47b" class="card-catch"><b>Catch:</b> Streaming service availability varies by region. Android-based, though Sony strips it back hard.</p>
-        <p data-i18n="phone-only-at-setup-2b1a3" class="card-phone"><span>Phone</span> only at setup</p>
+        <p class="card-phone"><span data-i18n="phone-77064">Phone</span> <abbr data-i18n="only-at-setup-5d736" data-tip="Needs a phone or computer once to set up — after that it works on its own.">only at setup</abbr></p>
         <div class="card-footer">
           <p class="card-price"><span class="price-gbp">£599</span><span class="price-us">$600</span><span class="price-eur">€699</span></p>
           <a data-i18n="view-cf3db" class="card-link" href="https://www.sony.co.uk/en/articles/nw-zx707" target="_blank" rel="noopener">View →</a>
@@ -1054,7 +1057,7 @@ h1, h2, h3, h4, p, dd, dt, .qs-card, .card-body { overflow-wrap: break-word; }
         <p class="card-title">Astell &amp; Kern A&amp;norma SR35</p>
         <p data-i18n="astell-kern-is-the-d1a54" class="card-desc">Astell & Kern is the reference name in portable hi-fi. The SR35 is their entry into that world: a 3.6" touchscreen with a tactile volume dial, quad-DAC, and balanced output. You log into Tidal or Qobuz directly on the device — no phone in the chain. A real statement purchase for serious listeners.</p>
         <p data-i18n="catch-799-the-most-a702e" class="card-catch"><b>Catch:</b> £799 — the most expensive product in this category. Discovery value: audiophiles know A&K; most visitors won't, which is exactly why it belongs here.</p>
-        <p data-i18n="phone-only-at-setup-2b1a3" class="card-phone"><span>Phone</span> only at setup</p>
+        <p class="card-phone"><span data-i18n="phone-77064">Phone</span> <abbr data-i18n="only-at-setup-5d736" data-tip="Needs a phone or computer once to set up — after that it works on its own.">only at setup</abbr></p>
         <div class="card-footer">
           <p class="card-price"><span class="price-gbp">£799</span><span class="price-us">$799</span><span class="price-eur">€899</span></p>
           <a data-i18n="view-cf3db" class="card-link" href="https://www.astellnkern.com/products/sr35" target="_blank" rel="noopener">View →</a>
@@ -1103,7 +1106,7 @@ h1, h2, h3, h4, p, dd, dt, .qs-card, .card-body { overflow-wrap: break-word; }
         <p class="card-title">Eversolo DMP-A6</p>
         <p data-i18n="a-dedicated-music-streamer-8f9fe" class="card-desc">A dedicated music streamer with a built-in DAC — you plug it into your amp or speakers, browse your streaming services from the 6-inch touchscreen, and your phone stays in the other room. Not cheap at around £760, but it's doing what a separate streamer, DAC, and preamp would do, for less.</p>
         <p data-i18n="catch-spotify-uses-connect-9156b" class="card-catch"><b>Catch:</b> Spotify uses Connect — your phone still controls it. Every other major service (Tidal, Qobuz, Apple Music, Amazon Music) runs natively on the screen.</p>
-        <p data-i18n="phone-only-at-setup-2b1a3" class="card-phone"><span>Phone</span> only at setup</p>
+        <p class="card-phone"><span data-i18n="phone-77064">Phone</span> <abbr data-i18n="only-at-setup-5d736" data-tip="Needs a phone or computer once to set up — after that it works on its own.">only at setup</abbr></p>
         <div class="card-footer">
           <p class="card-price"><span class="price-gbp">£759</span><span class="price-us">$859</span><span class="price-eur">€879</span></p>
           <a data-i18n="view-cf3db" class="card-link" href="https://www.richersounds.com/eversolo-dmp-a6-black" target="_blank" rel="noopener">View →</a>
@@ -1140,7 +1143,7 @@ h1, h2, h3, h4, p, dd, dt, .qs-card, .card-body { overflow-wrap: break-word; }
         <p class="card-title">FiiO R7</p>
         <p data-i18n="fiio-makes-daps-and-4ddf6" class="card-desc">FiiO makes DAPs and headphone amps. Most people don't know they also make a desktop version. The R7 runs Android, has a 5-inch touchscreen, and lets you open Tidal, Qobuz, Spotify or Apple Music directly on the device. Connect it to your amp or active speakers. No phone required — this is the screen.</p>
         <p data-i18n="catch-android-on-dedicated-837f2" class="card-catch"><b>Catch:</b> Android on dedicated hardware can be slow — streaming apps work well but don't expect a snappy tablet experience.</p>
-        <p data-i18n="phone-only-at-setup-2b1a3" class="card-phone"><span>Phone</span> only at setup</p>
+        <p class="card-phone"><span data-i18n="phone-77064">Phone</span> <abbr data-i18n="only-at-setup-5d736" data-tip="Needs a phone or computer once to set up — after that it works on its own.">only at setup</abbr></p>
         <div class="card-footer">
           <p class="card-price"><span class="price-gbp">£650</span><span class="price-us">$699</span><span class="price-eur">€750</span></p>
           <a data-i18n="view-cf3db" class="card-link" href="https://www.fiio.com/r7" target="_blank" rel="noopener">View →</a>
@@ -1177,7 +1180,7 @@ h1, h2, h3, h4, p, dd, dt, .qs-card, .card-body { overflow-wrap: break-word; }
         <p class="card-title">HiFi Rose RS250</p>
         <p data-i18n="a-korean-brand-almost-7c146" class="card-desc">A Korean brand almost nobody in the UK has heard of. The RS250 has an 8.8-inch touchscreen that runs its own streaming OS — Tidal, Qobuz, Spotify, Apple Music, and internet radio browsable directly on screen. Beautiful hardware, and a category most people don't know exists.</p>
         <p data-i18n="catch-expensive-and-niche-be144" class="card-catch"><b>Catch:</b> Expensive and niche. Rose OS is proprietary — it works well but it's not Android, so side-loading apps isn't an option.</p>
-        <p data-i18n="phone-only-at-setup-2b1a3" class="card-phone"><span>Phone</span> only at setup</p>
+        <p class="card-phone"><span data-i18n="phone-77064">Phone</span> <abbr data-i18n="only-at-setup-5d736" data-tip="Needs a phone or computer once to set up — after that it works on its own.">only at setup</abbr></p>
         <div class="card-footer">
           <p class="card-price"><span class="price-gbp">£1,949</span><span class="price-us">$2,199</span><span class="price-eur">€2,249</span></p>
           <a data-i18n="view-cf3db" class="card-link" href="https://hifirose.com/products/rs250" target="_blank" rel="noopener">View →</a>
@@ -1213,7 +1216,7 @@ h1, h2, h3, h4, p, dd, dt, .qs-card, .card-body { overflow-wrap: break-word; }
         <p class="card-title">Eversolo DMP-A8</p>
         <p data-i18n="the-bigger-sibling-of-e294e" class="card-desc">The bigger sibling of the DMP-A6. Same idea — a dedicated streamer-DAC you control entirely from the device — but with a larger screen, a more powerful DAC, and better analogue output stages. If you're building a serious system and the A6 feels like a compromise, this is the version that isn't.</p>
         <p data-i18n="catch-spotify-uses-connect-dc3a7" class="card-catch"><b>Catch:</b> Spotify uses Connect — your phone still controls it. Every other major service runs natively on the screen.</p>
-        <p data-i18n="phone-only-at-setup-2b1a3" class="card-phone"><span>Phone</span> only at setup</p>
+        <p class="card-phone"><span data-i18n="phone-77064">Phone</span> <abbr data-i18n="only-at-setup-5d736" data-tip="Needs a phone or computer once to set up — after that it works on its own.">only at setup</abbr></p>
         <div class="card-footer">
           <p class="card-price"><span class="price-gbp">£1,299</span><span class="price-us">$1,399</span><span class="price-eur">€1,499</span></p>
           <a data-i18n="view-cf3db" class="card-link" href="https://www.richersounds.com/eversolo-dmp-a8" target="_blank" rel="noopener">View →</a>
@@ -1249,7 +1252,7 @@ h1, h2, h3, h4, p, dd, dt, .qs-card, .card-body { overflow-wrap: break-word; }
         <p class="card-title">Volumio Motivo</p>
         <p data-i18n="italian-designed-streamer-wi-115a3" class="card-desc">Italian-designed streamer with an 8-inch touchscreen and a built-in headphone amplifier. Volumio runs a proprietary audio OS — lean, stable, no Android bloat — with Qobuz, Tidal, Spotify, and internet radio browsable directly on screen. Unusual thing: it's as happy driving headphones as it is driving a hi-fi system.</p>
         <p data-i18n="catch-volumio-is-a-dfd98" class="card-catch"><b>Catch:</b> Volumio is a smaller company than Eversolo or FiiO — long-term software support is less certain.</p>
-        <p data-i18n="phone-only-at-setup-2b1a3" class="card-phone"><span>Phone</span> only at setup</p>
+        <p class="card-phone"><span data-i18n="phone-77064">Phone</span> <abbr data-i18n="only-at-setup-5d736" data-tip="Needs a phone or computer once to set up — after that it works on its own.">only at setup</abbr></p>
         <div class="card-footer">
           <p class="card-price"><span class="price-gbp">£1,799</span><span class="price-us">$1,999</span><span class="price-eur">€2,099</span></p>
           <a data-i18n="view-cf3db" class="card-link" href="https://volumio.com/en/motivo" target="_blank" rel="noopener">View →</a>
@@ -1298,7 +1301,7 @@ h1, h2, h3, h4, p, dd, dt, .qs-card, .card-body { overflow-wrap: break-word; }
         <p class="card-title">Amazon Echo (4th gen)</p>
         <p data-i18n="voice-first-ask-for-cf987" class="card-desc">Voice-first. Ask for music, news, or the time without touching a phone. Asking the room for the music or the time is one less reason to pick up the phone. Works with Spotify, Apple Music, Amazon Music.</p>
         <p data-i18n="catch-always-on-microphone-95c40" class="card-catch"><b>Catch:</b> Always-on microphone. Amazon account required. Some features require subscriptions.</p>
-        <p data-i18n="phone-only-at-setup-2b1a3" class="card-phone"><span>Phone</span> only at setup</p>
+        <p class="card-phone"><span data-i18n="phone-77064">Phone</span> <abbr data-i18n="only-at-setup-5d736" data-tip="Needs a phone or computer once to set up — after that it works on its own.">only at setup</abbr></p>
         <div class="card-footer">
           <p class="card-price"><span class="price-gbp">£89</span><span class="price-us">$99</span><span class="price-eur">€99</span></p>
           <a data-i18n="view-cf3db" class="card-link" href="https://www.amazon.co.uk/dp/B07XJ8C8F7" target="_blank" rel="noopener">View →</a>
@@ -1335,7 +1338,7 @@ h1, h2, h3, h4, p, dd, dt, .qs-card, .card-body { overflow-wrap: break-word; }
         <p class="card-title">Apple HomePod (2nd gen)</p>
         <p data-i18n="best-sound-quality-in-98521" class="card-desc">Best sound quality in the category. Siri for control. Deep Apple Music integration. If you're already in Apple's world, this replaces a lot of casual phone pickups.</p>
         <p data-i18n="catch-only-really-works-d5c02" class="card-catch"><b>Catch:</b> Only really works with Apple devices — less useful without iPhone/Apple Music. Expensive for a speaker.</p>
-        <p data-i18n="phone-only-at-setup-2b1a3" class="card-phone"><span>Phone</span> only at setup</p>
+        <p class="card-phone"><span data-i18n="phone-77064">Phone</span> <abbr data-i18n="only-at-setup-5d736" data-tip="Needs a phone or computer once to set up — after that it works on its own.">only at setup</abbr></p>
         <div class="card-footer">
           <p class="card-price"><span class="price-gbp">£299</span><span class="price-us">$299</span><span class="price-eur">€349</span></p>
           <a data-i18n="view-cf3db" class="card-link" href="https://www.apple.com/uk/homepod/" target="_blank" rel="noopener">View →</a>
@@ -1383,7 +1386,7 @@ h1, h2, h3, h4, p, dd, dt, .qs-card, .card-body { overflow-wrap: break-word; }
         <p class="card-title">Freewrite Smart Typewriter</p>
         <p data-i18n="mechanical-keyboard-e-ink-b9e3c" class="card-desc">Mechanical keyboard + e-ink screen. No editing mode, no browser. Just write. Syncs to Google Docs or Dropbox when you get home. For people serious about drafting.</p>
         <p data-i18n="catch-expensive-cannot-edit-0c1ac" class="card-catch"><b>Catch:</b> Expensive. Cannot edit or rearrange text beyond basic cursor. Sync requires Wi-Fi.</p>
-        <p data-i18n="phone-only-at-setup-2b1a3" class="card-phone"><span>Phone</span> only at setup</p>
+        <p class="card-phone"><span data-i18n="phone-77064">Phone</span> <abbr data-i18n="only-at-setup-5d736" data-tip="Needs a phone or computer once to set up — after that it works on its own.">only at setup</abbr></p>
         <div class="card-footer">
           <p class="card-price"><span class="price-gbp">£429</span><span class="price-us">$549</span><span class="price-eur">€499</span></p>
           <a data-i18n="view-cf3db" class="card-link" href="https://freewrite.com/products/freewrite-smart-typewriter" target="_blank" rel="noopener">View →</a>
@@ -1420,7 +1423,7 @@ h1, h2, h3, h4, p, dd, dt, .qs-card, .card-body { overflow-wrap: break-word; }
         <p class="card-title">Freewrite Alpha</p>
         <p data-i18n="freewrite-s-most-affordable-b5b31" class="card-desc">Freewrite's most affordable device: a compact keyboard with a small e-ink display, designed for drafting only. No cursor keys, no editing mode by design. Syncs to Freewrite's cloud when connected to Wi-Fi. Cheaper entry point for the Freewrite philosophy.</p>
         <p data-i18n="catch-less-polished-than-ce6d7" class="card-catch"><b>Catch:</b> Less polished than the Smart Typewriter. Sync via Wi-Fi only.</p>
-        <p data-i18n="phone-only-at-setup-2b1a3" class="card-phone"><span>Phone</span> only at setup</p>
+        <p class="card-phone"><span data-i18n="phone-77064">Phone</span> <abbr data-i18n="only-at-setup-5d736" data-tip="Needs a phone or computer once to set up — after that it works on its own.">only at setup</abbr></p>
         <div class="card-footer">
           <p class="card-price"><span class="price-gbp">£179</span><span class="price-us">$199</span><span class="price-eur">€209</span></p>
           <a data-i18n="view-cf3db" class="card-link" href="https://freewrite.com/products/alpha" target="_blank" rel="noopener">View →</a>
@@ -1493,7 +1496,7 @@ h1, h2, h3, h4, p, dd, dt, .qs-card, .card-body { overflow-wrap: break-word; }
         <p class="card-title">Freewrite Traveler</p>
         <p data-i18n="foldable-lighter-version-of-8ee26" class="card-desc">Foldable, lighter version of the Smart Typewriter. Same philosophy — write only. Better for travel and coffee shops. Roughly half the weight.</p>
         <p data-i18n="catch-keyboard-feel-divides-8b250" class="card-catch"><b>Catch:</b> Keyboard feel divides opinion — try before buying if possible.</p>
-        <p data-i18n="phone-only-at-setup-2b1a3" class="card-phone"><span>Phone</span> only at setup</p>
+        <p class="card-phone"><span data-i18n="phone-77064">Phone</span> <abbr data-i18n="only-at-setup-5d736" data-tip="Needs a phone or computer once to set up — after that it works on its own.">only at setup</abbr></p>
         <div class="card-footer">
           <p class="card-price"><span class="price-gbp">£299</span><span class="price-us">$349</span><span class="price-eur">€345</span></p>
           <a data-i18n="view-cf3db" class="card-link" href="https://freewrite.com/products/traveler" target="_blank" rel="noopener">View →</a>
@@ -1529,7 +1532,7 @@ h1, h2, h3, h4, p, dd, dt, .qs-card, .card-body { overflow-wrap: break-word; }
         <p class="card-title">reMarkable 2</p>
         <p data-i18n="paper-like-e-ink-8c411" class="card-desc">Paper-like e-ink writing tablet. Brilliant for annotating PDFs, sketching, journalling. No distracting apps. The closest digital thing to paper.</p>
         <p data-i18n="catch-subscription-connect-n-4c919" class="card-catch"><b>Catch:</b> Subscription (Connect) needed for cloud sync and some features. Expensive.</p>
-        <p data-i18n="phone-only-at-setup-2b1a3" class="card-phone"><span>Phone</span> only at setup</p>
+        <p class="card-phone"><span data-i18n="phone-77064">Phone</span> <abbr data-i18n="only-at-setup-5d736" data-tip="Needs a phone or computer once to set up — after that it works on its own.">only at setup</abbr></p>
         <div class="card-footer">
           <p class="card-price"><span class="price-gbp">£279</span><span class="price-us">$299</span><span class="price-eur">€319</span></p>
           <a data-i18n="view-cf3db" class="card-link" href="https://remarkable.com/store/remarkable-2" target="_blank" rel="noopener">View →</a>
@@ -1565,7 +1568,7 @@ h1, h2, h3, h4, p, dd, dt, .qs-card, .card-body { overflow-wrap: break-word; }
         <p class="card-title">Supernote A5 X2 Manta</p>
         <p data-i18n="the-main-serious-alternative-607c6" class="card-desc">The main serious alternative to the reMarkable 2. Same use case — e-ink note-taking and PDF annotation — different philosophy. The ceramic pen tip never wears out and needs no refills. The battery is user-replaceable. More capable than the reMarkable, more repairable, and a different kind of commitment to the hardware.</p>
         <p data-i18n="catch-no-backlight-low-c656a" class="card-catch"><b>Catch:</b> No backlight — low-light use needs an external lamp. Pen sold separately (from ~$59). Base price starts at $459.</p>
-        <p data-i18n="phone-only-at-setup-2b1a3" class="card-phone"><span>Phone</span> only at setup</p>
+        <p class="card-phone"><span data-i18n="phone-77064">Phone</span> <abbr data-i18n="only-at-setup-5d736" data-tip="Needs a phone or computer once to set up — after that it works on its own.">only at setup</abbr></p>
         <div class="card-footer">
           <p class="card-price"><span class="price-gbp">~£370</span><span class="price-us">$459</span><span class="price-eur">~€429</span></p>
           <a data-i18n="view-cf3db" class="card-link" href="https://supernote.com/products/supernote-a5-x2" target="_blank" rel="noopener">View →</a>
@@ -1699,7 +1702,7 @@ h1, h2, h3, h4, p, dd, dt, .qs-card, .card-body { overflow-wrap: break-word; }
         <p class="card-title">Garmin Fenix 7S</p>
         <p data-i18n="serious-gps-sports-watch-1a84d" class="card-desc">Serious GPS sports watch. Weeks of battery in smartwatch mode. Detailed training metrics. No social apps, no feeds. Pairs to your phone for data sync only.</p>
         <p data-i18n="catch-expensive-bulky-for-c1523" class="card-catch"><b>Catch:</b> Expensive. Bulky for everyday wear. Some features need phone pairing initially.</p>
-        <p data-i18n="phone-only-at-setup-2b1a3" class="card-phone"><span>Phone</span> only at setup</p>
+        <p class="card-phone"><span data-i18n="phone-77064">Phone</span> <abbr data-i18n="only-at-setup-5d736" data-tip="Needs a phone or computer once to set up — after that it works on its own.">only at setup</abbr></p>
         <div class="card-footer">
           <p class="card-price"><span class="price-gbp">£549</span><span class="price-us">$599</span><span class="price-eur">€629</span></p>
           <a data-i18n="view-cf3db" class="card-link" href="https://www.garmin.com/en-GB/p/735611" target="_blank" rel="noopener">View →</a>
@@ -1736,7 +1739,7 @@ h1, h2, h3, h4, p, dd, dt, .qs-card, .card-body { overflow-wrap: break-word; }
         <p class="card-title">Garmin Vívoactive 5</p>
         <p data-i18n="smartwatch-that-prioritises-67478" class="card-desc">Smartwatch that prioritises fitness over feeds. GPS, 11-day battery, 30+ sports. Can receive notification previews but doesn't encourage engagement. Garmin's apps are about sport, not social.</p>
         <p data-i18n="catch-smaller-screen-lower-436e1" class="card-catch"><b>Catch:</b> Smaller screen. Lower-resolution vs. Apple Watch. Needs Garmin Connect once to set up.</p>
-        <p data-i18n="phone-only-at-setup-2b1a3" class="card-phone"><span>Phone</span> only at setup</p>
+        <p class="card-phone"><span data-i18n="phone-77064">Phone</span> <abbr data-i18n="only-at-setup-5d736" data-tip="Needs a phone or computer once to set up — after that it works on its own.">only at setup</abbr></p>
         <div class="card-footer">
           <p class="card-price"><span class="price-gbp">£249</span><span class="price-us">$269</span><span class="price-eur">€285</span></p>
           <a data-i18n="view-cf3db" class="card-link" href="https://www.garmin.com/en-GB/p/1025217" target="_blank" rel="noopener">View →</a>
@@ -1773,7 +1776,7 @@ h1, h2, h3, h4, p, dd, dt, .qs-card, .card-body { overflow-wrap: break-word; }
         <p class="card-title">Suunto Race S</p>
         <p data-i18n="finnish-gps-watch-designed-be1bc" class="card-desc">Finnish GPS watch designed for trail running and mountaineering. AMOLED display, 26-day battery in watch mode, 40-hour GPS. No social apps, no app store — Suunto's software is sports data only. Excellent for anyone who wants to leave the phone behind outdoors.</p>
         <p data-i18n="catch-expensive-fewer-apps-18ed3" class="card-catch"><b>Catch:</b> Expensive. Fewer apps and accessories than Garmin. App is improving but behind Garmin Connect.</p>
-        <p data-i18n="phone-only-at-setup-2b1a3" class="card-phone"><span>Phone</span> only at setup</p>
+        <p class="card-phone"><span data-i18n="phone-77064">Phone</span> <abbr data-i18n="only-at-setup-5d736" data-tip="Needs a phone or computer once to set up — after that it works on its own.">only at setup</abbr></p>
         <div class="card-footer">
           <p class="card-price"><span class="price-gbp">£399</span><span class="price-us">$449</span><span class="price-eur">€459</span></p>
           <a data-i18n="view-cf3db" class="card-link" href="https://www.suunto.com/en-gb/Products/sports-watches/suunto-race-s/" target="_blank" rel="noopener">View →</a>
@@ -1809,7 +1812,7 @@ h1, h2, h3, h4, p, dd, dt, .qs-card, .card-body { overflow-wrap: break-word; }
         <p class="card-title">Polar Pacer Pro</p>
         <p data-i18n="serious-running-and-triathlo-a76d3" class="card-desc">Serious running and triathlon watch from Finland's original GPS watch maker. Excellent training load and recovery analytics, barometric altimeter, and 35-hour GPS battery. Minimal notification interface — Polar's software is about sport, not apps.</p>
         <p data-i18n="catch-fewer-apps-and-b9f91" class="card-catch"><b>Catch:</b> Fewer apps and third-party extras than Garmin. Less third-party app support.</p>
-        <p data-i18n="phone-only-at-setup-2b1a3" class="card-phone"><span>Phone</span> only at setup</p>
+        <p class="card-phone"><span data-i18n="phone-77064">Phone</span> <abbr data-i18n="only-at-setup-5d736" data-tip="Needs a phone or computer once to set up — after that it works on its own.">only at setup</abbr></p>
         <div class="card-footer">
           <p class="card-price"><span class="price-gbp">£299</span><span class="price-us">$329</span><span class="price-eur">€345</span></p>
           <a data-i18n="view-cf3db" class="card-link" href="https://www.polar.com/en/products/sport-watches/pacer-pro" target="_blank" rel="noopener">View →</a>
@@ -1858,7 +1861,7 @@ h1, h2, h3, h4, p, dd, dt, .qs-card, .card-body { overflow-wrap: break-word; }
         <p class="card-title">Yoto Player (3rd Gen)</p>
         <p data-i18n="screenless-audio-player-for-924f6" class="card-desc">Screenless audio player for children. Insert a card, play a story. Kids control their own listening. Brilliant content library including BBC podcasts and Audible. No screen whatsoever.</p>
         <p data-i18n="catch-content-is-yoto-a31fb" class="card-catch"><b>Catch:</b> Content is Yoto-card only — ongoing cost for new stories/songs.</p>
-        <p data-i18n="phone-only-at-setup-2b1a3" class="card-phone"><span>Phone</span> only at setup</p>
+        <p class="card-phone"><span data-i18n="phone-77064">Phone</span> <abbr data-i18n="only-at-setup-5d736" data-tip="Needs a phone or computer once to set up — after that it works on its own.">only at setup</abbr></p>
         <div class="card-footer">
           <p class="card-price"><span class="price-gbp">£99</span><span class="price-us">$109</span><span class="price-eur">€115</span></p>
           <a data-i18n="view-cf3db" class="card-link" href="https://www.yotoplay.com/products/yoto-player-third-gen" target="_blank" rel="noopener">View →</a>
@@ -1894,7 +1897,7 @@ h1, h2, h3, h4, p, dd, dt, .qs-card, .card-body { overflow-wrap: break-word; }
         <p class="card-title">Yoto Mini</p>
         <p data-i18n="portable-pocket-sized-yoto-2830a" class="card-desc">Portable, pocket-sized Yoto. Same card system, same content — but clips to a backpack. Good for car journeys and holidays, when the phone would usually come out.</p>
         <p data-i18n="catch-less-features-than-179c9" class="card-catch"><b>Catch:</b> Less features than the full player. Still requires Yoto cards.</p>
-        <p data-i18n="phone-only-at-setup-2b1a3" class="card-phone"><span>Phone</span> only at setup</p>
+        <p class="card-phone"><span data-i18n="phone-77064">Phone</span> <abbr data-i18n="only-at-setup-5d736" data-tip="Needs a phone or computer once to set up — after that it works on its own.">only at setup</abbr></p>
         <div class="card-footer">
           <p class="card-price"><span class="price-gbp">£59</span><span class="price-us">$69</span><span class="price-eur">€69</span></p>
           <a data-i18n="view-cf3db" class="card-link" href="https://www.yotoplay.com/products/yoto-mini" target="_blank" rel="noopener">View →</a>
@@ -1931,7 +1934,7 @@ h1, h2, h3, h4, p, dd, dt, .qs-card, .card-body { overflow-wrap: break-word; }
         <p class="card-title">Toniebox</p>
         <p data-i18n="place-a-tonie-figure-5c321" class="card-desc">Place a Tonie figure on top to play its story. Designed for toddlers — no buttons, no screen, no complexity. Extremely durable. Great starter for ages 2–7.</p>
         <p data-i18n="catch-tonie-figurines-cost-478eb" class="card-catch"><b>Catch:</b> Tonie figurines cost ~£15–20 each. Stories only come from Tonie figures.</p>
-        <p data-i18n="phone-only-at-setup-2b1a3" class="card-phone"><span>Phone</span> only at setup</p>
+        <p class="card-phone"><span data-i18n="phone-77064">Phone</span> <abbr data-i18n="only-at-setup-5d736" data-tip="Needs a phone or computer once to set up — after that it works on its own.">only at setup</abbr></p>
         <div class="card-footer">
           <p class="card-price"><span class="price-gbp">£79</span><span class="price-us">$89</span><span class="price-eur">€89</span></p>
           <a data-i18n="view-cf3db" class="card-link" href="https://www.tonies.com/en-gb/" target="_blank" rel="noopener">View →</a>

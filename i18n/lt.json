@@ -100,7 +100,6 @@
   "spotify-tidal-flac-libraries-6e656": "Spotify, Tidal, FLAC bibliotekos — be telefono. Specialūs grotuvai skamba geriau ir daro tik savo darbą.",
   "android-based-but-has-fbd19": "Android pagrindu, bet be SIM. 32 GB + microSD. Palaiko Spotify, Tidal ir vietinius failus. Puikus DAC. Neatveria durų į Instagram.",
   "catch-needs-phone-app-2410a": "<b>Kabliukas:</b> Pradiniam Spotify grojaraščių sinchronizavimui reikia telefono programėlės. Vėliau — visiškai savarankiškas.",
-  "phone-only-at-setup-2b1a3": "<span>Telefonas</span> tik nustatant",
   "hi-res-audio-playback-f8219": "Hi-res garso atkūrimas. Wi-Fi muzikai atsisiųsti. Įtaisytas srautinis grojimas neprisijungus (Spotify, Tidal). Bluetooth. 36 val. baterija.",
   "no-social-media-no-1e02a": "Jokių socialinių tinklų. Jokių skambučių. Jokių pranešimų. Ne telefonas.",
   "music-lovers-who-want-5158e": "Muzikos mylėtojams, kurie nori geresnio garso nei telefone, bet netampa audiofilais.",
@@ -314,5 +313,7 @@
   "note-takers-and-pdf-c0bcf": "Note-takers and PDF annotators who want the reMarkable alternative — more repairable, more expandable, with a pen that never runs out.",
   "a.euros-26912": "Euros",
   "portable-music-9aa33": "Portable Music",
-  "portable-music-audio-players-8f6a8": "Portable Music &amp; Audio Players"
+  "portable-music-audio-players-8f6a8": "Portable Music &amp; Audio Players",
+  "phone-77064": "Phone",
+  "only-at-setup-5d736": "only at setup"
 }

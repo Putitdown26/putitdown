@@ -100,7 +100,6 @@
   "spotify-tidal-flac-libraries-6e656": "Spotify, Tidal, knihovny FLAC a žádný telefon v cestě. Samostatné přehrávače znějí líp a dělají jen to své.",
   "android-based-but-has-fbd19": "Na Androidu, ale bez SIM karty. 32 GB + microSD. Podporuje Spotify, Tidal i soubory z paměti. Výborný DAC. K Instagramu dveře neotevře.",
   "catch-needs-phone-app-2410a": "<b>Háček:</b> Na první synchronizaci playlistů ze Spotify potřebuje aplikaci v telefonu. Potom je zcela samostatný.",
-  "phone-only-at-setup-2b1a3": "<span>Telefon</span> jen při nastavení",
   "hi-res-audio-playback-f8219": "Přehrávání hi-res audia. Wi-Fi pro stahování hudby. Vestavěné streamování s offline režimem (Spotify, Tidal). Bluetooth. Baterie na 36 hodin.",
   "no-social-media-no-1e02a": "Žádné sociální sítě. Žádné hovory. Žádná upozornění. Není to telefon.",
   "music-lovers-who-want-5158e": "Pro milovníky hudby, kteří chtějí líp, než hraje telefon, ale nechtějí jít do audiofilství.",
@@ -314,5 +313,7 @@
   "note-takers-and-pdf-c0bcf": "Note-takers and PDF annotators who want the reMarkable alternative — more repairable, more expandable, with a pen that never runs out.",
   "a.euros-26912": "Euros",
   "portable-music-9aa33": "Portable Music",
-  "portable-music-audio-players-8f6a8": "Portable Music &amp; Audio Players"
+  "portable-music-audio-players-8f6a8": "Portable Music &amp; Audio Players",
+  "phone-77064": "Phone",
+  "only-at-setup-5d736": "only at setup"
 }

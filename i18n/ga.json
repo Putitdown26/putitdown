@@ -100,7 +100,6 @@
   "spotify-tidal-flac-libraries-6e656": "Spotify, Tidal, leabharlanna FLAC — gan an fón a bheith páirteach. Fuaimníonn seinnteoirí tiomnaithe níos fearr agus fanann siad ina lána féin.",
   "android-based-but-has-fbd19": "Bunaithe ar Android ach gan SIM. 32GB + microSD. Tacaíonn sé le Spotify, Tidal agus comhaid áitiúla. DAC den scoth. Ní osclaíonn sé doras chuig Instagram.",
   "catch-needs-phone-app-2410a": "<b>Fadhb:</b> Teastaíonn app fóin chun seinnliostaí Spotify a shioncronú ar dtús. Ina dhiaidh sin: go hiomlán neamhspleách.",
-  "phone-only-at-setup-2b1a3": "<span>Fón</span> ag an socrú amháin",
   "hi-res-audio-playback-f8219": "Seinm fuaime hi-res. Wi-Fi chun ceol a íoslódáil. Sruthú as líne ionsuite (Spotify, Tidal). Bluetooth. Ceallra 36 uair.",
   "no-social-media-no-1e02a": "Gan meáin shóisialta. Gan glaonna. Gan fógraí. Ní fón é.",
   "music-lovers-who-want-5158e": "Lucht grá ceoil ar mhaith leo céim suas ó fhuaim an fhóin gan dul chun audaifíle.",
@@ -314,5 +313,7 @@
   "note-takers-and-pdf-c0bcf": "Note-takers and PDF annotators who want the reMarkable alternative — more repairable, more expandable, with a pen that never runs out.",
   "a.euros-26912": "Euros",
   "portable-music-9aa33": "Portable Music",
-  "portable-music-audio-players-8f6a8": "Portable Music &amp; Audio Players"
+  "portable-music-audio-players-8f6a8": "Portable Music &amp; Audio Players",
+  "phone-77064": "Phone",
+  "only-at-setup-5d736": "only at setup"
 }

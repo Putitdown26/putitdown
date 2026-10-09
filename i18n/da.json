@@ -100,7 +100,6 @@
   "spotify-tidal-flac-libraries-6e656": "Spotify, Tidal, FLAC-biblioteker — uden at telefonen er involveret. Dedikerede afspillere lyder bedre og holder sig på deres egen bane.",
   "android-based-but-has-fbd19": "Android-baseret, men uden SIM. Rummer 32GB + microSD. Understøtter Spotify, Tidal og lokale filer. Fremragende DAC. Åbner ikke døren til Instagram.",
   "catch-needs-phone-app-2410a": "<b>Ulempen:</b> Kræver telefon-appen, første gang du skal synkronisere Spotify-playlister. Derefter: helt selvstændig.",
-  "phone-only-at-setup-2b1a3": "<span>Telefon</span> kun ved opsætning",
   "hi-res-audio-playback-f8219": "Afspilning af hi-res-lyd. Wi-Fi til musikdownload. Indbygget streaming offline (Spotify, Tidal). Bluetooth. 36 timers batteri.",
   "no-social-media-no-1e02a": "Ingen sociale medier. Ingen opkald. Ingen notifikationer. Ikke en telefon.",
   "music-lovers-who-want-5158e": "Musikelskere, der vil have et skridt op fra telefonens lyd uden at blive audiofile.",
@@ -314,5 +313,7 @@
   "note-takers-and-pdf-c0bcf": "Note-takers and PDF annotators who want the reMarkable alternative — more repairable, more expandable, with a pen that never runs out.",
   "a.euros-26912": "Euros",
   "portable-music-9aa33": "Portable Music",
-  "portable-music-audio-players-8f6a8": "Portable Music &amp; Audio Players"
+  "portable-music-audio-players-8f6a8": "Portable Music &amp; Audio Players",
+  "phone-77064": "Phone",
+  "only-at-setup-5d736": "only at setup"
 }

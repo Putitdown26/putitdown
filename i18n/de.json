@@ -100,7 +100,6 @@
   "spotify-tidal-flac-libraries-6e656": "Spotify, Tidal, FLAC-Sammlungen – ganz ohne Handy. Eigene Player klingen besser und bleiben bei ihrer Aufgabe.",
   "android-based-but-has-fbd19": "Android-basiert, aber ohne SIM. 32 GB + microSD. Unterstützt Spotify, Tidal und lokale Dateien. Hervorragender DAC. Öffnet keine Tür zu Instagram.",
   "catch-needs-phone-app-2410a": "<b>Haken:</b> Für die erste Synchronisierung der Spotify-Playlists braucht es die Handy-App. Danach: völlig eigenständig.",
-  "phone-only-at-setup-2b1a3": "<span>Handy</span> nur beim Einrichten",
   "hi-res-audio-playback-f8219": "Hi-Res-Wiedergabe. Wi-Fi für Musik-Downloads. Integriertes Streaming offline (Spotify, Tidal). Bluetooth. 36 Std. Akku.",
   "no-social-media-no-1e02a": "Keine sozialen Medien. Keine Anrufe. Keine Benachrichtigungen. Kein Handy.",
   "music-lovers-who-want-5158e": "Musikfans, die mehr als Handy-Klang wollen, ohne gleich Audiophile zu werden.",
@@ -314,5 +313,7 @@
   "note-takers-and-pdf-c0bcf": "Note-takers and PDF annotators who want the reMarkable alternative — more repairable, more expandable, with a pen that never runs out.",
   "a.euros-26912": "Euros",
   "portable-music-9aa33": "Portable Music",
-  "portable-music-audio-players-8f6a8": "Portable Music &amp; Audio Players"
+  "portable-music-audio-players-8f6a8": "Portable Music &amp; Audio Players",
+  "phone-77064": "Phone",
+  "only-at-setup-5d736": "only at setup"
 }

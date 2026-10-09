@@ -100,7 +100,6 @@
   "spotify-tidal-flac-libraries-6e656": "Spotify, Tidal, βιβλιοθήκες FLAC — χωρίς να μπλέκεται το κινητό. Οι ειδικές συσκευές ακούγονται καλύτερα και μένουν στη δουλειά τους.",
   "android-based-but-has-fbd19": "Βασισμένο σε Android αλλά χωρίς SIM. Χωράει 32GB + microSD. Υποστηρίζει Spotify, Tidal και τοπικά αρχεία. Εξαιρετικό DAC. Δεν ανοίγει πόρτα προς το Instagram.",
   "catch-needs-phone-app-2410a": "<b>Το μειονέκτημα:</b> Χρειάζεται την εφαρμογή στο κινητό για τον αρχικό συγχρονισμό των playlist του Spotify. Μετά είναι πλήρως αυτόνομο.",
-  "phone-only-at-setup-2b1a3": "<span>Κινητό</span> μόνο στη ρύθμιση",
   "hi-res-audio-playback-f8219": "Αναπαραγωγή hi-res ήχου. Wi-Fi για λήψη μουσικής. Ενσωματωμένο streaming με λήψη για offline (Spotify, Tidal). Bluetooth. Μπαταρία 36 ωρών.",
   "no-social-media-no-1e02a": "Χωρίς κοινωνικά δίκτυα. Χωρίς κλήσεις. Χωρίς ειδοποιήσεις. Δεν είναι κινητό.",
   "music-lovers-who-want-5158e": "Για όσους αγαπούν τη μουσική και θέλουν κάτι καλύτερο από τον ήχο του κινητού, χωρίς να γίνουν ακροατές υψηλής πιστότητας.",
@@ -314,5 +313,7 @@
   "note-takers-and-pdf-c0bcf": "Note-takers and PDF annotators who want the reMarkable alternative — more repairable, more expandable, with a pen that never runs out.",
   "a.euros-26912": "Euros",
   "portable-music-9aa33": "Portable Music",
-  "portable-music-audio-players-8f6a8": "Portable Music &amp; Audio Players"
+  "portable-music-audio-players-8f6a8": "Portable Music &amp; Audio Players",
+  "phone-77064": "Phone",
+  "only-at-setup-5d736": "only at setup"
 }

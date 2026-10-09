@@ -100,7 +100,6 @@
   "spotify-tidal-flac-libraries-6e656": "Spotify, Tidal, FLAC knjižnice — bez mobitela u sredini. Namjenski playeri bolje zvuče i drže se svog posla.",
   "android-based-but-has-fbd19": "Temelji se na Androidu, ali nema SIM. 32GB + microSD. Podržava Spotify, Tidal i lokalne datoteke. Izvrstan DAC. Ne otvara vrata prema Instagramu.",
   "catch-needs-phone-app-2410a": "<b>Kvaka:</b> Za početnu sinkronizaciju Spotify playlisti treba aplikacija na mobitelu. Poslije je potpuno samostalan.",
-  "phone-only-at-setup-2b1a3": "<span>Mobitel</span> samo pri postavljanju",
   "hi-res-audio-playback-f8219": "Hi-res reprodukcija zvuka. Wi-Fi za preuzimanje glazbe. Ugrađeni streaming s offline načinom (Spotify, Tidal). Bluetooth. 36 sati baterije.",
   "no-social-media-no-1e02a": "Bez društvenih mreža. Bez poziva. Bez obavijesti. Nije mobitel.",
   "music-lovers-who-want-5158e": "Za ljubitelje glazbe koji žele korak iznad zvuka s mobitela, a da ne postanu audiofili.",
@@ -314,5 +313,7 @@
   "note-takers-and-pdf-c0bcf": "Note-takers and PDF annotators who want the reMarkable alternative — more repairable, more expandable, with a pen that never runs out.",
   "a.euros-26912": "Euros",
   "portable-music-9aa33": "Portable Music",
-  "portable-music-audio-players-8f6a8": "Portable Music &amp; Audio Players"
+  "portable-music-audio-players-8f6a8": "Portable Music &amp; Audio Players",
+  "phone-77064": "Phone",
+  "only-at-setup-5d736": "only at setup"
 }

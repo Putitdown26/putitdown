@@ -100,7 +100,6 @@
   "spotify-tidal-flac-libraries-6e656": "Spotify, Tidal, FLAC-kogud – ilma et telefon asjasse sekkuks. Spetsiaalsed mängijad kõlavad paremini ja jäävad oma rajale.",
   "android-based-but-has-fbd19": "Androidi-põhine, aga SIM-kaarti pole. 32 GB + microSD. Toetab teenuseid Spotify ja Tidal ning kohalikke faile. Suurepärane DAC. Ei ava ust Instagrami.",
   "catch-needs-phone-app-2410a": "<b>Konks:</b> Spotify esitusloendite esmaseks sünkroonimiseks on vaja telefonirakendust. Pärast seda on täiesti iseseisev.",
-  "phone-only-at-setup-2b1a3": "<span>Telefoni</span> vaja vaid seadistamisel",
   "hi-res-audio-playback-f8219": "Hi-res-heli esitus. Wi-Fi muusika allalaadimiseks. Sisseehitatud voogedastus võrguühenduseta (Spotify, Tidal). Bluetooth. 36 h aku.",
   "no-social-media-no-1e02a": "Sotsiaalmeediat pole. Kõnesid pole. Teavitusi pole. Ei ole telefon.",
   "music-lovers-who-want-5158e": "Muusikasõpradele, kes tahavad telefoni heliga võrreldes sammu edasi minna, ilma et peaks audiofiiliks hakkama.",
@@ -314,5 +313,7 @@
   "note-takers-and-pdf-c0bcf": "Note-takers and PDF annotators who want the reMarkable alternative — more repairable, more expandable, with a pen that never runs out.",
   "a.euros-26912": "Euros",
   "portable-music-9aa33": "Portable Music",
-  "portable-music-audio-players-8f6a8": "Portable Music &amp; Audio Players"
+  "portable-music-audio-players-8f6a8": "Portable Music &amp; Audio Players",
+  "phone-77064": "Phone",
+  "only-at-setup-5d736": "only at setup"
 }
