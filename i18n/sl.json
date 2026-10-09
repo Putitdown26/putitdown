@@ -18,7 +18,6 @@
   "wake-up-to-light-9bfc0": "Zbudi se ob svetlobi, ne ob obvestilu. Telefon ostane zunaj spalnice.",
   "actually-reading-ba543": "Branje v resnici",
   "no-browser-no-notifications-7ec1a": "Brez brskalnika, brez obvestil. Samo knjiga in baterija, ki zdrži tedne.",
-  "music-without-the-rest-df0d3": "Glasba brez vsega drugega",
   "everything-on-the-list-20904": "Vse s seznama",
   "filter-by-the-job-ff4ed": "Filtriraj po opravilu, ki naj ga telefon preneha opravljati, ali pa samo drsi.",
   "all-6a720": "Vse",
@@ -297,5 +296,6 @@
   "for-most-things-a-2cf47": "For most things a phone does, there's something that does just that.",
   "three-good-places-to-2390a": "Three good places to start.",
   "wake-up-light-fcf64": "Wake-up light",
-  "no-algorithm-no-feed-e9313": "No algorithm, no feed, no rabbit holes. Pick a song, press play."
+  "no-algorithm-no-feed-e9313": "No algorithm, no feed, no rabbit holes. Pick a song, press play.",
+  "just-music-28644": "Just music"
 }

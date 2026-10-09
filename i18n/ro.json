@@ -18,7 +18,6 @@
   "wake-up-to-light-9bfc0": "Te trezești cu lumină, nu cu o notificare. Telefonul rămâne în afara dormitorului.",
   "actually-reading-ba543": "Citit pe bune",
   "no-browser-no-notifications-7ec1a": "Fără browser, fără notificări. Doar cartea și o baterie care ține săptămâni.",
-  "music-without-the-rest-df0d3": "Muzică, fără restul",
   "everything-on-the-list-20904": "Tot ce e pe listă",
   "filter-by-the-job-ff4ed": "Filtrează după treaba pe care vrei să o scoți din sarcina telefonului sau derulează.",
   "all-6a720": "Toate",
@@ -297,5 +296,6 @@
   "for-most-things-a-2cf47": "For most things a phone does, there's something that does just that.",
   "three-good-places-to-2390a": "Three good places to start.",
   "wake-up-light-fcf64": "Wake-up light",
-  "no-algorithm-no-feed-e9313": "No algorithm, no feed, no rabbit holes. Pick a song, press play."
+  "no-algorithm-no-feed-e9313": "No algorithm, no feed, no rabbit holes. Pick a song, press play.",
+  "just-music-28644": "Just music"
 }

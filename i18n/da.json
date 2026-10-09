@@ -18,7 +18,6 @@
   "wake-up-to-light-9bfc0": "Vågn op til lys i stedet for en notifikation. Telefonen bliver uden for soveværelset.",
   "actually-reading-ba543": "At læse for alvor",
   "no-browser-no-notifications-7ec1a": "Ingen browser, ingen notifikationer. Bare bogen og et batteri, der holder i uger.",
-  "music-without-the-rest-df0d3": "Musik uden resten",
   "everything-on-the-list-20904": "Alt på listen",
   "filter-by-the-job-ff4ed": "Filtrér efter det job, du vil have telefonen til at holde op med, eller scroll.",
   "all-6a720": "Alle",
@@ -297,5 +296,6 @@
   "for-most-things-a-2cf47": "For most things a phone does, there's something that does just that.",
   "three-good-places-to-2390a": "Three good places to start.",
   "wake-up-light-fcf64": "Wake-up light",
-  "no-algorithm-no-feed-e9313": "No algorithm, no feed, no rabbit holes. Pick a song, press play."
+  "no-algorithm-no-feed-e9313": "No algorithm, no feed, no rabbit holes. Pick a song, press play.",
+  "just-music-28644": "Just music"
 }

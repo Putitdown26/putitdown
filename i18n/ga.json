@@ -18,7 +18,6 @@
   "wake-up-to-light-9bfc0": "Dúisigh le solas in ionad fógra. Fanann an fón amach as an seomra codlata.",
   "actually-reading-ba543": "Léamh i ndáiríre",
   "no-browser-no-notifications-7ec1a": "Gan brabhsálaí, gan fógraí. An leabhar amháin, agus ceallra a mhaireann seachtainí.",
-  "music-without-the-rest-df0d3": "Ceol gan an chuid eile",
   "everything-on-the-list-20904": "Gach rud ar an liosta",
   "filter-by-the-job-ff4ed": "Scag de réir an jab ba mhaith leat go stopfadh an fón de a dhéanamh, nó scrollaigh.",
   "all-6a720": "Uile",
@@ -297,5 +296,6 @@
   "for-most-things-a-2cf47": "For most things a phone does, there's something that does just that.",
   "three-good-places-to-2390a": "Three good places to start.",
   "wake-up-light-fcf64": "Wake-up light",
-  "no-algorithm-no-feed-e9313": "No algorithm, no feed, no rabbit holes. Pick a song, press play."
+  "no-algorithm-no-feed-e9313": "No algorithm, no feed, no rabbit holes. Pick a song, press play.",
+  "just-music-28644": "Just music"
 }

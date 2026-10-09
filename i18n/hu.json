@@ -18,7 +18,6 @@
   "wake-up-to-light-9bfc0": "Fényre ébredj értesítés helyett. A telefon kint marad a hálószobából.",
   "actually-reading-ba543": "Tényleg olvasni",
   "no-browser-no-notifications-7ec1a": "Se böngésző, se értesítések. Csak a könyv, és egy akkumulátor, ami hetekig bírja.",
-  "music-without-the-rest-df0d3": "Zene a többi nélkül",
   "everything-on-the-list-20904": "Minden, ami a listán van",
   "filter-by-the-job-ff4ed": "Szűrj aszerint, melyik feladatot szeretnéd kivenni a telefon kezéből, vagy görgess.",
   "all-6a720": "Mind",
@@ -297,5 +296,6 @@
   "for-most-things-a-2cf47": "For most things a phone does, there's something that does just that.",
   "three-good-places-to-2390a": "Three good places to start.",
   "wake-up-light-fcf64": "Wake-up light",
-  "no-algorithm-no-feed-e9313": "No algorithm, no feed, no rabbit holes. Pick a song, press play."
+  "no-algorithm-no-feed-e9313": "No algorithm, no feed, no rabbit holes. Pick a song, press play.",
+  "just-music-28644": "Just music"
 }

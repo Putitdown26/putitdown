@@ -18,7 +18,6 @@
   "wake-up-to-light-9bfc0": "Probuzení světlem místo notifikace. Telefon zůstane mimo ložnici.",
   "actually-reading-ba543": "Skutečně číst",
   "no-browser-no-notifications-7ec1a": "Žádný prohlížeč, žádná upozornění. Jen kniha a baterie, která vydrží týdny.",
-  "music-without-the-rest-df0d3": "Hudba bez toho ostatního",
   "everything-on-the-list-20904": "Všechno na seznamu",
   "filter-by-the-job-ff4ed": "Vyber práci, kterou má telefon přestat dělat, nebo jen posouvej dolů.",
   "all-6a720": "Vše",
@@ -297,5 +296,6 @@
   "for-most-things-a-2cf47": "For most things a phone does, there's something that does just that.",
   "three-good-places-to-2390a": "Three good places to start.",
   "wake-up-light-fcf64": "Wake-up light",
-  "no-algorithm-no-feed-e9313": "No algorithm, no feed, no rabbit holes. Pick a song, press play."
+  "no-algorithm-no-feed-e9313": "No algorithm, no feed, no rabbit holes. Pick a song, press play.",
+  "just-music-28644": "Just music"
 }

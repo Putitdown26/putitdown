@@ -18,7 +18,6 @@
   "wake-up-to-light-9bfc0": "Ärka valguse, mitte teavituse peale. Telefon jääb magamistoast välja.",
   "actually-reading-ba543": "Päriselt lugemine",
   "no-browser-no-notifications-7ec1a": "Ei brauserit, ei teavitusi. Ainult raamat ja aku, mis kestab nädalaid.",
-  "music-without-the-rest-df0d3": "Muusika ilma ülejäänuta",
   "everything-on-the-list-20904": "Kõik nimekirjas",
   "filter-by-the-job-ff4ed": "Filtreeri selle järgi, millest tahad telefoni võõrutada, või keri lihtsalt edasi.",
   "all-6a720": "Kõik",
@@ -297,5 +296,6 @@
   "for-most-things-a-2cf47": "For most things a phone does, there's something that does just that.",
   "three-good-places-to-2390a": "Three good places to start.",
   "wake-up-light-fcf64": "Wake-up light",
-  "no-algorithm-no-feed-e9313": "No algorithm, no feed, no rabbit holes. Pick a song, press play."
+  "no-algorithm-no-feed-e9313": "No algorithm, no feed, no rabbit holes. Pick a song, press play.",
+  "just-music-28644": "Just music"
 }

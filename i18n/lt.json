@@ -18,7 +18,6 @@
   "wake-up-to-light-9bfc0": "Pabusk nuo šviesos, o ne nuo pranešimo. Telefonas lieka už miegamojo ribų.",
   "actually-reading-ba543": "Skaityti iš tikrųjų",
   "no-browser-no-notifications-7ec1a": "Jokios naršyklės, jokių pranešimų. Tik knyga ir baterija, kuri veikia savaites.",
-  "music-without-the-rest-df0d3": "Muzika be visko kito",
   "everything-on-the-list-20904": "Viskas sąraše",
   "filter-by-the-job-ff4ed": "Filtruok pagal darbą, kurio nebenori palikti telefonui, arba tiesiog slinkk.",
   "all-6a720": "Visi",
@@ -297,5 +296,6 @@
   "for-most-things-a-2cf47": "For most things a phone does, there's something that does just that.",
   "three-good-places-to-2390a": "Three good places to start.",
   "wake-up-light-fcf64": "Wake-up light",
-  "no-algorithm-no-feed-e9313": "No algorithm, no feed, no rabbit holes. Pick a song, press play."
+  "no-algorithm-no-feed-e9313": "No algorithm, no feed, no rabbit holes. Pick a song, press play.",
+  "just-music-28644": "Just music"
 }
