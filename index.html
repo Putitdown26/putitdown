@@ -244,6 +244,7 @@ header {
 .card-footer { display: flex; justify-content: space-between; align-items: center; margin-top: auto; padding-top: 8px; gap: 8px; flex-wrap: wrap; }
 .card-price { font-family: var(--mono); font-size: 0.95rem; font-weight: 500; color: var(--fg); }
 .card-price .price-us { display: none; }
+.card-price .price-eur { display: none; }
 .card-link {
   font-size: 0.85rem; font-weight: 600; color: var(--fg);
   text-decoration: none; border: 1px solid var(--rule);
@@ -444,6 +445,7 @@ h1, h2, h3, h4, p, dd, dt, .qs-card, .card-body { overflow-wrap: break-word; }
         <span data-i18n="prices-3f6ef">Prices</span>
         <button data-i18n-attr="aria-label:a.pounds-0c8c0" class="active" id="pBtn-gbp" onclick="setCurrency('gbp')" aria-label="Pounds">£</button>
         <button data-i18n-attr="aria-label:a.dollars-ac45b" id="pBtn-usd" onclick="setCurrency('usd')" aria-label="Dollars">$</button>
+        <button data-i18n-attr="aria-label:a.euros-26912" id="pBtn-eur" onclick="setCurrency('eur')" aria-label="Euros">€</button>
       </div>
     </div>
   </div>
@@ -464,7 +466,7 @@ h1, h2, h3, h4, p, dd, dt, .qs-card, .card-body { overflow-wrap: break-word; }
   <div data-i18n-attr="aria-label:a.top-pick-in-each-ce692" class="hero-strip" aria-label="Top pick in each category">
     <a href="#sleep" class="hs-tile" onclick="qsNav('sleep',event)"><span class="hs-img"><img src="https://i5.walmartimages.com/seo/Philips-Smartsleep-Sleep-and-Wake-Up-Light-Simulated-Sunrise-and-Sunset-Multiple-Lights-and-Sounds-Relaxbreathe-To-Sleep-HF3650-60_5cf9e872-23a2-4d3e-9346-48e24c989d41.a49583eee05b670f519512e7ca20ea98.jpeg" alt="Philips SmartSleep" loading="lazy" onerror="this.style.display='none'"></span><span data-i18n="sleep-3cac3" class="hs-cat">Sleep</span><span class="hs-name">Philips SmartSleep</span></a>
     <a href="#reading" class="hs-tile" onclick="qsNav('reading',event)"><span class="hs-img"><img src="https://www.staples.ca/cdn/shop/files/1b5791e222139b61ec53c8fd5263c97ca7be689a_square3108688_1.jpg?v=1770362385" alt="Kindle Paperwhite" loading="lazy" onerror="this.style.display='none'"></span><span data-i18n="reading-cffa2" class="hs-cat">Reading</span><span class="hs-name">Kindle Paperwhite</span></a>
-    <a href="#music" class="hs-tile" onclick="qsNav('music',event)"><span class="hs-img"><img src="https://www.bhphotovideo.com/images/images500x500/sony_nwa306_b_walkman_nw_a306_a_series_1675853429_1749982.jpg" alt="Sony NW-A306" loading="lazy" onerror="this.style.display='none'"></span><span data-i18n="music-13126" class="hs-cat">Music</span><span class="hs-name">Sony NW-A306</span></a>
+    <a href="#music" class="hs-tile" onclick="qsNav('music',event)"><span class="hs-img"><img src="https://www.bhphotovideo.com/images/images500x500/sony_nwa306_b_walkman_nw_a306_a_series_1675853429_1749982.jpg" alt="Sony NW-A306" loading="lazy" onerror="this.style.display='none'"></span><span data-i18n="portable-music-9aa33" class="hs-cat">Portable Music</span><span class="hs-name">Sony NW-A306</span></a>
     <a href="#hifi" class="hs-tile" onclick="qsNav('hifi',event)"><span class="hs-img"><img src="https://bloomaudio.com/cdn/shop/files/eversolo-a6-gen2-thumb_1800x1800.webp?v=1737733070" alt="Eversolo DMP-A6" loading="lazy" onerror="this.style.display='none'"></span><span data-i18n="home-hi-fi-82797" class="hs-cat">Home hi-fi</span><span class="hs-name">Eversolo DMP-A6</span></a>
     <a href="#writing" class="hs-tile" onclick="qsNav('writing',event)"><span class="hs-img"><img src="https://getfreewrite.com/cdn/shop/files/SmartTypewriter-13_2000x.jpg?v=1683734481" alt="Freewrite" loading="lazy" onerror="this.style.display='none'"></span><span data-i18n="writing-2dabb" class="hs-cat">Writing</span><span class="hs-name">Freewrite</span></a>
     <a href="#camera" class="hs-tile" onclick="qsNav('camera',event)"><span class="hs-img"><img src="https://ricohgr.eu/cdn/shop/products/ricohgriiix2_a7e8e3ee-b60c-4708-9e74-f24a53d2ea7c.png?v=1788258615" alt="Ricoh GR IIIx" loading="lazy" onerror="this.style.display='none'"></span><span data-i18n="camera-4da9c" class="hs-cat">Camera</span><span class="hs-name">Ricoh GR IIIx</span></a>
@@ -554,6 +556,7 @@ h1, h2, h3, h4, p, dd, dt, .qs-card, .card-body { overflow-wrap: break-word; }
           <p class="card-price">
             <span class="price-gbp">£89</span>
             <span class="price-us">$99</span>
+            <span class="price-eur">€99</span>
           </p>
           <a data-i18n="view-cf3db" class="card-link" href="https://www.philips.co.uk/c-p/HF3650_01/smartsleep-wake-up-light" target="_blank" rel="noopener">View →</a>
         </div>
@@ -590,7 +593,7 @@ h1, h2, h3, h4, p, dd, dt, .qs-card, .card-body { overflow-wrap: break-word; }
         <p data-i18n="catch-no-backup-battery-358b1" class="card-catch"><b>Catch:</b> No backup battery — power cut means no alarm.</p>
         <p data-i18n="phone-never-needed-7d5f4" class="card-phone"><span>Phone</span> never needed</p>
         <div class="card-footer">
-          <p class="card-price"><span class="price-gbp">£59</span><span class="price-us">$68</span></p>
+          <p class="card-price"><span class="price-gbp">£59</span><span class="price-us">$68</span><span class="price-eur">€69</span></p>
           <a data-i18n="view-cf3db" class="card-link" href="https://www.lumie.com/products/bodyclock-rise-100" target="_blank" rel="noopener">View →</a>
         </div>
       
@@ -626,7 +629,7 @@ h1, h2, h3, h4, p, dd, dt, .qs-card, .card-body { overflow-wrap: break-word; }
         <p data-i18n="catch-expensive-dab-receptio-a07e2" class="card-catch"><b>Catch:</b> Expensive. DAB reception depends on your area.</p>
         <p data-i18n="phone-never-needed-7d5f4" class="card-phone"><span>Phone</span> never needed</p>
         <div class="card-footer">
-          <p class="card-price"><span class="price-gbp">£189</span><span class="price-us">$219</span></p>
+          <p class="card-price"><span class="price-gbp">£189</span><span class="price-us">$219</span><span class="price-eur">€219</span></p>
           <a data-i18n="view-cf3db" class="card-link" href="https://www.lumie.com/products/bodyclock-luxe-750dab" target="_blank" rel="noopener">View →</a>
         </div>
       
@@ -674,7 +677,7 @@ h1, h2, h3, h4, p, dd, dt, .qs-card, .card-body { overflow-wrap: break-word; }
         <p data-i18n="phone-never-needed-7d5f4" class="card-phone"><span>Phone</span> never needed</p>
         <p data-i18n="choose-this-if-you-f40ed" class="card-choose"><b>Choose this if</b> you buy your books from Amazon and want the plainest, simplest option.</p>
         <div class="card-footer">
-          <p class="card-price"><span class="price-gbp">£149</span><span class="price-us">$139</span></p>
+          <p class="card-price"><span class="price-gbp">£149</span><span class="price-us">$139</span><span class="price-eur">€169</span></p>
           <a data-i18n="view-cf3db" class="card-link" href="https://www.amazon.co.uk/dp/B0CF44VCM5" target="_blank" rel="noopener">View →</a>
         </div>
       
@@ -712,7 +715,7 @@ h1, h2, h3, h4, p, dd, dt, .qs-card, .card-body { overflow-wrap: break-word; }
         <p data-i18n="phone-never-needed-7d5f4" class="card-phone"><span>Phone</span> never needed</p>
         <p data-i18n="choose-this-if-you-e43de" class="card-choose"><b>Choose this if</b> you would rather not buy into Amazon, or want to borrow library books, and a 6-inch screen is enough.</p>
         <div class="card-footer">
-          <p class="card-price"><span class="price-gbp">£149</span><span class="price-us">$149</span></p>
+          <p class="card-price"><span class="price-gbp">£149</span><span class="price-us">$149</span><span class="price-eur">€169</span></p>
           <a data-i18n="view-cf3db" class="card-link" href="https://uk.kobobooks.com/products/kobo-clara-colour" target="_blank" rel="noopener">View →</a>
         </div>
       
@@ -749,7 +752,7 @@ h1, h2, h3, h4, p, dd, dt, .qs-card, .card-body { overflow-wrap: break-word; }
         <p data-i18n="phone-never-needed-7d5f4" class="card-phone"><span>Phone</span> never needed</p>
         <p data-i18n="choose-this-if-you-22411" class="card-choose"><b>Choose this if</b> you want the Kobo ecosystem, physical buttons for one-handed reading, and a screen bigger than the Clara.</p>
         <div class="card-footer">
-          <p class="card-price"><span class="price-gbp">£199</span><span class="price-us">$219</span></p>
+          <p class="card-price"><span class="price-gbp">£199</span><span class="price-us">$219</span><span class="price-eur">€230</span></p>
           <a data-i18n="view-cf3db" class="card-link" href="https://uk.kobobooks.com/products/kobo-libra-colour" target="_blank" rel="noopener">View →</a>
         </div>
 
@@ -770,6 +773,8 @@ h1, h2, h3, h4, p, dd, dt, .qs-card, .card-body { overflow-wrap: break-word; }
           <p data-i18n="readers-who-want-physical-68566">Readers who want physical buttons, a bigger screen than the Clara, and the freedom of the open ePub ecosystem.</p>
         </div>
       </div>
+    
+      <div class="yt-wrap"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/CszBeon1qlA" title="Kobo Libra Colour review" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
     </div>
     </div>
     </div>
@@ -784,7 +789,7 @@ h1, h2, h3, h4, p, dd, dt, .qs-card, .card-body { overflow-wrap: break-word; }
         <p data-i18n="catch-expensive-for-what-38523" class="card-catch"><b>Catch:</b> Expensive for what it does. Note features are basic vs. reMarkable or Kobo Elipsa.</p>
         <p data-i18n="phone-never-needed-7d5f4" class="card-phone"><span>Phone</span> never needed</p>
         <div class="card-footer">
-          <p class="card-price"><span class="price-gbp">£299</span><span class="price-us">$339</span></p>
+          <p class="card-price"><span class="price-gbp">£299</span><span class="price-us">$339</span><span class="price-eur">€345</span></p>
           <a data-i18n="view-cf3db" class="card-link" href="https://www.amazon.co.uk/dp/B09BKX9LRH" target="_blank" rel="noopener">View →</a>
         </div>
       
@@ -819,7 +824,7 @@ h1, h2, h3, h4, p, dd, dt, .qs-card, .card-body { overflow-wrap: break-word; }
         <p data-i18n="catch-expensive-heavy-for-61036" class="card-catch"><b>Catch:</b> Expensive. Heavy for single-handed reading.</p>
         <p data-i18n="phone-never-needed-7d5f4" class="card-phone"><span>Phone</span> never needed</p>
         <div class="card-footer">
-          <p class="card-price"><span class="price-gbp">£349</span><span class="price-us">$399</span></p>
+          <p class="card-price"><span class="price-gbp">£349</span><span class="price-us">$399</span><span class="price-eur">€399</span></p>
           <a data-i18n="view-cf3db" class="card-link" href="https://uk.kobobooks.com/products/kobo-elipsa-2e" target="_blank" rel="noopener">View →</a>
         </div>
       
@@ -856,7 +861,7 @@ h1, h2, h3, h4, p, dd, dt, .qs-card, .card-body { overflow-wrap: break-word; }
         <p data-i18n="phone-never-needed-7d5f4" class="card-phone"><span>Phone</span> never needed</p>
         <p data-i18n="choose-this-if-you-0c9a9" class="card-choose"><b>Choose this if</b> you want page-turn buttons and an 8-inch screen, and you are happy with Kobo’s store.</p>
         <div class="card-footer">
-          <p class="card-price"><span class="price-gbp">£229</span><span class="price-us">$249</span></p>
+          <p class="card-price"><span class="price-gbp">£229</span><span class="price-us">$249</span><span class="price-eur">€265</span></p>
           <a data-i18n="view-cf3db" class="card-link" href="https://uk.kobobooks.com/products/kobo-sage" target="_blank" rel="noopener">View →</a>
         </div>
       
@@ -893,7 +898,7 @@ h1, h2, h3, h4, p, dd, dt, .qs-card, .card-body { overflow-wrap: break-word; }
         <p data-i18n="phone-never-needed-7d5f4" class="card-phone"><span>Phone</span> never needed</p>
         <p data-i18n="choose-this-if-colour-d4b46" class="card-choose"><b>Choose this if</b> colour matters (covers, comics, cookbooks) and you accept paying more for it.</p>
         <div class="card-footer">
-          <p class="card-price"><span class="price-gbp">£249</span><span class="price-us">$279</span></p>
+          <p class="card-price"><span class="price-gbp">£249</span><span class="price-us">$279</span><span class="price-eur">€285</span></p>
           <a data-i18n="view-cf3db" class="card-link" href="https://www.amazon.co.uk/dp/B0CNBPK9QP" target="_blank" rel="noopener">View →</a>
         </div>
 
@@ -928,7 +933,7 @@ h1, h2, h3, h4, p, dd, dt, .qs-card, .card-body { overflow-wrap: break-word; }
      MUSIC
 ═════════════════════════════════════════════ -->
 <div class="cat-section" id="music" data-cat="music">
-  <h2 data-i18n="music-audio-players-7ef6b">Music &amp; Audio Players</h2>
+  <h2 data-i18n="portable-music-audio-players-8f6a8">Portable Music &amp; Audio Players</h2>
   <p data-i18n="spotify-tidal-flac-libraries-6e656" class="cat-desc">Spotify, Tidal, FLAC libraries — without your phone being involved. Dedicated players sound better and stay in their lane.</p>
   <span data-i18n="list-reviewed-oct-2026-d7e10" class="cat-reviewed">List reviewed Oct 2026</span>
   <div class="cards">
@@ -942,7 +947,7 @@ h1, h2, h3, h4, p, dd, dt, .qs-card, .card-body { overflow-wrap: break-word; }
         <p data-i18n="catch-needs-phone-app-2410a" class="card-catch"><b>Catch:</b> Needs phone app to initially sync Spotify playlists. After that: fully standalone.</p>
         <p data-i18n="phone-only-at-setup-2b1a3" class="card-phone"><span>Phone</span> only at setup</p>
         <div class="card-footer">
-          <p class="card-price"><span class="price-gbp">£299</span><span class="price-us">$329</span></p>
+          <p class="card-price"><span class="price-gbp">£299</span><span class="price-us">$329</span><span class="price-eur">€345</span></p>
           <a data-i18n="view-cf3db" class="card-link" href="https://www.sony.co.uk/en/articles/nw-a306-high-resolution-music-player" target="_blank" rel="noopener">View →</a>
         </div>
       
@@ -979,7 +984,7 @@ h1, h2, h3, h4, p, dd, dt, .qs-card, .card-body { overflow-wrap: break-word; }
         <p data-i18n="catch-android-on-daps-dac7a" class="card-catch"><b>Catch:</b> Android on DAPs can be slow. Battery life shorter under streaming.</p>
         <p data-i18n="phone-only-at-setup-2b1a3" class="card-phone"><span>Phone</span> only at setup</p>
         <div class="card-footer">
-          <p class="card-price"><span class="price-gbp">£349</span><span class="price-us">$399</span></p>
+          <p class="card-price"><span class="price-gbp">£349</span><span class="price-us">$399</span><span class="price-eur">€399</span></p>
           <a data-i18n="view-cf3db" class="card-link" href="https://www.fiio.com/m11s" target="_blank" rel="noopener">View →</a>
         </div>
       
@@ -1015,7 +1020,7 @@ h1, h2, h3, h4, p, dd, dt, .qs-card, .card-body { overflow-wrap: break-word; }
         <p data-i18n="catch-streaming-service-avai-2f47b" class="card-catch"><b>Catch:</b> Streaming service availability varies by region. Android-based, though Sony strips it back hard.</p>
         <p data-i18n="phone-only-at-setup-2b1a3" class="card-phone"><span>Phone</span> only at setup</p>
         <div class="card-footer">
-          <p class="card-price"><span class="price-gbp">£599</span><span class="price-us">$600</span></p>
+          <p class="card-price"><span class="price-gbp">£599</span><span class="price-us">$600</span><span class="price-eur">€699</span></p>
           <a data-i18n="view-cf3db" class="card-link" href="https://www.sony.co.uk/en/articles/nw-zx707" target="_blank" rel="noopener">View →</a>
         </div>
 
@@ -1036,6 +1041,8 @@ h1, h2, h3, h4, p, dd, dt, .qs-card, .card-body { overflow-wrap: break-word; }
           <p data-i18n="music-lovers-ready-to-200f7">Music lovers ready to invest in noticeably better portable sound, without going to the £1,000+ tier.</p>
         </div>
       </div>
+    
+      <div class="yt-wrap"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/iSZTTrGifVU" title="Sony NW-ZX707 Walkman review" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
     </div>
     </div>
     </div>
@@ -1049,7 +1056,7 @@ h1, h2, h3, h4, p, dd, dt, .qs-card, .card-body { overflow-wrap: break-word; }
         <p data-i18n="catch-799-the-most-a702e" class="card-catch"><b>Catch:</b> £799 — the most expensive product in this category. Discovery value: audiophiles know A&K; most visitors won't, which is exactly why it belongs here.</p>
         <p data-i18n="phone-only-at-setup-2b1a3" class="card-phone"><span>Phone</span> only at setup</p>
         <div class="card-footer">
-          <p class="card-price"><span class="price-gbp">£799</span><span class="price-us">$799</span></p>
+          <p class="card-price"><span class="price-gbp">£799</span><span class="price-us">$799</span><span class="price-eur">€899</span></p>
           <a data-i18n="view-cf3db" class="card-link" href="https://www.astellnkern.com/products/sr35" target="_blank" rel="noopener">View →</a>
         </div>
 
@@ -1070,6 +1077,8 @@ h1, h2, h3, h4, p, dd, dt, .qs-card, .card-body { overflow-wrap: break-word; }
           <p data-i18n="committed-listeners-who-want-40d46">Committed listeners who want the best portable audio money can justify, from a brand built entirely for this.</p>
         </div>
       </div>
+    
+      <div class="yt-wrap"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/3QBunN7wrKI" title="Astell &amp; Kern SR35 review" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
     </div>
     </div>
     </div>
@@ -1096,7 +1105,7 @@ h1, h2, h3, h4, p, dd, dt, .qs-card, .card-body { overflow-wrap: break-word; }
         <p data-i18n="catch-spotify-uses-connect-9156b" class="card-catch"><b>Catch:</b> Spotify uses Connect — your phone still controls it. Every other major service (Tidal, Qobuz, Apple Music, Amazon Music) runs natively on the screen.</p>
         <p data-i18n="phone-only-at-setup-2b1a3" class="card-phone"><span>Phone</span> only at setup</p>
         <div class="card-footer">
-          <p class="card-price"><span class="price-gbp">£759</span><span class="price-us">$859</span></p>
+          <p class="card-price"><span class="price-gbp">£759</span><span class="price-us">$859</span><span class="price-eur">€879</span></p>
           <a data-i18n="view-cf3db" class="card-link" href="https://www.richersounds.com/eversolo-dmp-a6-black" target="_blank" rel="noopener">View →</a>
         </div>
 
@@ -1133,7 +1142,7 @@ h1, h2, h3, h4, p, dd, dt, .qs-card, .card-body { overflow-wrap: break-word; }
         <p data-i18n="catch-android-on-dedicated-837f2" class="card-catch"><b>Catch:</b> Android on dedicated hardware can be slow — streaming apps work well but don't expect a snappy tablet experience.</p>
         <p data-i18n="phone-only-at-setup-2b1a3" class="card-phone"><span>Phone</span> only at setup</p>
         <div class="card-footer">
-          <p class="card-price"><span class="price-gbp">£650</span><span class="price-us">$699</span></p>
+          <p class="card-price"><span class="price-gbp">£650</span><span class="price-us">$699</span><span class="price-eur">€750</span></p>
           <a data-i18n="view-cf3db" class="card-link" href="https://www.fiio.com/r7" target="_blank" rel="noopener">View →</a>
         </div>
 
@@ -1170,7 +1179,7 @@ h1, h2, h3, h4, p, dd, dt, .qs-card, .card-body { overflow-wrap: break-word; }
         <p data-i18n="catch-expensive-and-niche-be144" class="card-catch"><b>Catch:</b> Expensive and niche. Rose OS is proprietary — it works well but it's not Android, so side-loading apps isn't an option.</p>
         <p data-i18n="phone-only-at-setup-2b1a3" class="card-phone"><span>Phone</span> only at setup</p>
         <div class="card-footer">
-          <p class="card-price"><span class="price-gbp">£1,949</span><span class="price-us">$2,199</span></p>
+          <p class="card-price"><span class="price-gbp">£1,949</span><span class="price-us">$2,199</span><span class="price-eur">€2,249</span></p>
           <a data-i18n="view-cf3db" class="card-link" href="https://hifirose.com/products/rs250" target="_blank" rel="noopener">View →</a>
         </div>
 
@@ -1206,7 +1215,7 @@ h1, h2, h3, h4, p, dd, dt, .qs-card, .card-body { overflow-wrap: break-word; }
         <p data-i18n="catch-spotify-uses-connect-dc3a7" class="card-catch"><b>Catch:</b> Spotify uses Connect — your phone still controls it. Every other major service runs natively on the screen.</p>
         <p data-i18n="phone-only-at-setup-2b1a3" class="card-phone"><span>Phone</span> only at setup</p>
         <div class="card-footer">
-          <p class="card-price"><span class="price-gbp">£1,299</span><span class="price-us">$1,399</span></p>
+          <p class="card-price"><span class="price-gbp">£1,299</span><span class="price-us">$1,399</span><span class="price-eur">€1,499</span></p>
           <a data-i18n="view-cf3db" class="card-link" href="https://www.richersounds.com/eversolo-dmp-a8" target="_blank" rel="noopener">View →</a>
         </div>
 
@@ -1242,7 +1251,7 @@ h1, h2, h3, h4, p, dd, dt, .qs-card, .card-body { overflow-wrap: break-word; }
         <p data-i18n="catch-volumio-is-a-dfd98" class="card-catch"><b>Catch:</b> Volumio is a smaller company than Eversolo or FiiO — long-term software support is less certain.</p>
         <p data-i18n="phone-only-at-setup-2b1a3" class="card-phone"><span>Phone</span> only at setup</p>
         <div class="card-footer">
-          <p class="card-price"><span class="price-gbp">£1,799</span><span class="price-us">$1,999</span></p>
+          <p class="card-price"><span class="price-gbp">£1,799</span><span class="price-us">$1,999</span><span class="price-eur">€2,099</span></p>
           <a data-i18n="view-cf3db" class="card-link" href="https://volumio.com/en/motivo" target="_blank" rel="noopener">View →</a>
         </div>
 
@@ -1291,7 +1300,7 @@ h1, h2, h3, h4, p, dd, dt, .qs-card, .card-body { overflow-wrap: break-word; }
         <p data-i18n="catch-always-on-microphone-95c40" class="card-catch"><b>Catch:</b> Always-on microphone. Amazon account required. Some features require subscriptions.</p>
         <p data-i18n="phone-only-at-setup-2b1a3" class="card-phone"><span>Phone</span> only at setup</p>
         <div class="card-footer">
-          <p class="card-price"><span class="price-gbp">£89</span><span class="price-us">$99</span></p>
+          <p class="card-price"><span class="price-gbp">£89</span><span class="price-us">$99</span><span class="price-eur">€99</span></p>
           <a data-i18n="view-cf3db" class="card-link" href="https://www.amazon.co.uk/dp/B07XJ8C8F7" target="_blank" rel="noopener">View →</a>
         </div>
       
@@ -1328,7 +1337,7 @@ h1, h2, h3, h4, p, dd, dt, .qs-card, .card-body { overflow-wrap: break-word; }
         <p data-i18n="catch-only-really-works-d5c02" class="card-catch"><b>Catch:</b> Only really works with Apple devices — less useful without iPhone/Apple Music. Expensive for a speaker.</p>
         <p data-i18n="phone-only-at-setup-2b1a3" class="card-phone"><span>Phone</span> only at setup</p>
         <div class="card-footer">
-          <p class="card-price"><span class="price-gbp">£299</span><span class="price-us">$299</span></p>
+          <p class="card-price"><span class="price-gbp">£299</span><span class="price-us">$299</span><span class="price-eur">€349</span></p>
           <a data-i18n="view-cf3db" class="card-link" href="https://www.apple.com/uk/homepod/" target="_blank" rel="noopener">View →</a>
         </div>
       
@@ -1376,7 +1385,7 @@ h1, h2, h3, h4, p, dd, dt, .qs-card, .card-body { overflow-wrap: break-word; }
         <p data-i18n="catch-expensive-cannot-edit-0c1ac" class="card-catch"><b>Catch:</b> Expensive. Cannot edit or rearrange text beyond basic cursor. Sync requires Wi-Fi.</p>
         <p data-i18n="phone-only-at-setup-2b1a3" class="card-phone"><span>Phone</span> only at setup</p>
         <div class="card-footer">
-          <p class="card-price"><span class="price-gbp">£429</span><span class="price-us">$549</span></p>
+          <p class="card-price"><span class="price-gbp">£429</span><span class="price-us">$549</span><span class="price-eur">€499</span></p>
           <a data-i18n="view-cf3db" class="card-link" href="https://freewrite.com/products/freewrite-smart-typewriter" target="_blank" rel="noopener">View →</a>
         </div>
       
@@ -1413,7 +1422,7 @@ h1, h2, h3, h4, p, dd, dt, .qs-card, .card-body { overflow-wrap: break-word; }
         <p data-i18n="catch-less-polished-than-ce6d7" class="card-catch"><b>Catch:</b> Less polished than the Smart Typewriter. Sync via Wi-Fi only.</p>
         <p data-i18n="phone-only-at-setup-2b1a3" class="card-phone"><span>Phone</span> only at setup</p>
         <div class="card-footer">
-          <p class="card-price"><span class="price-gbp">£179</span><span class="price-us">$199</span></p>
+          <p class="card-price"><span class="price-gbp">£179</span><span class="price-us">$199</span><span class="price-eur">€209</span></p>
           <a data-i18n="view-cf3db" class="card-link" href="https://freewrite.com/products/alpha" target="_blank" rel="noopener">View →</a>
         </div>
       
@@ -1450,7 +1459,7 @@ h1, h2, h3, h4, p, dd, dt, .qs-card, .card-body { overflow-wrap: break-word; }
         <p data-i18n="catch-japanese-brand-import-e7f6a" class="card-catch"><b>Catch:</b> Japanese brand — import only in UK. No real-time sync.</p>
         <p data-i18n="phone-never-needed-7d5f4" class="card-phone"><span>Phone</span> never needed</p>
         <div class="card-footer">
-          <p class="card-price"><span class="price-gbp">~£250</span><span class="price-us">$279</span></p>
+          <p class="card-price"><span class="price-gbp">~£250</span><span class="price-us">$279</span><span class="price-eur">~€289</span></p>
           <a data-i18n="view-cf3db" class="card-link" href="https://www.kingjim.co.jp/pomera/dm250/" target="_blank" rel="noopener">View →</a>
         </div>
       
@@ -1486,7 +1495,7 @@ h1, h2, h3, h4, p, dd, dt, .qs-card, .card-body { overflow-wrap: break-word; }
         <p data-i18n="catch-keyboard-feel-divides-8b250" class="card-catch"><b>Catch:</b> Keyboard feel divides opinion — try before buying if possible.</p>
         <p data-i18n="phone-only-at-setup-2b1a3" class="card-phone"><span>Phone</span> only at setup</p>
         <div class="card-footer">
-          <p class="card-price"><span class="price-gbp">£299</span><span class="price-us">$349</span></p>
+          <p class="card-price"><span class="price-gbp">£299</span><span class="price-us">$349</span><span class="price-eur">€345</span></p>
           <a data-i18n="view-cf3db" class="card-link" href="https://freewrite.com/products/traveler" target="_blank" rel="noopener">View →</a>
         </div>
       
@@ -1522,7 +1531,7 @@ h1, h2, h3, h4, p, dd, dt, .qs-card, .card-body { overflow-wrap: break-word; }
         <p data-i18n="catch-subscription-connect-n-4c919" class="card-catch"><b>Catch:</b> Subscription (Connect) needed for cloud sync and some features. Expensive.</p>
         <p data-i18n="phone-only-at-setup-2b1a3" class="card-phone"><span>Phone</span> only at setup</p>
         <div class="card-footer">
-          <p class="card-price"><span class="price-gbp">£279</span><span class="price-us">$299</span></p>
+          <p class="card-price"><span class="price-gbp">£279</span><span class="price-us">$299</span><span class="price-eur">€319</span></p>
           <a data-i18n="view-cf3db" class="card-link" href="https://remarkable.com/store/remarkable-2" target="_blank" rel="noopener">View →</a>
         </div>
       
@@ -1558,7 +1567,7 @@ h1, h2, h3, h4, p, dd, dt, .qs-card, .card-body { overflow-wrap: break-word; }
         <p data-i18n="catch-no-backlight-low-c656a" class="card-catch"><b>Catch:</b> No backlight — low-light use needs an external lamp. Pen sold separately (from ~$59). Base price starts at $459.</p>
         <p data-i18n="phone-only-at-setup-2b1a3" class="card-phone"><span>Phone</span> only at setup</p>
         <div class="card-footer">
-          <p class="card-price"><span class="price-gbp">~£370</span><span class="price-us">$459</span></p>
+          <p class="card-price"><span class="price-gbp">~£370</span><span class="price-us">$459</span><span class="price-eur">~€429</span></p>
           <a data-i18n="view-cf3db" class="card-link" href="https://supernote.com/products/supernote-a5-x2" target="_blank" rel="noopener">View →</a>
         </div>
 
@@ -1579,6 +1588,8 @@ h1, h2, h3, h4, p, dd, dt, .qs-card, .card-body { overflow-wrap: break-word; }
           <p data-i18n="note-takers-and-pdf-c0bcf">Note-takers and PDF annotators who want the reMarkable alternative — more repairable, more expandable, with a pen that never runs out.</p>
         </div>
       </div>
+    
+      <div class="yt-wrap"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/WchdWGsbiDA" title="Supernote A5 X2 Manta review" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
     </div>
     </div>
     </div>
@@ -1605,7 +1616,7 @@ h1, h2, h3, h4, p, dd, dt, .qs-card, .card-body { overflow-wrap: break-word; }
         <p data-i18n="catch-no-image-stabilisation-c6c4a" class="card-catch"><b>Catch:</b> No image stabilisation. Easy to miss focus in low light without snap mode.</p>
         <p data-i18n="phone-never-needed-7d5f4" class="card-phone"><span>Phone</span> never needed</p>
         <div class="card-footer">
-          <p class="card-price"><span class="price-gbp">£899</span><span class="price-us">$999</span></p>
+          <p class="card-price"><span class="price-gbp">£899</span><span class="price-us">$999</span><span class="price-eur">€1,049</span></p>
           <a data-i18n="view-cf3db" class="card-link" href="https://www.ricoh-imaging.co.uk/product/gr-iiix" target="_blank" rel="noopener">View →</a>
         </div>
       
@@ -1642,7 +1653,7 @@ h1, h2, h3, h4, p, dd, dt, .qs-card, .card-body { overflow-wrap: break-word; }
         <p data-i18n="catch-frequently-sold-out-dca1d" class="card-catch"><b>Catch:</b> Frequently sold out — check for availability. Not cheap.</p>
         <p data-i18n="phone-never-needed-7d5f4" class="card-phone"><span>Phone</span> never needed</p>
         <div class="card-footer">
-          <p class="card-price"><span class="price-gbp">£1,699</span><span class="price-us">$1,599</span></p>
+          <p class="card-price"><span class="price-gbp">£1,699</span><span class="price-us">$1,599</span><span class="price-eur">€1,999</span></p>
           <a data-i18n="view-cf3db" class="card-link" href="https://www.fujifilm.com/uk/en/consumer/cameras/x/x100vi" target="_blank" rel="noopener">View →</a>
         </div>
       
@@ -1690,7 +1701,7 @@ h1, h2, h3, h4, p, dd, dt, .qs-card, .card-body { overflow-wrap: break-word; }
         <p data-i18n="catch-expensive-bulky-for-c1523" class="card-catch"><b>Catch:</b> Expensive. Bulky for everyday wear. Some features need phone pairing initially.</p>
         <p data-i18n="phone-only-at-setup-2b1a3" class="card-phone"><span>Phone</span> only at setup</p>
         <div class="card-footer">
-          <p class="card-price"><span class="price-gbp">£549</span><span class="price-us">$599</span></p>
+          <p class="card-price"><span class="price-gbp">£549</span><span class="price-us">$599</span><span class="price-eur">€629</span></p>
           <a data-i18n="view-cf3db" class="card-link" href="https://www.garmin.com/en-GB/p/735611" target="_blank" rel="noopener">View →</a>
         </div>
       
@@ -1727,7 +1738,7 @@ h1, h2, h3, h4, p, dd, dt, .qs-card, .card-body { overflow-wrap: break-word; }
         <p data-i18n="catch-smaller-screen-lower-436e1" class="card-catch"><b>Catch:</b> Smaller screen. Lower-resolution vs. Apple Watch. Needs Garmin Connect once to set up.</p>
         <p data-i18n="phone-only-at-setup-2b1a3" class="card-phone"><span>Phone</span> only at setup</p>
         <div class="card-footer">
-          <p class="card-price"><span class="price-gbp">£249</span><span class="price-us">$269</span></p>
+          <p class="card-price"><span class="price-gbp">£249</span><span class="price-us">$269</span><span class="price-eur">€285</span></p>
           <a data-i18n="view-cf3db" class="card-link" href="https://www.garmin.com/en-GB/p/1025217" target="_blank" rel="noopener">View →</a>
         </div>
       
@@ -1764,7 +1775,7 @@ h1, h2, h3, h4, p, dd, dt, .qs-card, .card-body { overflow-wrap: break-word; }
         <p data-i18n="catch-expensive-fewer-apps-18ed3" class="card-catch"><b>Catch:</b> Expensive. Fewer apps and accessories than Garmin. App is improving but behind Garmin Connect.</p>
         <p data-i18n="phone-only-at-setup-2b1a3" class="card-phone"><span>Phone</span> only at setup</p>
         <div class="card-footer">
-          <p class="card-price"><span class="price-gbp">£399</span><span class="price-us">$449</span></p>
+          <p class="card-price"><span class="price-gbp">£399</span><span class="price-us">$449</span><span class="price-eur">€459</span></p>
           <a data-i18n="view-cf3db" class="card-link" href="https://www.suunto.com/en-gb/Products/sports-watches/suunto-race-s/" target="_blank" rel="noopener">View →</a>
         </div>
       
@@ -1800,7 +1811,7 @@ h1, h2, h3, h4, p, dd, dt, .qs-card, .card-body { overflow-wrap: break-word; }
         <p data-i18n="catch-fewer-apps-and-b9f91" class="card-catch"><b>Catch:</b> Fewer apps and third-party extras than Garmin. Less third-party app support.</p>
         <p data-i18n="phone-only-at-setup-2b1a3" class="card-phone"><span>Phone</span> only at setup</p>
         <div class="card-footer">
-          <p class="card-price"><span class="price-gbp">£299</span><span class="price-us">$329</span></p>
+          <p class="card-price"><span class="price-gbp">£299</span><span class="price-us">$329</span><span class="price-eur">€345</span></p>
           <a data-i18n="view-cf3db" class="card-link" href="https://www.polar.com/en/products/sport-watches/pacer-pro" target="_blank" rel="noopener">View →</a>
         </div>
       
@@ -1849,7 +1860,7 @@ h1, h2, h3, h4, p, dd, dt, .qs-card, .card-body { overflow-wrap: break-word; }
         <p data-i18n="catch-content-is-yoto-a31fb" class="card-catch"><b>Catch:</b> Content is Yoto-card only — ongoing cost for new stories/songs.</p>
         <p data-i18n="phone-only-at-setup-2b1a3" class="card-phone"><span>Phone</span> only at setup</p>
         <div class="card-footer">
-          <p class="card-price"><span class="price-gbp">£99</span><span class="price-us">$109</span></p>
+          <p class="card-price"><span class="price-gbp">£99</span><span class="price-us">$109</span><span class="price-eur">€115</span></p>
           <a data-i18n="view-cf3db" class="card-link" href="https://www.yotoplay.com/products/yoto-player-third-gen" target="_blank" rel="noopener">View →</a>
         </div>
       
@@ -1885,7 +1896,7 @@ h1, h2, h3, h4, p, dd, dt, .qs-card, .card-body { overflow-wrap: break-word; }
         <p data-i18n="catch-less-features-than-179c9" class="card-catch"><b>Catch:</b> Less features than the full player. Still requires Yoto cards.</p>
         <p data-i18n="phone-only-at-setup-2b1a3" class="card-phone"><span>Phone</span> only at setup</p>
         <div class="card-footer">
-          <p class="card-price"><span class="price-gbp">£59</span><span class="price-us">$69</span></p>
+          <p class="card-price"><span class="price-gbp">£59</span><span class="price-us">$69</span><span class="price-eur">€69</span></p>
           <a data-i18n="view-cf3db" class="card-link" href="https://www.yotoplay.com/products/yoto-mini" target="_blank" rel="noopener">View →</a>
         </div>
       
@@ -1922,7 +1933,7 @@ h1, h2, h3, h4, p, dd, dt, .qs-card, .card-body { overflow-wrap: break-word; }
         <p data-i18n="catch-tonie-figurines-cost-478eb" class="card-catch"><b>Catch:</b> Tonie figurines cost ~£15–20 each. Stories only come from Tonie figures.</p>
         <p data-i18n="phone-only-at-setup-2b1a3" class="card-phone"><span>Phone</span> only at setup</p>
         <div class="card-footer">
-          <p class="card-price"><span class="price-gbp">£79</span><span class="price-us">$89</span></p>
+          <p class="card-price"><span class="price-gbp">£79</span><span class="price-us">$89</span><span class="price-eur">€89</span></p>
           <a data-i18n="view-cf3db" class="card-link" href="https://www.tonies.com/en-gb/" target="_blank" rel="noopener">View →</a>
         </div>
       
@@ -1970,7 +1981,7 @@ h1, h2, h3, h4, p, dd, dt, .qs-card, .card-body { overflow-wrap: break-word; }
         <p data-i18n="catch-signal-setup-requires-265a6" class="card-catch"><b>Catch:</b> Signal setup requires a smartphone initially. Premium price for minimal features.</p>
         <p data-i18n="phone-never-needed-7d5f4" class="card-phone"><span>Phone</span> never needed</p>
         <div class="card-footer">
-          <p class="card-price"><span class="price-gbp">£299</span><span class="price-us">$349</span></p>
+          <p class="card-price"><span class="price-gbp">£299</span><span class="price-us">$349</span><span class="price-eur">€345</span></p>
           <a data-i18n="view-cf3db" class="card-link" href="https://www.punkt.ch/en/products/mp02-4g-mobile-phone/" target="_blank" rel="noopener">View →</a>
         </div>
       
@@ -2007,7 +2018,7 @@ h1, h2, h3, h4, p, dd, dt, .qs-card, .card-body { overflow-wrap: break-word; }
         <p data-i18n="catch-us-focused-initially-9ab2d" class="card-catch"><b>Catch:</b> US-focused initially. UK/EU availability limited. Premium price.</p>
         <p data-i18n="phone-never-needed-7d5f4" class="card-phone"><span>Phone</span> never needed</p>
         <div class="card-footer">
-          <p class="card-price"><span class="price-gbp">~£299</span><span class="price-us">$299</span></p>
+          <p class="card-price"><span class="price-gbp">~£299</span><span class="price-us">$299</span><span class="price-eur">~€349</span></p>
           <a data-i18n="view-cf3db" class="card-link" href="https://www.thelightphone.com" target="_blank" rel="noopener">View →</a>
         </div>
       
@@ -2044,7 +2055,7 @@ h1, h2, h3, h4, p, dd, dt, .qs-card, .card-body { overflow-wrap: break-word; }
         <p data-i18n="catch-new-device-from-90362" class="card-catch"><b>Catch:</b> New device from small Polish company — long-term support uncertain.</p>
         <p data-i18n="phone-never-needed-7d5f4" class="card-phone"><span>Phone</span> never needed</p>
         <div class="card-footer">
-          <p class="card-price"><span class="price-gbp">~£399</span><span class="price-us">$449</span></p>
+          <p class="card-price"><span class="price-gbp">~£399</span><span class="price-us">$449</span><span class="price-eur">~€459</span></p>
           <a data-i18n="view-cf3db" class="card-link" href="https://mudita.com/kompakt" target="_blank" rel="noopener">View →</a>
         </div>
       
@@ -2235,8 +2246,10 @@ function initLang() {
 function setCurrency(c) {
   document.querySelectorAll('.price-gbp').forEach(el => el.style.display = c === 'gbp' ? 'inline' : 'none');
   document.querySelectorAll('.price-us').forEach(el => el.style.display = c === 'usd' ? 'inline' : 'none');
+  document.querySelectorAll('.price-eur').forEach(el => el.style.display = c === 'eur' ? 'inline' : 'none');
   document.getElementById('pBtn-gbp').classList.toggle('active', c === 'gbp');
   document.getElementById('pBtn-usd').classList.toggle('active', c === 'usd');
+  document.getElementById('pBtn-eur').classList.toggle('active', c === 'eur');
 }
 
 // ─── Expandable card detail ───────────────────────
